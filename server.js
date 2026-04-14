@@ -1,5 +1,4 @@
-console.log("API KEY VALUE:", process.env.OPENAI_API_KEY);
-import "dotenv/config"
+console.log("ALL ENV:", process.env);
 import express from "express"
 import Stripe from "stripe"
 import cors from "cors"
