@@ -1,3 +1,4 @@
+console.log("API KEY VALUE:", process.env.OPENAI_API_KEY);
 import "dotenv/config"
 import express from "express"
 import Stripe from "stripe"
