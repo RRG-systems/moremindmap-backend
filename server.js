@@ -202,6 +202,7 @@ app.post("/api/moremindmap/mini-profile", async (req, res) => {
 
     res.json({
       success: true,
+      scoringPayload: scoring,
       miniProfile,
     })
   } catch (error) {
