@@ -2,7 +2,6 @@ import "dotenv/config"
 import express from "express"
 import Stripe from "stripe"
 import cors from "cors"
-import { writeFile, mkdir } from "fs/promises"
 import { join, dirname } from "path"
 import { fileURLToPath } from "url"
 import { scoreAssessment } from "./engine/scoreAssessment.js"
@@ -28,7 +27,8 @@ const stripe = process.env.STRIPE_SECRET_KEY
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const SUBMISSIONS_DIR = join(__dirname, "submissions")
 
-await mkdir(SUBMISSIONS_DIR, { recursive: true })
+// Vercel serverless: filesystem writes not supported, skip mkdir
+// await mkdir(SUBMISSIONS_DIR, { recursive: true })
 
 const app = express()
 app.use(cors())
@@ -52,7 +52,10 @@ async function saveSubmission(type, data) {
     ...data,
   }
 
-  await writeFile(filepath, JSON.stringify(record, null, 2))
+  // Vercel serverless: filesystem writes disabled, log only
+  console.log("SAVED SUBMISSION:", record)
+  // await writeFile(filepath, JSON.stringify(record, null, 2))
+  
   return { filename, submittedAt: record.submittedAt }
 }
 
