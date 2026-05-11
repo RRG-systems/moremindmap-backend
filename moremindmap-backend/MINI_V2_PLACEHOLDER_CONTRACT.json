@@ -1,0 +1,58 @@
+{
+  "title": {
+    "found": true,
+    "file": "page10-full-profile-unlocks-dna.html"
+  },
+  "subtitle": {
+    "found": true,
+    "file": "page01-cover.html"
+  },
+  "description": {
+    "found": true,
+    "file": "page01-cover.html"
+  },
+  "footer": {
+    "found": true,
+    "file": "page10-full-profile-unlocks-dna.html"
+  },
+  "operating_system_map_placeholder": {
+    "found": true,
+    "file": "page02-operating-system-map.html"
+  },
+  "summary_text": {
+    "found": true,
+    "file": "page03-executive-summary.html"
+  },
+  "operating_pattern_details": {
+    "found": true,
+    "file": "page04-operating-pattern.html"
+  },
+  "decision_architecture_diagram": {
+    "found": true,
+    "file": "page05-decision-architecture.html"
+  },
+  "communication_style_description": {
+    "found": true,
+    "file": "page06-communication-style.html"
+  },
+  "strain_indicators": {
+    "found": true,
+    "file": "page07-system-under-strain.html"
+  },
+  "environment_fit_analysis": {
+    "found": true,
+    "file": "page08-operating-environment-fit.html"
+  },
+  "facilitator_notes_content": {
+    "found": true,
+    "file": "page09-facilitator-notes.html"
+  },
+  "full_profile_unlocks": {
+    "found": true,
+    "file": "page10-full-profile-unlocks-dna.html"
+  },
+  "operating_dna": {
+    "found": true,
+    "file": "page10-full-profile-unlocks-dna.html"
+  }
+}
