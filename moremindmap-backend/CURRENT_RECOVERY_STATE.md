@@ -1,85 +1,114 @@
 # CURRENT RECOVERY STATE
-Last verified: May 11, 2026 13:53 MST
+
+Last verified: May 11, 2026 15:46 MST
 
 ## Repository
+
+Repo:
+`https://github.com/RRG-systems/moremindmap-backend.git`
+
 Git root:
 `/Users/rrg/.openclaw/workspace`
 
 Project folder:
 `moremindmap-backend/`
 
-Remote:
-`https://github.com/RRG-systems/moremindmap-backend.git`
-
-Current branch:
+Branch:
 `main`
 
-## Verified Current State
+Current baseline commit:
+`ce80ac0` — complete mini v2 html generation baseline
 
-### Locked Artifact
-Verified present in GitHub and local repo:
+## Recovery Status
+
+Recovery infrastructure is complete.
+
+GitHub is now the source of truth.
+
+## Verified Working Baseline
+
+The Mini V2 HTML generation pipeline now works.
+
+Test:
+`node moremindmap-backend/engine/testGenerateMiniV2HTML.js`
+
+Passing result:
+- 10 pages generated
+- 0 remaining placeholders
+- HTML output generated
+- ES module imports resolved
+
+## Locked Reference Artifact
+
+Canonical locked PDF reference is preserved at:
 
 `moremindmap-backend/LOCKED_ARTIFACTS/mini-profile-v2-locked-reference/LOCKED 10 pages MORE MindMap - Mini Profile V2.pdf`
 
 Mirror copy:
-`moremindmap-backend/reference/mini-profile-v2-locked-reference/`
 
-This PDF is now the canonical visual reconstruction target.
+`moremindmap-backend/reference/mini-profile-v2-locked-reference/LOCKED 10 pages MORE MindMap - Mini Profile V2.pdf`
 
-### Governance Files Present
-- SOURCE_OF_TRUTH.md
-- README_PROJECT_STATE.md
-- RECOVERY_TODO.md
-- MINI_V2_TEMPLATE_RECONSTRUCTION_PLAN.md
-- VERCEL_DEPLOYMENT_STATUS.md
+SHA256:
+`25656674884e34a02329c136891b9657aff447d0b30323662e2efef98ae205ec`
 
-### Templates
-10 Mini V2 skeleton templates exist in:
+## Working Files
 
-`moremindmap-backend/templates/mini-v2/`
+Engine:
+- `moremindmap-backend/engine/questionMap.js`
+- `moremindmap-backend/engine/dimensionMap.js`
+- `moremindmap-backend/engine/scoreAssessment.js`
+- `moremindmap-backend/engine/generateMiniV2HTML.js`
+- `moremindmap-backend/engine/testGenerateMiniV2HTML.js`
 
-### Engine Files Present
-- questionMap.js
-- dimensionMap.js
-- scoreAssessment.js
-- generateMiniV2HTML.js
-- testGenerateMiniV2HTML.js
+Templates:
+- `moremindmap-backend/templates/mini-v2/page01-cover.html`
+- `moremindmap-backend/templates/mini-v2/page02-operating-system-map.html`
+- `moremindmap-backend/templates/mini-v2/page03-executive-summary.html`
+- `moremindmap-backend/templates/mini-v2/page04-operating-pattern.html`
+- `moremindmap-backend/templates/mini-v2/page05-decision-architecture.html`
+- `moremindmap-backend/templates/mini-v2/page06-communication-style.html`
+- `moremindmap-backend/templates/mini-v2/page07-system-under-strain.html`
+- `moremindmap-backend/templates/mini-v2/page08-operating-environment-fit.html`
+- `moremindmap-backend/templates/mini-v2/page09-facilitator-notes.html`
+- `moremindmap-backend/templates/mini-v2/page10-full-profile-unlocks-dna.html`
 
-### Current Known Blocker
-`generateMiniV2HTML.js`
+Governance:
+- `moremindmap-backend/SOURCE_OF_TRUTH.md`
+- `moremindmap-backend/README_PROJECT_STATE.md`
+- `moremindmap-backend/RECOVERY_TODO.md`
+- `moremindmap-backend/MINI_V2_TEMPLATE_RECONSTRUCTION_PLAN.md`
+- `moremindmap-backend/VERCEL_DEPLOYMENT_STATUS.md`
 
-Issue:
-ES module / __dirname handling prevents HTML generation test from succeeding.
+## Current Phase
 
-Primary active task:
-Fix Mini V2 HTML generation pipeline.
+Recovery is complete.
 
-### Current Priority Order
-1. Fix generateMiniV2HTML.js
-2. Run testGenerateMiniV2HTML.js successfully
-3. Restore placeholder injection pipeline
-4. Compare generated HTML to locked PDF reference
-5. Restore PDF rendering
-6. Restore production pipeline
+Next phase:
+Visual template refinement against locked PDF reference.
 
-## Important Rule
-Do NOT trust stale reports mentioning:
-- HEAD 1bd0b55
-- "no locked artifacts found"
-- "audit files empty"
+## Next Engineering Sequence
 
-Those reports are outdated and superseded.
+1. Generate current HTML output.
+2. Save output artifact.
+3. Compare current HTML visually against locked PDF.
+4. Refine templates toward locked PDF structure:
+ - typography
+ - spacing
+ - page hierarchy
+ - cards/sections
+ - footer consistency
+ - Page 2 operating map
+ - Page 10 DNA section
+5. Wire real scoring data into placeholders.
+6. Rebuild page injection layer.
+7. Add PDF rendering.
+8. Add AI interpreter layer.
+9. Restore Stripe/Formspree/email/download production flow.
 
-## Startup Procedure For Future Sessions
+## Do Not Do
 
-Always begin with:
-
-1. Read SOURCE_OF_TRUTH.md
-2. Read CURRENT_RECOVERY_STATE.md
-3. Run:
- - git fetch origin main
- - git checkout main
- - git pull origin main
-4. Verify locked PDF exists
-5. Continue only from verified current state
-
+- Do not return to stale reports mentioning HEAD `1bd0b55`.
+- Do not claim locked artifact is missing.
+- Do not start PDF rendering before visual HTML refinement.
+- Do not clean contaminated files yet.
+- Do not modify production deployment until render pipeline is stable.
