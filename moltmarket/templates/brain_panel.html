@@ -1,0 +1,94 @@
+<!-- BRAIN Status Panel — Minimal Display -->
+<!-- Include this in main dashboard.html -->
+
+<div id="brain-panel" style="
+    background: #0f1729;
+    border: 1px solid #1a2847;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 20px 0;
+    font-family: monospace;
+">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h3 style="color: #00d9ff; margin: 0; font-size: 14px;">⚙️ BRAIN Status</h3>
+        <span id="brain-state-badge" style="
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #1a2847;
+            color: #7a8fa3;
+        ">LOADING</span>
+    </div>
+    
+    <div id="brain-content" style="
+        background: #0a0e27;
+        border: 1px solid #1a2847;
+        border-radius: 4px;
+        padding: 12px;
+        font-size: 12px;
+        color: #c5d0dd;
+        line-height: 1.6;
+    ">
+        <p style="color: #7a8fa3; margin: 0;">Initializing...</p>
+    </div>
+</div>
+
+<script>
+    // Poll BRAIN status every 2 seconds
+    async function updateBrainPanel() {
+        try {
+            const response = await fetch('/api/brain/status');
+            const data = await response.json();
+            
+            const state = data.state || 'UNKNOWN';
+            const reasonCode = data.reason_code || 'unknown';
+            const reasonText = data.reason_text || 'No reason available';
+            const enforcement = data.enforcement || {};
+            
+            // Update badge
+            const badge = document.getElementById('brain-state-badge');
+            badge.textContent = state;
+            badge.style.background = getStateColor(state).bg;
+            badge.style.color = getStateColor(state).text;
+            
+            // Update content
+            const content = document.getElementById('brain-content');
+            let html = `
+                <div><strong>State:</strong> <span style="color: ${getStateColor(state).text}">${state}</span></div>
+                <div><strong>Reason:</strong> ${reasonCode}</div>
+                <div style="margin-top: 8px; color: #7a8fa3; font-size: 11px;">${reasonText}</div>
+            `;
+            
+            if (enforcement.trading_blocked) html += '<div style="color: #ff6b35; margin-top: 8px;">⛔ Trading Blocked</div>';
+            if (enforcement.trading_throttled) html += '<div style="color: #ffc107; margin-top: 8px;">⚠️ Trading Throttled</div>';
+            if (enforcement.no_active_strategy) html += '<div style="color: #7a8fa3; margin-top: 8px;">🔇 No Active Strategy</div>';
+            
+            content.innerHTML = html;
+        } catch (error) {
+            const content = document.getElementById('brain-content');
+            content.innerHTML = `<p style="color: #ff6b35;">Error loading BRAIN status: ${error.message}</p>`;
+        }
+    }
+    
+    function getStateColor(state) {
+        switch (state) {
+            case 'NORMAL':
+                return { bg: 'rgba(0, 200, 100, 0.15)', text: '#00c864' };
+            case 'THROTTLE':
+                return { bg: 'rgba(255, 193, 7, 0.15)', text: '#ffc107' };
+            case 'STOP':
+                return { bg: 'rgba(255, 69, 0, 0.15)', text: '#ff6b35' };
+            case 'FLAT':
+                return { bg: 'rgba(122, 143, 163, 0.15)', text: '#7a8fa3' };
+            default:
+                return { bg: '#1a2847', text: '#7a8fa3' };
+        }
+    }
+    
+    // Initial update
+    updateBrainPanel();
+    
+    // Poll every 2 seconds
+    setInterval(updateBrainPanel, 2000);
+</script>

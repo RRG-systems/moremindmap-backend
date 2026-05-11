@@ -1,0 +1,106 @@
+{
+  "phase": 25,
+  "title": "Volatility Expansion Validation (Out-of-Sample)",
+  "date_run": "2026-04-16T11:00:57.515093",
+  "data_split": {
+    "phase24": {
+      "date_start": "2026-04-02T12:02:27.741000",
+      "date_end": "2026-04-09T14:02:25.117000",
+      "candles": 171
+    },
+    "phase25": {
+      "date_start": "2026-04-09T15:03:00.179000",
+      "date_end": "2026-04-16T10:36:44",
+      "candles": 171
+    }
+  },
+  "results": {
+    "phase24": {
+      "name": "Signal C Phase 24",
+      "sample_size": 2,
+      "win_rate": 100.0,
+      "avg_pnl_bps": 189.81,
+      "avg_pnl_pct": 1.8981,
+      "total_pnl_bps": 379.61,
+      "std_dev_bps": 0.0,
+      "sharpe_ratio": 2.1202656329664904e+16,
+      "max_win_bps": 189.81,
+      "max_loss_bps": 189.81,
+      "max_consecutive_losses": 0,
+      "max_drawdown_bps": 0.0,
+      "avg_duration_ticks": 26.0
+    },
+    "phase25": {
+      "name": "Signal C Phase 25",
+      "sample_size": 2,
+      "win_rate": 100.0,
+      "avg_pnl_bps": 189.81,
+      "avg_pnl_pct": 1.8981,
+      "total_pnl_bps": 379.61,
+      "std_dev_bps": 0.0,
+      "sharpe_ratio": 2826769586714140.0,
+      "max_win_bps": 189.81,
+      "max_loss_bps": 189.81,
+      "max_consecutive_losses": 0,
+      "max_drawdown_bps": 0.0,
+      "avg_duration_ticks": 26.0
+    },
+    "random_baseline": {
+      "name": "Random Baseline",
+      "sample_size": 10,
+      "win_rate": 60.0,
+      "avg_pnl_bps": 29.97,
+      "avg_pnl_pct": 0.2997,
+      "total_pnl_bps": 299.66,
+      "std_dev_bps": 195.76,
+      "sharpe_ratio": 2.43,
+      "max_win_bps": 189.81,
+      "max_loss_bps": -209.79,
+      "max_consecutive_losses": 3,
+      "max_drawdown_bps": -629.38,
+      "avg_duration_ticks": 40.7
+    },
+    "edge_vs_random_bps": 159.84,
+    "regime_performance": {
+      "high": {
+        "sample_size": 1,
+        "win_rate": 100.0,
+        "avg_pnl_bps": 189.81,
+        "std_dev_bps": 0.0,
+        "max_win_bps": 189.81,
+        "max_loss_bps": 189.81,
+        "total_pnl_bps": 189.81
+      },
+      "mid": {
+        "sample_size": 1,
+        "win_rate": 100.0,
+        "avg_pnl_bps": 189.81,
+        "std_dev_bps": 0.0,
+        "max_win_bps": 189.81,
+        "max_loss_bps": 189.81,
+        "total_pnl_bps": 189.81
+      },
+      "low": {
+        "sample_size": 0,
+        "win_rate": 0,
+        "avg_pnl_bps": 0,
+        "std_dev_bps": 0,
+        "max_win_bps": 0,
+        "max_loss_bps": 0,
+        "total_pnl_bps": 0
+      }
+    }
+  },
+  "answers": {
+    "q1_positive_edge": "YES",
+    "q2_edge_above_20bps": "YES",
+    "q3_stable_across_regimes": "NO",
+    "q4_outperforms_random": "YES"
+  },
+  "verdict": {
+    "status": "FAKE",
+    "confidence": "HIGH",
+    "production_readiness": 0,
+    "recommended_action": "DISCARD"
+  }
+}

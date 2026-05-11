@@ -1,0 +1,382 @@
+{
+  "phase": 26,
+  "title": "Disciplined Signal Discovery - Strict Filtering",
+  "timestamp": "2026-04-16T11:09:32.378509",
+  "data_summary": {
+    "candles": 322,
+    "date_start": "2026-04-03 08:03:25.607000",
+    "date_end": "2026-04-16 10:36:44"
+  },
+  "random_baseline": {
+    "trades": 86,
+    "avg_pnl_bps": 23.658226059378787,
+    "win_rate_pct": 55.81395348837209,
+    "std_dev_bps": 257.0511583924063
+  },
+  "all_signals_tested": [
+    {
+      "signal": "TimeBased_TB_Morning",
+      "family": "TimeBased",
+      "variant": "TB_Morning",
+      "trades": 36,
+      "win_rate_pct": 86.11111111111111,
+      "avg_pnl_bps": 185.38175392396556,
+      "edge_vs_random_bps": 161.72352786458677,
+      "std_dev_bps": 178.10691090475447,
+      "passes_filters": false,
+      "reason": "FAIL: Only 36 trades (need 50+)"
+    },
+    {
+      "signal": "OrderFlow_OF_BuyImbalance",
+      "family": "OrderFlow",
+      "variant": "OF_BuyImbalance",
+      "trades": 13,
+      "win_rate_pct": 76.92307692307693,
+      "avg_pnl_bps": 165.68485187378448,
+      "edge_vs_random_bps": 142.0266258144057,
+      "std_dev_bps": 217.47461124895182,
+      "passes_filters": false,
+      "reason": "FAIL: Only 13 trades (need 50+)"
+    },
+    {
+      "signal": "TimeBased_TB_Weekend",
+      "family": "TimeBased",
+      "variant": "TB_Weekend",
+      "trades": 101,
+      "win_rate_pct": 81.1881188118812,
+      "avg_pnl_bps": 157.56059724004854,
+      "edge_vs_random_bps": 133.90237118066975,
+      "std_dev_bps": 190.9018418486068,
+      "passes_filters": true,
+      "reason": "PASS: All criteria met"
+    },
+    {
+      "signal": "MeanReversion_MR_20tick_03pct",
+      "family": "MeanReversion",
+      "variant": "MR_20tick_03pct",
+      "trades": 151,
+      "win_rate_pct": 68.21192052980133,
+      "avg_pnl_bps": 73.27728768458651,
+      "edge_vs_random_bps": 49.61906162520772,
+      "std_dev_bps": 244.44335935446637,
+      "passes_filters": true,
+      "reason": "PASS: All criteria met"
+    },
+    {
+      "signal": "MeanReversion_MR_10tick_05pct",
+      "family": "MeanReversion",
+      "variant": "MR_10tick_05pct",
+      "trades": 77,
+      "win_rate_pct": 63.63636363636363,
+      "avg_pnl_bps": 48.70635277208719,
+      "edge_vs_random_bps": 25.048126712708406,
+      "std_dev_bps": 262.72495390580605,
+      "passes_filters": false,
+      "reason": "FAIL: High volatility (std 262.7 > 5\u00d7 edge 48.7)"
+    },
+    {
+      "signal": "Volatility_VOL_1x",
+      "family": "Volatility",
+      "variant": "VOL_1x",
+      "trades": 101,
+      "win_rate_pct": 51.48514851485149,
+      "avg_pnl_bps": 2.4672494055905103,
+      "edge_vs_random_bps": -21.190976653788276,
+      "std_dev_bps": 256.1963749034191,
+      "passes_filters": false,
+      "reason": "FAIL: Edge vs random -21.2 bps <= 0"
+    },
+    {
+      "signal": "Volatility_VOL_1.5x",
+      "family": "Volatility",
+      "variant": "VOL_1.5x",
+      "trades": 24,
+      "win_rate_pct": 50.0,
+      "avg_pnl_bps": -4.455360226235854,
+      "edge_vs_random_bps": -28.11358628561464,
+      "std_dev_bps": 284.510689313185,
+      "passes_filters": false,
+      "reason": "FAIL: Only 24 trades (need 50+)"
+    },
+    {
+      "signal": "Momentum_MOM_3tick",
+      "family": "Momentum",
+      "variant": "MOM_3tick",
+      "trades": 174,
+      "win_rate_pct": 47.701149425287355,
+      "avg_pnl_bps": -15.871552188830426,
+      "edge_vs_random_bps": -39.52977824820921,
+      "std_dev_bps": 256.8193692060958,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 47.7% <= 50%"
+    },
+    {
+      "signal": "Momentum_MOM_5tick",
+      "family": "Momentum",
+      "variant": "MOM_5tick",
+      "trades": 168,
+      "win_rate_pct": 45.83333333333333,
+      "avg_pnl_bps": -20.406219750410447,
+      "edge_vs_random_bps": -44.064445809789234,
+      "std_dev_bps": 257.7751411879227,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 45.8% <= 50%"
+    },
+    {
+      "signal": "MeanReversion_MR_5tick_1pct",
+      "family": "MeanReversion",
+      "variant": "MR_5tick_1pct",
+      "trades": 18,
+      "win_rate_pct": 44.44444444444444,
+      "avg_pnl_bps": -51.22495632351272,
+      "edge_vs_random_bps": -74.8831823828915,
+      "std_dev_bps": 277.6254545322245,
+      "passes_filters": false,
+      "reason": "FAIL: Only 18 trades (need 50+)"
+    },
+    {
+      "signal": "Momentum_MOM_10tick",
+      "family": "Momentum",
+      "variant": "MOM_10tick",
+      "trades": 175,
+      "win_rate_pct": 37.142857142857146,
+      "avg_pnl_bps": -68.23972180830268,
+      "edge_vs_random_bps": -91.89794786768147,
+      "std_dev_bps": 252.40492286423495,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 37.1% <= 50%"
+    },
+    {
+      "signal": "Volatility_VOL_2x",
+      "family": "Volatility",
+      "variant": "VOL_2x",
+      "trades": 9,
+      "win_rate_pct": 33.33333333333333,
+      "avg_pnl_bps": -90.08919062285509,
+      "edge_vs_random_bps": -113.74741668223388,
+      "std_dev_bps": 273.13985409165065,
+      "passes_filters": false,
+      "reason": "FAIL: Only 9 trades (need 50+)"
+    },
+    {
+      "signal": "OrderFlow_OF_SellImbalance",
+      "family": "OrderFlow",
+      "variant": "OF_SellImbalance",
+      "trades": 8,
+      "win_rate_pct": 37.5,
+      "avg_pnl_bps": -93.15596398867987,
+      "edge_vs_random_bps": -116.81419004805866,
+      "std_dev_bps": 240.49213626828282,
+      "passes_filters": false,
+      "reason": "FAIL: Only 8 trades (need 50+)"
+    },
+    {
+      "signal": "TimeBased_TB_Evening",
+      "family": "TimeBased",
+      "variant": "TB_Evening",
+      "trades": 36,
+      "win_rate_pct": 13.88888888888889,
+      "avg_pnl_bps": -210.13822538762435,
+      "edge_vs_random_bps": -233.79645144700314,
+      "std_dev_bps": 182.58947708988237,
+      "passes_filters": false,
+      "reason": "FAIL: Only 36 trades (need 50+)"
+    }
+  ],
+  "passing_signals": [
+    {
+      "signal": "TimeBased_TB_Weekend",
+      "family": "TimeBased",
+      "variant": "TB_Weekend",
+      "trades": 101,
+      "win_rate_pct": 81.1881188118812,
+      "avg_pnl_bps": 157.56059724004854,
+      "edge_vs_random_bps": 133.90237118066975,
+      "std_dev_bps": 190.9018418486068,
+      "passes_filters": true,
+      "reason": "PASS: All criteria met"
+    },
+    {
+      "signal": "MeanReversion_MR_20tick_03pct",
+      "family": "MeanReversion",
+      "variant": "MR_20tick_03pct",
+      "trades": 151,
+      "win_rate_pct": 68.21192052980133,
+      "avg_pnl_bps": 73.27728768458651,
+      "edge_vs_random_bps": 49.61906162520772,
+      "std_dev_bps": 244.44335935446637,
+      "passes_filters": true,
+      "reason": "PASS: All criteria met"
+    }
+  ],
+  "failing_signals": [
+    {
+      "signal": "TimeBased_TB_Morning",
+      "family": "TimeBased",
+      "variant": "TB_Morning",
+      "trades": 36,
+      "win_rate_pct": 86.11111111111111,
+      "avg_pnl_bps": 185.38175392396556,
+      "edge_vs_random_bps": 161.72352786458677,
+      "std_dev_bps": 178.10691090475447,
+      "passes_filters": false,
+      "reason": "FAIL: Only 36 trades (need 50+)"
+    },
+    {
+      "signal": "OrderFlow_OF_BuyImbalance",
+      "family": "OrderFlow",
+      "variant": "OF_BuyImbalance",
+      "trades": 13,
+      "win_rate_pct": 76.92307692307693,
+      "avg_pnl_bps": 165.68485187378448,
+      "edge_vs_random_bps": 142.0266258144057,
+      "std_dev_bps": 217.47461124895182,
+      "passes_filters": false,
+      "reason": "FAIL: Only 13 trades (need 50+)"
+    },
+    {
+      "signal": "MeanReversion_MR_10tick_05pct",
+      "family": "MeanReversion",
+      "variant": "MR_10tick_05pct",
+      "trades": 77,
+      "win_rate_pct": 63.63636363636363,
+      "avg_pnl_bps": 48.70635277208719,
+      "edge_vs_random_bps": 25.048126712708406,
+      "std_dev_bps": 262.72495390580605,
+      "passes_filters": false,
+      "reason": "FAIL: High volatility (std 262.7 > 5\u00d7 edge 48.7)"
+    },
+    {
+      "signal": "Volatility_VOL_1x",
+      "family": "Volatility",
+      "variant": "VOL_1x",
+      "trades": 101,
+      "win_rate_pct": 51.48514851485149,
+      "avg_pnl_bps": 2.4672494055905103,
+      "edge_vs_random_bps": -21.190976653788276,
+      "std_dev_bps": 256.1963749034191,
+      "passes_filters": false,
+      "reason": "FAIL: Edge vs random -21.2 bps <= 0"
+    },
+    {
+      "signal": "Volatility_VOL_1.5x",
+      "family": "Volatility",
+      "variant": "VOL_1.5x",
+      "trades": 24,
+      "win_rate_pct": 50.0,
+      "avg_pnl_bps": -4.455360226235854,
+      "edge_vs_random_bps": -28.11358628561464,
+      "std_dev_bps": 284.510689313185,
+      "passes_filters": false,
+      "reason": "FAIL: Only 24 trades (need 50+)"
+    },
+    {
+      "signal": "Momentum_MOM_3tick",
+      "family": "Momentum",
+      "variant": "MOM_3tick",
+      "trades": 174,
+      "win_rate_pct": 47.701149425287355,
+      "avg_pnl_bps": -15.871552188830426,
+      "edge_vs_random_bps": -39.52977824820921,
+      "std_dev_bps": 256.8193692060958,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 47.7% <= 50%"
+    },
+    {
+      "signal": "Momentum_MOM_5tick",
+      "family": "Momentum",
+      "variant": "MOM_5tick",
+      "trades": 168,
+      "win_rate_pct": 45.83333333333333,
+      "avg_pnl_bps": -20.406219750410447,
+      "edge_vs_random_bps": -44.064445809789234,
+      "std_dev_bps": 257.7751411879227,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 45.8% <= 50%"
+    },
+    {
+      "signal": "MeanReversion_MR_5tick_1pct",
+      "family": "MeanReversion",
+      "variant": "MR_5tick_1pct",
+      "trades": 18,
+      "win_rate_pct": 44.44444444444444,
+      "avg_pnl_bps": -51.22495632351272,
+      "edge_vs_random_bps": -74.8831823828915,
+      "std_dev_bps": 277.6254545322245,
+      "passes_filters": false,
+      "reason": "FAIL: Only 18 trades (need 50+)"
+    },
+    {
+      "signal": "Momentum_MOM_10tick",
+      "family": "Momentum",
+      "variant": "MOM_10tick",
+      "trades": 175,
+      "win_rate_pct": 37.142857142857146,
+      "avg_pnl_bps": -68.23972180830268,
+      "edge_vs_random_bps": -91.89794786768147,
+      "std_dev_bps": 252.40492286423495,
+      "passes_filters": false,
+      "reason": "FAIL: Win rate 37.1% <= 50%"
+    },
+    {
+      "signal": "Volatility_VOL_2x",
+      "family": "Volatility",
+      "variant": "VOL_2x",
+      "trades": 9,
+      "win_rate_pct": 33.33333333333333,
+      "avg_pnl_bps": -90.08919062285509,
+      "edge_vs_random_bps": -113.74741668223388,
+      "std_dev_bps": 273.13985409165065,
+      "passes_filters": false,
+      "reason": "FAIL: Only 9 trades (need 50+)"
+    },
+    {
+      "signal": "OrderFlow_OF_SellImbalance",
+      "family": "OrderFlow",
+      "variant": "OF_SellImbalance",
+      "trades": 8,
+      "win_rate_pct": 37.5,
+      "avg_pnl_bps": -93.15596398867987,
+      "edge_vs_random_bps": -116.81419004805866,
+      "std_dev_bps": 240.49213626828282,
+      "passes_filters": false,
+      "reason": "FAIL: Only 8 trades (need 50+)"
+    },
+    {
+      "signal": "TimeBased_TB_Evening",
+      "family": "TimeBased",
+      "variant": "TB_Evening",
+      "trades": 36,
+      "win_rate_pct": 13.88888888888889,
+      "avg_pnl_bps": -210.13822538762435,
+      "edge_vs_random_bps": -233.79645144700314,
+      "std_dev_bps": 182.58947708988237,
+      "passes_filters": false,
+      "reason": "FAIL: Only 36 trades (need 50+)"
+    }
+  ],
+  "summary": {
+    "total_signals_tested": 14,
+    "signals_passing": 2,
+    "signals_failing": 12,
+    "best_signal": {
+      "signal": "TimeBased_TB_Morning",
+      "family": "TimeBased",
+      "variant": "TB_Morning",
+      "trades": 36,
+      "win_rate_pct": 86.11111111111111,
+      "avg_pnl_bps": 185.38175392396556,
+      "edge_vs_random_bps": 161.72352786458677,
+      "std_dev_bps": 178.10691090475447,
+      "passes_filters": false,
+      "reason": "FAIL: Only 36 trades (need 50+)"
+    },
+    "best_family": "Momentum"
+  },
+  "answers": {
+    "q1_signals_surviving_stricter": 2,
+    "q2_best_family": "Momentum",
+    "q3_best_edge_bps": 161.72352786458677,
+    "q4_justify_further": "YES"
+  }
+}

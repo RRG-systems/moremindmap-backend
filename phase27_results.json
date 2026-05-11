@@ -1,0 +1,313 @@
+{
+  "phase": 27,
+  "title": "Signal Destruction Test",
+  "timestamp": "2026-04-16T11:18:03.880614",
+  "step1_out_of_sample": {
+    "BTC": {
+      "weekend_bias": {
+        "in_sample": {
+          "trades": 48,
+          "win_rate_pct": 100.0,
+          "avg_pnl_bps": 251.0421988766277,
+          "std_dev_bps": 42.58510387327851,
+          "median_pnl_bps": 243.22877545765982,
+          "max_win_bps": 368.83289331677105,
+          "max_loss_bps": 191.54697274825267,
+          "max_consecutive_losses": 0,
+          "sharpe_ratio": 93.58134648963215,
+          "max_drawdown_bps": 0.0,
+          "profit_factor": 0
+        },
+        "out_of_sample": {
+          "trades": 53,
+          "win_rate_pct": 35.84905660377358,
+          "avg_pnl_bps": -92.89801462578819,
+          "std_dev_bps": 229.61795537907082,
+          "median_pnl_bps": -227.70466699978203,
+          "max_win_bps": 231.54864253774267,
+          "max_loss_bps": -335.4140810100676,
+          "max_consecutive_losses": 34,
+          "sharpe_ratio": -6.4224518571045355,
+          "max_drawdown_bps": 8937.18065452878,
+          "profit_factor": 0.4490885923099452
+        },
+        "degradation": {
+          "edge_degradation_pct": 137.00493982346055,
+          "is_acceptable": "False",
+          "is_catastrophic": "True"
+        },
+        "trades_insample": 48,
+        "trades_oosample": 53,
+        "survives": "False"
+      },
+      "mean_reversion": {
+        "in_sample": {
+          "trades": 71,
+          "win_rate_pct": 57.74647887323944,
+          "avg_pnl_bps": 23.10017207785506,
+          "std_dev_bps": 274.77560427898334,
+          "median_pnl_bps": 196.32219247108912,
+          "max_win_bps": 404.0623370145819,
+          "max_loss_bps": -388.83289331677105,
+          "max_consecutive_losses": 17,
+          "sharpe_ratio": 1.3345575722672116,
+          "max_drawdown_bps": 6229.372117496407,
+          "profit_factor": 1.1889966015388485
+        },
+        "out_of_sample": {
+          "trades": 49,
+          "win_rate_pct": 81.63265306122449,
+          "avg_pnl_bps": 134.35751699036334,
+          "std_dev_bps": 202.83659034801622,
+          "median_pnl_bps": 213.7053112469355,
+          "max_win_bps": 309.9488218647761,
+          "max_loss_bps": -356.896456713812,
+          "max_consecutive_losses": 9,
+          "sharpe_ratio": 10.515161276929247,
+          "max_drawdown_bps": 2577.716991848417,
+          "profit_factor": 3.55401130277181
+        },
+        "degradation": {
+          "edge_degradation_pct": -481.62993997419153,
+          "is_acceptable": "True",
+          "is_catastrophic": "False"
+        },
+        "trades_insample": 71,
+        "trades_oosample": 49,
+        "survives": false
+      }
+    },
+    "ETH": {
+      "weekend_bias": {
+        "in_sample": {
+          "trades": 48,
+          "win_rate_pct": 91.66666666666666,
+          "avg_pnl_bps": 203.0426731279405,
+          "std_dev_bps": 131.40368884098,
+          "median_pnl_bps": 239.76048202524362,
+          "max_win_bps": 306.90052484020475,
+          "max_loss_bps": -249.68698867577825,
+          "max_consecutive_losses": 4,
+          "sharpe_ratio": 24.52901086880787,
+          "max_drawdown_bps": 889.588926892975,
+          "profit_factor": 11.955676285428495
+        },
+        "out_of_sample": {
+          "trades": 53,
+          "win_rate_pct": 15.09433962264151,
+          "avg_pnl_bps": -207.27236785637263,
+          "std_dev_bps": 213.65024658242476,
+          "median_pnl_bps": -255.43693221909223,
+          "max_win_bps": 313.9622467380019,
+          "max_loss_bps": -615.875686668327,
+          "max_consecutive_losses": 33,
+          "sharpe_ratio": -15.400622684286803,
+          "max_drawdown_bps": 10652.23478010897,
+          "profit_factor": 0.15594534126196527
+        },
+        "degradation": {
+          "edge_degradation_pct": 202.08315555704237,
+          "is_acceptable": "False",
+          "is_catastrophic": "True"
+        },
+        "trades_insample": 48,
+        "trades_oosample": 53,
+        "survives": "False"
+      },
+      "mean_reversion": {
+        "in_sample": {
+          "trades": 86,
+          "win_rate_pct": 74.4186046511628,
+          "avg_pnl_bps": 126.32039119713774,
+          "std_dev_bps": 239.51400866365083,
+          "median_pnl_bps": 211.76949999222245,
+          "max_win_bps": 487.83708202259305,
+          "max_loss_bps": -468.16071530952274,
+          "max_consecutive_losses": 9,
+          "sharpe_ratio": 8.372262044013125,
+          "max_drawdown_bps": 2123.973248992414,
+          "profit_factor": 2.9188372316157416
+        },
+        "out_of_sample": {
+          "trades": 92,
+          "win_rate_pct": 83.69565217391305,
+          "avg_pnl_bps": 142.1031597523411,
+          "std_dev_bps": 244.66982809537816,
+          "median_pnl_bps": 214.07370225591393,
+          "max_win_bps": 595.875686668327,
+          "max_loss_bps": -587.3509027073266,
+          "max_consecutive_losses": 9,
+          "sharpe_ratio": 9.21984433016274,
+          "max_drawdown_bps": 4077.263818856509,
+          "profit_factor": 3.3370865352020522
+        },
+        "degradation": {
+          "edge_degradation_pct": -12.494236603948217,
+          "is_acceptable": "True",
+          "is_catastrophic": "False"
+        },
+        "trades_insample": 86,
+        "trades_oosample": 92,
+        "survives": "True"
+      }
+    }
+  },
+  "step2_cross_asset": {
+    "weekend_bias": {
+      "BTC": {
+        "trades": 53,
+        "avg_pnl_bps": -92.89801462578819,
+        "win_rate_pct": 35.84905660377358,
+        "std_dev_bps": 229.61795537907082,
+        "degrades": "True"
+      },
+      "ETH": {
+        "trades": 53,
+        "avg_pnl_bps": -207.27236785637263,
+        "win_rate_pct": 15.09433962264151,
+        "std_dev_bps": 213.65024658242476,
+        "degrades": "True"
+      }
+    },
+    "mean_reversion": {
+      "BTC": {
+        "trades": 49,
+        "avg_pnl_bps": 134.35751699036334,
+        "win_rate_pct": 81.63265306122449,
+        "std_dev_bps": 202.83659034801622,
+        "degrades": "False"
+      },
+      "ETH": {
+        "trades": 92,
+        "avg_pnl_bps": 142.1031597523411,
+        "win_rate_pct": 83.69565217391305,
+        "std_dev_bps": 244.66982809537816,
+        "degrades": "False"
+      }
+    }
+  },
+  "step3_regime_split": {
+    "BTC": {
+      "high_vol": {
+        "weekend_bias": {
+          "trades": 2,
+          "avg_pnl_bps": 403.40182013371316,
+          "win_rate_pct": 100.0
+        },
+        "mean_reversion": {
+          "trades": 1,
+          "avg_pnl_bps": 206.75065413451114,
+          "win_rate_pct": 100.0
+        }
+      },
+      "low_vol": {
+        "weekend_bias": {
+          "trades": 29,
+          "avg_pnl_bps": 43.82194726569317,
+          "win_rate_pct": 48.275862068965516
+        },
+        "mean_reversion": {
+          "trades": 16,
+          "avg_pnl_bps": 387.95820949228334,
+          "win_rate_pct": 93.75
+        }
+      },
+      "trending": {
+        "weekend_bias": {
+          "trades": 0,
+          "avg_pnl_bps": 0,
+          "win_rate_pct": 0
+        },
+        "mean_reversion": {
+          "trades": 0,
+          "avg_pnl_bps": 0,
+          "win_rate_pct": 0
+        }
+      },
+      "ranging": {
+        "weekend_bias": {
+          "trades": 38,
+          "avg_pnl_bps": -14.977050723199556,
+          "win_rate_pct": 50.0
+        },
+        "mean_reversion": {
+          "trades": 34,
+          "avg_pnl_bps": 92.43472935195089,
+          "win_rate_pct": 73.52941176470588
+        }
+      }
+    }
+  },
+  "step4_cost_stress": {
+    "weekend_bias": {
+      "baseline": {
+        "cost_bps": 10,
+        "trades": 53,
+        "avg_pnl_bps": -92.89801462578819,
+        "win_rate_pct": 35.84905660377358,
+        "survives": "False"
+      },
+      "+50% cost": {
+        "cost_bps": 15,
+        "trades": 53,
+        "avg_pnl_bps": -97.89801462578819,
+        "win_rate_pct": 35.84905660377358,
+        "survives": "False"
+      },
+      "+100% cost": {
+        "cost_bps": 20,
+        "trades": 53,
+        "avg_pnl_bps": -102.89801462578819,
+        "win_rate_pct": 35.84905660377358,
+        "survives": "False"
+      }
+    },
+    "mean_reversion": {
+      "baseline": {
+        "cost_bps": 10,
+        "trades": 49,
+        "avg_pnl_bps": 134.35751699036334,
+        "win_rate_pct": 81.63265306122449,
+        "survives": "True"
+      },
+      "+50% cost": {
+        "cost_bps": 15,
+        "trades": 49,
+        "avg_pnl_bps": 129.35751699036334,
+        "win_rate_pct": 81.63265306122449,
+        "survives": "True"
+      },
+      "+100% cost": {
+        "cost_bps": 20,
+        "trades": 49,
+        "avg_pnl_bps": 124.35751699036335,
+        "win_rate_pct": 81.63265306122449,
+        "survives": "True"
+      }
+    }
+  },
+  "verdicts": {
+    "weekend_bias": {
+      "verdict": "FRAGILE",
+      "readiness_pct": 10,
+      "issues": [
+        "Failed out-of-sample survival",
+        "Excessive edge degradation (>30%)",
+        "Unstable across assets",
+        "Negative PnL in some regimes",
+        "Fails under high-cost scenarios",
+        "Poor stability metrics"
+      ]
+    },
+    "mean_reversion": {
+      "verdict": "FRAGILE",
+      "readiness_pct": 40,
+      "issues": [
+        "Failed out-of-sample survival",
+        "Excessive edge degradation (>30%)",
+        "Poor stability metrics"
+      ]
+    }
+  },
+  "recommendation": "Reject both signals"
+}

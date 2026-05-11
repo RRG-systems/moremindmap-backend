@@ -1,0 +1,86 @@
+{
+  "phase": 25,
+  "title": "Volatility Expansion Validation (Out-of-Sample)",
+  "date_run": "2026-04-16T11:02:46.609576",
+  "data_split": {
+    "phase24": {
+      "candles": 171,
+      "date_start": "2026-04-02 12:02:27.741000",
+      "date_end": "2026-04-09 14:02:25.117000"
+    },
+    "phase25": {
+      "candles": 171,
+      "date_start": "2026-04-09 15:03:00.179000",
+      "date_end": "2026-04-16 10:36:44"
+    }
+  },
+  "phase24_baseline": {
+    "sample_size": 7,
+    "win_rate": 85.71,
+    "avg_pnl_bps": 132.72,
+    "edge_vs_random_bps": 38.32,
+    "std_dev_bps": 139.83,
+    "max_drawdown_bps": 209.79
+  },
+  "phase25_results": {
+    "signal_c": {
+      "sample_size": 3,
+      "win_rate": 66.67,
+      "avg_pnl_bps": 56.61,
+      "total_pnl_bps": 169.82,
+      "std_dev_bps": 188.37,
+      "max_win_bps": 189.81,
+      "max_loss_bps": -209.79,
+      "max_consecutive_losses": 1,
+      "max_drawdown_bps": -209.79,
+      "sharpe_ratio": 4.77,
+      "avg_duration_ticks": 23.0
+    },
+    "random_baseline": {
+      "sample_size": 10,
+      "win_rate": 30.0,
+      "avg_pnl_bps": -89.91,
+      "total_pnl_bps": -899.14,
+      "std_dev_bps": 183.12,
+      "max_win_bps": 189.81,
+      "max_loss_bps": -209.79,
+      "max_consecutive_losses": 3,
+      "max_drawdown_bps": -689.35,
+      "sharpe_ratio": -7.79,
+      "avg_duration_ticks": 34.5
+    },
+    "edge_vs_random_bps": 146.51999999999998,
+    "regime_performance": {
+      "high": {
+        "sample_size": 2,
+        "win_rate": 50.0,
+        "avg_pnl_bps": -9.99,
+        "total_pnl_bps": -19.99
+      },
+      "mid": {
+        "sample_size": 1,
+        "win_rate": 100.0,
+        "avg_pnl_bps": 189.81,
+        "total_pnl_bps": 189.81
+      },
+      "low": {
+        "sample_size": 0,
+        "win_rate": 0,
+        "avg_pnl_bps": 0,
+        "total_pnl_bps": 0
+      }
+    }
+  },
+  "answers": {
+    "q1": "YES",
+    "q2": "YES",
+    "q3": "NO",
+    "q4": "YES"
+  },
+  "verdict": {
+    "status": "FAKE",
+    "confidence": "HIGH",
+    "production_readiness": 0,
+    "recommended_action": "DISCARD"
+  }
+}

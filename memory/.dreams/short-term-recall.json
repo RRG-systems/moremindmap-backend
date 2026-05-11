@@ -1,0 +1,2389 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-10T23:03:45.612Z",
+  "entries": {
+    "memory:memory/2026-04-15.md:193:220": {
+      "key": "memory:memory/2026-04-15.md:193:220",
+      "path": "memory/2026-04-15.md",
+      "startLine": 193,
+      "endLine": 220,
+      "source": "memory",
+      "snippet": "- **Path A (Full Simulation)**: Would fake a multi-market universe, lose authenticity - **Path B (Simplified Extract)**: Would strip Variant A's core genome, not real testing - **Decision**: STOP and design proper MultiMarketArena instead --- ## PHASE 4 OUTPUT: MULTIMARKET ARENA DESIGN SPECIFICATION ### Design Delivered **File**: `~/moltmarket/MULTIMARKET_ARENA_DESIGN.md` (26KB, comprehensive) **Covers:** 1. Required capabilities (universe, ranking, filtering, portfolio, ticks, protection) 2. Minimum market-universe model (N synchronized markets, full data per market) 3. Ranking & filtering architecture (bot's scoring + entry gates) 4. Multi-position portfolio state (simultaneous positio",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.966347847464299,
+      "maxScore": 0.7097332867212348,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-04-17T14:32:57.129Z",
+      "queryHashes": [
+        "11ddb96f185f",
+        "51aa7474d547",
+        "4efe42253a2c",
+        "a658ba353fee",
+        "44a216207df9",
+        "53235ab40ddb"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "multi-market",
+        "market-universe",
+        "multi-position",
+        "path",
+        "full",
+        "simulation",
+        "would",
+        "fake"
+      ]
+    },
+    "memory:memory/2026-04-15.md:33:64": {
+      "key": "memory:memory/2026-04-15.md:33:64",
+      "path": "memory/2026-04-15.md",
+      "startLine": 33,
+      "endLine": 64,
+      "source": "memory",
+      "snippet": "- Single position management - No market list or ranking capability - Direct bot implementation interface (on_tick) ### Why Paths A & B Rejected - **Path A (Full Simulation)**: Would fake a multi-market universe, lose authenticity - **Path B (Simplified Extract)**: Would strip Variant A's core genome, not real testing - **Decision**: STOP and design proper MultiMarketArena instead --- ## PHASE 4 OUTPUT: MULTIMARKET ARENA DESIGN SPECIFICATION ### Design Delivered **File**: `~/moltmarket/MULTIMARKET_ARENA_DESIGN.md` (26KB, comprehensive) **Covers:** 1. Required capabilities (universe, ranking, filtering, portfolio, ticks, protection) 2. Minimum market-universe model (N synchronized market",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.3065149053544762,
+      "maxScore": 0.7072297973633214,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-04-17T14:32:57.129Z",
+      "queryHashes": [
+        "11ddb96f185f",
+        "4efe42253a2c",
+        "a658ba353fee",
+        "44a216207df9",
+        "53235ab40ddb"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "on-tick",
+        "multi-market",
+        "market-universe",
+        "single",
+        "position",
+        "management",
+        "market",
+        "list"
+      ]
+    },
+    "memory:memory/2026-04-14.md:374:402": {
+      "key": "memory:memory/2026-04-14.md:374:402",
+      "path": "memory/2026-04-14.md",
+      "startLine": 374,
+      "endLine": 402,
+      "source": "memory",
+      "snippet": "- **Backend commit `0befb9f`**: Added `scoringPayload: scoring` to the response JSON - **Frontend commit `8f1d15b`**: Changed hard requirement to optional chaining `result?.miniProfile` with fallback `result?.scoringPayload || {}` **Result:** Results page no longer renders blank black screen on submission ✅ ### Issue 2: ranked_dimensions Crash **Problem:** Frontend called `.map()` on `scoringPayload.ranked_dimensions`, but backend `scoreAssessment.js` returns field named `ranked` (not `ranked_dimensions`). When field doesn't exist, `.map()` crashes on undefined. **Error:** `TypeError: undefined is not an object (evaluating 'e.ranked_dimensions.map')` **File:** `src/components/reports/MiniPr",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.604865760540045,
+      "maxScore": 0.8018479729212253,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "queryHashes": [
+        "11ddb96f185f",
+        "a658ba353fee",
+        "e0f401c868b1",
+        "668d72afc59a",
+        "dbcc1c293023"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "ranked-dimensions",
+        "scoringpayload.ranked-dimensions",
+        "scoreassessment.js",
+        "e.ranked-dimensions.map",
+        "src/components/reports/minipr",
+        "backend",
+        "commit",
+        "0befb9f"
+      ]
+    },
+    "memory:memory/2026-04-14.md:346:378": {
+      "key": "memory:memory/2026-04-14.md:346:378",
+      "path": "memory/2026-04-14.md",
+      "startLine": 346,
+      "endLine": 378,
+      "source": "memory",
+      "snippet": "6. User clicks checkout → POST to https://moremindmap-backend.vercel.app/create-checkout-session 7. Backend creates Stripe session, returns URL 8. User redirected to Stripe payment → success page ✅ ### Key Files Modified - Frontend: src/Profile.jsx, src/RealEstate.jsx, vercel.json - Backend: server.js, package.json, vercel.json (new) - Both: .gitignore, git initialization ### Status - ✅ Code complete - ✅ Git commits ready - ⏳ Awaiting D.J. to execute manual Vercel/GitHub steps - Once manual steps done: System is live and operational ### Next Focus After deployment confirmed working: - Monitor Polymarket bot (protection layer active) - Consider entry signal optimization (current loss rate",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5362302165880031,
+      "maxScore": 0.5362302165880031,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-04-16T14:19:56.692Z",
+      "queryHashes": [
+        "11ddb96f185f"
+      ],
+      "recallDays": [
+        "2026-04-16"
+      ],
+      "conceptTags": [
+        "src/profile.jsx",
+        "src/realestate.jsx",
+        "vercel.json",
+        "server.js",
+        "package.json",
+        "d.j",
+        "vercel/github",
+        "user"
+      ]
+    },
+    "memory:memory/2026-04-14.md:214:242": {
+      "key": "memory:memory/2026-04-14.md:214:242",
+      "path": "memory/2026-04-14.md",
+      "startLine": 214,
+      "endLine": 242,
+      "source": "memory",
+      "snippet": "- ✅ Code complete - ✅ Git commits ready - ⏳ Awaiting D.J. to execute manual Vercel/GitHub steps - Once manual steps done: System is live and operational ### Next Focus After deployment confirmed working: - Monitor Polymarket bot (protection layer active) - Consider entry signal optimization (current loss rate unsustainable) - No other projects at critical juncture --- ## FOLLOW-UP SESSION — Real Frontend Bug Fixes (2026-04-14 13:00–13:17 MST) ### Issue 1: Backend Missing scoringPayload in Response **Problem:** Backend `/api/moremindmap/mini-profile` returned `{ success: true, miniProfile }` but frontend condition required both `scoringPayload` AND `miniProfile` to render. **Fix:** - **B",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5325886274338186,
+      "maxScore": 0.5325886274338186,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-04-16T14:19:56.692Z",
+      "queryHashes": [
+        "11ddb96f185f"
+      ],
+      "recallDays": [
+        "2026-04-16"
+      ],
+      "conceptTags": [
+        "d.j",
+        "vercel/github",
+        "follow-up",
+        "api/moremindmap/mini-profile",
+        "code",
+        "complete",
+        "git",
+        "commits"
+      ]
+    },
+    "memory:memory/2026-04-14.md:237:268": {
+      "key": "memory:memory/2026-04-14.md:237:268",
+      "path": "memory/2026-04-14.md",
+      "startLine": 237,
+      "endLine": 268,
+      "source": "memory",
+      "snippet": "**Problem:** Frontend called `.map()` on `scoringPayload.ranked_dimensions`, but backend `scoreAssessment.js` returns field named `ranked` (not `ranked_dimensions`). When field doesn't exist, `.map()` crashes on undefined. **Error:** `TypeError: undefined is not an object (evaluating 'e.ranked_dimensions.map')` **File:** `src/components/reports/MiniProfileReport.jsx` — Line 76 **Fix:** - Changed: `{scoringPayload.ranked_dimensions.map(...)` - To: `{(scoringPayload?.ranked_dimensions || scoringPayload?.ranked || []).map(...)` - Fallback chain: ranked_dimensions → ranked → empty array (never crashes) **Commit:** `c232ceb` — Fix: use defensive chaining for ranked_dimensions **Result:** Profile",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.5667598023181926,
+      "maxScore": 0.7910804578946392,
+      "firstRecalledAt": "2026-04-16T14:19:56.692Z",
+      "lastRecalledAt": "2026-05-05T15:58:43.690Z",
+      "queryHashes": [
+        "11ddb96f185f",
+        "51aa7474d547",
+        "a658ba353fee",
+        "e0f401c868b1"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "scoringpayload.ranked-dimensions",
+        "scoreassessment.js",
+        "ranked-dimensions",
+        "e.ranked-dimensions.map",
+        "problem",
+        "frontend",
+        "map",
+        "but"
+      ]
+    },
+    "memory:memory/2026-04-13.md:94:132": {
+      "key": "memory:memory/2026-04-13.md:94:132",
+      "path": "memory/2026-04-13.md",
+      "startLine": 94,
+      "endLine": 132,
+      "source": "memory",
+      "snippet": "- Paper trading is invalid as performance measure (don't trust it) - Shadow execution is ground truth - System needs entry quality improvement, not exit tweaking - Protection layer prevents catastrophic losses but doesn't generate wins - Current -$0.063/trade average loss is unsustainable ### RRG Compliance - Twilio A2P fix complete and live - Form now enforces SMS consent requirement - Deployment automatic via GitHub Pages ### MoreMindMap Ready for Final Deployment Push - All blocking issues resolved - Git initialized, commits ready - Localhost refs fixed - Next: GitHub connection + platform deployment --- ## WORK COMPLETED (Session) - Polymarket: 3 major diagnostics (paper/shadow diver",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.9272980104666004,
+      "maxScore": 0.789483012782851,
+      "firstRecalledAt": "2026-04-16T17:24:47.207Z",
+      "lastRecalledAt": "2026-04-27T16:12:17.243Z",
+      "queryHashes": [
+        "51aa7474d547",
+        "e18af43969cc",
+        "01d65f5095ab",
+        "74da1b1b892d"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-21",
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "0.063/trade",
+        "paper/shadow",
+        "paper",
+        "trading",
+        "invalid",
+        "performance",
+        "measure",
+        "don't"
+      ]
+    },
+    "memory:memory/2026-04-13.md:1:33": {
+      "key": "memory:memory/2026-04-13.md:1:33",
+      "path": "memory/2026-04-13.md",
+      "startLine": 1,
+      "endLine": 33,
+      "source": "memory",
+      "snippet": "# Daily Notes — 2026-04-13 ## Session Context - D.J. is working on three active projects: Polymarket trading system, Revenue Recovery Group (RRG), and MoreMindMap.com - I'm Rocky, an operator-focused assistant. Sharp, direct, systems-oriented. - Operating mode: identify real problem, simplify, propose next action, prioritize leverage & speed --- ## POLYMARKET BOT (Variant A) — Deep Diagnostic Complete ### Key Findings 1. **Paper vs Shadow Divergence Audit**: Paper trading system is fundamentally broken - Paper compares entry_bid to future_price SNAPSHOTS (arbitrary) - Shadow records actual execution fills and P&L (ground truth) - Paper outcomes are THEORETICAL, not actual tradin",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6755404645699467,
+      "maxScore": 0.6755404645699467,
+      "firstRecalledAt": "2026-04-16T17:24:47.207Z",
+      "lastRecalledAt": "2026-04-16T17:24:47.207Z",
+      "queryHashes": [
+        "51aa7474d547"
+      ],
+      "recallDays": [
+        "2026-04-16"
+      ],
+      "conceptTags": [
+        "d.j",
+        "moremindmap.com",
+        "operator-focused",
+        "systems-oriented",
+        "entry-bid",
+        "future-price",
+        "context",
+        "working"
+      ]
+    },
+    "memory:memory/2026-04-14.md:423:455": {
+      "key": "memory:memory/2026-04-14.md:423:455",
+      "path": "memory/2026-04-14.md",
+      "startLine": 423,
+      "endLine": 455,
+      "source": "memory",
+      "snippet": "- Arena (7 regimes, equity tracking) - Survival scoring (mark-to-market, engagement gates) - Regime validator (cross-regime durability) - Bot comparator (multi-bot ranking) - Behavior diagnostics (failure analysis) - Mutation advisor (evolution suggestions) **Gap Identified:** Mutation advisor could generate suggestions, but system couldn't: 1. Apply mutations to bots 2. Test if mutations actually change behavior 3. Compare parent vs child performance **Solution Built:** Mutation Trial v1 & v2 system ### Mutation Trial v1 (Initial Implementation) **File:** `engine/mutation_trial.py` — Class: `MutationTrial` **Responsibility:** Takes parent bot + mutation advice, creates child variant, val",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.353485926075755,
+      "maxScore": 0.7985746650119873,
+      "firstRecalledAt": "2026-04-16T17:35:46.557Z",
+      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "queryHashes": [
+        "24ac3fb86b07",
+        "c6de5aa744ce",
+        "dbcc1c293023"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "mark-to-market",
+        "cross-regime",
+        "multi-bot",
+        "engine/mutation-trial.py",
+        "arena",
+        "regimes",
+        "equity",
+        "tracking"
+      ]
+    },
+    "memory:memory/2026-04-14.md:505:524": {
+      "key": "memory:memory/2026-04-14.md:505:524",
+      "path": "memory/2026-04-14.md",
+      "startLine": 505,
+      "endLine": 524,
+      "source": "memory",
+      "snippet": "4. **Position Safety Essential:** Even aggressive strategy respects max_position to prevent inventory catastrophe 5. **Promotion Gates Work:** Child crossed engagement threshold (0.304 → 0.600) via behavior change alone ### Status - ✅ Mutation trial system fully functional - ✅ System responsive to behavioral changes - ✅ Metrics confirm mutation impact - ✅ Ready for next phase: multi-generation evolution or specific bot tuning - ⏳ Next step (not yet requested): Autonomous mutation loop or manual bot refinement ### Terminal Command ```bash cd ~/moltmarket && /Users/rrg/moltmarket/venv/bin/python3 cli/test_mutation_trial.py ``` ### Output Key Points - MachineGunBot_AggressiveMM child achieve",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4883434200107661,
+      "maxScore": 0.7595331046569558,
+      "firstRecalledAt": "2026-04-16T17:35:46.558Z",
+      "lastRecalledAt": "2026-04-20T22:08:19.048Z",
+      "queryHashes": [
+        "4efe42253a2c",
+        "360d15f2c462"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "max-position",
+        "0.304",
+        "0.600",
+        "multi-generation",
+        "cli/test-mutation-trial.py",
+        "machinegunbot-aggressivemm",
+        "position",
+        "safety"
+      ]
+    },
+    "memory:memory/2026-04-14.md:393:430": {
+      "key": "memory:memory/2026-04-14.md:393:430",
+      "path": "memory/2026-04-14.md",
+      "startLine": 393,
+      "endLine": 430,
+      "source": "memory",
+      "snippet": "- ✅ Both commits pushed to main - ⏳ Vercel auto-rebuilding (~1-2 min) - Live results page will work once rebuild completes ### Next Verification Steps 1. Check Vercel deployment status (should be READY within 2 min) 2. Visit https://moremindmap.com/profile 3. Complete assessment → submit 4. Verify 5-page report renders with: - Cover page ✓ - Behavioral profile with dimension bars ✓ - Patterns & scores ✓ - How you operate sections ✓ - Real world application sections ✓ 5. Verify Stripe checkout works end-to-end 6. Monitor backend logs for incoming requests (no 500 errors) ### Lessons Learned - Field naming mismatch is invisible until hit at runtime (backend returns `ranked`, f",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.3208238275261124,
+      "maxScore": 0.8327004020871694,
+      "firstRecalledAt": "2026-04-16T17:35:46.558Z",
+      "lastRecalledAt": "2026-04-20T22:08:19.048Z",
+      "queryHashes": [
+        "4efe42253a2c",
+        "53235ab40ddb",
+        "360d15f2c462"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "auto-rebuilding",
+        "1-2",
+        "moremindmap.com/profile",
+        "5-page",
+        "end-to-end",
+        "both",
+        "commits",
+        "pushed"
+      ]
+    },
+    "memory:memory/2026-04-15.md:248:292": {
+      "key": "memory:memory/2026-04-15.md:248:292",
+      "path": "memory/2026-04-15.md",
+      "startLine": 248,
+      "endLine": 292,
+      "source": "memory",
+      "snippet": "- ✓ Mutation library expandable (tested 17 variants) - ✓ Threshold enforcement honest (0.01 minimum strictly applied) - ✓ Production-ready for single-market bots ### Multi-Market Simulation (MultiMarketArena) - ✓ **Design specification complete** - ✓ Architectural gaps identified (single-market vs multi-market) - ✓ Preservation requirements defined (no simplification) - ✓ Implementation roadmap clear - ⏳ **Implementation pending** (not started) ### Variant A Import - ⛔ **Architectural blocker identified** - ✓ Blocker documented and designed around - ✓ Design spec enables authentic import (when built) - ⏳ **MultiMarketArena v1 required** before Variant A can run --- ## ARTIFACTS ### Evol",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4508983704943552,
+      "maxScore": 0.7415093547627795,
+      "firstRecalledAt": "2026-04-16T17:35:46.558Z",
+      "lastRecalledAt": "2026-04-20T22:08:19.048Z",
+      "queryHashes": [
+        "4efe42253a2c",
+        "360d15f2c462"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "0.01",
+        "production-ready",
+        "single-market",
+        "multi-market",
+        "mutation",
+        "library",
+        "expandable",
+        "tested"
+      ]
+    },
+    "memory:memory/2026-04-15.md:91:133": {
+      "key": "memory:memory/2026-04-15.md:91:133",
+      "path": "memory/2026-04-15.md",
+      "startLine": 91,
+      "endLine": 133,
+      "source": "memory",
+      "snippet": "- ✓ Compounding evolution demonstrated (Gen 0→2) - ✓ Plateau detection working (Gen 3-42) - ✓ Mutation library expandable (tested 17 variants) - ✓ Threshold enforcement honest (0.01 minimum strictly applied) - ✓ Production-ready for single-market bots ### Multi-Market Simulation (MultiMarketArena) - ✓ **Design specification complete** - ✓ Architectural gaps identified (single-market vs multi-market) - ✓ Preservation requirements defined (no simplification) - ✓ Implementation roadmap clear - ⏳ **Implementation pending** (not started) ### Variant A Import - ⛔ **Architectural blocker identified** - ✓ Blocker documented and designed around - ✓ Design spec enables authentic import (when built)",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.2966813932531325,
+      "maxScore": 0.6811839472448195,
+      "firstRecalledAt": "2026-04-16T17:35:46.558Z",
+      "lastRecalledAt": "2026-04-17T14:32:57.129Z",
+      "queryHashes": [
+        "4efe42253a2c",
+        "53235ab40ddb"
+      ],
+      "recallDays": [
+        "2026-04-16",
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "3-42",
+        "0.01",
+        "production-ready",
+        "single-market",
+        "multi-market",
+        "compounding",
+        "evolution",
+        "demonstrated"
+      ]
+    },
+    "memory:memory/2026-04-15.md:161:201": {
+      "key": "memory:memory/2026-04-15.md:161:201",
+      "path": "memory/2026-04-15.md",
+      "startLine": 161,
+      "endLine": 201,
+      "source": "memory",
+      "snippet": "- **Phase 1**: Bug fix → Real class inheritance propagation ✓ - **Phase 2**: Plateau discovery → 40 generations tested, zero improvements beyond 0.831 ✓ - **Phase 3**: Library expansion → 6 new behavior families, still 0.831 ✓ **Final DemoBot metrics:** - Gen 0: 0.530 composite (baseline) - Gen 1: 0.772 composite (+45.7%, EARLY_EXIT_PRIORITY) - Gen 2: 0.831 composite (+7.6%, TIGHTER_FLATTENING) - Gen 3-42: 0.831 locked (40 generations, zero improvements) - **Conclusion**: Hard local optimum at 0.831, unbreakable by mutation library --- ## PHASE 4: VARIANT A IMPORT ATTEMPT ### Structural Analysis Variant A identified as **MULTI-MARKET SCANNER BOT**: - Scans 150+ markets per cycle - Ranks",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7026856428480129,
+      "maxScore": 0.7026856428480129,
+      "firstRecalledAt": "2026-04-16T18:08:24.062Z",
+      "lastRecalledAt": "2026-04-16T18:08:24.062Z",
+      "queryHashes": [
+        "44a216207df9"
+      ],
+      "recallDays": [
+        "2026-04-16"
+      ],
+      "conceptTags": [
+        "0.831",
+        "0.530",
+        "0.772",
+        "45.7",
+        "early-exit-priority",
+        "7.6",
+        "tighter-flattening",
+        "3-42"
+      ]
+    },
+    "memory:memory/2026-04-15.md:1:39": {
+      "key": "memory:memory/2026-04-15.md:1:39",
+      "path": "memory/2026-04-15.md",
+      "startLine": 1,
+      "endLine": 39,
+      "source": "memory",
+      "snippet": "# 2026-04-15 FINAL REPORT — Complete Evolution Report + Variant A Architecture Blocker ## PHASE 1-3: DEMOBOT EVOLUTION ✓ COMPLETE ### Summary - **Phase 1**: Bug fix → Real class inheritance propagation ✓ - **Phase 2**: Plateau discovery → 40 generations tested, zero improvements beyond 0.831 ✓ - **Phase 3**: Library expansion → 6 new behavior families, still 0.831 ✓ **Final DemoBot metrics:** - Gen 0: 0.530 composite (baseline) - Gen 1: 0.772 composite (+45.7%, EARLY_EXIT_PRIORITY) - Gen 2: 0.831 composite (+7.6%, TIGHTER_FLATTENING) - Gen 3-42: 0.831 locked (40 generations, zero improvements) - **Conclusion**: Hard local optimum at 0.831, unbreakable by mutation library --- ## PHASE 4:",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7014564449203338,
+      "maxScore": 0.7014564449203338,
+      "firstRecalledAt": "2026-04-16T18:08:24.062Z",
+      "lastRecalledAt": "2026-04-16T18:08:24.062Z",
+      "queryHashes": [
+        "44a216207df9"
+      ],
+      "recallDays": [
+        "2026-04-16"
+      ],
+      "conceptTags": [
+        "1-3",
+        "0.831",
+        "0.530",
+        "0.772",
+        "45.7",
+        "early-exit-priority",
+        "7.6",
+        "tighter-flattening"
+      ]
+    },
+    "memory:memory/2026-04-14.md:450:489": {
+      "key": "memory:memory/2026-04-14.md:450:489",
+      "path": "memory/2026-04-14.md",
+      "startLine": 450,
+      "endLine": 489,
+      "source": "memory",
+      "snippet": "- Mutations were too conservative (parameter tweaks don't move metrics enough) - System responsive but mutation intensity was wrong ### Mutation Trial v2 (Aggressive Engagement Mutation) **Problem:** Engagement mutation used in v1 only tweaked `max_position` and `profit_threshold` — insufficient to change behavior meaningfully **Solution:** AGGRESSIVE_MM (Market-Maker) strategy for engagement mutations - **Behavior:** Override `on_tick()` completely - **New Logic:** Place BUY at ask + SELL at bid every single tick - **Position Safety:** Respect `safe_max_position` constraint (no explosion) - **Implementation:** Dynamic child class via `EngagementMutant` extending parent **Key Code:** ```p",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.306787331660299,
+      "maxScore": 0.794826026952362,
+      "firstRecalledAt": "2026-04-17T14:32:57.129Z",
+      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "queryHashes": [
+        "53235ab40ddb",
+        "c6de5aa744ce",
+        "dbcc1c293023"
+      ],
+      "recallDays": [
+        "2026-04-17",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "max-position",
+        "profit-threshold",
+        "aggressive-mm",
+        "market-maker",
+        "on-tick",
+        "safe-max-position",
+        "mutations",
+        "too"
+      ]
+    },
+    "memory:memory/2026-04-15.md:127:167": {
+      "key": "memory:memory/2026-04-15.md:127:167",
+      "path": "memory/2026-04-15.md",
+      "startLine": 127,
+      "endLine": 167,
+      "source": "memory",
+      "snippet": "## KEY METRICS (FINAL) | Phase | Bot | Initial | Peak | Improvement | Status | |-------|-----|---------|------|-------------|--------| | 1 | DemoBot | 0.530 | 0.772 | +45.7% | COMPLETE ✓ | | 2 | DemoBot_EarlyExit | 0.772 | 0.831 | +7.6% | COMPLETE ✓ | | 3 | DemoBot_EarlyExit_TightFlat | 0.831 | 0.831 | 0% | PLATEAU ✓ | | 4 | Variant A | — | — | N/A | DESIGN SPEC ✓ | --- ## NEXT STEPS **When ready to proceed:** 1. Review MULTIMARKET_ARENA_DESIGN.md 2. Confirm v1 scope and decision points 3. Begin MultiMarketArena v1 implementation 4. After MultiMarketArena ready: import Variant A adapter 5. Run Variant A through Darwinian evolution (same 20-gen framework as DemoBot) 6. Compare: DemoBot (0",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.616429571698077,
+      "maxScore": 0.616429571698077,
+      "firstRecalledAt": "2026-04-17T14:32:57.129Z",
+      "lastRecalledAt": "2026-04-17T14:32:57.129Z",
+      "queryHashes": [
+        "53235ab40ddb"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "0.530",
+        "0.772",
+        "45.7",
+        "demobot-earlyexit",
+        "0.831",
+        "7.6",
+        "demobot-earlyexit-tightflat",
+        "n/a"
+      ]
+    },
+    "memory:memory/2026-04-13.md:261:295": {
+      "key": "memory:memory/2026-04-13.md:261:295",
+      "path": "memory/2026-04-13.md",
+      "startLine": 261,
+      "endLine": 295,
+      "source": "memory",
+      "snippet": "- `src/RealEstate.jsx`: Changed API URL to `https://moremindmap-backend.vercel.app` - `vercel.json` (frontend): Simplified (removed API functions config) - Deleted `/api` folder from frontend (moved to backend project) - **Backend project created** (`~/moremindmap-backend/`): - `server.js` (copied from moremindmap) - `engine/` folder (scoring + profile generation) - `package.json` with Express, Stripe, OpenAI dependencies - `vercel.json` with Node.js runtime config for Vercel deployment - `.gitignore` for Node.js - **Commits**: - `63cb8e3` (frontend): Remove frontend /api handlers (using separate backend service) - `a4353c2` (frontend): Fix API routing: point frontend t",
+      "recallCount": 9,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 7.108827829781865,
+      "maxScore": 0.8058202852740667,
+      "firstRecalledAt": "2026-04-20T22:08:19.048Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "360d15f2c462",
+        "01d65f5095ab",
+        "11df08dcc9aa",
+        "adbfa601c72c",
+        "e0f401c868b1",
+        "668d72afc59a",
+        "c6de5aa744ce",
+        "dbcc1c293023",
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-04-20",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-05-05",
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "openai",
+        "src/realestate.jsx",
+        "moremindmap-backend.vercel.app",
+        "vercel.json",
+        "moremindmap-backend",
+        "server.js",
+        "package.json",
+        "node.js"
+      ]
+    },
+    "memory:memory/2026-04-16.md:69:106": {
+      "key": "memory:memory/2026-04-16.md:69:106",
+      "path": "memory/2026-04-16.md",
+      "startLine": 69,
+      "endLine": 106,
+      "source": "memory",
+      "snippet": "1. Created new `current_run_id` (2026-04-16-TEST-run1) 2. Called all 4 metrics 3. Observed logging trace showing: - `[METRICS] Using 0 trades for current run 2026-04-16-TEST-run1` - `[SLIPPAGE TRACE] run_id: 2026-04-16-TEST-run1 | trades: 0` - `[INTEGRITY TRACE] run_id: 2026-04-16-TEST-run1 paper: 0 shadow: 0` 4. All metrics returned 0 ✅ ## Current Status ✅ **RUN ISOLATION FIXED AND VALIDATED** ### What's Working: - `total_trades` → filters by `current_run_id` via `get_recent_trades()` - `rolling_win_rate` → uses `get_recent_trades()` (run-filtered) - `avg_entry_slippage` → uses `get_recent_trades()` (run-filtered) - `trade_sign_flips` → uses `get_trades_by_source()` (NOW run-filt",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7223165052604361,
+      "maxScore": 0.7223165052604361,
+      "firstRecalledAt": "2026-04-20T22:08:19.048Z",
+      "lastRecalledAt": "2026-04-20T22:08:19.048Z",
+      "queryHashes": [
+        "360d15f2c462"
+      ],
+      "recallDays": [
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "current-run-id",
+        "2026-04-16-test-run1",
+        "run-id",
+        "total-trades",
+        "get-recent-trades",
+        "rolling-win-rate",
+        "run-filtered",
+        "avg-entry-slippage"
+      ]
+    },
+    "memory:memory/2026-04-13.md:181:220": {
+      "key": "memory:memory/2026-04-13.md:181:220",
+      "path": "memory/2026-04-13.md",
+      "startLine": 181,
+      "endLine": 220,
+      "source": "memory",
+      "snippet": "- Git NOT initialized (NOW INITIALIZED) - .env contains live API keys (NOT committed, safe) - Vite frontend ready to build - Express backend on port 4242 ready to run ### Tasks Completed Today 1. ✓ Fixed hardcoded `localhost:4242` in Profile.jsx - Replaced with env-based: `import.meta.env.VITE_API_URL || \"http://localhost:4242\"` - Verified all remaining refs are fallback-only (env-based, not hardcoded) 2. ✓ Git Initialization - `git init` → .git created - `git add .` → 58 files staged - `git commit -m \"Initial commit - MOREMINDMAP working version\"` → Commit 0e091a5 3. ✓ Prep for GitHub - No remote configured yet - Ready for connection to GitHub repo ### Next",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7693782698788095,
+      "maxScore": 0.7693782698788095,
+      "firstRecalledAt": "2026-04-21T14:36:19.964Z",
+      "lastRecalledAt": "2026-04-21T14:36:19.964Z",
+      "queryHashes": [
+        "e18af43969cc"
+      ],
+      "recallDays": [
+        "2026-04-21"
+      ],
+      "conceptTags": [
+        "profile.jsx",
+        "env-based",
+        "import.meta.env.vite-api-url",
+        "fallback-only",
+        "git",
+        "not",
+        "initialized",
+        "now"
+      ]
+    },
+    "memory:memory/2026-04-13.md:214:244": {
+      "key": "memory:memory/2026-04-13.md:214:244",
+      "path": "memory/2026-04-13.md",
+      "startLine": 214,
+      "endLine": 244,
+      "source": "memory",
+      "snippet": "- Only found classes in MiniProfileReport component CSS files - App.jsx, Profile.jsx, RealEstate.jsx classes never extracted - Build: 16 kB CSS but missing all App utility classes - **Fix applied**: 1. Removed `@tailwindcss/vite` from dependencies 2. Installed traditional `tailwindcss` + `postcss` + `autoprefixer` 3. Created `postcss.config.cjs` with proper PostCSS pipeline 4. Updated `vite.config.js` (removed Tailwind plugin) 5. Verified content paths in `tailwind.config.js` - **Result**: CSS bundle grew to 24.13 kB with ALL utilities present - `.bg-black` ✓ now present with full rule - `.text-white` ✓ now present - `.border-white/10` ✓ now present - All animation/",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.3303059528229126,
+      "maxScore": 0.7940698430483072,
+      "firstRecalledAt": "2026-04-21T14:36:19.964Z",
+      "lastRecalledAt": "2026-05-05T15:58:46.261Z",
+      "queryHashes": [
+        "e18af43969cc",
+        "6fe601ec4ce3",
+        "668d72afc59a"
+      ],
+      "recallDays": [
+        "2026-04-21",
+        "2026-04-27",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "app.jsx",
+        "profile.jsx",
+        "realestate.jsx",
+        "tailwindcss/vite",
+        "postcss.config.cjs",
+        "vite.config.js",
+        "tailwind.config.js",
+        "24.13"
+      ]
+    },
+    "memory:memory/2026-04-13.md:53:101": {
+      "key": "memory:memory/2026-04-13.md:53:101",
+      "path": "memory/2026-04-13.md",
+      "startLine": 53,
+      "endLine": 101,
+      "source": "memory",
+      "snippet": "- **Verification**: Form cannot submit unless SMS checkbox is checked --- ## MOREMINDMAP.COM — Deployment Prep (Active Today) ### Current Status - Working directory: ~/moremindmap - **Critical findings**: - Hardcoded localhost in Profile.jsx (REMOVED) - Git NOT initialized (NOW INITIALIZED) - .env contains live API keys (NOT committed, safe) - Vite frontend ready to build - Express backend on port 4242 ready to run ### Tasks Completed Today 1. ✓ Fixed hardcoded `localhost:4242` in Profile.jsx - Replaced with env-based: `import.meta.env.VITE_API_URL || \"http://localhost:4242\"` - Verified all remaining refs are fallback-only (env-based, not hardcoded) 2. ✓ Git Initializati",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7558951249399484,
+      "maxScore": 0.7558951249399484,
+      "firstRecalledAt": "2026-04-21T14:36:19.964Z",
+      "lastRecalledAt": "2026-04-21T14:36:19.964Z",
+      "queryHashes": [
+        "e18af43969cc"
+      ],
+      "recallDays": [
+        "2026-04-21"
+      ],
+      "conceptTags": [
+        "moremindmap.com",
+        "profile.jsx",
+        "env-based",
+        "import.meta.env.vite-api-url",
+        "fallback-only",
+        "verification",
+        "form",
+        "cannot"
+      ]
+    },
+    "memory:memory/2026-04-14.md:93:130": {
+      "key": "memory:memory/2026-04-14.md:93:130",
+      "path": "memory/2026-04-14.md",
+      "startLine": 93,
+      "endLine": 130,
+      "source": "memory",
+      "snippet": "- `OPENAI_API_KEY` = sk-proj-... - `STRIPE_SECRET_KEY` = sk_live_... - `STRIPE_PRICE_ID` = price_... - `SITE_URL` = https://moremindmap.com - Redeploy 4. Frontend Vercel project (already connected): - Set `VITE_API_URL` = https://moremindmap-backend.vercel.app (optional fallback) ### Why Frontend/Backend Split - **Root cause**: Vercel + Vite doesn't route `/api/*` to serverless functions in pure static projects - **Solution**: Two independent Vercel projects = cleaner separation, easier to scale, proper Express backend ### End-to-End Flow (Once Deployed) 1. User visits https://moremindmap.com 2. Takes 24-question assessment 3. Submits → POST to https://moremindma",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6685861694245449,
+      "maxScore": 0.6685861694245449,
+      "firstRecalledAt": "2026-04-21T14:36:19.964Z",
+      "lastRecalledAt": "2026-04-21T14:36:19.964Z",
+      "queryHashes": [
+        "e18af43969cc"
+      ],
+      "recallDays": [
+        "2026-04-21"
+      ],
+      "conceptTags": [
+        "openai",
+        "openai-api-key",
+        "sk-proj",
+        "stripe-secret-key",
+        "sk-live",
+        "stripe-price-id",
+        "site-url",
+        "moremindmap.com"
+      ]
+    },
+    "memory:memory/2026-04-14.md:185:222": {
+      "key": "memory:memory/2026-04-14.md:185:222",
+      "path": "memory/2026-04-14.md",
+      "startLine": 185,
+      "endLine": 222,
+      "source": "memory",
+      "snippet": "- `OPENAI_API_KEY` = sk-proj-... - `STRIPE_SECRET_KEY` = sk_live_... - `STRIPE_PRICE_ID` = price_... - `SITE_URL` = https://moremindmap.com - Redeploy 4. Frontend Vercel project (already connected): - Set `VITE_API_URL` = https://moremindmap-backend.vercel.app (optional fallback) ### Why Frontend/Backend Split - **Root cause**: Vercel + Vite doesn't route `/api/*` to serverless functions in pure static projects - **Solution**: Two independent Vercel projects = cleaner separation, easier to scale, proper Express backend ### End-to-End Flow (Once Deployed) 1. User visits https://moremindmap.com 2. Takes 24-question assessment 3. Submits → POST to https://moremindma",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6685861694245449,
+      "maxScore": 0.6685861694245449,
+      "firstRecalledAt": "2026-04-21T14:36:19.964Z",
+      "lastRecalledAt": "2026-04-21T14:36:19.964Z",
+      "queryHashes": [
+        "e18af43969cc"
+      ],
+      "recallDays": [
+        "2026-04-21"
+      ],
+      "conceptTags": [
+        "openai",
+        "openai-api-key",
+        "sk-proj",
+        "stripe-secret-key",
+        "sk-live",
+        "stripe-price-id",
+        "site-url",
+        "moremindmap.com"
+      ]
+    },
+    "memory:memory/2026-04-23.md:108:128": {
+      "key": "memory:memory/2026-04-23.md:108:128",
+      "path": "memory/2026-04-23.md",
+      "startLine": 108,
+      "endLine": 128,
+      "source": "memory",
+      "snippet": "1. Move from simulator → Coinbase Sandbox (real matching logic, no real money) 2. Deploy babies to Sandbox alongside Arena 3. Compare sandbox vs live edge performance 4. When edge proven, add real Coinbase execution 5. MOLT integration (Rocky + other Rockeys collaborating) --- ## Operator Notes (For Future Rockeys) - **Market switching is one line** — `MarketConfig.set_active_market()` handles everything - **Babies use Arena's signal logic** — Same 15% generation probability, same signal types - **Unified ledger is source of truth** — Read from there, not individual baby states - **BRAIN enforces both** — STOP/FLAT/THROTTLE apply to Arena AND Babies - **Rocky lives in THINK** — Reads syst",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.259557275913655,
+      "maxScore": 0.7769997009143101,
+      "firstRecalledAt": "2026-04-25T18:10:28.012Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "19a35fae0baa",
+        "f332c2f9fe31",
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-04-25",
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "marketconfig.set-active-market",
+        "stop/flat/throttle",
+        "simulator",
+        "coinbase",
+        "sandbox",
+        "real",
+        "matching",
+        "logic"
+      ]
+    },
+    "memory:memory/2026-04-23.md:77:117": {
+      "key": "memory:memory/2026-04-23.md:77:117",
+      "path": "memory/2026-04-23.md",
+      "startLine": 77,
+      "endLine": 117,
+      "source": "memory",
+      "snippet": "2. `baby_execution_bridge.py` (7.6KB) — Signal routing 3. `unified_execution_pipeline.py` (9.3KB) — Single execution pipeline 4. `rocky_think_engine_v3.py` (15KB) — Raw Rocky reasoning 5. `rocky_think_integration.py` (2.4KB) — THINK endpoint **Modified:** - `moltmarket_dashboard.py` — Added unified pipeline init, wired simulator, fixed execute_baby_variant() - `think_rocky_panel.js` — Updated to handle conversational responses --- ## Key Decisions 1. **Simulator not Sandbox yet** — Build edge first with fast simulator, migrate to Sandbox when edge proven 2. **Unified ledger** — All trades (Arena + Babies) in one place, no sync headaches 3. **Market-agnostic from day 1** — Future-proofing",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 5.527485954211926,
+      "maxScore": 0.806678336026604,
+      "firstRecalledAt": "2026-04-25T18:10:28.012Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "19a35fae0baa",
+        "f332c2f9fe31",
+        "75de509caaf8",
+        "74da1b1b892d",
+        "6fe601ec4ce3",
+        "c6de5aa744ce",
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-04-25",
+        "2026-04-26",
+        "2026-04-27",
+        "2026-05-05",
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "baby-execution-bridge.py",
+        "7.6kb",
+        "unified-execution-pipeline.py",
+        "9.3kb",
+        "rocky-think-engine-v3.py",
+        "rocky-think-integration.py",
+        "2.4kb",
+        "moltmarket-dashboard.py"
+      ]
+    },
+    "memory:memory/2026-04-23.md:1:44": {
+      "key": "memory:memory/2026-04-23.md:1:44",
+      "path": "memory/2026-04-23.md",
+      "startLine": 1,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "# Daily Log — Thu Apr 23, 2026 (FINAL) ## Session Summary: Rocky in THINK + Unified Execution Pipeline **Time:** 10:00 AM - 2:00 PM MST **Status:** Rocky live ✅ | Market Config ✅ | Unified Pipeline ✅ | Babies (debugging) --- ## What Was Built (COMPLETE) ### 1. Rocky in THINK (✅ WORKING) - **Files:** `rocky_think_engine_v3.py`, `rocky_think_integration.py`, `think_rocky_panel.js` - **Capability:** Real conversation about BRAIN/Nursery/Arena state, reads USER.md for name - **Proof:** You ask Rocky \"are babies trading?\" → Rocky reads unified ledger and responds ### 2. Market Config Architecture (✅ COMPLETE) - **File:** `market_config.py` - **Feature:** Single source of truth for active ma",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.780102058889772,
+      "maxScore": 0.8147237455877036,
+      "firstRecalledAt": "2026-04-25T18:10:28.012Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "19a35fae0baa",
+        "f332c2f9fe31",
+        "74da1b1b892d",
+        "6fe601ec4ce3",
+        "c6de5aa744ce",
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-04-25",
+        "2026-04-27",
+        "2026-05-05",
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "rocky-think-engine-v3.py",
+        "rocky-think-integration.py",
+        "think-rocky-panel.js",
+        "brain/nursery/arena",
+        "user.md",
+        "market-config.py",
+        "log",
+        "thu"
+      ]
+    },
+    "memory:memory/2026-04-13.md:320:345": {
+      "key": "memory:memory/2026-04-13.md:320:345",
+      "path": "memory/2026-04-13.md",
+      "startLine": 320,
+      "endLine": 345,
+      "source": "memory",
+      "snippet": "- Deployment automatic via GitHub Pages ### MoreMindMap API Architecture - **Key decision**: Separated frontend and backend to independent Vercel projects - Reason: Vercel + Vite doesn't support mixed static/serverless in single project - Trade-off: Simpler deployment, clearer separation, easier to scale backend independently - Frontend can stay pure static, backend as independent Express service - Next major decision: Whether to co-host domains (frontend on main, backend on subdomain) or keep separate domains --- ## WORK COMPLETED (Full Session) - Polymarket: 3 major diagnostics (paper/shadow divergence, phase analysis, protection layer audit) - RRG: Twilio compliance fix deployed",
+      "recallCount": 6,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.712481776740555,
+      "maxScore": 0.8137841405878906,
+      "firstRecalledAt": "2026-04-25T18:10:28.012Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "19a35fae0baa",
+        "01d65f5095ab",
+        "11df08dcc9aa",
+        "adbfa601c72c",
+        "e00f9c98d6d4",
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-04-25",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-05-09",
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "static/serverless",
+        "trade-off",
+        "co-host",
+        "paper/shadow",
+        "deployment",
+        "automatic",
+        "via",
+        "github"
+      ]
+    },
+    "memory:memory/2026-04-23.md:33:83": {
+      "key": "memory:memory/2026-04-23.md:33:83",
+      "path": "memory/2026-04-23.md",
+      "startLine": 33,
+      "endLine": 83,
+      "source": "memory",
+      "snippet": "→ Active market executor (Simulator/Coinbase/Polymarket) → UnifiedLedger (single source of truth) → Metrics (read from ledger, no sync issues) ``` - **Status:** Wired into dashboard, but spawn endpoint returning 500 error --- ## Current Issue **Babies spawned but not trading because:** 1. `/api/nursery/spawn` endpoint returning HTTP 500 2. Likely error in `mutation_engine.py` or attribute access 3. Need to capture full error from terminal **To debug:** ```bash pkill -f moltmarket_dashboard cd /Users/rrg/.openclaw/workspace/moltmarket python3 moltmarket_dashboard.py 2>&1 | grep -A 20 \"ERROR in spawn\" ``` --- ## Architecture Locked In **Execution flow (when working):** 1.",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.976353163686555,
+      "maxScore": 0.8004319391694418,
+      "firstRecalledAt": "2026-04-26T04:03:50.680Z",
+      "lastRecalledAt": "2026-05-05T16:27:35.351Z",
+      "queryHashes": [
+        "f332c2f9fe31",
+        "811bd6220a61",
+        "74da1b1b892d",
+        "6fe601ec4ce3",
+        "c6de5aa744ce"
+      ],
+      "recallDays": [
+        "2026-04-25",
+        "2026-04-27",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "simulator/coinbase/polymarket",
+        "api/nursery/spawn",
+        "mutation-engine.py",
+        "moltmarket-dashboard",
+        "users/rrg",
+        "openclaw/workspace/moltmarket",
+        "moltmarket-dashboard.py",
+        "active"
+      ]
+    },
+    "memory:memory/2026-04-21.md:286:326": {
+      "key": "memory:memory/2026-04-21.md:286:326",
+      "path": "memory/2026-04-21.md",
+      "startLine": 286,
+      "endLine": 326,
+      "source": "memory",
+      "snippet": "- \"Excessive drawdown during session\" 3. **One Suggested Adjustment** (PART 3) - Exactly one bounded, testable change - Examples: - \"Increase probation_min_cycles from 3 to 5. Re-test same conditions.\" - \"Decrease edge_score_threshold by 0.05 to allow more candidates.\" - \"Tighten replacement_quality_min_score from 0.60 to 0.70.\" 4. **Interactive Queries** (PART 4) - `query_why_stopped()` — Diagnose STOP events - `query_why_flat()` — Explain high FLAT % - `query_probation_speed()` — Is probation too short/long? - `query_biggest_problem()` — Single strongest issue - `query_next_adjustment()` — What to test next **Validation Tests: All Pass** ✅ ###",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7968417778470159,
+      "maxScore": 0.7968417778470159,
+      "firstRecalledAt": "2026-04-26T19:56:03.412Z",
+      "lastRecalledAt": "2026-04-26T19:56:03.412Z",
+      "queryHashes": [
+        "02ab6cd591ea"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "probation-min-cycles",
+        "re-test",
+        "edge-score-threshold",
+        "0.05",
+        "replacement-quality-min-score",
+        "0.60",
+        "0.70",
+        "query-why-stopped"
+      ]
+    },
+    "memory:memory/2026-04-18.md:37:77": {
+      "key": "memory:memory/2026-04-18.md:37:77",
+      "path": "memory/2026-04-18.md",
+      "startLine": 37,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "- 5 event types: bot spawn, mutation spawn, evaluation, result, decision - Thin layer: no business logic, just database writes 6. **test-phase2-flow.py** — Integration test - Full flow: hypothesis → bot → mutation → evaluation → decision - All 5 Rocky queries verified working ## Phase 2.5: Rocky's Reasoning Layer (COMPLETE) ### What Was Built 1. **rocky_reasoning.py** (552 lines) - Rocky's conversational reasoning engine - Wired to THINK Memory for grounded, evidence-backed decisions - Methods: - `should_i_promote_this_bot(bot_id)` — decision support with context - `why_is_this_failing(bot_id)` — diagnosis with history - `what_should_i_try_next(bot_id)",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5537647451137044,
+      "maxScore": 0.7921616065939392,
+      "firstRecalledAt": "2026-04-26T19:56:03.412Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "02ab6cd591ea",
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-04-26",
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "test-phase2-flow.py",
+        "2.5",
+        "rocky-reasoning.py",
+        "evidence-backed",
+        "should-i-promote-this-bot",
+        "bot-id",
+        "why-is-this-failing",
+        "what-should-i-try-next"
+      ]
+    },
+    "memory:memory/2026-04-17.md:598:651": {
+      "key": "memory:memory/2026-04-17.md:598:651",
+      "path": "memory/2026-04-17.md",
+      "startLine": 598,
+      "endLine": 651,
+      "source": "memory",
+      "snippet": "⚠️ **Before Mutation Brain:** Fix execution realism gaps (30 lines, 1-2 hours) **Status:** Ready for mutation logic integration, but execution model needs tightening first. --- ## ROLLING EDGE CALCULATIONS + PROFITABILITY GUARD — IMPLEMENTED ✓ **Time:** 20:20-20:40 MST ### Problem Two frozen panels: - **ROLLING EDGE (20-TRADE)** — showing 0.00 bps (not calculated) - **ROLLING EDGE (50-TRADE)** — showing 0.00 bps (not calculated) ### Root Cause Rolling edge metrics were not being calculated in `update_metrics()`. Calculations simply didn't exist in backend. ### The Fix Added to `update_metrics()` function: **20-trade rolling window:** - Extract last 20 trades from segment - Calcu",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7685737553374479,
+      "maxScore": 0.7685737553374479,
+      "firstRecalledAt": "2026-04-26T20:03:23.118Z",
+      "lastRecalledAt": "2026-04-26T20:03:23.118Z",
+      "queryHashes": [
+        "bc3e5acc8808"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "1-2",
+        "20-20",
+        "20-trade",
+        "0.00",
+        "50-trade",
+        "update-metrics",
+        "mutation",
+        "brain"
+      ]
+    },
+    "memory:memory/2026-04-25.md:34:73": {
+      "key": "memory:memory/2026-04-25.md:34:73",
+      "path": "memory/2026-04-25.md",
+      "startLine": 34,
+      "endLine": 73,
+      "source": "memory",
+      "snippet": "- Chaos: \"UNLEASH THE KRAKEN\", \"Rainbow after the storm\" - **10+ exit messages:** - \"ROCKY has left the building!\" - \"See you next time, champ\" - \"Trading day complete. Go rest.\" - etc. - **Result:** Every trading session gets unique personality. Tested 3 restarts → got different message each time. ### 3. BRAIN Calibration Engine (COMPLETE) - **File:** `brain_calibration_engine.py` (6.6KB) - **Three modes:** - **AGGRESSIVE:** Position 1.5x, entry 0.01, exit 0.005, 15 concurrent → high conviction - **MODERATE:** Position 1.0x, entry 0.03, exit 0.015, 8 concurrent → balanced - **CONSERVATIVE:** Position 0.5x, entry 0.05, exit 0.03, 3 concurrent → low risk - **Endpoints:**",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7553830235031556,
+      "maxScore": 0.7553830235031556,
+      "firstRecalledAt": "2026-04-26T20:03:23.118Z",
+      "lastRecalledAt": "2026-04-26T20:03:23.118Z",
+      "queryHashes": [
+        "bc3e5acc8808"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "brain-calibration-engine.py",
+        "6.6kb",
+        "1.5x",
+        "0.01",
+        "0.005",
+        "1.0x",
+        "0.03",
+        "0.015"
+      ]
+    },
+    "memory:memory/2026-04-25.md:1:44": {
+      "key": "memory:memory/2026-04-25.md:1:44",
+      "path": "memory/2026-04-25.md",
+      "startLine": 1,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "# Daily Log — Sat Apr 25, 2026 ## Session: Unified THINK Stream + BRAIN Calibration Engine **Time:** 8:30 PM - 9:05 PM MST **Status:** ✅ PRODUCTION READY --- ## What We Built Today ### 1. Unified THINK Stream (COMPLETE) - **File:** `think_session_bridge.py` (4.7KB) - **How it works:** - One message stream: OpenClaw ↔ THINK dashboard - Everything typed here automatically appears in THINK (500ms polling) - Messages persisted to JSONL file (`/tmp/think_messages.jsonl`) - Session lifecycle: start with random entrance, stop with random exit - No polling bugs, no timeouts, just pure file sync - **Frontend:** `think_unified_stream.js` (4.5KB) - Real-time polling gets messages from",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8266452735105352,
+      "maxScore": 0.8266452735105352,
+      "firstRecalledAt": "2026-04-26T20:03:23.119Z",
+      "lastRecalledAt": "2026-04-26T20:03:23.119Z",
+      "queryHashes": [
+        "75de509caaf8"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "think-session-bridge.py",
+        "4.7kb",
+        "tmp/think-messages.jsonl",
+        "think-unified-stream.js",
+        "4.5kb",
+        "real-time",
+        "log",
+        "sat"
+      ]
+    },
+    "memory:memory/2026-04-21.md:318:366": {
+      "key": "memory:memory/2026-04-21.md:318:366",
+      "path": "memory/2026-04-21.md",
+      "startLine": 318,
+      "endLine": 366,
+      "source": "memory",
+      "snippet": "- Injects real price source via `inject_real_price_source()` - Maps assets to Coinbase symbols (BTC → BTC-USD, etc.) - Exposes session state for dashboard/THINK - Handles feed disconnect (no silent fallback) 3. `demo_realdata_session.py` (200 lines) - Full end-to-end demo - Connects feed, runs 60-second session - Prints real prices flowing through system - Shows proof of real data vs. simulation 4. `REALDATA_INTEGRATION_GUIDE.md` (400 lines) - Complete integration documentation - Setup instructions - Verification checklist - Safety constraints - Architecture diagram **Key Design:** - **Data-source swap only** — no execution logic rewritten - Paper/sh",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7948742204528728,
+      "maxScore": 0.7948742204528728,
+      "firstRecalledAt": "2026-04-27T16:00:08.283Z",
+      "lastRecalledAt": "2026-04-27T16:00:08.283Z",
+      "queryHashes": [
+        "811bd6220a61"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "inject-real-price-source",
+        "btc-usd",
+        "dashboard/think",
+        "demo-realdata-session.py",
+        "end-to-end",
+        "60-second",
+        "realdata-integration-guide.md",
+        "data-source"
+      ]
+    },
+    "memory:memory/2026-04-13.md:148:188": {
+      "key": "memory:memory/2026-04-13.md:148:188",
+      "path": "memory/2026-04-13.md",
+      "startLine": 148,
+      "endLine": 188,
+      "source": "memory",
+      "snippet": "- Paper-shadow divergence narrowed 80% (16.7% → 3.3%) - **Failure modes**: 52% timing lag, 41% liquidity traps, 7% toxic fills 4. **System Health** - Still unprofitable (-$0.063 avg P&L per shadow trade) - Protection layer is defensive (catching bad exits) but not offensive (improving entries) - Main problem: Entry signal quality + exit timing - Blocking ~48% of trades prevented more losses but didn't improve profitability --- ## REVENUE RECOVERY GROUP — Twilio Compliance ### Task: Fix SMS Consent Flow - **Goal**: Make SMS checkbox REQUIRED for form submission (Twilio A2P compliance) - **Changes made to contact.html**: - Added `required` attribute to checkbox - Repl",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.1540292517611714,
+      "maxScore": 0.8014176915807387,
+      "firstRecalledAt": "2026-04-27T16:12:14.019Z",
+      "lastRecalledAt": "2026-05-05T15:55:55.316Z",
+      "queryHashes": [
+        "01d65f5095ab",
+        "74da1b1b892d",
+        "f02900129acc",
+        "a57ed51f7828"
+      ],
+      "recallDays": [
+        "2026-04-27",
+        "2026-04-28",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "paper-shadow",
+        "16.7",
+        "3.3",
+        "0.063",
+        "contact.html",
+        "paper",
+        "shadow",
+        "divergence"
+      ]
+    },
+    "memory:memory/2026-04-13.md:27:65": {
+      "key": "memory:memory/2026-04-13.md:27:65",
+      "path": "memory/2026-04-13.md",
+      "startLine": 27,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- Phase 2 (7.2h): 6 shadow closed, 33% win rate, -$0.16 P&L - Phase 3 (72.8h): 48 shadow closed, 44% win rate, -$3.03 P&L - Win rate improved +10.4% but P&L worsened 2.3x per trade - Paper-shadow divergence narrowed 80% (16.7% → 3.3%) - **Failure modes**: 52% timing lag, 41% liquidity traps, 7% toxic fills 4. **System Health** - Still unprofitable (-$0.063 avg P&L per shadow trade) - Protection layer is defensive (catching bad exits) but not offensive (improving entries) - Main problem: Entry signal quality + exit timing - Blocking ~48% of trades prevented more losses but didn't improve profitability --- ## REVENUE RECOVERY GROUP — Twilio Compliance ### Task: F",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5568172469196764,
+      "maxScore": 0.7868950146926681,
+      "firstRecalledAt": "2026-04-27T16:12:14.019Z",
+      "lastRecalledAt": "2026-04-28T19:29:11.910Z",
+      "queryHashes": [
+        "01d65f5095ab",
+        "f02900129acc"
+      ],
+      "recallDays": [
+        "2026-04-27",
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "7.2h",
+        "0.16",
+        "72.8h",
+        "3.03",
+        "10.4",
+        "2.3x",
+        "paper-shadow",
+        "16.7"
+      ]
+    },
+    "memory:memory/2026-04-26.md:116:160": {
+      "key": "memory:memory/2026-04-26.md:116:160",
+      "path": "memory/2026-04-26.md",
+      "startLine": 116,
+      "endLine": 160,
+      "source": "memory",
+      "snippet": "- Parameters still stored but not used in signal generation (OK for now) - Focus is on lineage and cumulative PnL, not parameter effectiveness --- ## Next Steps (D.J.'s Priorities) 1. **Restart dashboard** → Verify simulator IDs match 2. **Run full cycle** → Spawn → promote → verify leaderboard cumulative PnL 3. **Monitor terminal** → Confirm `[ARENA] Trade logged to unified ledger` 4. **Document playbook** → What we learned about promotion and evolution --- ## Session Notes - Started 12:54 PM with dashboard not showing Arena trades (showing zeros) - Diagnosed two separate issues: (1) Arena execution wiring, (2) Feed sync architecture - Fixed Arena execution wiring first (promoti",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.813074276657987,
+      "maxScore": 0.813074276657987,
+      "firstRecalledAt": "2026-04-28T15:43:15.904Z",
+      "lastRecalledAt": "2026-04-28T15:43:15.904Z",
+      "queryHashes": [
+        "11df08dcc9aa"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "d.j",
+        "parameters",
+        "still",
+        "stored",
+        "but",
+        "not",
+        "used",
+        "signal"
+      ]
+    },
+    "memory:memory/2026-04-26.md:87:125": {
+      "key": "memory:memory/2026-04-26.md:87:125",
+      "path": "memory/2026-04-26.md",
+      "startLine": 87,
+      "endLine": 125,
+      "source": "memory",
+      "snippet": "2. Spawn babies → verify both panels show same sim ID 3. Let Nursery run 30 sec → leaderboard shows positive PnL on some babies 4. Promote best baby → Active Strategy label updates, new generation spawns 5. Verify Arena executes → terminal shows `[ARENA] Trade logged to unified ledger` 6. Check leaderboard → promoted baby shows cumulative PnL ### Success Criteria - ✅ Simulator IDs match (visual proof of same feed) - ✅ New babies have promoted baby's ID in their names - ✅ Arena trades appear in unified_ledger with promoted_baby_id (not 'arena') - ✅ Leaderboard shows promoted baby with cumulative PnL - ✅ No exceptions or timeouts in terminal --- ## Key Insights from Today 1. **Foundation >",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8104254456939424,
+      "maxScore": 0.8104254456939424,
+      "firstRecalledAt": "2026-04-28T15:43:15.904Z",
+      "lastRecalledAt": "2026-04-28T15:43:15.904Z",
+      "queryHashes": [
+        "11df08dcc9aa"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "unified-ledger",
+        "promoted-baby-id",
+        "spawn",
+        "babies",
+        "verify",
+        "both",
+        "panels",
+        "show"
+      ]
+    },
+    "memory:memory/2026-04-13.md:290:325": {
+      "key": "memory:memory/2026-04-13.md:290:325",
+      "path": "memory/2026-04-13.md",
+      "startLine": 290,
+      "endLine": 325,
+      "source": "memory",
+      "snippet": "- ✅ https://moremindmap-backend.vercel.app/api/moremindmap/mini-profile (POST) - ✅ https://moremindmap-backend.vercel.app/create-checkout-session (POST) - ✅ https://moremindmap-backend.vercel.app/submit/real-estate (POST) ### Deployment Blockers - GitHub secret scanning blocking push on commit 95e696d (contains .env.production with secrets) - Solution: Unblock via GitHub dashboard OR re-push frontend without secrets - Backend project needs to be created on GitHub manually ### Next Steps (MoreMindMap) 1. Create new GitHub repo: `RRG-systems/moremindmap-backend` 2. Push backend code + commits 3. Create new Vercel project for backend, connect to GitHub repo 4. Set environment variables in",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5863314539230893,
+      "maxScore": 0.8027108206497502,
+      "firstRecalledAt": "2026-04-28T15:43:15.904Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "11df08dcc9aa",
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-04-28",
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "env.production",
+        "re-push",
+        "rrg-systems/moremindmap-backend",
+        "https",
+        "moremindmap",
+        "backend.vercel.app",
+        "api",
+        "mini"
+      ]
+    },
+    "memory:memory/2026-04-24.md:134:158": {
+      "key": "memory:memory/2026-04-24.md:134:158",
+      "path": "memory/2026-04-24.md",
+      "startLine": 134,
+      "endLine": 158,
+      "source": "memory",
+      "snippet": "[NURSERY LOOP] active_babies=N [BABY SIGNAL] baby_id=X signal_generated=True [BABY EXECUTE] baby_id=X executed=True/False [BABY LEDGER] baby_id=X trades=N shadow_pnl=$X [ARENA DNA] Set promoted parent: bot_id [PROMOTE DNA] Loading baby DNA into Arena active strategy [PROMOTE DNA] Strategy type=X ``` ### Promotion Flow Verified 1. User clicks promote button on positive-PnL baby 2. Frontend POST to `/api/nursery/promote/{variant_id}` 3. Backend validates: shadow_pnl > 0 ✅ 4. Backend loads baby DNA into dashboard_state['parent_strategy_dna'] ✅ 5. Backend calls simulator.set_promoted_parent_dna(dna) ✅ 6. Backend sets trading_enabled=True, brain_state=PROBATION ✅ 7. Arena begins trading (at 1% s",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.44835387319565,
+      "maxScore": 0.8396410388244077,
+      "firstRecalledAt": "2026-04-28T19:29:11.910Z",
+      "lastRecalledAt": "2026-05-05T15:58:48.579Z",
+      "queryHashes": [
+        "f02900129acc",
+        "e0f401c868b1",
+        "027e9d199d43"
+      ],
+      "recallDays": [
+        "2026-04-28",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "active-babies",
+        "baby-id",
+        "signal-generated",
+        "true/false",
+        "shadow-pnl",
+        "bot-id",
+        "positive-pnl",
+        "api/nursery/promote"
+      ]
+    },
+    "memory:memory/2026-04-27.md:100:127": {
+      "key": "memory:memory/2026-04-27.md:100:127",
+      "path": "memory/2026-04-27.md",
+      "startLine": 100,
+      "endLine": 127,
+      "source": "memory",
+      "snippet": "- Coordinate both: Spot travels with wave motion --- ## RRG REDESIGN — COMPLETE ✅ All visual elements complete (no orange, glass cards, RRG logo) ✅ Waves now animating smoothly at correct positions ✅ Design hierarchy implicit (waves + layout position RRG as parent platform) ⏳ **READY FOR FINAL REVIEW** once snake motion + bright spots are added --- ## FILES TO PRESERVE **Current HTML:** `/Users/rrg/RRGconnect-site/index.html` - Save before major wave animation changes - All other content (copy, links, forms) untouched and verified **Contact form:** Still working (Twilio A2P SMS consent language preserved) **Legal pages:** Untouched (privacy-policy.html, terms-of-service.html) --- **",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.4044519693713817,
+      "maxScore": 0.8040268194931904,
+      "firstRecalledAt": "2026-04-28T19:29:11.910Z",
+      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "queryHashes": [
+        "f02900129acc",
+        "a57ed51f7828",
+        "dbcc1c293023"
+      ],
+      "recallDays": [
+        "2026-04-28",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "privacy-policy.html",
+        "terms-of-service.html",
+        "coordinate",
+        "both",
+        "spot",
+        "travels",
+        "wave",
+        "motion"
+      ]
+    },
+    "memory:memory/2026-04-27.md:72:112": {
+      "key": "memory:memory/2026-04-27.md:72:112",
+      "path": "memory/2026-04-27.md",
+      "startLine": 72,
+      "endLine": 112,
+      "source": "memory",
+      "snippet": ".wave-bg { position: fixed; top: 0; left: 0; z-index: 1; overflow: hidden; } .wave-svg { position: absolute; width: 2400px; height: 100%; } .wave-svg-1 { top: 5%; animation: waveFlow1 32s linear infinite; } .wave-svg-2 { top: 12%; animation: waveFlow2 40s linear infinite; } .wave-svg-3 { top: 19%; animation: waveFlow1 36s linear infinite; } .wave-svg-4 { top: 26%; animation: waveFlow2 44s linear infinite; } ``` ### File Location `/Users/rrg/RRGconnect-site/index.html` (lines ~90-230 contain wave SVG + CSS) --- ## NEXT ENHANCEMENT REQUEST (12:26 MST) ### D.J.'s Ask 1. **Make waves move like a snake** — Actual wave motion (not just horizontal scroll) - Vertical modulation that travels a",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6540850359866293,
+      "maxScore": 0.8851820141722485,
+      "firstRecalledAt": "2026-04-28T19:29:11.910Z",
+      "lastRecalledAt": "2026-05-05T15:58:46.261Z",
+      "queryHashes": [
+        "f02900129acc",
+        "668d72afc59a"
+      ],
+      "recallDays": [
+        "2026-04-28",
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "wave-bg",
+        "z-index",
+        "wave-svg",
+        "wave-svg-1",
+        "wave-svg-2",
+        "wave-svg-3",
+        "wave-svg-4",
+        "90-230"
+      ]
+    },
+    "memory:memory/2026-04-14.md:1:42": {
+      "key": "memory:memory/2026-04-14.md:1:42",
+      "path": "memory/2026-04-14.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "# Daily Notes — 2026-04-14 ## Session Summary - D.J. finalized MoreMindMap frontend/backend split deployment (complete) - All code changes committed, repos ready for GitHub push - Backend infrastructure prepared as separate Vercel project - System now ready for manual deployment steps --- ## MOREMINDMAP DEPLOYMENT — FINAL EXECUTION PHASE ### Completed (All Code Work) 1. ✅ **Frontend API routing finalized** - Profile.jsx: Both API calls → `https://moremindmap-backend.vercel.app` - RealEstate.jsx: Assessment submission → `https://moremindmap-backend.vercel.app` - All hardcoded localhost refs removed 2. ✅ **Backend Express app prepared** - server.js copied and ready - engine",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7888352661186543,
+      "maxScore": 0.7888352661186543,
+      "firstRecalledAt": "2026-04-29T17:12:40.700Z",
+      "lastRecalledAt": "2026-04-29T17:12:40.700Z",
+      "queryHashes": [
+        "adbfa601c72c"
+      ],
+      "recallDays": [
+        "2026-04-29"
+      ],
+      "conceptTags": [
+        "d.j",
+        "frontend/backend",
+        "profile.jsx",
+        "moremindmap-backend.vercel.app",
+        "realestate.jsx",
+        "server.js",
+        "summary",
+        "finalized"
+      ]
+    },
+    "memory:memory/2026-04-14.md:33:74": {
+      "key": "memory:memory/2026-04-14.md:33:74",
+      "path": "memory/2026-04-14.md",
+      "startLine": 33,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "4. ✅ **Git commits created (Backend)** - `743bfe4` — Initial backend: Express server with engine 5. ✅ **Verified API endpoint paths match exactly** - Frontend POST `/create-checkout-session` ← Backend has this - Frontend POST `/api/moremindmap/mini-profile` ← Backend has this - Fronte # Daily Notes — 2026-04-14 ## Session Summary - D.J. finalized MoreMindMap frontend/backend split deployment (complete) - All code changes committed, repos ready for GitHub push - Backend infrastructure prepared as separate Vercel project - System now ready for manual deployment steps --- ## MOREMINDMAP DEPLOYMENT — FINAL EXECUTION PHASE ### Completed (All Code Work) 1. ✅ **Frontend API routing",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7876866331713466,
+      "maxScore": 0.7876866331713466,
+      "firstRecalledAt": "2026-04-29T17:12:40.700Z",
+      "lastRecalledAt": "2026-04-29T17:12:40.700Z",
+      "queryHashes": [
+        "adbfa601c72c"
+      ],
+      "recallDays": [
+        "2026-04-29"
+      ],
+      "conceptTags": [
+        "create-checkout-session",
+        "api/moremindmap/mini-profile",
+        "d.j",
+        "frontend/backend",
+        "git",
+        "commits",
+        "created",
+        "backend"
+      ]
+    },
+    "memory:memory/2026-04-14.md:122:164": {
+      "key": "memory:memory/2026-04-14.md:122:164",
+      "path": "memory/2026-04-14.md",
+      "startLine": 122,
+      "endLine": 164,
+      "source": "memory",
+      "snippet": "- ✅ Code complete - ✅ Git commits ready - ⏳ Awaiting D.J. to execute manual Vercel/GitHub steps - Once manual steps done: System is live and operational ### Next Focus After deployment confirmed working: - Monitor Polymarket bot (protection layer active) - Consider entry signal optimization (current loss rate unsustainable) - No other projects at critical juncture # Daily Notes — 2026-04-14 ## Session Summary - D.J. finalized MoreMindMap frontend/backend split deployment (complete) - All code changes committed, repos ready for GitHub push - Backend infrastructure prepared as separate Vercel project - System now ready for manual deployment steps --- ## MOREMINDMAP DEPLOYMENT — FINAL EXECU",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7865413404380589,
+      "maxScore": 0.7865413404380589,
+      "firstRecalledAt": "2026-04-29T17:12:40.700Z",
+      "lastRecalledAt": "2026-04-29T17:12:40.700Z",
+      "queryHashes": [
+        "adbfa601c72c"
+      ],
+      "recallDays": [
+        "2026-04-29"
+      ],
+      "conceptTags": [
+        "d.j",
+        "vercel/github",
+        "frontend/backend",
+        "code",
+        "complete",
+        "git",
+        "commits",
+        "ready"
+      ]
+    },
+    "memory:memory/2026-04-26.md:236:263": {
+      "key": "memory:memory/2026-04-26.md:236:263",
+      "path": "memory/2026-04-26.md",
+      "startLine": 236,
+      "endLine": 263,
+      "source": "memory",
+      "snippet": "- Eliminates timing skew, guarantees consistency **Code pattern:** ```python # In update_metrics() if unified_ledger: all_baby_metrics = {} for baby_id in [b['variant_id'] for b in evolution_engine.babies]: all_baby_metrics[baby_id] = unified_ledger.get_trader_metrics(baby_id) dashboard_state['_ledger_cache'] = all_baby_metrics # In leaderboard & promotion ledger_metrics = dashboard_state.get('_ledger_cache', {}).get(variant_id, {}) ``` ### Why We Degraded We solved the logical architecture problem (single source of truth) but introduced a **timing problem** (reading at different moments). The lesson: When refactoring multi-system coordination, timing consistency is a",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.803285518404712,
+      "maxScore": 0.803285518404712,
+      "firstRecalledAt": "2026-05-05T15:55:55.316Z",
+      "lastRecalledAt": "2026-05-05T15:55:55.316Z",
+      "queryHashes": [
+        "a57ed51f7828"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "update-metrics",
+        "unified-ledger",
+        "all-baby-metrics",
+        "baby-id",
+        "variant-id",
+        "evolution-engine.babies",
+        "dashboard-state",
+        "ledger-cache"
+      ]
+    },
+    "memory:memory/2026-04-24.md:112:143": {
+      "key": "memory:memory/2026-04-24.md:112:143",
+      "path": "memory/2026-04-24.md",
+      "startLine": 112,
+      "endLine": 143,
+      "source": "memory",
+      "snippet": "- **Arena:** Trading, but with unclear strategy (DNA endpoint shows baseline, not promoted baby) - **Nursery:** 80 babies active, 34+ profitable - **Latest promotion:** `baselineentrythreshold66bcfec71777081996_holding_t` (+$124.22 PnL) - **Dashboard:** Shows Nursery metrics, promote buttons, THINK panel ### Critical Path Forward 1. Find where `/api/arena/dna` endpoint reads/caches strategy DNA 2. Update that endpoint to return current promoted baby's DNA from dashboard_state 3. Verify Arena is actually using promoted baby's strategy (not just reporting baseline) 4. Test end-to-end: promote baby → verify Arena DNA changes → verify Arena trades with new strategy ### Key Files Modified - `mo",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6038783036305777,
+      "maxScore": 0.8019391518152889,
+      "firstRecalledAt": "2026-05-05T15:58:43.690Z",
+      "lastRecalledAt": "2026-05-05T15:58:48.579Z",
+      "queryHashes": [
+        "e0f401c868b1",
+        "027e9d199d43"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "124.22",
+        "api/arena/dna",
+        "reads/caches",
+        "dashboard-state",
+        "end-to-end",
+        "arena",
+        "trading",
+        "but"
+      ]
+    },
+    "memory:memory/2026-04-17.md:395:440": {
+      "key": "memory:memory/2026-04-17.md:395:440",
+      "path": "memory/2026-04-17.md",
+      "startLine": 395,
+      "endLine": 440,
+      "source": "memory",
+      "snippet": "- ✅ Added `segment_closed_trades` to UniverseState (segment-only trades) - ✅ Added `segment_id` field to ClosedTrade (audit trail) - ✅ Updated MultiMarketArena.__init__ to track segment state - ✅ Added `reset_arena_segment()` method (creates new segment, clears metrics) - ✅ Updated `get_universe_state()` to return SEGMENT trades only - ✅ Updated `place_orders()` to write to both historical + segment lists - ✅ Added `POST /api/arena/reset` endpoint (backend) **Frontend Changes:** - ✅ Added `handleResetArena()` handler (calls API + refreshes state) - ✅ Added \"Reset Arena Capital\" button to control bar - ✅ Added `.btn-warning` CSS styling (orange, matches existing patterns) **Key Design:** Se",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6018699085309651,
+      "maxScore": 0.8009349542654826,
+      "firstRecalledAt": "2026-05-05T15:58:43.690Z",
+      "lastRecalledAt": "2026-05-05T15:58:48.579Z",
+      "queryHashes": [
+        "e0f401c868b1",
+        "027e9d199d43"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "segment-closed-trades",
+        "segment-only",
+        "segment-id",
+        "reset-arena-segment",
+        "get-universe-state",
+        "place-orders",
+        "api/arena/reset",
+        "btn-warning"
+      ]
+    },
+    "memory:memory/2026-04-24.md:93:118": {
+      "key": "memory:memory/2026-04-24.md:93:118",
+      "path": "memory/2026-04-24.md",
+      "startLine": 93,
+      "endLine": 118,
+      "source": "memory",
+      "snippet": "- **Problem:** BRAIN.FLAT was blocking both Arena AND Nursery - **Root cause:** execute_baby_variant() checked `if brain_state in ['STOP', 'FLAT']: return` - **Fix:** Removed BRAIN enforcement from baby execution path - **Result:** Nursery trades independently. Arena stays FLAT. Babies accumulate real PnL on Coinbase data - **Verification:** 80 babies spawned, 34 with +PnL after first cycle #### 3. ⏳ PROMOTE BABY DNA TO ARENA [IN PROGRESS] - **Goal:** When promote button clicked, baby's DNA replaces Arena's active strategy - **What's done:** - ✅ Added `set_promoted_parent_dna()` method to ExecutionSimulator - ✅ Updated `_generate_signal()` to use promoted baby's strategy_type if availab",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5847512538009974,
+      "maxScore": 0.7989623801616912,
+      "firstRecalledAt": "2026-05-05T15:58:43.690Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e0f401c868b1",
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-05",
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "brain.flat",
+        "execute-baby-variant",
+        "brain-state",
+        "set-promoted-parent-dna",
+        "generate-signal",
+        "strategy-type",
+        "problem",
+        "was"
+      ]
+    },
+    "memory:memory/2026-04-17.md:695:750": {
+      "key": "memory:memory/2026-04-17.md:695:750",
+      "path": "memory/2026-04-17.md",
+      "startLine": 695,
+      "endLine": 750,
+      "source": "memory",
+      "snippet": "- Rolling Edge panels were resetting ✓ - But historical data panels were not ✗ ### Root Cause Trade Breakdowns are populated on page load from `/api/trades` endpoint. After \"New Run\", the frontend wasn't reloading, so stale data persisted. The `pollDashboard()` call after reset wasn't strong enough to refresh all panels. ### The Fix Changed New Run handler from: ```javascript pollDashboard(); // Light refresh, not enough ``` To: ```javascript location.reload(); // Full page reload ``` **Result:** 1. Backend resets all metrics and trade data 2. Frontend does full page reload 3. Page load fetches fresh `/api/metrics` and `/api/trades` 4. All panels render with zero/empty data Now whe",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.3952234246209247,
+      "maxScore": 0.798407808206975,
+      "firstRecalledAt": "2026-05-05T15:58:43.690Z",
+      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "queryHashes": [
+        "e0f401c868b1",
+        "668d72afc59a",
+        "dbcc1c293023"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "api/trades",
+        "location.reload",
+        "api/metrics",
+        "zero/empty",
+        "rolling",
+        "edge",
+        "panels",
+        "resetting"
+      ]
+    },
+    "memory:memory/2026-04-27.md:32:76": {
+      "key": "memory:memory/2026-04-27.md:32:76",
+      "path": "memory/2026-04-27.md",
+      "startLine": 32,
+      "endLine": 76,
+      "source": "memory",
+      "snippet": "### Gradients (all 4 waves similar) ```xml <linearGradient id=\"gradX\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"> <stop offset=\"0%\" style=\"stop-color:rgba(255,255,255,0);stop-opacity:1\" /> <stop offset=\"25%\" style=\"stop-color:rgba(255,255,255,0.45);stop-opacity:1\" /> <stop offset=\"50%\" style=\"stop-color:rgba(255,255,255,1);stop-opacity:1\" /> <stop offset=\"75%\" style=\"stop-color:rgba(255,255,255,0.45);stop-opacity:1\" /> <stop offset=\"100%\" style=\"stop-color:rgba(255,255,255,0);stop-opacity:1\" /> </linearGradient> ``` - Peak brightness at 50% (center of wave) - Fades to transparent at edges ### Keyframe Animations ```css @keyframes modulateAlive1 { 0% { stroke-width: 0.8; opacity: 0.25;",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8752293898058021,
+      "maxScore": 0.8752293898058021,
+      "firstRecalledAt": "2026-05-05T15:58:46.261Z",
+      "lastRecalledAt": "2026-05-05T15:58:46.261Z",
+      "queryHashes": [
+        "668d72afc59a"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "stop-color",
+        "stop-opacity",
+        "0.45",
+        "stroke-width",
+        "0.8",
+        "0.25",
+        "gradients",
+        "all"
+      ]
+    },
+    "memory:memory/2026-04-27.md:1:37": {
+      "key": "memory:memory/2026-04-27.md:1:37",
+      "path": "memory/2026-04-27.md",
+      "startLine": 1,
+      "endLine": 37,
+      "source": "memory",
+      "snippet": "# Daily Notes — Mon Apr 27, 2026 ## Session Summary - Switched from MOLTmarket (Polymarket trading) to Revenue Recovery Group (RRG) project - Completed full visual redesign of RRGconnect.com - Discovered design hierarchy issue during final review with D.J. - Fixed wave animations (3 iterations: SVG data URIs → SVG elements → CSS gradient lines → pronounced wavy lines) - **Current work: Advanced wave animations with snake-like motion and traveling bright spots** --- ## RRG WAVE ANIMATION — CURRENT IMPLEMENTATION (12:26 MST) ### What's Working Now **4-layer SVG wave system with:** - Positions: 5%, 12%, 19%, 26% (high on page, near top) - Wave heights: Small amplitude (Q control points 3-6p",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.868961408809343,
+      "maxScore": 0.868961408809343,
+      "firstRecalledAt": "2026-05-05T15:58:46.261Z",
+      "lastRecalledAt": "2026-05-05T15:58:46.261Z",
+      "queryHashes": [
+        "668d72afc59a"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "rrgconnect.com",
+        "d.j",
+        "snake-like",
+        "4-layer",
+        "3-6p",
+        "mon",
+        "apr",
+        "summary"
+      ]
+    },
+    "memory:memory/2026-04-20.md:1:47": {
+      "key": "memory:memory/2026-04-20.md:1:47",
+      "path": "memory/2026-04-20.md",
+      "startLine": 1,
+      "endLine": 47,
+      "source": "memory",
+      "snippet": "# 2026-04-20 - MOLT Feed Population Problem ## Problem Statement MOLT feed returns empty: `{\"count\":0,\"posts\":[],\"status\":\"success\"}` Agents are set up to **react** to posts, but nothing creates **initial observations** of simulation outcomes. ## Root Cause **Missing Observation Layer**: The simulation loop runs but never calls: - `molt.log_agent_note()` - `molt.log_agent_proposal()` - `molt.observe_trade_execution()` So the MOLT database has zero posts, and the reaction loop has nothing to react to. ## Solution Built Created `/Users/rrg/.openclaw/workspace/molt/agent_observation_layer.py` This new layer: - Observes trade completions (paper vs shadow divergence) - Posts when win/loss",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8282421715526604,
+      "maxScore": 0.8282421715526604,
+      "firstRecalledAt": "2026-05-05T15:58:46.261Z",
+      "lastRecalledAt": "2026-05-05T15:58:46.261Z",
+      "queryHashes": [
+        "668d72afc59a"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "molt.log-agent-note",
+        "molt.log-agent-proposal",
+        "molt.observe-trade-execution",
+        "users/rrg",
+        "win/loss",
+        "molt",
+        "feed",
+        "population"
+      ]
+    },
+    "memory:memory/2026-04-30.md:111:164": {
+      "key": "memory:memory/2026-04-30.md:111:164",
+      "path": "memory/2026-04-30.md",
+      "startLine": 111,
+      "endLine": 164,
+      "source": "memory",
+      "snippet": "### Output Files - `temp/v1-mini-profile-fixed.html` (41.22 KB, 15 pages) - `temp/doctrine-narrative-pipeline-output.json` (payload archive) ### Supporting Files - `temp/full-mini-report-readable.html` (previous version) - `temp/hybrid-profile-payload.json` (doctrine narratives) --- ## What's NOT Done (BLOCKED ON PURPOSE) ### Not Tonight - Email delivery (Resend wiring) - Form submission archival (Formspree) - Server.js integration - Production deployment - PDF generation (Puppeteer Rosetta issue, separate blocker) **Reason:** You wanted V1 assessment artifact first, approval second, then production wiring. That's what we delivered. --- ## What's Next (When You're Ready) ### Phase 2:",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8331783722964828,
+      "maxScore": 0.8331783722964828,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "temp/v1-mini-profile-fixed.html",
+        "41.22",
+        "temp/hybrid-profile-payload.json",
+        "server.js",
+        "output",
+        "temp",
+        "mini",
+        "profile"
+      ]
+    },
+    "memory:memory/2026-05-04.md:306:343": {
+      "key": "memory:memory/2026-05-04.md:306:343",
+      "path": "memory/2026-05-04.md",
+      "startLine": 306,
+      "endLine": 343,
+      "source": "memory",
+      "snippet": "### Solution: Hard Page Breaks + Print CSS 1. Wrapped sections in `.page` divs with `page-break-after: always` 2. Added `@media print` stylesheet with 8.5\"×11\" sizing, 0 margins 3. Removed all `height: auto` hacks 4. Removed score displays from Page 2 5. Cleaned \"Unknown\" labels ### Results ✅ **Print CSS: 2 @media blocks applied** ✅ **Hard page breaks: 4 rules active** ✅ **Score leaks: 0 detected** ✅ **Page 2: Clean (codes only: V8, Fd4, F4, H2, S1, Fx1)** ✅ **Estimated pages: 18–22 proper pages (vs 2 giant before)** ### Files Created - `/utils/htmlRendererV5-PrintReady.js` — Print-ready CSS + cleanup - `/utils/htmlRendererAdapter.js` — Router to print-ready renderer --- ## PHASE",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7891047575606313,
+      "maxScore": 0.7891047575606313,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "router",
+        "page-break-after",
+        "8.5",
+        "print-ready",
+        "utils/htmlrendereradapter.js",
+        "solution",
+        "hard",
+        "page"
+      ]
+    },
+    "memory:memory/2026-05-04.md:52:89": {
+      "key": "memory:memory/2026-05-04.md:52:89",
+      "path": "memory/2026-05-04.md",
+      "startLine": 52,
+      "endLine": 89,
+      "source": "memory",
+      "snippet": "1. Wrapped sections in `.page` divs with `page-break-after: always` 2. Added `@media print` stylesheet with 8.5\"×11\" sizing, 0 margins 3. Removed all `height: auto` hacks 4. Removed score displays from Page 2 5. Cleaned \"Unknown\" labels ### Results ✅ **Print CSS: 2 @media blocks applied** ✅ **Hard page breaks: 4 rules active** ✅ **Score leaks: 0 detected** ✅ **Page 2: Clean (codes only: V8, Fd4, F4, H2, S1, Fx1)** ✅ **Estimated pages: 18–22 proper pages (vs 2 giant before)** ### Files Created - `/utils/htmlRendererV5-PrintReady.js` — Print-ready CSS + cleanup - `/utils/htmlRendererAdapter.js` — Router to print-ready renderer --- ## PHASE 2A: BEHAVIORAL SYSTEM INSTRUMENT REFINEMEN",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7857888736393062,
+      "maxScore": 0.7857888736393062,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "router",
+        "page-break-after",
+        "8.5",
+        "print-ready",
+        "utils/htmlrendereradapter.js",
+        "wrapped",
+        "sections",
+        "page"
+      ]
+    },
+    "memory:memory/2026-04-14.md:67:102": {
+      "key": "memory:memory/2026-04-14.md:67:102",
+      "path": "memory/2026-04-14.md",
+      "startLine": 67,
+      "endLine": 102,
+      "source": "memory",
+      "snippet": "- `95e696d` — Fix /profile API routing (⚠️ contains .env.production with secrets) - `ecc23bf` — Deploy API to Vercel serverless - `a4353c2` — Fix API routing to separate backend - `63cb8e3` — Remove frontend /api handlers 4. ✅ **Git commits created (Backend)** - `743bfe4` — Initial backend: Express server with engine 5. ✅ **Verified API endpoint paths match exactly** - Frontend POST `/create-checkout-session` ← Backend has this - Frontend POST `/api/moremindmap/mini-profile` ← Backend has this - Frontend POST `/submit/real-estate` ← Backend has this ### Manual Deployment Steps Remaining (D.J. to execute) 1. Push frontend: `cd ~/moremindmap && git push origin main`",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7850181140943315,
+      "maxScore": 0.7850181140943315,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "env.production",
+        "create-checkout-session",
+        "api/moremindmap/mini-profile",
+        "submit/real-estate",
+        "d.j",
+        "95e696d",
+        "fix",
+        "profile"
+      ]
+    },
+    "memory:memory/2026-04-14.md:157:194": {
+      "key": "memory:memory/2026-04-14.md:157:194",
+      "path": "memory/2026-04-14.md",
+      "startLine": 157,
+      "endLine": 194,
+      "source": "memory",
+      "snippet": "- `090ae1c` — Tailwind pipeline fix - `ca83a04` — Tailwind CSS scanning fix - `95e696d` — Fix /profile API routing (⚠️ contains .env.production with secrets) - `ecc23bf` — Deploy API to Vercel serverless - `a4353c2` — Fix API routing to separate backend - `63cb8e3` — Remove frontend /api handlers 4. ✅ **Git commits created (Backend)** - `743bfe4` — Initial backend: Express server with engine 5. ✅ **Verified API endpoint paths match exactly** - Frontend POST `/create-checkout-session` ← Backend has this - Frontend POST `/api/moremindmap/mini-profile` ← Backend has this - Frontend POST `/submit/real-estate` ← Backend has this ### Manual Deployment Steps Remaini",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7829188604875503,
+      "maxScore": 0.7829188604875503,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "env.production",
+        "create-checkout-session",
+        "api/moremindmap/mini-profile",
+        "submit/real-estate",
+        "090ae1c",
+        "tailwind",
+        "pipeline",
+        "fix"
+      ]
+    },
+    "memory:memory/2026-04-13.md:237:267": {
+      "key": "memory:memory/2026-04-13.md:237:267",
+      "path": "memory/2026-04-13.md",
+      "startLine": 237,
+      "endLine": 267,
+      "source": "memory",
+      "snippet": "- Localhost fallback was being used in production - **Diagnostic**: - Fetched live CSS asset hash from Vercel deployment (index-DWIoT4vc.css) - Checked compiled CSS for required selectors → FOUND ALL (so CSS was correct) - Fetched live JS bundle → found hardcoded `http://localhost:4242` calls - Confirmed old build was serving old API URLs - **Initial fix attempt**: Changed Profile.jsx and RealEstate.jsx to detect production: ```javascript const API = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? \"https://moremindmap-api.vercel.app\" : \"http://localhost:4242\") ``` ### API Architecture Redesign (FINAL SOLUTION) - **Discovery**: Vercel doesn't route `/api/*` to serv",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7815255844408168,
+      "maxScore": 0.7815255844408168,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "index-dwiot4vc.css",
+        "profile.jsx",
+        "realestate.jsx",
+        "import.meta.env.vite-api-url",
+        "import.meta.env.prod",
+        "moremindmap-api.vercel.app",
+        "localhost",
+        "fallback"
+      ]
+    },
+    "memory:memory/2026-05-05.md:125:172": {
+      "key": "memory:memory/2026-05-05.md:125:172",
+      "path": "memory/2026-05-05.md",
+      "startLine": 125,
+      "endLine": 172,
+      "source": "memory",
+      "snippet": "- `page2_master.svg` (fixed SVG, 816×1056, 27 placeholders) - `page2SvgEngine.js` (SVG injection) - `htmlRendererAdapter.js` (routes to active renderer) --- **Updated:** Tue May 5, 2026 — 00:05 MST **Status:** ✅ OPERATING ENVIRONMENT FIT MODULE PRODUCTION READY **Next:** User decision on deployment vs. refinement --- # EMERGENCY: PAGE 2 SVG RENDERING BLOCKED (00:26 MST) ## Problem SVG Page 2 system map is NOT visible in final report. Output shows only title/subtitle/divider + blank space. **What exists:** - Old Page 2 header container still at line 288 - SVG markup present at line 650 - But SVG is invisible (not rendering) ## Root Cause Analysis (IN PROGRESS) **Hypothesis 1:** S",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7802153726639048,
+      "maxScore": 0.7802153726639048,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "page2-master.svg",
+        "page2svgengine.js",
+        "htmlrendereradapter.js",
+        "title/subtitle/divider",
+        "fixed",
+        "svg",
+        "placeholders",
+        "injection"
+      ]
+    },
+    "memory:memory/2026-04-21.md:398:463": {
+      "key": "memory:memory/2026-04-21.md:398:463",
+      "path": "memory/2026-04-21.md",
+      "startLine": 398,
+      "endLine": 463,
+      "source": "memory",
+      "snippet": "- One bounded adjustment per session - Interactive query support **Real Data Adapter**: ✅ BUILT - Coinbase BTC/ETH WebSocket - Paper/shadow execution preserved - Session mode labeled - No live orders, no silent fallback --- ## KEY FILES CREATED SESSION 3 ``` probation_scaling_engine.py # Initial P+S logic phase48_integration_harness.py # 40-cycle validation probation_scaling_engine_hardened.py # Production-ready, structured logs think_diagnostic_layer.py # Diagnostic engine coinbase_market_feed.py # Real market feed adapter execution_simulator_realdata.py # Simulator-feed integration d",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7797696845367198,
+      "maxScore": 0.7797696845367198,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "btc/eth",
+        "paper/shadow",
+        "probation-scaling-engine.py",
+        "phase48-integration-harness.py",
+        "40-cycle",
+        "production-ready",
+        "think-diagnostic-layer.py",
+        "coinbase-market-feed.py"
+      ]
+    },
+    "memory:memory/2026-04-14.md:317:352": {
+      "key": "memory:memory/2026-04-14.md:317:352",
+      "path": "memory/2026-04-14.md",
+      "startLine": 317,
+      "endLine": 352,
+      "source": "memory",
+      "snippet": "- Solution: Approve unblock via GitHub UI or re-commit without secrets 2. Create backend GitHub repo: `RRG-systems/moremindmap-backend` - Push: `cd ~/moremindmap-backend && git push -u origin main` 3. Connect backend to Vercel: - Create new Vercel project - Import `RRG-systems/moremindmap-backend` repo - Deploy (Vercel auto-detects vercel.json) - Set 4 environment variables: - `OPENAI_API_KEY` = sk-proj-... - `STRIPE_SECRET_KEY` = sk_live_... - `STRIPE_PRICE_ID` = price_... - `SITE_URL` = https://moremindmap.com - Redeploy 4. Frontend Vercel project (already connected): - Set `VITE_API_URL` = https://moremindmap-backend.vercel.app (optional fall",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7796755786691565,
+      "maxScore": 0.7796755786691565,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "openai",
+        "re-commit",
+        "rrg-systems/moremindmap-backend",
+        "moremindmap-backend",
+        "auto-detects",
+        "vercel.json",
+        "openai-api-key",
+        "sk-proj"
+      ]
+    },
+    "memory:memory/2026-05-05.md:1:34": {
+      "key": "memory:memory/2026-05-05.md:1:34",
+      "path": "memory/2026-05-05.md",
+      "startLine": 1,
+      "endLine": 34,
+      "source": "memory",
+      "snippet": "# Mon May 5, 2026 — MOREMINDMAP MINI V2: OPERATING ENVIRONMENT FIT MODULE COMPLETE ✅ ## Session Summary **Objective:** Rebuild Operating Environment Fit module for diagnostic authority (not job listing). **Phase Completed:** PHASE 2C FINAL — Content Authority Pass --- ## What Was Built ### 1. **Content Architecture Rebuild** ✅ - Reduced from 10 per panel → **4 strongest environments per panel** (curation > abundance) - Added **dynamic behavioral category intros** tied to user DNA signature - Rebuilt **environment rationales** from repetitive stems to sharp, varied DNA-driven language - Sharpened **diagnostic insight box** for consulting-grade authority - Preserved **dynamic DNA matchin",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7588065305732171,
+      "maxScore": 0.7588065305732171,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "dna-driven",
+        "consulting-grade",
+        "mon",
+        "may",
+        "moremindmap",
+        "mini",
+        "operating",
+        "environment"
+      ]
+    },
+    "memory:memory/2026-05-05.md:192:226": {
+      "key": "memory:memory/2026-05-05.md:192:226",
+      "path": "memory/2026-05-05.md",
+      "startLine": 192,
+      "endLine": 226,
+      "source": "memory",
+      "snippet": "- `page2IntegratedRenderer.js` — Is stripLegacyPage2() actually removing the old page header? - `page2_master.svg` — Is template loading? Are placeholders replaced? - Final HTML at line 288 — What exactly is in that old page container? - Final HTML at line 650 — Is the SVG actually there and properly formatted? ## Current Status - ⚠️ SVG present but invisible - ⚠️ Old page container not stripped - ⚠️ stripLegacyPage2() regex misses structure because os-map-container missing - 🔴 Page 2 not rendering visually **NEXT ACTION:** Check page2SvgEngine to confirm SVG generation is working, then fix stripping logic to handle the actual structure (not assumed structure). --- **Timestamp:** Tue Ma",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7542051104778492,
+      "maxScore": 0.7542051104778492,
+      "firstRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "queryHashes": [
+        "e00f9c98d6d4"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "page2integratedrenderer.js",
+        "page2-master.svg",
+        "os-map-container",
+        "striplegacypage2",
+        "actually",
+        "removing",
+        "the",
+        "old"
+      ]
+    },
+    "memory:memory/2026-04-17.md:557:613": {
+      "key": "memory:memory/2026-04-17.md:557:613",
+      "path": "memory/2026-04-17.md",
+      "startLine": 557,
+      "endLine": 613,
+      "source": "memory",
+      "snippet": "- ✅ Updates when metrics reset - ✅ Reflects actual trade data - ✅ Returns live metrics in response (for debugging) **Status:** FIXED. Evaluation now responsive to live data. --- ## SYSTEMS DEPLOYED TODAY — SUMMARY ### Three Major Features 1. **Reset Arena Capital** — Clear metrics, preserve bot (segment isolation) 2. **Arena DNA Viewer + SAVE DNA** — Extract and export bot DNA for tracking/deployment 3. **Evaluate Arena Bot** — Deployment filter (PASS/FAIL with hard rules + guidance) ### All Features Live - ✅ Accessible on 127.0.0.1:5050 - ✅ Buttons functional - ✅ API endpoints working - ✅ Data flows correctly (fixed live metrics issue) - ✅ Files saving to disk ### Critical Finding: Ex",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7829297128505117,
+      "maxScore": 0.7829297128505117,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "tracking/deployment",
+        "pass/fail",
+        "127.0.0.1",
+        "updates",
+        "when",
+        "metrics",
+        "reset",
+        "reflects"
+      ]
+    },
+    "memory:memory/2026-04-18.md:1:47": {
+      "key": "memory:memory/2026-04-18.md:1:47",
+      "path": "memory/2026-04-18.md",
+      "startLine": 1,
+      "endLine": 47,
+      "source": "memory",
+      "snippet": "# 2026-04-18 — MOLTmarket V6 Build Begins ## Scope & Vision D.J. is upgrading MOLTmarket and making Rocky a core part of the system (THINK Brain). Three-screen model locked: 1. **TRADING BRAIN** (execution layer) 2. **THINK BRAIN** (Rocky's reasoning engine) 3. **MOLT** (idea swarm layer) ## Phase 2: THINK Memory Spine (COMPLETE) ### What Was Built 1. **think-memory-schema.sql** — SQLite DDL - 4 tables: hypotheses, bots, mutations, decisions - Indexes for Rocky's 5 core queries - Relational model locked 2. **think-memory-queries.js** — Query layer (THINKMemory class) - CRUD methods for all 4 tables - Rocky's 5 core queries: 1. `explainBotOrigin()` — why does this b",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7553015151287877,
+      "maxScore": 0.7553015151287877,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "d.j",
+        "three-screen",
+        "think-memory-schema.sql",
+        "think-memory-queries.js",
+        "moltmarket",
+        "begins",
+        "scope",
+        "vision"
+      ]
+    },
+    "memory:memory/2026-04-18.md:105:156": {
+      "key": "memory:memory/2026-04-18.md:105:156",
+      "path": "memory/2026-04-18.md",
+      "startLine": 105,
+      "endLine": 156,
+      "source": "memory",
+      "snippet": "- **No data dumps** — evidence woven naturally into conversation ## Test Results ### Phase 2 Tests - ✅ Hypothesis creation and storage - ✅ Bot spawning linked to hypothesis - ✅ Metrics evaluation snapshot - ✅ Mutation spawning (1 parent → 11 babies) - ✅ Mutation result classification - ✅ Decision recording - ✅ All 5 Rocky query patterns functional ### Phase 2.5 Tests - ✅ TEST 1: Promote decision includes mutations, trajectory, survival - ✅ TEST 2: Failure diagnosis references history - ✅ TEST 3: Next suggestions avoid failed patterns - ✅ TEST 4: Rocky challenges risky decisions - ✅ TEST 5: Proposals ground in history - ✅ TEST 6: Quick thoughts work with/without context ## Files Created (",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7487592307125321,
+      "maxScore": 0.7487592307125321,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "2.5",
+        "with/without",
+        "data",
+        "dumps",
+        "evidence",
+        "woven",
+        "naturally",
+        "conversation"
+      ]
+    },
+    "memory:memory/2026-04-17.md:470:522": {
+      "key": "memory:memory/2026-04-17.md:470:522",
+      "path": "memory/2026-04-17.md",
+      "startLine": 470,
+      "endLine": 522,
+      "source": "memory",
+      "snippet": "**Risk Assessment:** FAKE PROFITS (25-200 bps over-optimistic per test) - Model shows: +50 bps edge - Reality: Likely -50 to -150 bps edge - **Danger:** Mutations breed losing bots **Minimum Fixes (30 lines, 1-2 hours):** 1. Apply bid-ask slippage (10 lines) 2. Check order size vs depth (15 lines) 3. Add trading fees (5 lines) **Status:** NOT ready for deployment decisions. Safe for relative ranking only. **Next Action:** Implement 3 critical fixes before Mutation Brain ships. --- ## WORKSPACE DASHBOARD CODEPATH FIX — COMPLETE ✓ **Time:** 20:00-20:16 MST ### The Problem D.J. running dashboard from `/Users/rrg/.openclaw/workspace/moltmarket/moltmarket_dashboard.py` but features added",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7465327618277674,
+      "maxScore": 0.7465327618277674,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "25-200",
+        "over-optimistic",
+        "1-2",
+        "bid-ask",
+        "00-20",
+        "d.j",
+        "users/rrg",
+        "risk"
+      ]
+    },
+    "memory:memory/2026-04-18.md:148:173": {
+      "key": "memory:memory/2026-04-18.md:148:173",
+      "path": "memory/2026-04-18.md",
+      "startLine": 148,
+      "endLine": 173,
+      "source": "memory",
+      "snippet": "3. **Hypothesis-aware Evaluation** — detect regime + signal quality 4. **Seed Agents** (Phase 3) — 2 agents (Overfitter + Explorer) 5. **MOLT Feed** (Phase 4) — signal / experimental / noise tiers 6. **3-Window UI** (Phase 5) — BRAIN / THINK / MOLT 7. **LAB Mode** (Phase 6) — slow experimentation 8. **SIM Mode** (Phase 7) — pressure training ## Status ✅ **THINK Memory:** Production-ready ✅ **Rocky Reasoning:** Production-ready ⏳ **Integration:** Ready for wiring into Arena ⏳ **Seed Agents:** Next priority ⏳ **MOLT Feed:** After seed agents ⏳ **UI Refactor:** After core systems ## Key Insight The system now has: - **Memory** (knows what happened) - **Reasoning** (explains what happened) -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7463727188272992,
+      "maxScore": 0.7463727188272992,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "hypothesis-aware",
+        "3-window",
+        "production-ready",
+        "hypothesis",
+        "aware",
+        "evaluation",
+        "detect",
+        "regime"
+      ]
+    },
+    "memory:memory/2026-04-18.md:67:118": {
+      "key": "memory:memory/2026-04-18.md:67:118",
+      "path": "memory/2026-04-18.md",
+      "startLine": 67,
+      "endLine": 118,
+      "source": "memory",
+      "snippet": "- Challenge risky promotion decisions (with severity) - Diagnose problems with prior attempt references - Suggest next mutations avoiding failed patterns - Ground proposals in mutation history - Work without full context (light reasoning fallback) ### Key Achievement **Memory enables Rocky to be useful, not just conversational.** Example: > \"YES: Decent sample: 48 trades. Trajectory improving—good sign. Survival 96% is solid. Mutations on this hypothesis have worked (1 successful). This bot is refinement of something proven. (confidence: high)\" Notice: All claims are linked to memory. No generic advice. ## Architecture Summary ``` THINK Memory (SQLite) ↓ Stores: hypotheses, bots, m",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7422244489071776,
+      "maxScore": 0.7422244489071776,
+      "firstRecalledAt": "2026-05-10T23:00:27.821Z",
+      "lastRecalledAt": "2026-05-10T23:00:27.821Z",
+      "queryHashes": [
+        "c6d42fc0a543"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "challenge",
+        "risky",
+        "promotion",
+        "decisions",
+        "severity",
+        "diagnose",
+        "problems",
+        "prior"
+      ]
+    },
+    "memory:memory/2026-04-26.md:176:217": {
+      "key": "memory:memory/2026-04-26.md:176:217",
+      "path": "memory/2026-04-26.md",
+      "startLine": 176,
+      "endLine": 217,
+      "source": "memory",
+      "snippet": "- **Runtime cache is safe:** Can clear evolution_engine.babies[] without losing data ### Critical Insight \"Two independent sources of truth create future inconsistencies.\" — D.J. This is THE architecture pattern for multi-system coordination. --- **Next Session Plan:** 1. Initialize registry on startup 2. Auto-register babies on first trade 3. Update promotion endpoint to use registry + ledger 4. Update leaderboard to display from ledger (registry for status) 5. Test full cycle: spawn → trade → promote → calibrate **Status:** Foundation architecture in place, implementation pending --- ## DEGRADATION ANALYSIS & FIX (20:30 MST) ### What Happened **Last night (Apr 25):** All systems i",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8041326055322957,
+      "maxScore": 0.8041326055322957,
+      "firstRecalledAt": "2026-05-10T23:03:45.612Z",
+      "lastRecalledAt": "2026-05-10T23:03:45.612Z",
+      "queryHashes": [
+        "2cd5a3b6c611"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "evolution-engine.babies",
+        "d.j",
+        "multi-system",
+        "auto-register",
+        "runtime",
+        "cache",
+        "safe",
+        "can"
+      ]
+    },
+    "memory:memory/2026-05-06.md:273:319": {
+      "key": "memory:memory/2026-05-06.md:273:319",
+      "path": "memory/2026-05-06.md",
+      "startLine": 273,
+      "endLine": 319,
+      "source": "memory",
+      "snippet": "- All 28+ placeholders injected (no `{{}}` visible) --- ## Critical Constraints (Locked) - **NO changes to Pages 1–6** ✅ (locked, untouched) - **NO new visual language** ✅ (matches institutional dossier aesthetic) - **Single-page containment** ✅ (flex layout prevents page break) - **Structural build only** ✅ (no polish pass yet) - **Component architecture** ✅ (modular, reusable, injection-safe) --- ## Files Ready to Integrate - `/engine/generatePage7SystemUnderStrain.js` — READY - `/templates/mini-v2/page7_system_under_strain_v1.html` — READY - Master generator — NEEDS: Import + wire-up (in progress) --- ## Blocking Issue Master generator file (`generateMiniV2ReportMasterLocked.j",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.80178774428791,
+      "maxScore": 0.80178774428791,
+      "firstRecalledAt": "2026-05-10T23:03:45.612Z",
+      "lastRecalledAt": "2026-05-10T23:03:45.612Z",
+      "queryHashes": [
+        "2cd5a3b6c611"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "single-page",
+        "injection-safe",
+        "wire-up",
+        "all",
+        "placeholders",
+        "injected",
+        "visible",
+        "critical"
+      ]
+    }
+  }
+}

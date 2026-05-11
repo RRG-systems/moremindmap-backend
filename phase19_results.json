@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-04-16T14:21:25.602113",
+  "phase": "PHASE 19 - REAL DATA VALIDATION",
+  "synthesis": {
+    "synthetic_phase18": {
+      "count": 1986,
+      "win_rate": 53.6,
+      "pnl_per_trade": 0.00776,
+      "total_pnl": 15.41136,
+      "max_drawdown": -1.7,
+      "label": "Synthetic Phase 18"
+    },
+    "real_data_phase19": {
+      "count": 1119,
+      "win_rate": 0.0,
+      "pnl_per_trade": -0.011881196603045286,
+      "total_pnl": -13.295058998807674,
+      "max_drawdown": -13.295058998807674,
+      "avg_hold_ticks": 1.45218945487042,
+      "label": "Real Data - All Markets"
+    },
+    "comparison": {
+      "q1_beats_random": "NO",
+      "q1_confidence_pp": 100.0,
+      "q2_edge_retention_pct": -153.10820364749077,
+      "q3_market_consistency_pct": 100.0,
+      "q4_k3_adds_value": "NO"
+    }
+  },
+  "regime_distribution": {
+    "avg_safe_pct": 76.41666666666667,
+    "avg_hostile_pct": 23.58333333333333
+  },
+  "friction_assumptions": {
+    "bid_ask_spread_pct": 1.2767143175893938,
+    "slippage_pct": 0.1,
+    "taker_fee_pct": 0.5
+  },
+  "verdict": {
+    "edge_survives": false,
+    "recommendation": "ABORT"
+  }
+}

@@ -1,0 +1,455 @@
+<!-- Money State Panel — Phase 4.5 -->
+<!-- Display: Active bot, capital, risk state, promotion status -->
+
+<div id="money-panel" class="money-panel">
+    <div class="money-header">
+        <h2>💰 MONEY STATE</h2>
+    </div>
+    
+    <!-- System State -->
+    <div class="money-section system-state">
+        <div class="label">SYSTEM STATUS</div>
+        <div id="system-status" class="status-display">
+            <span class="status-indicator" id="status-indicator">●</span>
+            <span id="status-text">INITIALIZING</span>
+        </div>
+    </div>
+    
+    <!-- Risk State -->
+    <div class="money-section risk-state">
+        <div class="label">RISK STATE</div>
+        <div id="risk-display" class="risk-display">
+            <span class="risk-badge" id="risk-badge">NORMAL</span>
+            <span id="risk-reason" class="risk-reason"></span>
+        </div>
+    </div>
+    
+    <!-- Active Bot -->
+    <div class="money-section active-bot">
+        <div class="label">ACTIVE BOT</div>
+        <div id="active-bot-display" class="bot-display">
+            <div id="bot-id" class="bot-id">—</div>
+            <div id="bot-hypothesis" class="bot-hypothesis">—</div>
+            <div id="bot-allocation" class="bot-allocation">— %</div>
+        </div>
+    </div>
+    
+    <!-- Capital Allocation -->
+    <div class="money-section capital">
+        <div class="label">CAPITAL ALLOCATION</div>
+        <div id="capital-display" class="capital-display">
+            <div class="capital-bar">
+                <div id="allocated-bar" class="allocated" style="width: 0%"></div>
+            </div>
+            <div class="capital-text">
+                <span id="capital-allocated">0.0%</span> / <span id="capital-total">100.0%</span>
+                <span id="capital-available">(100.0% available)</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Promotion Status -->
+    <div class="money-section promotion">
+        <div class="label">PROMOTION STATUS</div>
+        <div id="promotion-display" class="promotion-display">
+            <div id="promo-status" class="promo-status">—</div>
+            <div id="promo-gates" class="promo-gates"></div>
+        </div>
+    </div>
+    
+    <!-- Replacement Status -->
+    <div class="money-section replacement" id="replacement-section" style="display: none;">
+        <div class="label">REPLACEMENT PENDING</div>
+        <div id="replacement-display" class="replacement-display">
+            <div id="replacement-message" class="replacement-message"></div>
+            <div class="replacement-buttons">
+                <button id="btn-confirm-replace" class="btn-confirm">Confirm Replace</button>
+                <button id="btn-reject-replace" class="btn-reject">Reject</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Candidate Pool -->
+    <div class="money-section candidates" id="candidates-section" style="display: none;">
+        <div class="label">CANDIDATE POOL</div>
+        <div id="candidates-list" class="candidates-list">
+            <!-- Populated dynamically -->
+        </div>
+    </div>
+</div>
+
+<style>
+.money-panel {
+    background: #0f0f0f;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+    color: #e0e0e0;
+    max-width: 400px;
+}
+
+.money-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #4dd0e1;
+}
+
+.money-header h2 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.money-section {
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #1a1a1a;
+    border-radius: 3px;
+    border-left: 3px solid #333;
+}
+
+.label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.status-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.status-indicator {
+    font-size: 16px;
+    display: inline-block;
+}
+
+.status-indicator.active { color: #81c784; }
+.status-indicator.paused { color: #ffb74d; }
+.status-indicator.stopped { color: #ff6b6b; }
+
+#status-text {
+    font-weight: 500;
+}
+
+.risk-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.risk-badge {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.risk-badge.normal {
+    background: #1a3a3a;
+    color: #4dd0e1;
+}
+
+.risk-badge.throttle {
+    background: #3a3a1a;
+    color: #ffb74d;
+}
+
+.risk-badge.stop {
+    background: #3a1a1a;
+    color: #ff6b6b;
+}
+
+.risk-reason {
+    font-size: 11px;
+    color: #999;
+}
+
+.bot-display {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+}
+
+.bot-id {
+    font-family: monospace;
+    font-weight: 500;
+    color: #4dd0e1;
+}
+
+.bot-hypothesis {
+    font-size: 11px;
+    color: #aaa;
+}
+
+.bot-allocation {
+    font-size: 13px;
+    font-weight: 600;
+    color: #81c784;
+}
+
+.capital-bar {
+    width: 100%;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.allocated {
+    height: 100%;
+    background: linear-gradient(90deg, #4dd0e1, #81c784);
+    transition: width 0.3s;
+}
+
+.capital-text {
+    font-size: 11px;
+    color: #aaa;
+    display: flex;
+    justify-content: space-between;
+}
+
+.capital-allocated {
+    font-weight: 600;
+    color: #4dd0e1;
+}
+
+.capital-available {
+    color: #666;
+}
+
+.promo-status {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.promo-status.pass {
+    color: #81c784;
+}
+
+.promo-status.fail {
+    color: #ff6b6b;
+}
+
+.promo-gates {
+    font-size: 10px;
+    color: #999;
+    margin-top: 4px;
+}
+
+.promo-gate-fail {
+    color: #ff6b6b;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.replacement-message {
+    font-size: 12px;
+    color: #ffb74d;
+    margin-bottom: 8px;
+}
+
+.replacement-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-confirm, .btn-reject {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-confirm {
+    background: #1a5a5a;
+    color: #4dd0e1;
+}
+
+.btn-confirm:hover {
+    background: #2a7a7a;
+}
+
+.btn-reject {
+    background: #5a1a1a;
+    color: #ff6b6b;
+}
+
+.btn-reject:hover {
+    background: #7a2a2a;
+}
+
+.candidates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.candidate-item {
+    padding: 6px;
+    background: #111;
+    border-radius: 2px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.candidate-id {
+    font-family: monospace;
+    color: #4dd0e1;
+}
+
+.candidate-score {
+    color: #81c784;
+    font-weight: 600;
+}
+</style>
+
+<script>
+// Money State Panel Controller
+class MoneyPanel {
+    constructor() {
+        this.currentState = null;
+        this.initialize();
+    }
+    
+    initialize() {
+        // Auto-refresh every 2 seconds
+        setInterval(() => this.update(), 2000);
+        this.update();
+    }
+    
+    async update() {
+        try {
+            const response = await fetch('/api/money-state');
+            if (!response.ok) throw new Error('Failed to fetch');
+            const data = await response.json();
+            this.render(data);
+        } catch (e) {
+            console.error('[MoneyPanel] Error:', e);
+        }
+    }
+    
+    render(state) {
+        this.currentState = state;
+        
+        // System status
+        this.renderSystemStatus(state);
+        
+        // Risk state
+        this.renderRiskState(state);
+        
+        // Active bot
+        this.renderActiveBot(state);
+        
+        // Capital
+        this.renderCapital(state);
+        
+        // Promotion status
+        this.renderPromotion(state);
+        
+        // Replacement (if pending)
+        if (state.replacement_status === 'PENDING') {
+            this.renderReplacement(state);
+        } else {
+            document.getElementById('replacement-section').style.display = 'none';
+        }
+    }
+    
+    renderSystemStatus(state) {
+        const status = state.active_bot_id ? 'ACTIVE' : 'NO BOT';
+        const text = document.getElementById('status-text');
+        const indicator = document.getElementById('status-indicator');
+        
+        text.textContent = status;
+        indicator.className = `status-indicator ${status === 'ACTIVE' ? 'active' : 'paused'}`;
+    }
+    
+    renderRiskState(state) {
+        const badge = document.getElementById('risk-badge');
+        const reason = document.getElementById('risk-reason');
+        
+        badge.textContent = state.risk_state;
+        badge.className = `risk-badge ${state.risk_state.toLowerCase()}`;
+        reason.textContent = state.risk_state_reason || '';
+    }
+    
+    renderActiveBot(state) {
+        const botId = document.getElementById('bot-id');
+        const hypothesis = document.getElementById('bot-hypothesis');
+        const allocation = document.getElementById('bot-allocation');
+        
+        if (state.active_bot_id) {
+            botId.textContent = state.active_bot_id;
+            hypothesis.textContent = state.active_bot_hypothesis || '—';
+            allocation.textContent = `${state.active_bot_allocation || 0}%`;
+        } else {
+            botId.textContent = '—';
+            hypothesis.textContent = '—';
+            allocation.textContent = '—';
+        }
+    }
+    
+    renderCapital(state) {
+        const allocated = document.getElementById('capital-allocated');
+        const total = document.getElementById('capital-total');
+        const available = document.getElementById('capital-available');
+        const bar = document.getElementById('allocated-bar');
+        
+        const allocPct = state.capital_allocated || 0;
+        const totalCap = state.capital_total || 100;
+        
+        allocated.textContent = `${allocPct.toFixed(1)}%`;
+        total.textContent = `${totalCap.toFixed(1)}%`;
+        available.textContent = `(${(totalCap - allocPct).toFixed(1)}% available)`;
+        bar.style.width = `${Math.min(100, (allocPct / totalCap) * 100)}%`;
+    }
+    
+    renderPromotion(state) {
+        const status = document.getElementById('promo-status');
+        const gates = document.getElementById('promo-gates');
+        
+        if (state.promotion_status === 'PASS') {
+            status.textContent = '✓ READY TO PROMOTE';
+            status.className = 'promo-status pass';
+            gates.innerHTML = '';
+        } else if (state.promotion_status === 'FAIL') {
+            status.textContent = '✗ NOT READY';
+            status.className = 'promo-status fail';
+            
+            const failedGates = state.failed_gates || [];
+            gates.innerHTML = failedGates
+                .map(g => `<span class="promo-gate-fail">${g}</span>`)
+                .join('');
+        } else {
+            status.textContent = '—';
+            status.className = 'promo-status';
+            gates.innerHTML = '';
+        }
+    }
+    
+    renderReplacement(state) {
+        const section = document.getElementById('replacement-section');
+        const message = document.getElementById('replacement-message');
+        
+        message.textContent = `Replace ${state.old_bot} with ${state.candidate_bot}?`;
+        section.style.display = 'block';
+    }
+}
+
+// Initialize
+const moneyPanel = new MoneyPanel();
+</script>

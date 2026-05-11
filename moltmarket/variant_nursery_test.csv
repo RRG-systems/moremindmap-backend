@@ -1,0 +1,7 @@
+run_id,variant_id,parent_id,parent_generation,generation,mutation_type,parameter_value,trade_count,paper_pnl,shadow_pnl,sign_flip_rate,degradation_pct,score,status,timestamp
+test_run_1,baby_001,baseline,0,1,engagement_increase,0.005,45,120.5,85.3,0.08,3.5,0.72,completed,2026-04-21T16:16:27.135277
+test_run_1,baby_002,baseline,0,1,size_reduction,0.5,52,250.0,180.0,0.35,2.1,0.68,completed,2026-04-21T16:16:27.135280
+test_run_1,baby_003,baseline,0,1,throttle_adjustment,0.7,38,95.2,72.1,0.12,5.8,0.65,completed,2026-04-21T16:16:27.135282
+test_run_1,baby_004,baby_001,1,2,entry_adjustment,0.003,28,110.5,88.4,0.06,2.0,0.75,completed,2026-04-21T16:16:27.135284
+test_run_1,baby_005,baseline,0,1,risk_adjustment,1.5,8,500.0,350.0,0.15,4.2,0.6,completed,2026-04-21T16:16:27.135287
+test_run_1,baby_006,baseline,0,1,volatility_control,0.8,42,-50.0,-65.0,0.28,12.0,0.35,completed,2026-04-21T16:16:27.135289

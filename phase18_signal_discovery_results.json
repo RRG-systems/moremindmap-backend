@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-04-16T14:14:04.491479",
+  "num_seeds": 40,
+  "total_trades": 9100,
+  "summary": {
+    "A_MOMENTUM_REVERSAL": {
+      "count": 1986,
+      "win_rate": 0.5362537764350453,
+      "avg_pnl_per_trade": 0.00775685650055839,
+      "total_pnl": 15.405117010108963,
+      "max_drawdown": -1.7000000000000015,
+      "consistency": 0.099533705299012
+    },
+    "B_MICRO_MOMENTUM": {
+      "count": 2000,
+      "win_rate": 0.499,
+      "avg_pnl_per_trade": -0.00020000000000000012,
+      "total_pnl": -0.40000000000000024,
+      "max_drawdown": -2.300000000000001,
+      "consistency": 0.10002480932868923
+    },
+    "C_VOLATILITY_EXPANSION": {
+      "count": 2000,
+      "win_rate": 0.5045,
+      "avg_pnl_per_trade": 0.0009000000000000014,
+      "total_pnl": 1.8000000000000027,
+      "max_drawdown": -2.2000000000000006,
+      "consistency": 0.10002095828399186
+    },
+    "D_SPREAD_REVERSION": {
+      "count": 1117,
+      "win_rate": 0.4941808415398389,
+      "avg_pnl_per_trade": -0.00044065810530864496,
+      "total_pnl": -0.4922151036297564,
+      "max_drawdown": -1.9455136267475848,
+      "consistency": 0.0997914003790062
+    },
+    "E_RANDOM": {
+      "count": 1997,
+      "win_rate": 0.5097646469704556,
+      "avg_pnl_per_trade": 0.0027704877718325175,
+      "total_pnl": 5.532664080349537,
+      "max_drawdown": -2.5451798571595647,
+      "consistency": 0.0996637250279207
+    }
+  },
+  "deltas_vs_random": {
+    "A_MOMENTUM_REVERSAL": {
+      "win_rate_delta": 2.64891294645897,
+      "pnl_delta": 0.004986368728725873,
+      "beats_random": true
+    },
+    "B_MICRO_MOMENTUM": {
+      "win_rate_delta": -1.076464697045565,
+      "pnl_delta": -0.0029704877718325176,
+      "beats_random": false
+    },
+    "C_VOLATILITY_EXPANSION": {
+      "win_rate_delta": -0.52646469704557,
+      "pnl_delta": -0.001870487771832516,
+      "beats_random": false
+    },
+    "D_SPREAD_REVERSION": {
+      "win_rate_delta": -1.558380543061677,
+      "pnl_delta": -0.0032111458771411625,
+      "beats_random": false
+    }
+  },
+  "random_baseline": {
+    "win_rate": 0.5097646469704556,
+    "avg_pnl_per_trade": 0.0027704877718325175
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "signal": "A_MOMENTUM_REVERSAL",
+      "pnl_delta": 0.004986368728725873,
+      "win_rate_delta_pp": 2.64891294645897,
+      "beats_random": true
+    },
+    {
+      "rank": 2,
+      "signal": "C_VOLATILITY_EXPANSION",
+      "pnl_delta": -0.001870487771832516,
+      "win_rate_delta_pp": -0.52646469704557,
+      "beats_random": false
+    },
+    {
+      "rank": 3,
+      "signal": "B_MICRO_MOMENTUM",
+      "pnl_delta": -0.0029704877718325176,
+      "win_rate_delta_pp": -1.076464697045565,
+      "beats_random": false
+    },
+    {
+      "rank": 4,
+      "signal": "D_SPREAD_REVERSION",
+      "pnl_delta": -0.0032111458771411625,
+      "win_rate_delta_pp": -1.558380543061677,
+      "beats_random": false
+    }
+  ]
+}

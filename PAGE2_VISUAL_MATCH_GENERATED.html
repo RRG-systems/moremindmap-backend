@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MORE MindMap Behavioral Operating Profile</title>
+  <style>
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: white;
+    }
+    
+    /* PAGE CONTAINER — FULLY DYNAMIC HEIGHT */
+    .page {
+      width: 8.5in;
+      height: auto;
+      min-height: 11in;
+      padding: 0.75in;
+      margin: 0 auto 0.5in;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: visible;
+    }
+    
+    @media print {
+      .page { page-break-after: always; box-shadow: none; margin: 0; overflow: visible; }
+      body { background: none; }
+    }
+    
+    .header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 0.5in;
+      margin-bottom: 0.5in;
+      overflow: visible;
+    }
+    
+    .logo { font-size: 11px; font-weight: 700; color: #0f172a; letter-spacing: 3px; margin-bottom: 0.2in; }
+    .logo-accent { color: #b8860b; }
+    
+    h1 { font-size: 26px; color: #0f172a; margin: 0.2in 0; font-weight: 600; }
+    h2 { font-size: 18px; color: #0f172a; margin: 0.4in 0 0.2in 0; font-weight: 600; border-left: 3px solid #b8860b; padding-left: 0.1in; }
+    h3 { font-size: 14px; color: #1e3a8a; margin: 0.25in 0 0.1in 0; font-weight: 600; }
+    h4 { font-size: 11px; color: #2c5aa0; margin: 0.15in 0 0.08in 0; font-weight: 600; }
+    
+    /* TEXT CONTAINERS — NO CLIPPING */
+    p { margin-bottom: 0.15in; font-size: 10.5px; line-height: 1.5; overflow: visible; word-wrap: break-word; }
+    
+    .subsection {
+      margin: 0.25in 0;
+      padding: 0.1in 0;
+      overflow: visible;
+    }
+    
+    .subsection-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #b8860b;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.08in;
+    }
+    
+    .content { 
+      font-size: 10px; 
+      line-height: 1.5; 
+      color: #333;
+      overflow: visible;
+      word-wrap: break-word;
+    }
+    
+    /* Score Bar Styles */
+    .score-container {
+      margin: 0.2in 0;
+      page-break-inside: avoid;
+      overflow: visible;
+    }
+    
+    .score-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9.5px;
+      font-weight: 600;
+      margin-bottom: 0.06in;
+    }
+    
+    .score-label-left {
+      display: flex;
+      gap: 0.1in;
+      align-items: center;
+      overflow: visible;
+    }
+    
+    .score-label-name { color: #0f172a; }
+    .score-code { color: #b8860b; font-weight: 700; font-size: 11px; }
+    
+    .score-bar-wrapper {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .score-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, #1e3a8a, #2c5aa0);
+      border-radius: 2px;
+    }
+    
+    .score-bar-fill.zero { background: #d1d5db; width: 1%; }
+    .score-bar-fill.low { background: #fbbf24; }
+    .score-bar-fill.medium { background: #60a5fa; }
+    .score-bar-fill.high { background: #1e3a8a; }
+    
+    /* Operating System Map V1 */
+    .os-map-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.3in;
+      align-items: center;
+      margin: 0.4in 0;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .os-map-container.with-center {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    
+    .pattern-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      page-break-inside: avoid;
+      overflow: visible;
+    }
+    
+    .pattern-circle.top { grid-column: 2; grid-row: 1; }
+    .pattern-circle.left { grid-column: 1; grid-row: 2; }
+    .pattern-circle.center { grid-column: 2; grid-row: 2; }
+    .pattern-circle.right { grid-column: 3; grid-row: 2; }
+    .pattern-circle.bottom { grid-column: 2; grid-row: 3; }
+    
+    .pattern-icon {
+      width: 1.2in;
+      height: 1.2in;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.08in;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .pattern-icon.primary { background: #0f172a; }
+    .pattern-icon.secondary { background: #2c5aa0; }
+    .pattern-icon.opposing { background: #9ca3af; }
+    .pattern-icon.center { background: #fafafa; border: 2px solid #0f172a; color: #0f172a; font-size: 10px; }
+    
+    .pattern-label { font-size: 8px; font-weight: 700; color: #b8860b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.05in; }
+    .pattern-name { font-size: 11px; font-weight: 600; color: #0f172a; margin-bottom: 0.04in; }
+    .pattern-score { font-size: 9px; color: #666; }
+    
+    .center-hub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 8.5px;
+      line-height: 1.3;
+      color: #0f172a;
+      padding: 0.15in;
+      text-align: center;
+      overflow: visible;
+      word-wrap: break-word;
+    }
+    
+    .tension-note {
+      font-size: 9px;
+      color: #333;
+      margin-top: 0.2in;
+      padding: 0.15in;
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #b8860b;
+      border-radius: 3px;
+      background: #fafafa;
+      line-height: 1.4;
+      overflow: visible;
+      word-wrap: break-word;
+    }
+    
+    /* Signature */
+    .profile-signature {
+      background: #f0f4f8;
+      border: 1px solid #d1d5db;
+      padding: 0.15in;
+      margin: 0.2in 0;
+      border-radius: 4px;
+      font-size: 10px;
+      text-align: center;
+      overflow: visible;
+    }
+    
+    .signature-label { font-size: 8px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.05in; }
+    .signature-codes { font-size: 13px; font-weight: 700; color: #0f172a; letter-spacing: 2px; font-family: monospace; }
+    
+    /* Callout */
+    .callout {
+      background: #fef3c7;
+      border-left: 4px solid #b8860b;
+      padding: 0.15in;
+      margin: 0.2in 0;
+      font-size: 9.5px;
+      line-height: 1.4;
+      overflow: visible;
+      word-wrap: break-word;
+    }
+    
+    .callout-label { font-weight: 700; color: #92400e; margin-bottom: 0.05in; }
+    
+    /* Worksheet */
+    .worksheet-item {
+      margin: 0.2in 0;
+      padding: 0.15in;
+      border: 1px dashed #d1d5db;
+      background: #fafafa;
+      font-size: 9.5px;
+      overflow: visible;
+      page-break-inside: avoid;
+    }
+    
+    .worksheet-label { font-weight: 600; color: #0f172a; margin-bottom: 0.05in; }
+    .worksheet-space { height: 0.4in; margin-top: 0.1in; border-bottom: 1px solid #d1d5db; }
+    
+    /* Footer */
+    .footer {
+      font-size: 8px;
+      color: #999;
+      text-align: center;
+      margin-top: 0.3in;
+      padding-top: 0.2in;
+      border-top: 1px solid #e0e0e0;
+      overflow: visible;
+    }
+    
+    ul { margin: 0.1in 0 0.1in 0.2in; padding-left: 0.12in; font-size: 9.5px; }
+    li { margin-bottom: 0.04in; overflow: visible; }
+  
+  
+    @media print {
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 8.5in; height: 11in; margin: 0; padding: 0; background: white; font-size: 10pt; }
+      body { display: block; }
+      .page {
+        width: 8.5in !important;
+        height: auto !important;
+        padding: 0.5in !important;
+        margin: 0 !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+      }
+      .page:last-child { page-break-after: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  </style>
+</head>
+<body>
+  
+    
+    <div class="page" style="padding: 0.5in; position: relative; height: 100%; overflow: hidden;">
+      <style>
+        .os-map-page {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          justify-content: space-between;
+          gap: 0.15in;
+        }
+        
+        .os-header {
+          text-align: center;
+          margin-bottom: 0.1in;
+        }
+        
+        .os-header h1 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #0f172a;
+          margin: 0;
+        }
+        
+        .os-header p {
+          font-size: 9px;
+          color: #666;
+          margin: 0.05in 0 0 0;
+        }
+        
+        .os-map-container-visual {
+          position: relative;
+          width: 6.5in;
+          height: 3.2in;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .orbit-ring {
+          position: absolute;
+          width: 2.8in;
+          height: 2.8in;
+          border: 1px dotted #d1d5db;
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 0;
+        }
+        
+        .connector-line {
+          position: absolute;
+          background: linear-gradient(to right, transparent 0%, #d1d5db 50%, transparent 100%);
+          z-index: 1;
+        }
+        
+        .connector-h {
+          height: 1px;
+          width: 1.2in;
+        }
+        
+        .connector-v {
+          width: 1px;
+          height: 1.2in;
+        }
+        
+        .tension-label-connector {
+          position: absolute;
+          font-size: 7px;
+          color: #666;
+          font-weight: 600;
+          z-index: 3;
+        }
+        
+        .node-container {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.08in;
+          z-index: 2;
+        }
+        
+        .node-top {
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        .node-right {
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        
+        .node-left {
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        
+        .node-bottom {
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        .node-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 4;
+        }
+        
+        .node-circle {
+          width: 0.7in;
+          height: 0.7in;
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          color: white;
+          font-size: 11px;
+          text-align: center;
+          line-height: 1.1;
+        }
+        
+        .node-circle.primary {
+          background: #0f172a;
+        }
+        
+        .node-circle.secondary {
+          background: #2c5aa0;
+        }
+        
+        .node-circle.opposing {
+          background: #9ca3af;
+        }
+        
+        .node-circle.center {
+          background: #fafafa;
+          border: 2px solid #0f172a;
+          color: #0f172a;
+          width: 0.85in;
+          height: 0.85in;
+          font-size: 7px;
+        }
+        
+        .node-label {
+          font-size: 7px;
+          font-weight: 700;
+          color: #b8860b;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        
+        .node-name {
+          font-size: 10px;
+          font-weight: 600;
+          color: #0f172a;
+        }
+        
+        .diagnostic-text {
+          font-size: 7.5px;
+          color: #444;
+          line-height: 1.2;
+          max-width: 1.1in;
+          text-align: left;
+        }
+        
+        .diagnostic-container {
+          position: absolute;
+          z-index: 2;
+        }
+        
+        .diagnostic-top-right {
+          top: -0.15in;
+          right: -1.3in;
+          width: 1.2in;
+        }
+        
+        .diagnostic-right {
+          right: -1.3in;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1.2in;
+        }
+        
+        .diagnostic-bottom-right {
+          bottom: -0.15in;
+          right: -1.3in;
+          width: 1.2in;
+        }
+        
+        .diagnostic-left {
+          left: -1.3in;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1.2in;
+        }
+        
+        .tension-section {
+          margin-top: 0.2in;
+          padding: 0.12in;
+          border: 1px solid #e5e7eb;
+          border-left: 4px solid #b8860b;
+          background: #fafafa;
+          border-radius: 3px;
+        }
+        
+        .tension-title {
+          font-size: 8px;
+          font-weight: 700;
+          color: #0f172a;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 0.06in;
+        }
+        
+        .tension-text {
+          font-size: 8px;
+          color: #333;
+          line-height: 1.3;
+        }
+        
+        .legend-row {
+          display: flex;
+          align-items: center;
+          gap: 0.08in;
+          font-size: 7px;
+          color: #666;
+          margin-top: 0.06in;
+        }
+        
+        .legend-dot {
+          width: 0.09in;
+          height: 0.09in;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+      </style>
+      
+      <div class="os-map-page">
+        <div class="os-header">
+          <div style="font-size: 11px; font-weight: 700; color: #0f172a; letter-spacing: 1px;">MORE MINDMAP</div>
+          <h1>Behavioral Operating System Map</h1>
+          <p>System architecture: how you prioritize, decide, and respond</p>
+        </div>
+        
+        <div class="os-map-container-visual">
+          <!-- ORBIT RING -->
+          <div class="orbit-ring"></div>
+          
+          <!-- CONNECTORS -->
+          <svg style="position: absolute; width: 100%; height: 100%; z-index: 1;" preserveAspectRatio="none" viewBox="0 0 520 256">
+            <!-- Top to Center -->
+            <line x1="260" y1="20" x2="260" y2="110" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2,2"/>
+            <!-- Center to Right -->
+            <line x1="310" y1="128" x2="400" y2="128" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2,2"/>
+            <!-- Center to Left -->
+            <line x1="210" y1="128" x2="120" y2="128" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2,2"/>
+            <!-- Center to Bottom -->
+            <line x1="260" y1="146" x2="260" y2="236" stroke="#d1d5db" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+          
+          <!-- PRIMARY (TOP) -->
+          <div class="node-container node-top">
+            <div class="node-circle primary">Fd1</div>
+            <div class="node-label">PRIMARY DRIVER</div>
+            <div class="node-name">Fidelity</div>
+            <div class="diagnostic-container diagnostic-top-right">
+              <div class="diagnostic-text">Prioritizes precision, accuracy, and structural integrity. Protects quality. Sets the standard others follow.</div>
+            </div>
+          </div>
+          
+          <!-- SECONDARY (RIGHT) -->
+          <div class="node-container node-right">
+            <div class="node-circle secondary">H1</div>
+            <div class="node-label">SECONDARY STABILIZER</div>
+            <div class="node-name">Horizon</div>
+            <div class="diagnostic-container diagnostic-right">
+              <div class="diagnostic-text">Future orientation, strategic framing, and long-term consequence. Extends decision horizon.</div>
+            </div>
+          </div>
+          
+          <!-- OPPOSING LEFT (SIGNAL) -->
+          <div class="node-container node-left">
+            <div class="node-circle opposing">S1</div>
+            <div class="node-label">OPPOSING PATTERN</div>
+            <div class="node-name">Signal</div>
+            <div class="tension-label-connector" style="left: -0.6in; top: 50%; transform: translateY(-50%);">Precision > Relational</div>
+            <div class="diagnostic-container diagnostic-left">
+              <div class="diagnostic-text">Relational awareness, emotional attunement, and interpersonal sensing. Lowest capacity.</div>
+            </div>
+          </div>
+          
+          <!-- OPPOSING BOTTOM (FLEX) -->
+          <div class="node-container node-bottom">
+            <div class="node-circle opposing">Fx1</div>
+            <div class="node-label">OPPOSING PATTERN</div>
+            <div class="node-name">Flex</div>
+            <div class="tension-label-connector" style="bottom: -0.35in; left: 50%; transform: translateX(-50%);">Precision > Adaptability</div>
+            <div class="diagnostic-container diagnostic-bottom-right">
+              <div class="diagnostic-text">Adaptability, improvisation, and comfort with change. Lowest capacity.</div>
+            </div>
+          </div>
+          
+          <!-- CENTER (CORE ENGINE) -->
+          <div class="node-container node-center">
+            <div class="node-circle center">
+              <div style="font-weight: 700; font-size: 8px; line-height: 1.2;">CORE ENGINE</div>
+              <div style="font-size: 6.5px; line-height: 1.1; color: #666; margin-top: 0.03in;">Precision-driven operating system</div>
+              <div style="font-size: 6px; color: #888;">prioritizing accuracy</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- TENSION BOX & LEGEND -->
+        <div class="tension-section">
+          <div class="tension-title">System Tension</div>
+          <div class="tension-text">
+            Creates reliability.<br/>
+            Reduces speed and relational responsiveness under pressure.
+          </div>
+          <div style="margin-top: 0.08in; border-top: 1px solid #e5e7eb; padding-top: 0.06in;">
+            <div style="font-size: 7px; font-weight: 600; color: #666; margin-bottom: 0.04in;">SYSTEM LEGEND</div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background: #0f172a;"></div>
+              <span>Primary Driver: Sets your default operating standard</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background: #2c5aa0;"></div>
+              <span>Secondary Stabilizer: Extends and modulates your range</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-dot" style="background: #9ca3af;"></div>
+              <span>Opposing Patterns: Create tension and limit range</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; font-size: 8px; color: #999; margin-top: 0.1in;">Page 2: Behavioral Operating System Map</div>
+    </div>
+  
+  
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Executive Summary</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your behavioral operating system reads as balanced, integrated, and expectation-driven. No single dimension dominates the full pattern; instead, you draw from multiple modes of action depending on the needs of the situation. This creates a practical, steady presence. You do not rely exclusively on force, consensus, analysis, speed, or caution. You combine enough structure to create clarity, enough relational awareness to reduce unnecessary noise, and enough adaptability to remain useful across different environments. The central signature is not extremity; it is composure across several behavioral channels.</p><p style="overflow: visible; word-wrap: break-word;">The most visible impact is the way you create clear expectations. People know where they stand with you when the operating context is defined. You prefer roles, standards, responsibilities, and next steps to be explicit. This gives others a sense of predictability and reduces wasted energy. You function well when the purpose is known, the decision rights are reasonably clear, and the success criteria are stated. In those conditions, you organize effort efficiently and help translate broad intent into practical movement.</p><p style="overflow: visible; word-wrap: break-word;">Your strength is also the source of your main development edge. Because you orient toward clarity, ambiguity can become heavier than it needs to be. When the environment lacks definition, you instinctively look for the missing frame: the criteria, the owner, the right sequence, the available evidence, or the risk boundary. That instinct protects quality, but it can slow momentum when the situation calls for experimentation before certainty. The growth lever is not abandoning structure. It is learning to operate with a lighter structure earlier, especially in situations where the decision is reversible.</p><p style="overflow: visible; word-wrap: break-word;">At your best, you act as a stabilizing integrator. You bring order without over-controlling, judgment without unnecessary rigidity, and communication that helps people coordinate. Your competitive edge sits in disciplined balance: the capacity to hold multiple considerations at once and make them usable for others. The next level of performance comes from preserving that clarity while increasing comfort with iteration, incomplete information, and adaptive movement.</p>
+      </div>
+      
+      <div class="footer">Page 3</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Operating Pattern</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your default operating pattern centers on organization, calibration, and practical alignment. You enter situations by locating the frame: what is expected, what matters most, who owns which part, and what standard defines a good outcome. This does not create a narrow or mechanical style. It creates a grounded style. You work best when effort connects to a visible purpose and when commitments have enough definition to guide action. In groups, this often makes you a natural source of steadiness. You help reduce vagueness, surface assumptions, and convert general discussion into workable agreements.</p><p style="overflow: visible; word-wrap: break-word;">Because the profile is balanced across dimensions, your operating system does not show as a single hard preference. You do not consistently push ahead regardless of input, nor do you hold back until every variable is resolved. You do not lead only through warmth, only through precision, or only through drive. Instead, you adjust the emphasis according to context. When direction is absent, you look for structure. When people lack alignment, you clarify expectations. When a plan becomes too abstract, you bring it back to application. When a process becomes too loose, you look for anchors.</p><p style="overflow: visible; word-wrap: break-word;">This balanced pattern has a premium value in complex environments because it supports translation between different working styles. High-speed people experience you as a source of grounding. Detail-oriented people experience you as someone who respects standards. Relationally oriented people experience you as fair and reasonably considerate. Strategically oriented people experience you as someone who connects ideas to execution. Your contribution is often integrative rather than performative. You strengthen the operating field by making it easier for others to coordinate around shared terms.</p><p style="overflow: visible; word-wrap: break-word;">The cost appears when the environment refuses definition for too long. In unclear situations, you search for the missing stabilizer. If no stabilizer appears, energy shifts from execution to sense-making. That process improves quality, but it also consumes time. The developmental move is to define a minimum viable frame: enough clarity to act, not enough clarity to eliminate uncertainty. Your operating pattern advances fastest when you treat structure as a launch platform rather than a prerequisite for movement.</p>
+      </div>
+      
+      <div class="footer">Page 4</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Decision Architecture</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your decision pattern is evidence-conscious, criteria-oriented, and sensitive to the difference between responsible movement and premature commitment. You do not treat speed as the only sign of decisiveness. You look for enough information to understand the nature of the decision, the likely consequences, and the standard by which success will be judged. This gives your choices a stable foundation. You prefer decisions that can be explained, defended, and translated into clear action. In practical terms, you decide best when the question is framed, the options are visible, and the trade-offs are named.</p><p style="overflow: visible; word-wrap: break-word;">Your speed varies by decision type. When the decision sits inside a familiar structure, you move with efficiency. Established standards, known stakeholders, and clear boundaries allow you to choose without excessive delay. When the decision is ambiguous, novel, politically sensitive, or difficult to reverse, you slow down. That deceleration is not indecision; it is risk sorting. You instinctively distinguish between choices that require careful commitment and choices that support experimentation. The growth opportunity is to make that distinction more explicit and faster, especially when others are waiting for direction.</p><p style="overflow: visible; word-wrap: break-word;">Your data orientation is practical rather than purely academic. You value information when it reduces uncertainty, clarifies consequences, or improves execution. You do not need unlimited analysis for every choice, but you resist making important decisions on vague impressions alone. You look for signals that connect to reality: constraints, patterns, stakeholder needs, operational impact, and likely downstream effects. This strengthens judgment and reduces avoidable rework.</p><p style="overflow: visible; word-wrap: break-word;">Your risk tolerance is measured. You accept risk when it is bounded, understood, or reversible. You resist risk when it is undefined, hidden, or framed in a way that obscures accountability. This makes you dependable in environments where consequences matter. The potential limitation is over-weighting the need for definition when the fastest path to clarity is action itself. The next level of decision effectiveness comes from using rapid iteration cycles: decide, test, learn, and adjust before the situation demands a fully polished answer. You make stronger decisions when you separate irreversible commitments from low-cost experiments.</p>
+      </div>
+      
+      <div class="footer">Page 5</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Communication Style</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your communication style is anchored in clarity, expectation-setting, and practical usefulness. You communicate to create alignment, not simply to express thoughts. The focus lands on what matters, what needs to happen, what standard applies, and how people should coordinate. This gives your communication a grounded quality. Others experience you as more helpful when the subject requires definition, accountability, or translation from concept into action. You bring conversations back to terms that people can use.</p><p style="overflow: visible; word-wrap: break-word;">You tend to value directness when directness serves the work. Your style does not need to be harsh to be clear. You prefer language that reduces confusion and makes commitments visible. When a conversation drifts, you look for the point. When expectations remain implied, you work to make them explicit. When people talk past each other, you bring attention back to shared definitions, next steps, and decision ownership. This makes you effective in collaborative settings where ambiguity produces wasted motion.</p><p style="overflow: visible; word-wrap: break-word;">Your listening pattern is likely selective in a productive way. You listen for meaning, implications, constraints, and responsibility. You track what the speaker is actually asking for, what problem needs to be solved, and where alignment is missing. This supports strong synthesis. You can hear different perspectives and turn them into an organized working frame. Because your profile is balanced, you do not listen only for emotional tone, only for logic, or only for action. You integrate those layers when the environment gives you enough time and context.</p><p style="overflow: visible; word-wrap: break-word;">The blind spot in this communication pattern appears when others need exploratory space before they are ready for clarity. Your instinct to define the frame can feel premature to people who are still discovering what they think. In high-ambiguity conversations, your search for clear expectations can unintentionally narrow the discussion too early. The developmental refinement is to signal the mode of conversation before driving alignment. Exploration, decision, feedback, and execution each require a different communication posture. Your communication becomes more influential when you name the mode, then match your level of structure to it. That preserves your natural clarity while making room for uncertainty, creativity, and early-stage thinking.</p>
+      </div>
+      
+      <div class="footer">Page 6</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Under Pressure</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Under pressure, your system moves toward stabilization. The most consistent stress response is a stronger search for structure, clearer expectations, and more reliable criteria. When the environment becomes noisy, unclear, or emotionally charged, you work to reestablish the frame. You look for what is known, what must be decided, what standard matters, who owns the next move, and what risk must be contained. This response protects the group from drift. It also helps prevent reactive decisions made from anxiety rather than judgment.</p><p style="overflow: visible; word-wrap: break-word;">Pressure does not appear to push you into one extreme behavioral lane. Because the overall pattern is balanced, stress likely compresses your flexibility before it changes your identity. You become more focused on reducing ambiguity and restoring order. You rely more heavily on what can be named, assigned, sequenced, and evaluated. In productive conditions, this makes you a stabilizing force. You create traction when others become scattered. You organize the situation so people can regain confidence and act.</p><p style="overflow: visible; word-wrap: break-word;">The cost emerges when the pressure environment requires movement before enough structure exists. In those moments, the search for the right frame can become the work itself. You can spend valuable energy clarifying the terms while the situation is asking for a fast test, a temporary decision, or a controlled experiment. The more consequential the situation feels, the more important it becomes to distinguish between risk that must be managed and uncertainty that simply must be entered.</p><p style="overflow: visible; word-wrap: break-word;">Your adaptation mode under pressure is strongest when you can define a minimum viable plan: immediate priorities, visible owners, short feedback loops, and a clear checkpoint for adjustment. Your recovery style improves when ambiguity is converted into staged action. You do not need perfect certainty to recover momentum; you need enough orientation to act responsibly. The pressure signature therefore contains both strength and edge. You bring order to instability, but the next level comes from reducing the time it takes to move from sense-making into iteration. Fast learning, not perfect framing, becomes the most effective stabilizer in volatile conditions.</p>
+      </div>
+      
+      <div class="footer">Page 7</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Blind Spots & Opposing Patterns</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your primary blind spot sits inside a strength: the assumption that clearer expectations are usually the best next move. In many environments, that assumption produces excellent outcomes. It reduces confusion, improves accountability, and prevents avoidable misalignment. However, not every situation benefits from immediate definition. Some problems need a period of looseness before they can be structured well. Some conversations need discovery before closure. Some ideas need rough testing before the success criteria are fully known. When you apply clarity too early, you can unintentionally constrain the field before the best options surface.</p><p style="overflow: visible; word-wrap: break-word;">Another blind spot involves the hidden cost of responsible caution. You value decisions that make sense, hold together, and account for consequences. That discipline protects quality. It also creates a tendency to treat unclear decisions as if they require more information before movement. In reality, many unclear decisions become clear only through action. The issue is not risk appetite in general; it is risk classification. When a choice is reversible, low-cost, or experimental, extended framing creates unnecessary drag. Your system performs best when it quickly separates decisions that require deliberation from decisions that require motion.</p><p style="overflow: visible; word-wrap: break-word;">You can also underestimate how much structure you naturally provide. Because expectation-setting feels practical and obvious to you, you do not always recognize that it shapes the room. Others often calibrate around the terms you introduce. That influence is useful, but it carries responsibility. If you define the problem too narrowly, others follow that narrowness. If you frame uncertainty as a gap to close rather than a space to explore, others shift into closure mode. Your clarity becomes the operating standard even when you do not intend to lead formally.</p><p style="overflow: visible; word-wrap: break-word;">The final blind spot is the belief that balance automatically creates adaptability. A balanced profile gives you access to multiple modes, but adaptability still requires deliberate switching. In ambiguous environments, the needed mode is often experimentation, not refinement. Growth comes from noticing when your system is seeking certainty, then choosing a lighter frame on purpose. Your strongest development does not require becoming less disciplined. It requires recognizing when discipline means rapid learning rather than careful preparation.</p>
+      </div>
+      
+      <div class="footer">Page 8</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Friction Points</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Friction arises most often in environments where expectations remain implicit, authority is unclear, or decisions move without agreed criteria. You function best when people know what they are trying to accomplish and what role each person plays in getting there. When those elements are absent, you naturally move to clarify them. That response solves many problems, but it also creates tension with people who prefer open-ended exploration, informal coordination, or action without visible structure. The friction is not personal at its root. It comes from different assumptions about what creates progress.</p><p style="overflow: visible; word-wrap: break-word;">A common trigger is ambiguous ownership. When responsibilities blur, your system looks for assignment and accountability. You want to know who decides, who contributes, who executes, and who is affected. In teams that avoid naming ownership, this can make you appear more formal or more insistent than you intend. You are not seeking control for its own sake. You are trying to prevent confusion from becoming rework, conflict, or missed expectations.</p><p style="overflow: visible; word-wrap: break-word;">Another friction point appears with rapid movers who treat iteration as a substitute for alignment. They want to try, adjust, and learn in motion. You recognize the value of that approach, but you look for the boundary conditions first. What is reversible? What is the acceptable cost of being wrong? What signals tell us to continue or stop? When those questions are dismissed, you experience the process as under-managed. They can experience your questions as slowing momentum. The productive resolution comes from making the experiment explicit rather than debating whether to plan or act.</p><p style="overflow: visible; word-wrap: break-word;">Conflict patterns also appear when communication stays vague. You tend to press for concrete language, which improves execution but can feel uncomfortable to people who use indirect communication to preserve flexibility or emotional safety. If pressure rises, you become more focused on the practical frame, which can reduce patience for circular conversation. The key friction pattern is a clash between clarity and ambiguity. Your best conflict contribution is naming the ambiguity without demanding full resolution. Define the next reversible step, the checkpoint, and the decision owner. That approach satisfies your need for responsible structure while reducing resistance from those who need movement before certainty.</p>
+      </div>
+      
+      <div class="footer">Page 9</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Growth Edge</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">Your growth edge is developing greater flexibility in ambiguity without losing the clarity that makes you effective. The task is not to become less structured, less responsible, or less disciplined. The task is to apply structure at the right weight for the moment. Some situations require a robust frame before action. Others require a light frame, a fast test, and a short learning loop. Your next level comes from distinguishing those situations quickly and acting accordingly.</p><p style="overflow: visible; word-wrap: break-word;">The most important developmental shift is from certainty-seeking to learning design. When information is incomplete, the strongest question is not always what do we need to know before deciding. Often, the stronger question is what small action will teach us the most. This shift preserves your data orientation while reducing the delay that comes from trying to resolve ambiguity cognitively. You still respect consequences. You still clarify standards. You simply create evidence through disciplined experimentation instead of waiting for evidence to appear.</p><p style="overflow: visible; word-wrap: break-word;">Rapid iteration cycles are especially valuable for your profile. They give ambiguity a structure without pretending to eliminate it. A useful cycle defines the hypothesis, the action, the owner, the time boundary, the feedback signal, and the adjustment point. This satisfies your need for accountability while enabling movement in uncertain conditions. The more you practice this, the more you experience ambiguity as manageable rather than inefficient.</p><p style="overflow: visible; word-wrap: break-word;">A second growth lever is learning to classify decisions aloud. Reversible decisions deserve speed. Irreversible decisions deserve rigor. High-cost decisions deserve stronger evidence. Low-cost decisions deserve experimentation. When you make this classification visible, you reduce tension with faster-moving collaborators and prevent your own system from treating every unclear choice as equally consequential.</p>
+      </div>
+      
+      <div class="footer">Page 10</div>
+    </div>
+  
+      <div class="page">
+        <div class="header">
+          <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+          <h2>Growth Edge (continued)</h2>
+        </div>
+        
+        <div class="content" style="overflow: visible;">
+          <p style="overflow: visible; word-wrap: break-word;">The deeper growth is identity-level. Your effectiveness has come from creating clear expectations. The next stage expands that into creating useful conditions for progress. Sometimes the useful condition is clarity. Sometimes it is permission to test. Sometimes it is a temporary frame that everyone agrees to revisit. Growth happens when you remain the person who brings order, while becoming faster at allowing order to emerge through action.</p>
+        </div>
+        
+        <div class="footer">Page 11</div>
+      </div>
+    
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Facilitator Notes</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">For a coach, facilitator, or leader working with this profile, the most important observation is that the person responds well to clear frames and practical distinctions. Abstract feedback produces limited value unless it connects to observable behavior, decision patterns, and operating consequences. The individual engages best when the conversation identifies what is happening, where it helps, where it costs, and what behavioral adjustment creates leverage. Keep the work diagnostic, concrete, and forward-moving.</p><p style="overflow: visible; word-wrap: break-word;">Do not frame the development need as a lack of adaptability. The profile is balanced and contains multiple behavioral capacities. The more accurate frame is flexibility under ambiguity. This distinction matters. If the person hears that they lack flexibility, the feedback feels imprecise. If they hear that their flexibility narrows when decision criteria are unclear, the pattern becomes recognizable and workable. The facilitator should track moments when the person asks for more definition, more evidence, or clearer ownership. Those requests often serve the work. The coaching question is whether the request is necessary before movement or whether it can be answered through a short experiment.</p><p style="overflow: visible; word-wrap: break-word;">The most useful intervention is decision classification. Help the person separate reversible from irreversible decisions, high-consequence from low-consequence commitments, and learning moves from execution moves. This creates immediate behavioral traction. It allows them to keep their standards while increasing pace. A facilitator can ask: What is the cost of being wrong here? How quickly can we detect it? Who needs to approve the next step? What would a safe test look like? These questions match the person’s preference for responsibility while expanding tolerance for iteration.</p><p style="overflow: visible; word-wrap: break-word;">Watch for over-structuring in early-stage conversations. The person can introduce clarity so effectively that the group closes too soon. Encourage explicit mode-setting: Are we exploring, deciding, aligning, or executing? This single distinction helps them regulate their strength. In exploration mode, the facilitator should invite them to hold structure lightly. In execution mode, their natural clarity becomes a major asset. The goal is not to soften the person’s edge. The goal is to deploy it at the right moment, with the right level of weight.</p>
+      </div>
+      
+      <div class="footer">Page 12</div>
+    </div>
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Recommended Next Step</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">The single most valuable next action is to install a simple decision filter that separates reversible decisions from irreversible decisions before time, energy, and discussion expand. This is the highest-leverage move because it directly addresses the core development theme: flexibility in ambiguity. Your system already knows how to create clarity. The next step is to decide how much clarity the situation actually requires. That distinction turns ambiguity from a stop signal into a sorting process.</p><p style="overflow: visible; word-wrap: break-word;">Use a visible classification before important choices: reversible, partially reversible, or irreversible. A reversible decision calls for speed, a clear owner, a short test, and a defined review point. A partially reversible decision calls for limited analysis, stakeholder awareness, and risk boundaries. An irreversible or high-consequence decision calls for stronger evidence, wider input, and more deliberate commitment. This filter protects the quality of your judgment while preventing low-risk uncertainty from receiving high-risk treatment.</p><p style="overflow: visible; word-wrap: break-word;">The behavioral focus is rapid iteration. Choose one current area where the answer is not fully clear and design a short learning cycle. Define the question being tested, the smallest useful action, the person responsible, the time boundary, and the signal that determines what happens next. The goal is not to complete the whole solution. The goal is to produce better information through action. This practice builds a new relationship with ambiguity: you do not wait for the frame to become complete; you create a temporary frame that can evolve.</p><p style="overflow: visible; word-wrap: break-word;">This next step also improves communication with others. When you say, this is reversible, so we are testing rather than committing, you reduce resistance from both cautious and fast-moving collaborators. Cautious people hear that risk is contained. Fast-moving people hear that movement is authorized. You become a bridge between quality and pace.</p>
+      </div>
+      
+      <div class="footer">Page 13</div>
+    </div>
+  
+      <div class="page">
+        <div class="header">
+          <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+          <h2>Recommended Next Step (continued)</h2>
+        </div>
+        
+        <div class="content" style="overflow: visible;">
+          <p style="overflow: visible; word-wrap: break-word;">The recommended focus is therefore precise: classify decisions faster, test reversible choices sooner, and reserve deep deliberation for commitments that truly require it. This preserves your strongest asset, clear expectations, while adding a more agile operating rhythm. The result is greater speed without carelessness and greater flexibility without loss of standards.</p>
+        </div>
+        
+        <div class="footer">Page 14</div>
+      </div>
+    
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h2>Reflection & Development</h2>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible;"><strong>Use these prompts to deepen your self-awareness and plan intentional development:</strong></p>
+        
+        <div class="worksheet-item">
+          <div class="worksheet-label">1. Which of these patterns do you recognize most often?</div>
+          <div class="worksheet-space"></div>
+        </div>
+        
+        <div class="worksheet-item">
+          <div class="worksheet-label">2. Where does your speed create friction in your relationships or work?</div>
+          <div class="worksheet-space"></div>
+        </div>
+        
+        <div class="worksheet-item">
+          <div class="worksheet-label">3. Which underweighted signal (low dimension) costs you the most in your current role?</div>
+          <div class="worksheet-space"></div>
+        </div>
+        
+        <div class="worksheet-item">
+          <div class="worksheet-label">4. What tends to happen when your first instinct is challenged?</div>
+          <div class="worksheet-space"></div>
+        </div>
+        
+        <div class="worksheet-item">
+          <div class="worksheet-label">5. What would become possible if you developed your growth edge intentionally?</div>
+          <div class="worksheet-space"></div>
+        </div>
+      </div>
+      
+      <div class="footer">Reflection & Development</div>
+    </div>
+  
+  
+    <div class="page">
+      <div class="header">
+        <div class="logo">MORE <span class="logo-accent">MINDMAP</span></div>
+        <h1>What Full Profile Unlocks</h1>
+      </div>
+      
+      <div class="content" style="overflow: visible;">
+        <p style="overflow: visible; word-wrap: break-word;">The full MORE MindMap profile goes much deeper than this Mini. It will show you the specific written response patterns that reveal your behavioral style at a granular level, the subtle trade-offs in how you operate, and the conditions where your current pattern works brilliantly versus where it creates problems.</p>
+        
+        <p style="overflow: visible; word-wrap: break-word;">More importantly, the full profile will help identify which dimensions matter most for your specific role, your specific team, and your specific goals. This Mini profile shows the pattern. The full profile will help you optimize it.</p>
+      </div>
+      
+      <div style="margin-top: 0.4in; padding: 0.2in; background: #f0f4f8; border-radius: 4px; overflow: visible;">
+        <h3 style="overflow: visible;">Next Steps</h3>
+        <ul style="overflow: visible;">
+          <li style="overflow: visible;">Review this Mini Profile with your coach or facilitator</li>
+          <li style="overflow: visible;">Use the reflection prompts to identify your highest-leverage development area</li>
+          <li style="overflow: visible;">Discuss your signature code with your team</li>
+        </ul>
+      </div>
+      
+      <div class="footer" style="overflow: visible;">
+        <p style="margin-bottom: 0.1in; overflow: visible;">© MORE MindMap | Confidential Assessment</p>
+        <p style="font-size: 7px; overflow: visible;">This assessment is designed for personal insight and professional development.</p>
+      </div>
+    </div>
+  
+</body>
+</html>
+  

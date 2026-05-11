@@ -1,0 +1,342 @@
+{
+  "timestamp": "2026-04-21T16:24:34.422745",
+  "num_cycles": 30,
+  "flat_count": 0,
+  "replace_count": 0,
+  "equity_curve": [
+    10000.0,
+    9960.0,
+    9920.0,
+    9880.0,
+    9840.0,
+    9800.0,
+    9760.0,
+    9720.0,
+    9680.0,
+    9640.0,
+    9600.0,
+    9560.0,
+    9520.0,
+    9480.0,
+    9440.0,
+    9400.0,
+    9360.0,
+    9320.0,
+    9280.0,
+    9240.0,
+    9200.0,
+    9160.0,
+    9120.0,
+    9080.0,
+    9040.0,
+    9000.0,
+    8960.0,
+    8920.0,
+    8880.0,
+    8840.0,
+    8800.0
+  ],
+  "cycles": [
+    {
+      "cycle": 1,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 10000.0,
+      "equity_after": 9960.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 2,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9960.0,
+      "equity_after": 9920.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 3,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9920.0,
+      "equity_after": 9880.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 4,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9880.0,
+      "equity_after": 9840.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 5,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9840.0,
+      "equity_after": 9800.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 6,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9800.0,
+      "equity_after": 9760.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 7,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9760.0,
+      "equity_after": 9720.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 8,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9720.0,
+      "equity_after": 9680.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 9,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9680.0,
+      "equity_after": 9640.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 10,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9640.0,
+      "equity_after": 9600.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 11,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9600.0,
+      "equity_after": 9560.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 12,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9560.0,
+      "equity_after": 9520.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 13,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9520.0,
+      "equity_after": 9480.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 14,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9480.0,
+      "equity_after": 9440.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 15,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9440.0,
+      "equity_after": 9400.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 16,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9400.0,
+      "equity_after": 9360.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 17,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9360.0,
+      "equity_after": 9320.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 18,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9320.0,
+      "equity_after": 9280.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 19,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9280.0,
+      "equity_after": 9240.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 20,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9240.0,
+      "equity_after": 9200.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 21,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9200.0,
+      "equity_after": 9160.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 22,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9160.0,
+      "equity_after": 9120.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 23,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9120.0,
+      "equity_after": 9080.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 24,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9080.0,
+      "equity_after": 9040.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 25,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9040.0,
+      "equity_after": 9000.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 26,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 9000.0,
+      "equity_after": 8960.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 27,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 8960.0,
+      "equity_after": 8920.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 28,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 8920.0,
+      "equity_after": 8880.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 29,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 8880.0,
+      "equity_after": 8840.0,
+      "drawdown": 0.04
+    },
+    {
+      "cycle": 30,
+      "active_bot": "baseline",
+      "brain_state": "NORMAL",
+      "action": "CONTINUE",
+      "pnl": -40,
+      "equity_before": 8840.0,
+      "equity_after": 8800.0,
+      "drawdown": 0.04
+    }
+  ],
+  "replacement_survival": {}
+}

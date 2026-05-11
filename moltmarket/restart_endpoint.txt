@@ -1,0 +1,42 @@
+@app.route('/api/restart-simulation', methods=['POST'])
+def restart_simulation():
+    """Restart simulation from CSV state (persistent, non-destructive)
+    
+    Unlike /api/reset which starts fresh, this reloads simulator from CSV.
+    Useful for recovering from crashes or re-syncing state.
+    """
+    try:
+        print("\n[RESTART] Restarting simulation from CSV...")
+        
+        # Get current state before restart
+        paper_pnl_before = simulator.paper_pnl
+        shadow_pnl_before = simulator.shadow_pnl
+        
+        # Restart from CSV
+        recover_simulator_state(simulator, data_layer)
+        
+        # Get state after restart
+        paper_pnl_after = simulator.paper_pnl
+        shadow_pnl_after = simulator.shadow_pnl
+        
+        print(f"[RESTART] ✓ Complete")
+        print(f"[RESTART] Paper: ${paper_pnl_before:.2f} → ${paper_pnl_after:.2f}")
+        print(f"[RESTART] Shadow: ${shadow_pnl_before:.2f} → ${shadow_pnl_after:.2f}")
+        
+        return jsonify({
+            'status': 'restart_complete',
+            'paper_pnl': round(paper_pnl_after, 2),
+            'shadow_pnl': round(shadow_pnl_after, 2),
+            'paper_trades': simulator.paper_trades,
+            'shadow_trades': simulator.shadow_trades,
+            'message': 'Simulation restarted from CSV'
+        }), 200
+    
+    except Exception as e:
+        print(f"[RESTART] ERROR: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+        }), 500

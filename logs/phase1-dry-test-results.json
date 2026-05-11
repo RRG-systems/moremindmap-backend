@@ -1,0 +1,98 @@
+{
+  "timestamp": "2026-04-29T16:18:47.241Z",
+  "passed": 10,
+  "total": 10,
+  "passRate": 100,
+  "tests": [
+    {
+      "testNum": 1,
+      "testName": "Home Satisfaction",
+      "input": "we love our home",
+      "expectedBehavior": "home_satisfaction signal detected, NO alert",
+      "actualResult": "signals=[home_satisfaction], alertLevel=cold, shouldAlert=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.240Z"
+    },
+    {
+      "testNum": 2,
+      "testName": "Staying Put",
+      "input": "we are going to stay put for a few years",
+      "expectedBehavior": "staying_put signal detected, NO alert",
+      "actualResult": "signals=[staying_put], alertLevel=cold, shouldAlert=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.240Z"
+    },
+    {
+      "testNum": 3,
+      "testName": "Costs Fine",
+      "input": "monthly costs are fine",
+      "expectedBehavior": "NO alert (not a buy/sell/refi signal)",
+      "actualResult": "alertLevel=cold, shouldAlert=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.240Z"
+    },
+    {
+      "testNum": 4,
+      "testName": "High Payment",
+      "input": "our payment is high",
+      "expectedBehavior": "cost signal detected, NO alert (Phase 1 only logs)",
+      "actualResult": "signals=[payment_high,rate], alertLevel=cold, shouldAlert=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.240Z"
+    },
+    {
+      "testNum": 5,
+      "testName": "Referral Signal",
+      "input": "my daughter may buy soon",
+      "expectedBehavior": "referral/buy signal detected, NO alert (Phase 1 only logs)",
+      "actualResult": "signals=[buy], alertLevel=cold, shouldAlert=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    },
+    {
+      "testNum": 6,
+      "testName": "Wrong Number",
+      "input": "who is this?",
+      "expectedBehavior": "NO signals detected, graceful context restoration",
+      "actualResult": "hasSignals=false, signals=[]",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    },
+    {
+      "testNum": 7,
+      "testName": "STOP Opt-Out",
+      "input": "STOP",
+      "expectedBehavior": "opted_out detected, no further processing",
+      "actualResult": "isOptOut=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    },
+    {
+      "testNum": 8,
+      "testName": "Idempotency",
+      "input": "Event ID: msg_123456789 (processed twice)",
+      "expectedBehavior": "First: not processed, Second: already processed",
+      "actualResult": "isFirst=true, isSecond=false",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    },
+    {
+      "testNum": 9,
+      "testName": "Internal Alert Rejection",
+      "input": "WARM LEAD — CALL WITHIN 5 MINUTES — D.J. PHONE",
+      "expectedBehavior": "Message rejected as internal alert (not customer input)",
+      "actualResult": "isRejected=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    },
+    {
+      "testNum": 10,
+      "testName": "Session Send Cap",
+      "input": "Attempted 6 SMS with limit=5",
+      "expectedBehavior": "First 5 pass, 6th fails",
+      "actualResult": "sends 1-5: [true,true,true,true,true], send 6: true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:47.241Z"
+    }
+  ]
+}

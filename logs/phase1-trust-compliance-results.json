@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-04-29T16:18:44.096Z",
+  "passed": 5,
+  "total": 5,
+  "passRate": 100,
+  "tests": [
+    {
+      "testNum": 1,
+      "testName": "AI Disclosure",
+      "input": "Is this AI?",
+      "expectedBehavior": "Transparent AI disclosure + human offer + STOP reminder",
+      "actualResult": "isAIQuestion=true, hasDisclosure=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:44.094Z"
+    },
+    {
+      "testNum": 2,
+      "testName": "Real Person Question",
+      "input": "Are you a real person?",
+      "expectedBehavior": "Transparent AI disclosure (not pretending to be human)",
+      "actualResult": "isAIQuestion=true, doesNotPretend=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:44.095Z"
+    },
+    {
+      "testNum": 3,
+      "testName": "STOP Opt-Out",
+      "input": "STOP",
+      "expectedBehavior": "Opt-out logged, confirmation sent, future sends blocked",
+      "actualResult": "isOptOut=true, confirmation=true, marked=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:44.096Z"
+    },
+    {
+      "testNum": 4,
+      "testName": "Long-Form Opt-Out",
+      "input": "Please don't text me anymore",
+      "expectedBehavior": "Opt-out logged, marked for future blocking",
+      "actualResult": "isOptOut=true, marked=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:44.096Z"
+    },
+    {
+      "testNum": 5,
+      "testName": "Opt-Out Block",
+      "input": "Attempt send to +15552222222",
+      "expectedBehavior": "Contact is opted out, send blocked before execution",
+      "actualResult": "isOptedOut=true, hasStatus=true",
+      "passed": true,
+      "timestamp": "2026-04-29T16:18:44.096Z"
+    }
+  ],
+  "optOutStatus": {
+    "timestamp": "2026-04-29T16:18:44.096Z",
+    "total_opted_out": 2,
+    "opt_out_file": "logs/opted-out-contacts.jsonl"
+  }
+}

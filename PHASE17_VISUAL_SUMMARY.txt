@@ -1,0 +1,203 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                  PHASE 17 - IN-REGIME EDGE ISOLATION                        ║
+║                         FINAL RESULTS SUMMARY                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ THE VERDICT                                                                │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  System Status:        🔴 NOT VIABLE AS TRADING STRATEGY                  │
+│  Classification:       Loss-prevention filter (not profit generator)       │
+│  Decision Required:    YES - Fix, Accept, or Archive?                     │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ KEY METRICS (40 Seeds, 10,869 Trades)                                      │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  K3+I1 Performance (Safe Regimes Only):                                   │
+│  ├─ Total Trades:           5,771                                         │
+│  ├─ Win Rate:               20.6% (1,189 wins / 4,582 losses)            │
+│  ├─ Avg P&L/Trade:          -$0.1201  ← LOSING MONEY                    │
+│  ├─ Total P&L:              -$693.18                                      │
+│  └─ Status:                 🔴 NEGATIVE EDGE                              │
+│                                                                            │
+│  Random Baseline (Same Safe Windows):                                     │
+│  ├─ Total Trades:           5,771                                         │
+│  ├─ Win Rate:               24.8% (1,431 wins / 4,340 losses)            │
+│  ├─ Avg P&L/Trade:          -$0.1265  ← BETTER THAN I1                  │
+│  ├─ Total P&L:              -$730.04                                      │
+│  └─ Status:                 🟡 BASELINE (but beats I1)                    │
+│                                                                            │
+│  I1 vs Random Comparison:                                                 │
+│  ├─ Signal Quality Delta:   -$0.0097/trade (WORSE)                       │
+│  ├─ Win Rate Delta:         -4.2 percentage points (WORSE)               │
+│  └─ Conclusion:             I1 underperforms random                       │
+│                                                                            │
+│  K3 Hostile Regime Trades (Blocked by K3):                               │
+│  ├─ Total Trades:           5,098                                         │
+│  ├─ Win Rate:               0.5% (27 wins / 5,071 losses)                │
+│  ├─ Avg P&L/Trade:          -$0.2183  ← CATASTROPHIC                    │
+│  ├─ Total P&L:              -$1,112.75                                    │
+│  └─ Status:                 🔴 CONFIRMED BAD (K3 correctly filters)      │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ WHAT'S WORKING vs NOT WORKING                                              │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  ✓ K3 REGIME FILTER (Hostile-State Gate)                                 │
+│    ├─ Correctly identifies hostile regimes                                │
+│    ├─ Blocks 46.9% of trades (the bad ones)                              │
+│    ├─ Win rate hostile: 0.5% vs safe: 21.1% (18.6pp difference)         │
+│    ├─ Prevents $1,112.75 in losses                                       │
+│    └─ Decision rule works: spread >12%, imbalance >80%, bid depth <300   │
+│                                                                            │
+│  ✗ I1 ENTRY SIGNAL (Order Book Imbalance)                                │
+│    ├─ Underperforms random by 4.2pp (20.6% vs 24.8%)                    │
+│    ├─ Negative signal value (-$0.0097/trade)                             │
+│    ├─ Loses money even in "safe" regimes (-$0.1201/trade)              │
+│    ├─ Order book analysis (depth/spread) is not predictive              │
+│    └─ Current approach: noise or contradictory                            │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ ANSWERS TO 4 KEY QUESTIONS                                                 │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Q1: Does I1 have positive edge inside safe regimes?                     │
+│      🔴 NO - Win rate 20.6% vs random 24.8%                              │
+│      I1 picks WORSE entry times than random selection                    │
+│                                                                            │
+│  Q2: Is K3+I1 better than random entry in safe zones?                    │
+│      🔴 NO - K3+I1 underperforms by 4.2 percentage points                │
+│      Signal quality hypothesis FAILS on data                              │
+│                                                                            │
+│  Q3: Profitable strategy or loss-prevention filter?                       │
+│      🔴 LOSS-PREVENTION FILTER ONLY                                      │
+│      • Loses money in safe regimes (-$0.12/trade)                        │
+│      • I1 is noise (doesn't identify winners)                             │
+│      • K3 only prevents some losses (doesn't profit)                      │
+│      • Net: Slower bleeding, not profit generation                        │
+│                                                                            │
+│  Q4: Minimum viable edge needed from I1?                                 │
+│      Need: I1 to beat random by +$0.0112/trade                           │
+│      Current: I1 loses to random by -$0.0097/trade                       │
+│      Gap: +$0.0209/trade improvement required                             │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ DECISION TREE                                                              │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│   START: System losing money on average                                   │
+│      │                                                                    │
+│      ├─→ Can I1 be fixed? (1-2 week effort)                             │
+│      │   ├─ YES → Test alternatives (momentum, regime, flow)             │
+│      │   │   ├─ Beat random by +2pp? → YES → Rebuild & deploy          │
+│      │   │   └─ Beat random by +2pp? → NO → Archive                     │
+│      │   └─ NO → Archive                                                 │
+│      │                                                                    │
+│      └─→ In the meantime:                                                │
+│          ├─ Option A: Use K3 as risk filter (accept losses)             │
+│          ├─ Option B: Explore market-making                              │
+│          └─ Option C: New strategy design                                │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ EDGE DECOMPOSITION                                                         │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Total System Edge = K3 Filtering Benefit + I1 Signal Quality            │
+│                                                                            │
+│  K3 Contribution:        +$0.0982/trade (improvement safe vs hostile)    │
+│  I1 Contribution:        -$0.1201/trade (in safe regimes only)           │
+│  ────────────────────────────────────────                                │
+│  System Total:           -$0.1201/trade (NET NEGATIVE)                   │
+│                                                                            │
+│  Interpretation:                                                          │
+│    K3 works well (filters bad trades)                                     │
+│    But I1 is broken (loses in safe regimes)                              │
+│    Net result: Negative expected value                                    │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ RECOMMENDED ACTION                                                         │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  THIS WEEK:                                                               │
+│    1. STOP trading with I1                                                │
+│    2. Validate findings on real market data (last 30 days)               │
+│    3. Confirm: Does I1 still underperform random?                        │
+│                                                                            │
+│  NEXT WEEK (If Validation Confirms):                                     │
+│    1. Test alternative I1 signals:                                        │
+│       • Momentum-based entry                                              │
+│       • Regime transition (hostile→safe)                                  │
+│       • Order flow imbalance                                              │
+│    2. Target: Beat random by +2.0 percentage points                      │
+│                                                                            │
+│  WEEK 3 (Decision Point):                                                │
+│    • Found working alternative? → Rebuild & backtest                     │
+│    • No luck? → Archive & pivot                                          │
+│                                                                            │
+│  Probability of Success: ~40% (most retail trading doesn't beat random)  │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ FILES GENERATED                                                            │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Quick Reference (2-5 min reads):                                         │
+│    • PHASE17_DECISION_BRIEF.md     - Decision-focused summary             │
+│    • PHASE17_SUMMARY.txt           - Technical summary                    │
+│                                                                            │
+│  Full Analysis (30 min read):                                             │
+│    • PHASE17_REPORT.md             - Comprehensive 15-page report        │
+│                                                                            │
+│  Navigation & Implementation:                                             │
+│    • PHASE17_INDEX.md              - File index & how-to                 │
+│                                                                            │
+│  Code & Data:                                                             │
+│    • edge_isolation_phase17.py     - Simulation engine (40 seeds)        │
+│    • phase17_detailed_analysis.py  - K3 benefit analysis                 │
+│    • phase17_results.json          - Raw numerical output                 │
+│                                                                            │
+│  Memory:                                                                  │
+│    • PHASE17_COMPLETION.md         - Session notes & summary              │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│ CONFIDENCE & VALIDATION                                                    │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Analysis Confidence:     🟢 HIGH                                         │
+│    • Large sample: 40 seeds, 10,869 trades                               │
+│    • Clear results: Consistent across metrics                             │
+│    • Multiple angles: K3, I1, random, signal quality                     │
+│                                                                            │
+│  Real-Market Validation: 🟡 REQUIRED                                     │
+│    • Test on actual Polymarket order book data (30+ days)                │
+│    • Confirm: Does I1 still underperform random in production?           │
+│    • Before final decision: Validate on real market                       │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║  NEXT STEP:                                                                ║
+║  Read /Users/rrg/.openclaw/workspace/PHASE17_DECISION_BRIEF.md            ║
+║  Then decide: Fix (1-2 weeks) | Accept as filter | Archive                ║
+║                                                                            ║
+║  Status: 🟢 ANALYSIS COMPLETE - READY FOR DECISION                        ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝

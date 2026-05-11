@@ -1,0 +1,35 @@
+{
+  "variant_id": "test_baby_001",
+  "initial_capital": 10000.0,
+  "paper_equity": [
+    10000.0,
+    10026.598551073832
+  ],
+  "shadow_equity": [
+    10000.0,
+    9965.992106801015
+  ],
+  "paper_pnl": 26.59855107383229,
+  "shadow_pnl": -34.007893198983844,
+  "paper_trades": 1,
+  "shadow_trades": 1,
+  "trades": [
+    {
+      "variant_id": "test_baby_001",
+      "timestamp": "2026-04-22T22:24:23.959916",
+      "asset": "BTC",
+      "side": "short",
+      "entry_price": 99.63,
+      "paper_entry_fill": 99.61826413280438,
+      "paper_exit_fill": 99.3532939841621,
+      "paper_pnl": 26.59855107383229,
+      "shadow_entry_fill": 99.31665875985011,
+      "shadow_exit_fill": 99.6544137922486,
+      "shadow_pnl": -34.007893198983844,
+      "sign_flip": true
+    }
+  ],
+  "created_at": "2026-04-22T22:24:23.959863",
+  "status": "completed",
+  "archived_at": "2026-04-22T22:24:23.960064"
+}

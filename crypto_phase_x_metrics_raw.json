@@ -1,0 +1,36 @@
+[
+  {
+    "symbol": "BTC/USDT",
+    "avg_spread_bps": 1.5,
+    "median_spread_bps": 1.5,
+    "p25_spread_bps": 0.75,
+    "p75_spread_bps": 3.0,
+    "pct_spread_le_1bps": 0.85,
+    "pct_spread_le_2bps": 0.95,
+    "pct_spread_le_5bps": 0.98,
+    "pct_spread_le_10bps": 0.99,
+    "pct_spread_gt_10bps": 0.01,
+    "realized_vol_annual": 0.3818589665708667,
+    "realized_vol_daily": 0.01998741181587683,
+    "estimated_trades_per_hour": 37577287.79807882,
+    "estimated_trades_per_minute": 626288.1299679803,
+    "avg_hourly_volume_usd": 37577287798.07882
+  },
+  {
+    "symbol": "ETH/USDT",
+    "avg_spread_bps": 1.5,
+    "median_spread_bps": 1.5,
+    "p25_spread_bps": 0.75,
+    "p75_spread_bps": 3.0,
+    "pct_spread_le_1bps": 0.85,
+    "pct_spread_le_2bps": 0.95,
+    "pct_spread_le_5bps": 0.98,
+    "pct_spread_le_10bps": 0.99,
+    "pct_spread_gt_10bps": 0.01,
+    "realized_vol_annual": 0.5302575403962559,
+    "realized_vol_daily": 0.027754948177724694,
+    "estimated_trades_per_hour": 16082459.767574053,
+    "estimated_trades_per_minute": 268040.99612623424,
+    "avg_hourly_volume_usd": 16082459767.574053
+  }
+]

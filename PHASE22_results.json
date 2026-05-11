@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-04-16T17:28:02.267870+00:00",
+  "summary": {
+    "total_markets": 27,
+    "overall_viability": 59.8127522444686,
+    "verdict": "MARGINAL_EDGE"
+  },
+  "distribution": {
+    "EMERGING": 25,
+    "MID": 2,
+    "MATURE": 0
+  },
+  "answers": {
+    "q1_detection_accuracy": {
+      "emerging_pct": 92.5925925925926,
+      "false_positive_rate": 8.0
+    },
+    "q2_lifecycle_duration": {
+      "avg_age_emerging_days": 2.1960536482976853,
+      "avg_age_mid_days": 7.162352274872685,
+      "avg_age_mature_days": 0,
+      "avg_spread_emerging": 118.13140637140637,
+      "avg_spread_mid": 100.0,
+      "avg_spread_mature": 0
+    },
+    "q3_opportunity_set": {
+      "total_markets": 27,
+      "emerging_count": 25,
+      "mid_count": 2,
+      "mature_count": 0,
+      "tradable_pct": 100.0
+    },
+    "q4_system_value": {
+      "EMERGING": {
+        "count": 25,
+        "avg_viability_score": 61.422278682485576,
+        "std_viability_score": 10.078958614276415,
+        "avg_win_rate": 28.76568848982642,
+        "total_trades": 283,
+        "total_wins": 104,
+        "avg_spread_bps": 118.13140637140637,
+        "avg_volume_24h": 33504.24166684266
+      },
+      "MID": {
+        "count": 2,
+        "avg_viability_score": 58.20322580645161,
+        "std_viability_score": 2.3967741935483886,
+        "avg_win_rate": 19.67741935483871,
+        "total_trades": 41,
+        "total_wins": 8,
+        "avg_spread_bps": 100.0,
+        "avg_volume_24h": 60236.24354543063
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sign_flip_threshold": 0.2,
+  "entry_threshold": 0.03,
+  "exit_threshold": 0.015,
+  "position_size": 1.0,
+  "enforcement": "FLAT",
+  "max_concurrent_trades": 8,
+  "description": "Balanced risk/reward",
+  "style": "MODERATE",
+  "calibrated_at": "2026-04-25T22:21:32.344072"
+}

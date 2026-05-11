@@ -1,0 +1,98 @@
+{
+  "phase": 25,
+  "title": "Volatility Expansion Validation (Out-of-Sample)",
+  "date_run": "2026-04-16T10:59:51.550957",
+  "data": {
+    "candles": 86400,
+    "date_range": {
+      "start": "2026-02-15T11:00:51.169027",
+      "end": "2026-04-16T10:59:51.169027"
+    },
+    "price_range": {
+      "min": 61399.01481126497,
+      "max": 844079726.361941
+    }
+  },
+  "phase24_baseline": {
+    "win_rate": 85.71,
+    "avg_pnl_bps": 132.72,
+    "edge_vs_random_bps": 38.32,
+    "std_dev_bps": 139.83,
+    "max_drawdown_bps": 209.79,
+    "sample_size": 7
+  },
+  "phase25_results": {
+    "signal_c": {
+      "name": "Signal C",
+      "sample_size": 65,
+      "win_rate": 56.92,
+      "avg_pnl_bps": 17.67,
+      "avg_pnl_pct": 0.1767,
+      "total_pnl_bps": 1148.59,
+      "std_dev_bps": 197.88,
+      "sharpe_ratio": 1.42,
+      "max_win_bps": 189.81,
+      "max_loss_bps": -209.79,
+      "max_consecutive_losses": 7,
+      "max_drawdown_bps": -2048.05,
+      "avg_duration_ticks": 16.4
+    },
+    "random_baseline": {
+      "name": "Random Baseline",
+      "sample_size": 65,
+      "win_rate": 58.46,
+      "avg_pnl_bps": 23.82,
+      "avg_pnl_pct": 0.2382,
+      "total_pnl_bps": 1548.19,
+      "std_dev_bps": 196.92,
+      "sharpe_ratio": 1.92,
+      "max_win_bps": 189.81,
+      "max_loss_bps": -209.79,
+      "max_consecutive_losses": 5,
+      "max_drawdown_bps": -1318.73,
+      "avg_duration_ticks": 19.1
+    },
+    "edge_vs_random_bps": -6.149999999999999,
+    "regime_performance": {
+      "high": {
+        "sample_size": 61,
+        "win_rate": 55.74,
+        "avg_pnl_bps": 12.93,
+        "std_dev_bps": 198.48,
+        "max_win_bps": 189.81,
+        "max_loss_bps": -209.79,
+        "total_pnl_bps": 788.97
+      },
+      "mid": {
+        "sample_size": 4,
+        "win_rate": 75.0,
+        "avg_pnl_bps": 89.91,
+        "std_dev_bps": 173.03,
+        "max_win_bps": 189.81,
+        "max_loss_bps": -209.79,
+        "total_pnl_bps": 359.62
+      },
+      "low": {
+        "sample_size": 0,
+        "win_rate": 0,
+        "avg_pnl_bps": 0,
+        "std_dev_bps": 0,
+        "max_win_bps": 0,
+        "max_loss_bps": 0,
+        "total_pnl_bps": 0
+      }
+    }
+  },
+  "answers": {
+    "q1_positive_edge": "YES",
+    "q2_edge_above_20bps": "NO",
+    "q3_stable_across_regimes": "NO",
+    "q4_outperforms_random": "NO"
+  },
+  "verdict": {
+    "status": "FAKE",
+    "confidence": "HIGH",
+    "production_readiness": 0,
+    "recommended_action": "DISCARD"
+  }
+}

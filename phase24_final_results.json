@@ -1,0 +1,155 @@
+{
+  "phase": 24,
+  "title": "Crypto Signal Discovery - Final Corrected Analysis",
+  "cost_model_bps": 10,
+  "market_structure_baseline_bps": 94.4,
+  "results": [
+    {
+      "signal": "A_MomentumReversal",
+      "asset": "BTC",
+      "trades": 7,
+      "win_rate": 71.43,
+      "pnl_bps": 75.63,
+      "pnl_pct": 0.7563,
+      "edge_vs_market_bps": -18.77000000000001,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 180.52,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "A_MomentumReversal",
+      "asset": "ETH",
+      "trades": 12,
+      "win_rate": 58.33,
+      "pnl_bps": 23.31,
+      "pnl_pct": 0.2331,
+      "edge_vs_market_bps": -71.09,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 197.01,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "B_MicroMomentum",
+      "asset": "BTC",
+      "trades": 6,
+      "win_rate": 66.67,
+      "pnl_bps": 56.61,
+      "pnl_pct": 0.5661,
+      "edge_vs_market_bps": -37.790000000000006,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 188.37,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "B_MicroMomentum",
+      "asset": "ETH",
+      "trades": 13,
+      "win_rate": 61.54,
+      "pnl_bps": 36.11,
+      "pnl_pct": 0.3611,
+      "edge_vs_market_bps": -58.290000000000006,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 194.41,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "C_VolExpansion",
+      "asset": "BTC",
+      "trades": 7,
+      "win_rate": 85.71,
+      "pnl_bps": 132.72,
+      "pnl_pct": 1.3272,
+      "edge_vs_market_bps": 38.31999999999999,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 139.83,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "C_VolExpansion",
+      "asset": "ETH",
+      "trades": 12,
+      "win_rate": 66.67,
+      "pnl_bps": 56.61,
+      "pnl_pct": 0.5661,
+      "edge_vs_market_bps": -37.790000000000006,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 188.37,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "D_MeanReversion",
+      "asset": "BTC",
+      "trades": 11,
+      "win_rate": 90.91,
+      "pnl_bps": 28.79,
+      "pnl_pct": 0.2879,
+      "edge_vs_market_bps": -65.61000000000001,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 75.89,
+      "max_win": 69.03,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "D_MeanReversion",
+      "asset": "ETH",
+      "trades": 14,
+      "win_rate": 64.29,
+      "pnl_bps": -26.28,
+      "pnl_pct": -0.2628,
+      "edge_vs_market_bps": -120.68,
+      "verdict_raw": "NO_EDGE",
+      "std_dev": 139.1,
+      "max_win": 129.62,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "E_Random",
+      "asset": "BTC",
+      "trades": 7,
+      "win_rate": 57.14,
+      "pnl_bps": 18.55,
+      "pnl_pct": 0.1855,
+      "edge_vs_market_bps": -75.85000000000001,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 197.75,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    },
+    {
+      "signal": "E_Random",
+      "asset": "ETH",
+      "trades": 9,
+      "win_rate": 55.56,
+      "pnl_bps": 12.21,
+      "pnl_pct": 0.1221,
+      "edge_vs_market_bps": -82.19,
+      "verdict_raw": "STRONG_EDGE",
+      "std_dev": 198.56,
+      "max_win": 189.81,
+      "max_loss": -209.79
+    }
+  ],
+  "summary": {
+    "signals_tested": 5,
+    "assets": [
+      "BTC",
+      "ETH"
+    ],
+    "total_results": 10,
+    "positive_signals": 1,
+    "strong_signals": 1,
+    "strongest": {
+      "name": "C_VolExpansion",
+      "asset": "BTC",
+      "edge_bps": 38.31999999999999,
+      "win_rate": 85.71,
+      "trades": 7
+    }
+  }
+}

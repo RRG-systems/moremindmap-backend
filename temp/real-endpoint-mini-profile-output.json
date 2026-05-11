@@ -1,0 +1,237 @@
+{
+  "success": true,
+  "scoringPayload": {
+    "setId": "set_1",
+    "rawScores": {
+      "vector": 14,
+      "signal": 0,
+      "fidelity": 7,
+      "velocity": 5,
+      "leverage": 4,
+      "flex": 0,
+      "framework": 6,
+      "horizon": 3
+    },
+    "normalizedScores": {
+      "vector": 35.9,
+      "signal": 0,
+      "fidelity": 17.9,
+      "velocity": 12.8,
+      "leverage": 10.3,
+      "flex": 0,
+      "framework": 15.4,
+      "horizon": 7.7
+    },
+    "ranked": [
+      {
+        "key": "vector",
+        "label": "Vector (Command)",
+        "percent": 35.9
+      },
+      {
+        "key": "fidelity",
+        "label": "Fidelity (Precision)",
+        "percent": 17.9
+      },
+      {
+        "key": "framework",
+        "label": "Framework (Structure)",
+        "percent": 15.4
+      },
+      {
+        "key": "velocity",
+        "label": "Velocity (Tempo)",
+        "percent": 12.8
+      },
+      {
+        "key": "leverage",
+        "label": "Leverage (Influence)",
+        "percent": 10.3
+      },
+      {
+        "key": "horizon",
+        "label": "Horizon (Perspective)",
+        "percent": 7.7
+      },
+      {
+        "key": "signal",
+        "label": "Signal (Relational Awareness)",
+        "percent": 0
+      },
+      {
+        "key": "flex",
+        "label": "Flex (Adaptability)",
+        "percent": 0
+      }
+    ],
+    "primary": [
+      {
+        "key": "vector",
+        "label": "Vector (Command)",
+        "percent": 35.9
+      },
+      {
+        "key": "fidelity",
+        "label": "Fidelity (Precision)",
+        "percent": 17.9
+      }
+    ],
+    "secondary": [
+      {
+        "key": "framework",
+        "label": "Framework (Structure)",
+        "percent": 15.4
+      },
+      {
+        "key": "velocity",
+        "label": "Velocity (Tempo)",
+        "percent": 12.8
+      },
+      {
+        "key": "leverage",
+        "label": "Leverage (Influence)",
+        "percent": 10.3
+      },
+      {
+        "key": "horizon",
+        "label": "Horizon (Perspective)",
+        "percent": 7.7
+      },
+      {
+        "key": "signal",
+        "label": "Signal (Relational Awareness)",
+        "percent": 0
+      },
+      {
+        "key": "flex",
+        "label": "Flex (Adaptability)",
+        "percent": 0
+      }
+    ],
+    "writtenResponses": [],
+    "diagnostics": {
+      "flatSpread": 35.9,
+      "flatDistribution": false,
+      "weakWrittenCount": 0,
+      "contradictionScore": 0
+    },
+    "invalid": false,
+    "nextStep": "Proceed to OpenAI interpretation layer",
+    "ranked_dimensions": [
+      {
+        "key": "vector",
+        "label": "Vector (Command)",
+        "percent": 35.9
+      },
+      {
+        "key": "fidelity",
+        "label": "Fidelity (Precision)",
+        "percent": 17.9
+      },
+      {
+        "key": "framework",
+        "label": "Framework (Structure)",
+        "percent": 15.4
+      },
+      {
+        "key": "velocity",
+        "label": "Velocity (Tempo)",
+        "percent": 12.8
+      },
+      {
+        "key": "leverage",
+        "label": "Leverage (Influence)",
+        "percent": 10.3
+      },
+      {
+        "key": "horizon",
+        "label": "Horizon (Perspective)",
+        "percent": 7.7
+      },
+      {
+        "key": "signal",
+        "label": "Signal (Relational Awareness)",
+        "percent": 0
+      },
+      {
+        "key": "flex",
+        "label": "Flex (Adaptability)",
+        "percent": 0
+      }
+    ]
+  },
+  "miniProfile": {
+    "dominance_structure": {
+      "primary": [
+        {
+          "key": "vector",
+          "label": "Vector (Command)",
+          "score": 35.9
+        },
+        {
+          "key": "fidelity",
+          "label": "Fidelity (Precision)",
+          "score": 17.9
+        }
+      ],
+      "secondary": [
+        {
+          "key": "framework",
+          "label": "Framework (Structure)",
+          "score": 15.4
+        },
+        {
+          "key": "velocity",
+          "label": "Velocity (Tempo)",
+          "score": 12.8
+        }
+      ],
+      "suppressed": [
+        {
+          "key": "leverage",
+          "label": "Leverage (Influence)",
+          "score": 10.3
+        },
+        {
+          "key": "horizon",
+          "label": "Horizon (Perspective)",
+          "score": 7.7
+        },
+        {
+          "key": "signal",
+          "label": "Signal (Relational Awareness)",
+          "score": 0
+        },
+        {
+          "key": "flex",
+          "label": "Flex (Adaptability)",
+          "score": 0
+        }
+      ]
+    },
+    "headline": "High-impact operator",
+    "summary": "You are defined by a small number of dominant patterns that shape how you think, decide, and move.\n\nYour primary drivers are vector (command) and fidelity (precision), which means you take charge and set direction, while moving at pace. These patterns interact: they reinforce each other to create your distinctive operating style.\n\nYour supporting patterns in framework (structure) and velocity (tempo) provide flexibility and additional capability. Together, these create someone who is effective, but also someone with blind spots—not weaknesses, but areas where your dominant traits have costs.",
+    "what_this_means": "Your profile is shaped by dominant patterns that drive most of your decisions and behavior.\n\nVector (Command) is your strongest pattern. Provides clear direction and removes ambiguity You naturally takes charge naturally without waiting for consensus. The advantage is clear: establishes decisiveness and accountability. The cost is also clear: can seem dominating or dismissive of alternatives. Additionally, may reduce team input and buy-in.\n\nFidelity (Precision) is your strongest pattern. Ensures quality and accuracy in execution You naturally catches errors and inconsistencies others miss. The advantage is clear: builds trust through reliable, thorough work. The cost is also clear: can slow down progress with perfectionism. Additionally, may seem overly focused on details.\n\nYour lower-scoring dimensions are not weaknesses—they reflect areas your system prioritizes less because dominant traits are already taking charge. For example, a low Framework score doesn't mean you can't structure; it means Velocity is already driving action, so structure comes second.\n\nThis drives real strengths: you move fast, decide under pressure, and build momentum. The cost: you skip details, rush steps, and sometimes miss the human impact of speed.",
+    "how_you_move": "You move by getting to the point and taking action. You take charge naturally. You're comfortable stepping in to provide direction when situations are unclear. You make the call and move on. This creates clarity, but it can also mean people feel less heard.\n\nWhen situations shift, you adapt immediately. You don't cling to original plans if conditions have changed. You reassess and reroute on the fly. This flexibility is your strength; your challenge is knowing when to hold course versus when to pivot.\n\nIn meetings and group settings, you move the conversation toward decision. You're uncomfortable with endless debate. You push for closure, next steps, and momentum. This can feel pushy to people who need more time to think.",
+    "communication_style": "You communicate directly and briefly. You skip preamble and context-setting. You get to the point. Most people appreciate this; some experience it as blunt.\n\nYour communication style reflects your need for clarity and direction. You speak with confidence. You state conclusions, not possibilities. You're comfortable being wrong, correcting, and moving on.\n\nIn writing, you favor bullets and short paragraphs over prose. You're impatient with lengthy explanations. You want the key insight, the implication, and the next step.\n\nYou listen selectively. You're hearing for the core idea or decision point, not the full context. This means you can miss important nuance from people who communicate in layers. They may feel unheard even when you've captured their main point.\n\nWhen you disagree, you say so. You don't soften critique with excessive politeness. You assume others can handle directness. Some find this refreshing; others find it harsh.",
+    "decision_pattern": "You decide quickly and with conviction. You trust pattern recognition over exhaustive analysis. You make the same kinds of decisions repeatedly, and they tend to work out, so you trust your instinct. When they don't, you adjust and move on quickly.\n\nYou own your decisions visibly. You don't hide behind committee consensus or data analysis. You step forward and say \"here's what I think we should do.\" This creates accountability and clarity.\n\nYou're comfortable with risk. You accept that some decisions will be wrong. You've learned that perfect decision-making is slower than good-enough decision-making followed by quick adjustment.\n\nYou don't revisit decisions unnecessarily. Once called, a decision stays called. You move energy toward implementation, not second-guessing. This creates momentum; it also means you can miss important signals to course-correct.",
+    "leadership_snapshot": "You lead by example and momentum. Your teams follow your pace and decisiveness, not because you inspire them with words, but because you move. You raise the bar through action.\n\nYou create clarity through direction. When ambiguity exists, you step in and decide. Your teams may not always like the decision, but they know where they stand. This reduces anxiety and increases velocity.\n\nYou're impatient with process for its own sake. You'll create structure if it serves speed, but you won't maintain it if it slows things down. This can make you a refreshing leader in slow-moving organizations, and a chaotic one in cultures that need stability.\n\nYou notice and reward execution. You celebrate fast closures and momentum more than you do careful deliberation. Over time, this shapes teams to move faster and take more risks.\n\nYour challenge is ensuring people feel heard. Directness can read as dismissal if you're not careful. The best version of you includes one extra pause to listen.",
+    "friction_pattern": "Your dominant patterns create predictable friction points:\n\nIn detail work: You tend to cut too many corners. You want the 80% solution and move on. This works for fast-moving markets; it's dangerous in regulated or high-precision environments.\n\nWith people: You can miss important emotional or interpersonal data. You're focused on the problem, not the person. People may feel unseen or undervalued, even when you respect them.\n\nIn long-term planning: You optimize for immediate velocity over future-proofing. You're happy to rework things later if it means moving faster now. This creates technical debt and relationship friction.\n\nUnder pressure: You get more impatient, not less. This can tip into bulldozing or dismissiveness. Your teams may feel unheard when you need them most.\n\nWith people who think differently: You can appear intolerant of different paces, styles, or thinking processes. Slow thinkers, detail people, or consensus-builders may feel judged by your model.",
+    "sales_behavior": "In sales, you move the conversation toward decision. You don't linger in rapport-building or trust-creation. You move to value prop, objection handling, and close.\n\nYou're comfortable with rejection. You don't take it personally. You move to the next opportunity. This gives you persistence that lower-confidence salespeople don't have.\n\nYou build momentum through early wins. You want to create a sense that things are moving forward. You use velocity as a tactic: \"We've already done X and Y, moving to Z tomorrow.\"\n\nYour weakness in sales is understanding the buyer's real concerns. You hear what they say and move on. You may miss the unstated objection or the relationship issue beneath the surface objection.\n\nYou're effective in high-velocity sales environments and weaker in complex, relationship-driven, long-cycle deals where buyers need to feel understood.",
+    "primary_pattern": "Vector (Command), Fidelity (Precision)",
+    "secondary_pattern": "Framework (Structure), Velocity (Tempo)",
+    "recommended_next_step": "Consider a single practice: Before major decisions or important conversations, pause for one extra beat and ask: \"What might I be missing here? Who else should I hear from?\" This isn't about slowing down. It's about adding one small input valve to a system that's already moving fast. You'll still move quickly; you'll just move on slightly more complete information.",
+    "dominance_note": "This profile is shaped by a small number of dominant patterns. Your lower scores are not deficiencies—they reflect areas your system relies on less because stronger patterns are leading.",
+    "written_interpretation": {
+      "clarity": "medium",
+      "certainty": "medium",
+      "relational_awareness": "medium",
+      "self_awareness": "medium",
+      "defensiveness": "medium",
+      "action_orientation": "medium",
+      "emotional_control": "medium",
+      "raw_signal": "balanced"
+    },
+    "interpreter_modifier": {}
+  }
+}

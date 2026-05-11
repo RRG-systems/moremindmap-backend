@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-04-16T07:22:51.259341",
+  "phase": "PHASE 19",
+  "baseline_phase18": {
+    "trades_count": 1986,
+    "win_rate_pct": 53.6,
+    "pnl_per_trade": 0.00776,
+    "total_pnl": 15.41,
+    "sample_size_per_market": 49.65
+  },
+  "phase19_results": {
+    "before_costs": {
+      "count": 1119,
+      "win_rate": 52.457551385165324,
+      "pnl_per_trade": 0.0003129856205837431,
+      "total_pnl": 0.3502309094332085,
+      "max_drawdown": -0.01927580348746405,
+      "label": "Before Costs"
+    },
+    "after_costs": {
+      "count": 1119,
+      "win_rate": 0.0,
+      "pnl_per_trade": -0.015442316813163564,
+      "total_pnl": -17.279952513930027,
+      "max_drawdown": -17.279952513930027,
+      "label": "After Costs"
+    }
+  },
+  "cost_model": {
+    "spread_bps": 50,
+    "slippage_bps": 10,
+    "fee_bps": 100,
+    "total_per_direction_bps": 160,
+    "round_trip_bps": 320
+  },
+  "verdicts": {
+    "q1_beats_random": "NO",
+    "q2_edge_survives_costs": "NO",
+    "q3_market_consistency": "NO",
+    "q4_k3_adds_value": "NO",
+    "overall_edge_survives": false
+  }
+}

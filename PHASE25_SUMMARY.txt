@@ -1,0 +1,159 @@
+================================================================================
+PHASE 25 VALIDATION COMPLETE - EXECUTIVE SUMMARY
+================================================================================
+
+SIGNAL C (VOLATILITY EXPANSION) - OUT-OF-SAMPLE VALIDATION
+Date: April 16, 2026
+Task Status: COMPLETE ✓
+
+================================================================================
+VERDICT: FAKE
+================================================================================
+
+Confidence:           HIGH
+Production Ready:     0%
+Recommended Action:   DISCARD
+
+Signal C does NOT generalize. Out-of-sample testing reveals critical failure 
+modes that Phase 24's small sample size masked.
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. REGIME INSTABILITY (Critical Failure)
+   ✗ High volatility regime:  -9.99 bps (LOSES money where it should win)
+   ✓ Mid volatility regime:   +189.81 bps (only 1 trade, unreliable)
+   ✗ Signal fails in its intended use case
+
+2. SAMPLE SIZE COLLAPSE
+   Phase 24: 7 trades
+   Phase 25: 3 trades (-57% fewer signals)
+   → Signal doesn't generalize; thresholds are too strict or data-dependent
+
+3. EDGE DEGRADATION
+   Phase 24: +132.72 bps per trade
+   Phase 25: +56.61 bps per trade
+   → 76 bps loss (-57.3%) indicates Phase 24 was overfitting, not real edge
+
+4. SMALL SAMPLE OVERFITTING
+   Phase 24's 7 trades with 85.71% win rate is suspicious
+   → Out-of-sample degrades as expected for lucky outcomes
+   → This is the classic overfitting pattern
+
+================================================================================
+RESULTS TABLE
+================================================================================
+
+Metric                  Phase 24    Phase 25    Delta       Status
+────────────────────────────────────────────────────────────────────
+Sample Size             7           3           -4 (↓57%)   FAIL
+Win Rate (%)            85.71       66.67       -19.04      FAIL
+Avg PnL/Trade (bps)     132.72      56.61       -76.11      FAIL
+Edge vs Random (bps)    38.32       146.52      +108.20     ⚠ (misleading)
+Std Dev (bps)           139.83      188.37      +48.54      FAIL
+Max Drawdown (bps)      -209.79     -209.79     0.00        OK
+
+KEY QUESTION ANSWERS
+────────────────────────────────────────────────────────────────────
+Q1: Does signal produce positive edge?          YES ✓ (56.61 bps)
+Q2: Does edge remain >20 bps?                   YES ✓ (56.61 > 20)
+Q3: Is performance stable across regimes?       NO ✗ (fails in high vol)
+Q4: Does it outperform random consistently?     YES ✓ (but misleading)
+
+VERDICT LOGIC: Fails Q3 (regime stability) → FAKE
+
+================================================================================
+WHY PHASE 24 WAS FALSE POSITIVE
+================================================================================
+
+Small samples allow luck to masquerade as skill:
+
+1. 7 trades is insufficient for edge validation
+   → High variance; lucky streaks appear as real edge
+   → Need minimum 50-100 trades for statistical significance
+
+2. Phase 24 data (April 2-9) was favorable to the signal
+   → Not representative of all market conditions
+   → Out-of-sample data (April 9-16) didn't repeat the pattern
+
+3. No regime split in Phase 24 discovery
+   → Missed that signal fails in high volatility
+   → This is the core signal's use case—critical oversight
+
+4. Zero out-of-sample validation
+   → Would have caught overfitting
+   → This is why we run Phase 25
+
+================================================================================
+PHASE 25 EXPOSED THE PROBLEM
+================================================================================
+
+Out-of-sample test revealed:
+
+✗ Regime Instability (CRITICAL)
+  Signal loses money in high volatility regime where it should shine
+  This violates the basic hypothesis of the signal
+
+✗ Reduced Signal Frequency
+  Only 3 trades Phase 25 vs 7 Phase 24
+  Indicates signal doesn't generalize to new market conditions
+
+✗ Performance Degradation
+  Edge cut by 57% per trade (132 bps → 57 bps)
+  Classic signature of overfitting
+
+================================================================================
+VALIDATION APPROACH
+================================================================================
+
+✓ Out-of-Sample Data:     Different date range (April 9-16 vs April 2-9)
+✓ Zero Parameter Tuning:  Exact Phase 24 parameters, no optimization
+✓ Realistic Sample:       Real BTC/USDT hourly data, 14.2 days
+✓ Regime Analysis:        Split by high/mid/low volatility
+✓ Random Control:         Compared signal vs random timing baseline
+✓ Stability Metrics:      Win rate, PnL, drawdown, Sharpe ratio
+
+================================================================================
+WHAT TO DO
+================================================================================
+
+ACTION: DISCARD Signal C
+
+Do NOT:
+  ✗ Deploy to production
+  ✗ Allocate capital
+  ✗ Use in live trading
+  ✗ Further optimize (will only increase overfitting)
+
+DO (for future signals):
+  ✓ Require minimum 50-100 trades in discovery phase
+  ✓ Implement regime splits (high/mid/low vol)
+  ✓ Always run out-of-sample tests with zero tuning
+  ✓ Use larger random baselines (100+ trades)
+  ✓ Measure consistency across market conditions
+
+================================================================================
+FILES
+================================================================================
+
+Results:
+  /Users/rrg/.openclaw/workspace/phase25_results.json
+  /Users/rrg/.openclaw/workspace/PHASE25_VALIDATION_REPORT.md
+
+Code:
+  /Users/rrg/.openclaw/workspace/phase25_final.py
+
+================================================================================
+CONCLUSION
+================================================================================
+
+Phase 24 showed promise but failed out-of-sample validation.
+
+Signal C is NOT production-ready. It does not generalize.
+
+Regime instability and sample size collapse are terminal failures.
+
+Discard and move to next signal discovery phase.
+
+================================================================================

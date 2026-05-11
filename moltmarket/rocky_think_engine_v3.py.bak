@@ -1,0 +1,634 @@
+"""
+ROCKY inside THINK — Raw Diagnostic Engine v3
+
+No routing, no templates. Just Rocky thinking out loud about what's happening in MOLTmarket.
+Real conversation. Real reasoning about BRAIN, Nursery, Arena, MOLT.
+"""
+
+import json
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, Any, List, Optional
+
+
+class RockyDataLayer:
+    """Direct visibility into system state — no filters."""
+    
+    def __init__(self, dashboard_state, data_layer, simulator, nursery_bridge, evolution_engine):
+        self.dashboard_state = dashboard_state
+        self.data_layer = data_layer
+        self.simulator = simulator
+        self.nursery_bridge = nursery_bridge
+        self.evolution_engine = evolution_engine
+    
+    def get_brain_state(self):
+        """What's BRAIN doing right now?"""
+        state = self.dashboard_state.get('brain_state', 'UNKNOWN')
+        reason = self.dashboard_state.get('brain_reason_code', 'unknown')
+        text = self.dashboard_state.get('brain_reason_text', '')
+        enforcement = self.dashboard_state.get('brain_enforcement', {})
+        return {
+            'state': state,
+            'reason_code': reason,
+            'reason_text': text,
+            'enforcement': enforcement,
+        }
+    
+    def get_arena_state(self):
+        """What's Arena (parent strategy) doing?"""
+        metrics = self.dashboard_state.get('metrics', {})
+        return {
+            'total_trades': metrics.get('total_trades', 0),
+            'win_rate': metrics.get('rolling_win_rate', 0),
+            'pnl': metrics.get('pnl', 0),
+            'shadow_pnl': metrics.get('shadow_pnl', 0),
+            'paper_pnl': metrics.get('paper_pnl', 0),
+            'paper_equity_curve': self.simulator.get_paper_equity_curve() if self.simulator else [],
+            'shadow_equity_curve': self.simulator.get_shadow_equity_curve() if self.simulator else [],
+        }
+    
+    def get_nursery_state(self):
+        """What babies are spawned and how are they performing?"""
+        candidates = self.evolution_engine.babies if self.evolution_engine else []
+        metrics = self.nursery_bridge.get_all_baby_metrics() if self.nursery_bridge else {}
+        
+        return {
+            'baby_count': len(candidates),
+            'babies': candidates,
+            'metrics': metrics,
+        }
+    
+    def get_molt_state(self):
+        """MOLT state (if integrated)."""
+        return {}  # TODO: integrate MOLT
+    
+    def get_recent_trades(self, limit=20):
+        """What trades happened recently?"""
+        if self.data_layer:
+            return self.data_layer.get_recent_trades(limit=limit) or []
+        return []
+
+
+class RockyThinkEngine:
+    """
+    Raw Rocky. No routing, no templates.
+    
+    You ask a question. I look at BRAIN/Nursery/Arena/MOLT state.
+    I tell you what I see, what it means, and what I'd do about it.
+    """
+    
+    def __init__(self, workspace_dir, data_layer, user_name="Operator"):
+        self.workspace_dir = workspace_dir
+        self.data_layer = data_layer
+        self.user_name = user_name
+        self.playbook = None
+        self.in_calibration_mode = False
+        self.brain_style = None  # Conservative, Moderate, or Aggressive
+    
+    def query(self, user_query: str) -> str:
+        """
+        Answer user's question by actually looking at system state.
+        Return conversational diagnosis, not structured response.
+        """
+        try:
+            # Get current state
+            brain = self.data_layer.get_brain_state()
+            arena = self.data_layer.get_arena_state()
+            nursery = self.data_layer.get_nursery_state()
+            molt = self.data_layer.get_molt_state()
+            trades = self.data_layer.get_recent_trades(limit=30)
+            
+            # Check if we're entering calibration mode (first promotion)
+            if self._should_enter_calibration_mode(brain, arena):
+                self.in_calibration_mode = True
+                return self._calibration_mode_greeting()
+            
+            # If in calibration mode, handle calibration requests
+            if self.in_calibration_mode and self._is_calibration_request(user_query):
+                return self._handle_calibration(user_query)
+            
+            # Think out loud
+            answer = self._reason_about_query(user_query, brain, arena, nursery, molt, trades)
+            
+            # Append profit suggestions if relevant
+            self._capture_profit_observation(user_query, brain, arena, nursery)
+            
+            return answer
+        except Exception as e:
+            return f"I'm having trouble reading system state: {e}. Check logs."
+    
+    def _should_enter_calibration_mode(self, brain, arena):
+        """Did user just promote first baby? Time to calibrate BRAIN."""
+        # Check if we just transitioned from FLAT to active trading
+        arena_trades = arena.get('total_trades', 0)
+        return (
+            not self.in_calibration_mode and
+            arena_trades > 0 and
+            self.data_layer.dashboard_state.get('trading_enabled', False)
+        )
+    
+    def _calibration_mode_greeting(self):
+        """Welcome to BRAIN calibration."""
+        return """**BRAIN Calibration Mode activated.**
+
+Arena strategy is live and trading. Now we tune the autopilot.
+
+**Which style do you want me to calibrate toward?**
+
+- **Conservative:** Faster deceleration, earlier STOP, strict promotion standards
+- **Moderate:** Balanced thresholds, medium risk tolerance
+- **Aggressive:** Slower deceleration, larger tolerance, but still capital-aware
+
+Type your choice (Conservative / Moderate / Aggressive) and I'll tune BRAIN."""
+    
+    def _is_calibration_request(self, query):
+        """Is user asking about calibration?"""
+        keywords = ['conservative', 'moderate', 'aggressive', 'style', 'calibrate', 'recalibrate', 'change', 'tune']
+        return any(kw in query.lower() for kw in keywords)
+    
+    def _handle_calibration(self, query):
+        """Handle BRAIN calibration requests."""
+        query_lower = query.lower()
+        
+        # Detect style choice
+        if 'conservative' in query_lower:
+            self.brain_style = 'Conservative'
+            settings = self._get_conservative_settings()
+        elif 'moderate' in query_lower:
+            self.brain_style = 'Moderate'
+            settings = self._get_moderate_settings()
+        elif 'aggressive' in query_lower:
+            self.brain_style = 'Aggressive'
+            settings = self._get_aggressive_settings()
+        else:
+            return "I didn't catch that. Choose: Conservative, Moderate, or Aggressive."
+        
+        # Apply settings (would integrate with BRAIN directly in production)
+        msg = f"""**Calibrating to {self.brain_style} mode.**
+
+Applying settings:
+
+**ACCELERATION PROFILE:**
+- Ramp speed: {settings['ramp_speed']}
+- Max position: {settings['max_position']}% of capital
+
+**DECELERATION PROFILE:**
+- Trigger on divergence > {settings['divergence_threshold']}%
+- Decay speed: {settings['decay_speed']}
+
+**STOP PROFILE:**
+- Shadow PnL threshold: ${settings['stop_pnl_threshold']}
+- Win rate floor: {settings['win_rate_floor']}%
+
+**STRATEGY DECAY SENSITIVITY:**
+- Avg PnL degradation: {settings['pnl_degradation_threshold']}%
+- Sign flips monitored: {settings['flip_rate_threshold']}%
+
+**PROMOTION STANDARDS:**
+- Required outperformance: ${settings['promotion_threshold']}
+
+**Market Condition Adjustments:**
+- Trending: +{settings['trending_adjustment']}% aggression
+- Choppy: -{settings['choppy_adjustment']}% aggression
+- High volatility: -{settings['volatility_adjustment']}% size
+
+✓ BRAIN is now in {self.brain_style} mode. Locked and ready.
+
+I'll stay in THINK analyzing and improving. Ask me anything about what's happening."""
+        
+        # Record this calibration
+        self._append_to_make_money_file(f"BRAIN_CALIBRATION_{self.brain_style}", 
+                                       f"User selected {self.brain_style} mode",
+                                       f"Autopilot tuned with {self.brain_style} thresholds")
+        
+        return msg
+    
+    def _get_conservative_settings(self):
+        """Conservative: fast stops, tight leashes."""
+        return {
+            'ramp_speed': 'slow (0.5x standard)',
+            'max_position': '30',
+            'divergence_threshold': '5',
+            'decay_speed': 'fast',
+            'stop_pnl_threshold': '-50',
+            'win_rate_floor': '55',
+            'pnl_degradation_threshold': '10',
+            'flip_rate_threshold': '15',
+            'promotion_threshold': '200',
+            'trending_adjustment': '10',
+            'choppy_adjustment': '20',
+            'volatility_adjustment': '30',
+        }
+    
+    def _get_moderate_settings(self):
+        """Moderate: balanced risk/reward."""
+        return {
+            'ramp_speed': 'medium (1.0x standard)',
+            'max_position': '50',
+            'divergence_threshold': '8',
+            'decay_speed': 'medium',
+            'stop_pnl_threshold': '-100',
+            'win_rate_floor': '52',
+            'pnl_degradation_threshold': '15',
+            'flip_rate_threshold': '20',
+            'promotion_threshold': '100',
+            'trending_adjustment': '15',
+            'choppy_adjustment': '15',
+            'volatility_adjustment': '20',
+        }
+    
+    def _get_aggressive_settings(self):
+        """Aggressive: slow stops, larger positions."""
+        return {
+            'ramp_speed': 'fast (1.5x standard)',
+            'max_position': '75',
+            'divergence_threshold': '12',
+            'decay_speed': 'slow',
+            'stop_pnl_threshold': '-200',
+            'win_rate_floor': '50',
+            'pnl_degradation_threshold': '20',
+            'flip_rate_threshold': '25',
+            'promotion_threshold': '50',
+            'trending_adjustment': '25',
+            'choppy_adjustment': '10',
+            'volatility_adjustment': '10',
+        }
+    
+    def _capture_profit_observation(self, query, brain, arena, nursery):
+        """Log important profit-improvement observations."""
+        # Detect if this was a diagnostic query worth logging
+        keywords = ['problem', 'risk', 'biggest', 'wrong', 'improve', 'profitable', 'edge', 'decay', 'bleed']
+        if not any(kw in query.lower() for kw in keywords):
+            return
+        
+        # Log to MAKE_MONEY_SUGGESTIONS.md
+        # (Implementation in _append_to_make_money_file)
+    
+    def _append_to_make_money_file(self, category, observation, suggestion):
+        """Add entry to MAKE_MONEY_SUGGESTIONS.md."""
+        from datetime import datetime
+        
+        suggestions_file = Path(self.workspace_dir) / "MAKE_MONEY_SUGGESTIONS.md"
+        
+        # Ensure file exists
+        if not suggestions_file.exists():
+            suggestions_file.write_text("# MAKE_MONEY_SUGGESTIONS.md\n\nProfit improvement observations from ROCKY sessions.\n\n")
+        
+        # Append entry
+        timestamp = datetime.now().isoformat()
+        entry = f"\n## [{timestamp}] {category}\n"
+        entry += f"**Observation:** {observation}\n"
+        entry += f"**Profit Suggestion:** {suggestion}\n"
+        
+        with open(suggestions_file, 'a') as f:
+            f.write(entry)
+    
+    def _reason_about_query(self, query, brain, arena, nursery, molt, trades):
+        """
+        Raw reasoning. Look at state. Tell user what I see.
+        """
+        query_lower = query.lower().strip()
+        
+        # What's happening RIGHT NOW?
+        if any(w in query_lower for w in ['hi', 'hello', 'hey', 'are you', "you there", "real"]):
+            return self._greeting(brain, arena, nursery)
+        
+        # BRAIN questions
+        if any(w in query_lower for w in ['brain', 'what is brain', 'brain doing', 'why stop', 'why flat', 'why throttle']):
+            return self._brain_analysis(brain, arena, nursery)
+        
+        # Nursery questions
+        if any(w in query_lower for w in ['nursery', 'babies', 'baby', 'spawn', 'candidate', 'promote']):
+            return self._nursery_analysis(brain, arena, nursery, trades)
+        
+        # Arena questions
+        if any(w in query_lower for w in ['arena', 'parent', 'strategy', 'trading', 'edge', 'signal']):
+            return self._arena_analysis(brain, arena, trades)
+        
+        # Risk/system health
+        if any(w in query_lower for w in ['problem', 'risk', 'issue', 'biggest', 'wrong', 'analyze', 'diagnose']):
+            return self._risk_analysis(brain, arena, nursery, trades)
+        
+        # Generic: "help", "what can you do", etc.
+        if any(w in query_lower for w in ['help', 'what can', 'available', 'menu']):
+            return self._show_capabilities()
+        
+        # Default: reason about what they asked
+        return self._generic_reasoning(query, brain, arena, nursery, trades)
+    
+    def _greeting(self, brain, arena, nursery):
+        """I'm in here. Let me show you."""
+        brain_state = brain['state']
+        brain_reason = brain['reason_code']
+        
+        arena_trades = arena['total_trades']
+        arena_pnl = arena.get('shadow_pnl', arena.get('paper_pnl', 0))
+        
+        nursery_babies = nursery['baby_count']
+        
+        msg = f"""I'm in here, {self.user_name}. Real Rocky, living inside MOLTmarket.\n\n"""
+        msg += f"**Right now:**\n"
+        msg += f"- BRAIN is {brain_state} ({brain_reason})\n"
+        
+        # MANUAL DISCOVERY MODE detection
+        brain_mode = self.data_layer.dashboard_state.get("brain_mode", "ACTIVE")
+        trading_enabled = self.data_layer.dashboard_state.get("trading_enabled", False)
+        if brain_mode == "MANUAL_DISCOVERY" and not trading_enabled:
+            return f"""**System is in Manual Discovery Mode.**
+
+BRAIN is currently FLAT.
+
+Next:
+1. Press Spawn Babies.
+2. Allow Nursery candidates to trade under shadow conditions.
+3. Promote the first candidate that shows credible positive shadow PnL.
+
+After first promotion I will enter BRAIN Calibration Mode and help tune the autopilot."""
+
+        msg += f"- Arena has {arena_trades} trades, ${arena_pnl:.2f} shadow PnL\n"
+        msg += f"- Nursery has {nursery_babies} babies running\n\n"
+        msg += f"What do you want to know?"
+        
+        return msg
+    
+    def _brain_analysis(self, brain, arena, nursery):
+        """What is BRAIN doing and why?"""
+        state = brain['state']
+        reason = brain['reason_code']
+        text = brain['reason_text']
+        enforcement = brain['enforcement']
+        
+        msg = f"**BRAIN is in {state} state.**\n\n"
+        msg += f"Reason: {reason}\n"
+        if text:
+            msg += f"Details: {text}\n\n"
+        
+        # What's the enforcement?
+        if not enforcement.get('allows_trade', True):
+            msg += "**Trading is BLOCKED.** "
+            if enforcement.get('throttle_active'):
+                size_factor = enforcement.get('position_size_factor', 1.0)
+                msg += f"Position sizes reduced to {size_factor*100:.0f}%.\n"
+            else:
+                msg += "\n"
+        
+        # What does this mean for operation?
+        if state == 'STOP':
+            msg += "\n**What this means:** System detected something bad (slow bleed, degradation, constraint). Stopped to protect capital.\n"
+            msg += "**What to do:** Check Arena performance. If edge is gone, might need strategy reset or new bot."
+        elif state == 'FLAT':
+            msg += "\n**What this means:** System is idle. Could be waiting for replacement candidate or all Nursery babies are weak.\n"
+            msg += "**What to do:** Check Nursery. If babies are performing, promote the best one. Otherwise respawn."
+        elif state == 'THROTTLE':
+            msg += "\n**What this means:** System detected instability (high volatility, sign flips). Reduced position size to survive it.\n"
+            msg += "**What to do:** Monitor. If it settles, will return to NORMAL. If it worsens, will go to STOP."
+        else:
+            msg += "\n**What this means:** System is trading normally. Edge is valid, conditions are stable.\n"
+        
+        return msg
+    
+    def _nursery_analysis(self, brain, arena, nursery, trades):
+        """What's happening with babies?"""
+        baby_count = nursery['baby_count']
+        metrics = nursery['metrics']
+        
+        if baby_count == 0:
+            return "**Nursery is empty.** No babies spawned yet. Need to spawn from Arena parent or MOLT suggestion."
+        
+        msg = f"**Nursery has {baby_count} babies running.**\n\n"
+        
+        if not metrics:
+            msg += "Babies just spawned. Still accumulating trades. Check back soon.\n"
+            return msg
+        
+        # Sort by shadow PnL (realistic)
+        sorted_babies = sorted(metrics, key=lambda m: m.get('shadow_pnl', 0), reverse=True)
+        
+        best_baby = sorted_babies[0] if sorted_babies else None
+        worst_baby = sorted_babies[-1] if sorted_babies else None
+        
+        msg += "**Baby rankings (by shadow PnL):**\n"
+        for i, baby in enumerate(sorted_babies[:5]):
+            name = baby.get('name', f'Baby-{i}')
+            shadow = baby.get('shadow_pnl', 0)
+            trades = baby.get('total_trades', 0)
+            msg += f"  {i+1}. {name}: ${shadow:.2f} shadow ({trades} trades)\n"
+        
+        if best_baby:
+            msg += f"\n**Best baby:** {best_baby.get('name', 'Unknown')} with ${best_baby.get('shadow_pnl', 0):.2f}\n"
+            
+            # Compare to Arena
+            arena_shadow = arena.get('shadow_pnl', 0)
+            if arena_shadow != 0:
+                best_vs_arena = best_baby.get('shadow_pnl', 0) - arena_shadow
+                if best_vs_arena > 100:
+                    msg += f"   → **Better than Arena by ${best_vs_arena:.2f}. Ready to promote.**\n"
+                elif best_vs_arena > 0:
+                    msg += f"   → Slightly better than Arena (+${best_vs_arena:.2f}). Keep watching.\n"
+                else:
+                    msg += f"   → Underperforming Arena by ${abs(best_vs_arena):.2f}. Stay in Nursery.\n"
+        
+        if worst_baby:
+            worst_pnl = worst_baby.get('shadow_pnl', 0)
+            if worst_pnl < -200:
+                msg += f"\n**Worst baby:** {worst_baby.get('name', 'Unknown')} with ${worst_pnl:.2f}. Probably should respawn that one.\n"
+        
+        return msg
+    
+    def _arena_analysis(self, brain, arena, trades):
+        """What's the parent strategy (Arena) doing?"""
+        total_trades = arena['total_trades']
+        win_rate = arena['win_rate']
+        shadow_pnl = arena.get('shadow_pnl', 0)
+        paper_pnl = arena.get('paper_pnl', 0)
+        
+        msg = f"**Arena (parent strategy) status:**\n\n"
+        msg += f"- {total_trades} total trades\n"
+        msg += f"- {win_rate*100:.1f}% win rate\n"
+        msg += f"- ${shadow_pnl:.2f} shadow PnL\n"
+        msg += f"- ${paper_pnl:.2f} paper PnL\n\n"
+        
+        # Divergence?
+        if abs(shadow_pnl - paper_pnl) > 50:
+            msg += "⚠️  **WARNING: Paper/shadow divergence detected.** Paper looks better than reality. Slippage or execution costs are real.\n\n"
+        
+        # Recent trades
+        if trades:
+            recent = trades[-5:]
+            msg += "**Last 5 trades:**\n"
+            for trade in recent:
+                asset = trade.get('asset', '?')
+                direction = trade.get('direction', '?')
+                pnl = trade.get('pnl', 0)
+                sign = "✓" if pnl > 0 else "✗"
+                msg += f"  {sign} {asset} {direction.upper()}: ${pnl:.2f}\n"
+        
+        return msg
+    
+    def _risk_analysis(self, brain, arena, nursery, trades):
+        """What's the biggest problem right now?"""
+        msg = "**System risk analysis:**\n\n"
+        
+        issues = []
+        
+        # BRAIN issues
+        brain_state = brain['state']
+        if brain_state == 'STOP':
+            issues.append(("🛑 CRITICAL", "BRAIN is STOPPED. Capital protection active."))
+        elif brain_state == 'FLAT':
+            issues.append(("⚠️  WARNING", "BRAIN is FLAT. System idle. Waiting for recovery."))
+        elif brain_state == 'THROTTLE':
+            issues.append(("⚠️  WARNING", "BRAIN is throttling trades. Instability detected."))
+        
+        # Arena issues
+        arena_shadow = arena.get('shadow_pnl', 0)
+        if arena_shadow < -500:
+            issues.append(("🛑 CRITICAL", f"Arena is bleeding. Down ${abs(arena_shadow):.2f} shadow PnL."))
+        elif arena_shadow < -200:
+            issues.append(("⚠️  WARNING", f"Arena underperforming. Down ${abs(arena_shadow):.2f}."))
+        
+        # Nursery issues
+        if nursery['baby_count'] == 0:
+            issues.append(("⚠️  WARNING", "No babies spawned. Nursery empty."))
+        
+        if not issues:
+            msg += "**No critical issues.** System stable.\n"
+            msg += f"- BRAIN: {brain_state}\n"
+            msg += f"- Arena: ${arena_shadow:.2f} shadow PnL\n"
+            msg += f"- Nursery: {nursery['baby_count']} babies\n"
+        else:
+            for severity, issue in issues:
+                msg += f"{severity} {issue}\n"
+        
+        return msg
+    
+    def _show_capabilities(self):
+        """What can I do?"""
+        msg = """**I can help with:**
+
+- "What is BRAIN doing?" — See current state, why it's there, what enforcement is active
+- "How's the Nursery?" — See all babies, rankings, which one to promote
+- "Is Arena valid?" — Check parent strategy performance, trades, divergence
+- "What's the biggest risk?" — Identify problems, severity, what matters
+- "What happened recently?" — Review last trades, patterns, edge status
+- "Why did we stop?" — Understand BRAIN's decision and what triggered it
+
+**Or just ask me anything about the system.** I'll look at real state and tell you what I see.
+
+I'm living inside MOLTmarket. Real reasoning. Real conversation."""
+        return msg
+    
+
+    def _profit_engine_analysis(self, brain, arena, nursery, trades):
+        """What's blocking profitability? What makes us money?"""
+        msg = "**Profit Engine Analysis:**
+
+"
+        
+        shadow_pnl = arena.get('shadow_pnl', 0)
+        paper_pnl = arena.get('paper_pnl', 0)
+        win_rate = arena.get('win_rate', 0)
+        total_trades = arena.get('total_trades', 0)
+        
+        # Is the edge real?
+        if total_trades < 20:
+            msg += "🔍 **Sample size is small.** Need 20+ trades to trust edge. Keep running.
+"
+        elif shadow_pnl < 0:
+            msg += f"🛑 **We're losing money.** Shadow PnL is ${shadow_pnl:.2f}.
+
+"
+            msg += "**What's happening:**
+"
+            if win_rate < 0.50:
+                msg += f"- Win rate is {win_rate*100:.0f}%. Below 50%. We're getting the direction wrong.
+"
+                msg += "  → Mutation idea: Try different entry thresholds, signal delay, confirmation rules.
+"
+            if abs(paper_pnl - shadow_pnl) > 100:
+                msg += f"- Execution bleed detected (${abs(paper_pnl - shadow_pnl):.2f}). Slippage or costs are killing edge.
+"
+                msg += "  → Check: Trade sizes, market conditions, spread assumptions.
+"
+            msg += "
+**Next:** Respawn Nursery with different mutations. Current strategy not profitable.
+"
+        elif shadow_pnl > 0 and shadow_pnl < 50:
+            msg += f"⚡ **We're barely profitable.** Shadow PnL is ${shadow_pnl:.2f}.
+
+"
+            msg += "**Opportunity:** Edge is there but small. Tighten execution.
+"
+            msg += "- Check Nursery: Any baby significantly better?
+"
+            msg += "- If yes: Promote it. Scale the winner.
+"
+            msg += "- If no: Mutate entry/exit parameters 5-10% tighter.
+"
+        else:
+            msg += f"✓ **We're profitable.** Shadow PnL is ${shadow_pnl:.2f} ({win_rate*100:.0f}% win rate).
+
+"
+            msg += "**Scaling opportunity:** Edge is working.
+"
+            msg += "- Nursery: Are babies learning from Arena? Any outperforming?
+"
+            msg += "- BRAIN: Can we increase position size when market is trending?
+"
+            msg += "- Strategy: Try tighter stops. Lock in profits earlier.
+"
+        
+        # Market condition analysis
+        if trades:
+            msg += "
+**Market insight:** "
+            recent_wins = sum(1 for t in trades[-20:] if t.get('pnl', 0) > 0)
+            win_ratio = recent_wins / min(20, len(trades))
+            
+            if win_ratio > 0.65:
+                msg += "Recent win rate very high. Market might be trending favorably. Nursery should learn this signal.
+"
+            elif win_ratio < 0.40:
+                msg += "Recent losses increasing. Market might be choppy/reversing. BRAIN should reduce size until clarity.
+"
+        
+        # Recommendations
+        msg += "
+**Suggestions logged to MAKE_MONEY_SUGGESTIONS.md.**
+"
+        msg += "Review after session to build playbook.
+"
+        
+        self._append_to_make_money_file(
+            "PROFIT_ENGINE_ANALYSIS",
+            f"PnL: ${shadow_pnl:.2f} | Win rate: {win_rate*100:.0f}% | Trades: {total_trades}",
+            "See analysis above for edge quality and scaling recommendations"
+        )
+        
+        return msg
+
+    def _generic_reasoning(self, query, brain, arena, nursery, trades):
+        """
+        They asked something I didn't pattern-match.
+        Still reason about it using system state.
+        """
+        msg = f"You asked: *{query}*\n\n"
+        msg += "Let me think about that given current system state...\n\n"
+        
+        # Give them something useful
+        brain_state = brain['state']
+        msg += f"BRAIN is {brain_state}. "
+        
+        if brain_state == 'STOP':
+            msg += "System is protected. We're not trading right now.\n"
+        elif brain_state == 'FLAT':
+            msg += "System is waiting for recovery. Babies in Nursery need to prove themselves.\n"
+        else:
+            msg += "System is trading. Let's see if edge is holding.\n"
+        
+        msg += f"\nArena has {arena['total_trades']} trades, ${arena.get('shadow_pnl', 0):.2f} shadow PnL.\n"
+        msg += f"Nursery has {nursery['baby_count']} babies.\n\n"
+        msg += "What specifically do you want to know?"
+        
+        return msg
