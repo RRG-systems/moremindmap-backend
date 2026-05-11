@@ -1,121 +1,152 @@
-// moremindmap-backend/engine/generateMiniV2HTML.js
-// Recreated May 11, 2026
-
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const templateDir = path.join(__dirname, '../templates/mini-v2');
-const outputDir = path.join(__dirname, '../temp/reports'); // Assuming a temp/reports dir
+const TEMPLATE_DIR = path.resolve(__dirname, '../templates/mini-v2');
 
-// Ensure output directory exists
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir, { recursive: true });
+const PAGE_FILES = [
+ 'page01-cover.html',
+ 'page02-operating-system-map.html',
+ 'page03-executive-summary.html',
+ 'page04-operating-pattern.html',
+ 'page05-decision-architecture.html',
+ 'page06-communication-style.html',
+ 'page07-system-under-strain.html',
+ 'page08-operating-environment-fit.html',
+ 'page09-facilitator-notes.html',
+ 'page10-full-profile-unlocks-dna.html'
+];
+
+function escapeHtml(value = '') {
+ return String(value)
+ .replaceAll('&', '&amp;')
+ .replaceAll('<', '&lt;')
+ .replaceAll('>', '&gt;')
+ .replaceAll('"', '&quot;')
+ .replaceAll("'", '&#039;');
 }
 
-const getTemplateContent = (templateName) => {
-  const templatePath = path.join(templateDir, templateName);
-  try {
-    return fs.readFileSync(templatePath, 'utf-8');
-  } catch (error) {
-    console.error(`Error reading template ${templateName}: ${error.message}`);
-    return null;
-  }
-};
+function replacePlaceholders(template, data) {
+ return template.replace(/\{\{([^}]+)\}\}/g, (_, rawKey) => {
+ const key = rawKey.trim();
+ if (Object.prototype.hasOwnProperty.call(data, key)) {
+ return escapeHtml(data[key]);
+ }
+ return `{{${key}}}`;
+ });
+}
 
-const fillTemplate = (templateContent, data) => {
-  let filledContent = templateContent;
-  let remainingPlaceholders = [];
+export async function generateMiniV2HTML(data = {}) {
+ const pages = [];
 
-  // Simple string replacement for {{placeholder}}
-  for (const key in data) {
-    const regex = new RegExp(`{{${key}}}`, 'g');
-    filledContent = filledContent.replace(regex, data[key]);
-  }
+ for (const file of PAGE_FILES) {
+ const filePath = path.join(TEMPLATE_DIR, file);
+ const template = await fs.readFile(filePath, 'utf8');
+ pages.push(replacePlaceholders(template, data));
+ }
 
-  // Check for remaining placeholders
-  const remaining = filledContent.match(/{{(.*?)}}/g);
-  if (remaining) {
-    remainingPlaceholders = remaining.map(ph => ph.replace(/[{}]/g, '').trim());
-  }
+ const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>MORE MindMap Mini Profile V2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+* {
+box-sizing: border-box;
+}
 
-  return { filledContent, remainingPlaceholders };
-};
+body {
+margin: 0;
+background: #111;
+color: #111;
+font-family: Inter, Arial, Helvetica, sans-serif;
+}
 
-const generateHTML = (profileData) => {
-  const pageOrder = [
-    'page01-cover.html',
-    'page02-operating-system-map.html',
-    'page03-executive-summary.html',
-    'page04-operating-pattern.html',
-    'page05-decision-architecture.html',
-    'page06-communication-style.html',
-    'page07-system-under-strain.html',
-    'page08-operating-environment-fit.html',
-    'page09-facilitator-notes.html',
-    'page10-full-profile-unlocks-dna.html'
-  ];
+.mmm-page {
+width: 8.5in;
+min-height: 11in;
+margin: 0 auto;
+padding: 0.6in;
+background: #fff;
+page-break-after: always;
+break-after: page;
+position: relative;
+}
 
-  let fullHTML = '<!DOCTYPE html>\n<html>\n<head>\n<title>Mini V2 Profile</title>\n<style>\n';
-  // Basic CSS for print-safe, simple structure
-  fullHTML += `
-  body { font-family: sans-serif; margin: 0; padding: 0; }
-  .mmm-page { margin: 20px auto; padding: 20px; border: 1px solid #eee; max-width: 800px; }
-  .page01 { border-top: 5px solid #000; }
-  footer { margin-top: 30px; font-size: 0.8em; color: #666; text-align: center; }
-  h1 { font-size: 1.8em; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-  h2 { font-size: 1.3em; margin-top: 20px; }
-  p, div { margin-top: 15px; line-height: 1.6; }
-  .diagram, .architecture-diagram { background-color: #f9f9f9; border: 1px dashed #ccc; padding: 15px; text-align: center; margin: 15px 0; }
-`;
-  fullHTML += '</style>\n</head>\n<body>\n';
+.mmm-page h1,
+.mmm-page h2,
+.mmm-page h3 {
+margin-top: 0;
+letter-spacing: -0.02em;
+}
 
-  let allRemainingPlaceholders = [];
+.mmm-page .eyebrow {
+font-size: 11px;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: #555;
+margin-bottom: 18px;
+}
 
-  for (const page of pageOrder) {
-    const templateContent = getTemplateContent(page);
-    if (!templateContent) continue;
+.mmm-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+}
 
-    // Prepare data for the current page
-    // This is a simplified approach; a real system would map profileData to page-specific data
-    const pageData = {
-      ...profileData.general, // General data applies to all pages
-      ...profileData[page.replace('.html', '')] || {}, // Page-specific data
-      footer: profileData.general.footer || '© MOREMindMap 2026' // Default footer if not provided
-    };
+.mmm-card {
+border: 1px solid #ddd;
+border-radius: 16px;
+padding: 18px;
+background: #fafafa;
+}
 
-    const { filledContent, remainingPlaceholders } = fillTemplate(templateContent, pageData);
+.mmm-footer {
+position: absolute;
+left: 0.6in;
+right: 0.6in;
+bottom: 0.35in;
+font-size: 10px;
+color: #777;
+border-top: 1px solid #ddd;
+padding-top: 8px;
+}
 
-    fullHTML += filledContent + '\n';
-    if (remainingPlaceholders.length > 0) {
-      allRemainingPlaceholders.push(...remainingPlaceholders.map(ph => `${ph} (in ${page})`));
-    }
-  }
+@media print {
+body {
+background: #fff;
+}
 
-  fullHTML += '</body>\n</html>';
+.mmm-page {
+margin: 0;
+width: 8.5in;
+min-height: 11in;
+}
+}
+</style>
+</head>
+<body>
+${pages.join('\n\n')}
+</body>
+</html>`;
 
-  if (allRemainingPlaceholders.length > 0) {
-    console.error("Error: Remaining placeholders found:", allRemainingPlaceholders.join(', '));
-    return null; // Indicate failure
-  }
+ const leftovers = html.match(/\{\{[^}]+\}\}/g) || [];
+ if (leftovers.length) {
+ throw new Error(`Mini V2 HTML generation failed: ${leftovers.length} placeholders left`);
+ }
 
-  return fullHTML;
-};
+ const pageCount = (html.match(/class="[^"]*mmm-page[^"]*"/g) || []).length;
+ if (pageCount !== 10) {
+ throw new Error(`Mini V2 HTML generation failed: expected 10 pages, found ${pageCount}`);
+ }
 
-export const writeHTMLToFile = (htmlContent, filename = 'mini-v2-rebuilt-test.html') => {
-  const outputPath = path.join(outputDir, filename);
-  try {
-    fs.writeFileSync(outputPath, htmlContent);
-    console.log(`HTML report written to: ${outputPath}`);
-    return outputPath;
-  } catch (error) {
-    console.error(`Error writing HTML to file: ${error.message}`);
-    return null;
-  }
-};
+ return html;
+}
 
-export default { generateHTML, writeHTMLToFile };
+export default generateMiniV2HTML;
+
+export { generateMiniV2HTML as generateHTML };
