@@ -1,0 +1,1 @@
+# Artifact Index\n\nGenerators:\n- engine/generate-mini-v2-report-fixed.js (17KB)\nScoring:\n- engine/questionMap.js (5KB)\nTemplates:\n- templates/ (missing)\nOutputs:\n- temp/ (empty)

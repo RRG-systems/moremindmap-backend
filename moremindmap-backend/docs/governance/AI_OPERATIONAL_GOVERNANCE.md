@@ -1,0 +1,1 @@
+# AI Operational Governance\n\n- Source of truth: GitHub\n- LOOP & PROVE before claims\n- Release doctrine: Copy, no edit\n- Preservation first\n- No unverified completion
