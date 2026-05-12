@@ -1,7 +1,7 @@
 // moremindmap-backend/engine/testGenerateMiniV2HTML.js
 // Recreated May 11, 2026
 
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import * as generateHTMLModule from './generateMiniV2HTML.js';
 import { scoreAnswers } from './scoreAssessment.js';
@@ -51,6 +51,22 @@ async function runTest() {
     console.error("HTML generation failed.");
     process.exit(1);
   }
+
+  // Write baseline artifacts
+  const releaseDir = path.resolve('releases/mini-v2-html-baseline');
+  const referenceDir = path.resolve('reference/mini-v2-html-baseline');
+
+  await fs.mkdir(releaseDir, { recursive: true });
+  await fs.mkdir(referenceDir, { recursive: true });
+
+  const releasePath = path.join(releaseDir, 'mini-v2-html-baseline.html');
+  const referencePath = path.join(referenceDir, 'mini-v2-html-baseline.html');
+
+  await fs.writeFile(releasePath, htmlContent, 'utf8');
+  await fs.writeFile(referencePath, htmlContent, 'utf8');
+
+  console.log(`\n✓ HTML artifact written: ${releasePath}`);
+  console.log(`✓ HTML reference written: ${referencePath}`);
 
   // Verification
   console.log(`\n--- Verification ---`);
