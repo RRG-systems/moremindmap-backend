@@ -112,3 +112,17 @@ Visual template refinement against locked PDF reference.
 - Do not start PDF rendering before visual HTML refinement.
 - Do not clean contaminated files yet.
 - Do not modify production deployment until render pipeline is stable.
+
+## Product Naming / Pricing Note
+
+"Mini V2" is an internal engineering label only.
+
+Do not assume the public-facing product should be called "Mini."
+
+Likely public-facing naming options:
+- MORE MindMap Profile
+- Behavioral Operating Profile
+- Personal Operating Profile
+- Strategic Operating Profile
+
+Pricing is TBD. The 10-page output may justify positioning above the original mini-profile price point. Do not hard-code final pricing or public product name until approved.
