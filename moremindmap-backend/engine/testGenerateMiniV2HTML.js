@@ -31,10 +31,15 @@ async function runTest() {
     profile_type: "Behavioral Operating Profile",
 
     // Page 1 Placeholders
-    page_number_box_1: "1", // Assuming page number is also a placeholder
+    profile_signature_narrative: "Your behavioral signature reflects a strategic, systems-oriented operating mode with high signal clarity and decisive action orientation.",
+    core_edge_narrative: "Your core edge lies in rapidly synthesizing complex information into actionable frameworks while maintaining operational velocity under constraint.",
 
     // Page 2 Placeholders
-    operating_system_map_placeholder: "Placeholder for Operating System Map visualization",
+    core_engine_details: "Strategic Systems Processor",
+    primary_driver_details: "Signal Clarity & Velocity",
+    secondary_stabilizer_details: "Framework Rigor",
+    opposing_pattern_details: "Analysis Paralysis Risk",
+    system_tension_warning: "Under high ambiguity, tendency to over-index on speed may compromise depth. Monitor for premature closure on incomplete data sets.",
 
     // Page 3 Placeholders
     summary_text: "This executive summary summarizes the key findings from the behavioral analysis.",

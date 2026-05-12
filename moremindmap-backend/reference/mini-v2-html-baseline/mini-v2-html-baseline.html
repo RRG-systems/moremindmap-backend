@@ -5,82 +5,319 @@
 <title>MORE MindMap Mini Profile V2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
-* {
-box-sizing: border-box;
-}
+/* Shared CSS System for Mini V2 - Polished for Anchor Pages */
 
+/* Typography */
 body {
-margin: 0;
-background: #111;
-color: #111;
-font-family: Inter, Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Light gray background */
 }
 
+h1, h2, h3 {
+  margin-top: 0;
+  letter-spacing: -0.02em;
+  color: #222;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.card-heading {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.card-body {
+  font-size: 14px;
+  font-weight: 400;
+  color: #444;
+}
+
+/* Page Shell */
 .mmm-page {
-width: 8.5in;
-min-height: 11in;
-margin: 0 auto;
-padding: 0.6in;
-background: #fff;
-page-break-after: always;
-break-after: page;
-position: relative;
+  width: 8.5in;
+  min-height: 11in;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 0.6in;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+  break-after: page;
 }
 
-.mmm-page h1,
-.mmm-page h2,
-.mmm-page h3 {
-margin-top: 0;
-letter-spacing: -0.02em;
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.mmm-page .eyebrow {
-font-size: 11px;
-letter-spacing: 0.16em;
-text-transform: uppercase;
-color: #555;
-margin-bottom: 18px;
+.header-left, .header-right {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #444;
 }
 
-.mmm-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 18px;
+/* Dividers and Accents */
+.gold-accent-bar {
+  width: 40px;
+  height: 4px;
+  background-color: #D4AF37; /* Warm gold accent */
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 2px;
 }
 
+.navy-divider {
+  height: 1px;
+  background-color: #0b2a4a; /* Navy color */
+  margin: 20px 0;
+}
+
+/* Card System Enhancements */
 .mmm-card {
-border: 1px solid #ddd;
-border-radius: 16px;
-padding: 18px;
-background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 18px;
+  background: #fdfdfd;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.mmm-footer {
-position: absolute;
-left: 0.6in;
-right: 0.6in;
-bottom: 0.35in;
-font-size: 10px;
-color: #777;
-border-top: 1px solid #ddd;
-padding-top: 8px;
+.three-card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 25px;
 }
 
+.development-priority-banner {
+  background-color: #f0f0f0;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #D4AF37;
+  margin-top: 25px;
+}
+
+.development-priority-banner .card-heading {
+  color: #0b2a4a;
+}
+
+/* Grid System */
+.mmm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Footer */
+.page-footer {
+  position: absolute;
+  left: 0.6in;
+  right: 0.6in;
+  bottom: 0.35in;
+  font-size: 10px;
+  color: #777;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.m-icon {
+  font-weight: bold;
+  color: #D4AF37; /* Gold accent */
+  margin-right: 5px;
+}
+
+.page-number-box {
+  background-color: #eee;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Specific Page Enhancements */
+
+/* Page 1 Cover Enhancements */
+.page01-cover-page { /* Specific class for cover page main content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  text-align: center;
+  padding: 0; /* Reset padding if needed for full bleed cover */
+}
+
+.cover-identity {
+  margin-bottom: 40px;
+}
+
+.cover-identity h1 {
+  font-size: 48px; /* Large title */
+  margin-bottom: 5px;
+  color: #0b2a4a; /* Navy */
+}
+
+.cover-identity .subtitle {
+  font-size: 24px;
+  font-weight: 500;
+  color: #D4AF37; /* Gold */
+  margin-bottom: 10px;
+}
+
+.profile-signature-card { /* Dark card for signature */
+  background-color: #222;
+  color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  margin: 0 auto 30px auto; /* Center and add bottom margin */
+  max-width: 600px; /* Limit width for readability */
+}
+
+.profile-signature-card .card-heading {
+  color: #D4AF37; /* Gold heading */
+}
+.profile-signature-card .card-body {
+  color: #eee; /* Lighter text for dark card */
+}
+
+.core-edge-narrative {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Page 2 Map Enhancements */
+.page02-operating-system-map-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center map elements */
+}
+
+.operating-system-map {
+  margin-top: 40px;
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Limit map width */
+  text-align: center;
+}
+
+.map-node { /* Base style for map nodes */
+  position: absolute;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 12px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.map-node.core-engine { top: 20%; left: 50%; transform: translateX(-50%); background-color: #0b2a4a; color: white; padding: 15px 20px; font-weight: bold; }
+.map-node.driver { top: 40%; left: 20%; }
+.map-node.stabilizer { top: 40%; left: 80%; }
+.map-node.opposing { top: 60%; left: 50%; transform: translateX(-50%); }
+
+.map-tension-line {
+  position: absolute;
+  background-color: #D4AF37; /* Gold accent */
+  height: 2px;
+  transform-origin: 0 0;
+}
+.map-tension-line.driver-to-core { top: 35%; left: 35%; width: 30%; height: 2px; transform: rotate(-30deg); }
+.map-tension-line.stabilizer-to-core { top: 35%; left: 65%; width: 30%; height: 2px; transform: rotate(30deg); }
+.map-tension-line.opposing-to-core { top: 60%; left: 50%; width: 0; height: 170px; /* Vertical line, adjust height */ }
+
+.map-tension-label {
+  position: absolute;
+  font-size: 10px;
+  color: #777;
+  background: rgba(255,255,255,0.0); /* Transparent background */
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.map-tension-label.driver { top: 35%; left: 10%; }
+.map-tension-label.stabilizer { top: 35%; left: 90%; transform: translateX(-100%); }
+.map-tension-label.opposing { top: 75%; left: 50%; transform: translateX(-50%); }
+
+.system-tension-warning {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #fff3e0; /* Light orange background */
+  border: 1px solid #ffe0b2;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #bf360c; /* Dark orange text */
+}
+
+/* Page 4 Operating Pattern Refinements */
+.operating-pattern-page .three-card-row {
+  grid-template-columns: repeat(3, 1fr); /* Ensure 3 columns */
+  gap: 20px;
+}
+
+/* Print Styles - Ensure consistency */
 @media print {
-body {
-background: #fff;
-}
-
-.mmm-page {
-margin: 0;
-width: 8.5in;
-min-height: 11in;
-}
+  body {
+    background: #fff;
+  }
+  .mmm-page {
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    padding: 0.6in;
+  }
+  .page-footer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 20px;
+  }
+  /* Ensure header/footer don't break page flow unexpectedly */
+  header, footer {
+    position: relative;
+  }
 }
 </style>
 </head>
 <body>
-{# page01-cover.html #}
+
+
 <div class="mmm-page page01">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -88,20 +325,37 @@ min-height: 11in;
   </header>
 
   <main class="page-main cover-page">
-    <h1>Profile: vector/signal/fidelity/velocity/leverage/flex/framework/horizon</h1>
-    <h2>Generated Report</h2>
-    <p>This is a mock profile report generated for testing purposes.</p>
+    <div class="cover-identity">
+      <h1>M + RE MINDMAP</h1>
+      <div class="subtitle">Behavioral Operating Profile</div>
+    </div>
+
+    <div class="profile-signature-card">
+      <div class="card-heading">Profile Signature</div>
+      <div class="card-body">Your behavioral signature reflects a strategic, systems-oriented operating mode with high signal clarity and decisive action orientation.</div>
+    </div>
+
+    <div class="core-edge-narrative">
+      <h3>Core Edge</h3>
+      <p>Your core edge lies in rapidly synthesizing complex information into actionable frameworks while maintaining operational velocity under constraint.</p>
+    </div>
   </main>
 
   <footer class="page-footer">
-    © MOREMindMap 2026 - Test Run
-    <span class="page-number-box">1</span>
+    <div class="footer-left">
+      <span class="m-icon">M+</span>
+      Assessment Date: May 12, 2026
+    </div>
+    <div class="footer-right">
+      Confidence: 85% | Profile Type: Behavioral Operating Profile
+      <span class="page-number-box">1</span>
+    </div>
   </footer>
 </div>
 
 
 
-{# page02-operating-system-map.html #}
+
 <div class="mmm-page page02">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -117,10 +371,25 @@ min-height: 11in;
     </section>
 
     <section class="operating-system-map">
-      <div class="map-placeholder">
-        Placeholder for Operating System Map visualization
+      <div class="map-container">
+        <!-- Placeholder for actual map rendering or SVG -->
+        <div class="map-node core-engine">CORE ENGINE<br/>Strategic Systems Processor</div>
+        <div class="map-node driver">PRIMARY DRIVER<br/>Signal Clarity &amp; Velocity</div>
+        <div class="map-node stabilizer">SECONDARY STABILIZER<br/>Framework Rigor</div>
+        <div class="map-node opposing">OPPOSING PATTERN<br/>Analysis Paralysis Risk</div>
+
+        <div class="map-tension-line driver-to-core"></div>
+        <div class="map-tension-label driver">Driver</div>
+        <div class="map-tension-line stabilizer-to-core"></div>
+        <div class="map-tension-label stabilizer">Stabilizer</div>
+        <div class="map-tension-line opposing-to-core"></div>
+        <div class="map-tension-label opposing">Opposing</div>
       </div>
-      <!-- Placeholder for actual map rendering logic -->
+
+      <div class="system-tension-warning">
+        <h3>System Tension Warning</h3>
+        <p>Under high ambiguity, tendency to over-index on speed may compromise depth. Monitor for premature closure on incomplete data sets.</p>
+      </div>
     </section>
   </main>
 
@@ -138,7 +407,7 @@ min-height: 11in;
 
 
 
-{# page03-executive-summary.html #}
+
 <div class="mmm-page page03">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -188,7 +457,7 @@ min-height: 11in;
 
 
 
-{# page04-operating-pattern.html #}
+
 <div class="mmm-page page04">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -211,15 +480,15 @@ min-height: 11in;
     </section>
 
     <section class="three-card-row">
-      <div class="card">
+      <div class="mmm-card">
         <div class="card-heading">Strongest Default Pattern</div>
         <div class="card-body">Highlights the most dominant and natural behavioral tendency.</div>
       </div>
-      <div class="card">
+      <div class="mmm-card">
         <div class="card-heading">Likely Blind Spot</div>
         <div class="card-body">Identifies potential areas of unawareness stemming from the default pattern.</div>
       </div>
-      <div class="card">
+      <div class="mmm-card">
         <div class="card-heading">Highest Value Adjustment</div>
         <div class="card-body">Focuses on impactful adjustments to leverage strengths and mitigate blind spots.</div>
       </div>
@@ -245,7 +514,7 @@ min-height: 11in;
 
 
 
-{# page05-decision-architecture.html #}
+
 <div class="mmm-page page05">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -310,7 +579,7 @@ min-height: 11in;
 
 
 
-{# page06-communication-style.html #}
+
 <div class="mmm-page page06">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -387,7 +656,7 @@ min-height: 11in;
 
 
 
-{# page07-system-under-strain.html #}
+
 <div class="mmm-page page07">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -446,7 +715,7 @@ min-height: 11in;
 
 
 
-{# page08-operating-environment-fit.html #}
+
 <div class="mmm-page page08">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -523,7 +792,7 @@ min-height: 11in;
 
 
 
-{# page09-facilitator-notes.html #}
+
 <div class="mmm-page page09">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
@@ -575,7 +844,7 @@ min-height: 11in;
 
 
 
-{# page10-full-profile-unlocks-dna.html #}
+
 <div class="mmm-page page10">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
