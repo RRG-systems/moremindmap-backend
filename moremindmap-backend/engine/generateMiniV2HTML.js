@@ -549,49 +549,38 @@ h1, h2, h3 {
   color: #444;
 }
 
-.bos-left-note {
+.bos-text-box {
   position: absolute;
-  left: 0;
-  top: 220px;
-  width: 220px;
-}
-
-.bos-right-descriptions {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  width: 260px;
-}
-
-.bos-right-note-top { margin-bottom: 32px; }
-.bos-right-note-mid { margin-bottom: 32px; }
-
-.note-heading {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0b2a4a;
-  margin-bottom: 10px;
-}
-
-.note-body {
+  max-width: 200px;
   font-size: 11px;
-  line-height: 1.6;
+  line-height: 1.4;
   color: #555;
-  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
 }
 
-.note-subheading {
-  font-size: 10px;
-  font-weight: 700;
-  color: #666;
-  margin-bottom: 6px;
-  margin-top: 4px;
+.bos-text-top-right {
+  top: -40px;
+  right: -240px;
 }
 
-.note-subbody {
-  font-size: 10px;
-  line-height: 1.5;
-  color: #666;
+.bos-text-right {
+  top: 50%;
+  right: -240px;
+  transform: translateY(-50%);
+}
+
+.bos-text-left {
+  top: 50%;
+  left: -240px;
+  transform: translateY(-50%);
+}
+
+.bos-text-bottom-right {
+  bottom: -20px;
+  right: -240px;
 }
 
 .bos-summary-section {

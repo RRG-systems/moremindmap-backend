@@ -495,49 +495,38 @@ h1, h2, h3 {
   color: #444;
 }
 
-.bos-left-note {
+.bos-text-box {
   position: absolute;
-  left: 0;
-  top: 220px;
-  width: 220px;
-}
-
-.bos-right-descriptions {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  width: 260px;
-}
-
-.bos-right-note-top { margin-bottom: 32px; }
-.bos-right-note-mid { margin-bottom: 32px; }
-
-.note-heading {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0b2a4a;
-  margin-bottom: 10px;
-}
-
-.note-body {
+  max-width: 200px;
   font-size: 11px;
-  line-height: 1.6;
+  line-height: 1.4;
   color: #555;
-  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
 }
 
-.note-subheading {
-  font-size: 10px;
-  font-weight: 700;
-  color: #666;
-  margin-bottom: 6px;
-  margin-top: 4px;
+.bos-text-top-right {
+  top: -40px;
+  right: -240px;
 }
 
-.note-subbody {
-  font-size: 10px;
-  line-height: 1.5;
-  color: #666;
+.bos-text-right {
+  top: 50%;
+  right: -240px;
+  transform: translateY(-50%);
+}
+
+.bos-text-left {
+  top: 50%;
+  left: -240px;
+  transform: translateY(-50%);
+}
+
+.bos-text-bottom-right {
+  bottom: -20px;
+  right: -240px;
 }
 
 .bos-summary-section {
@@ -743,7 +732,7 @@ h1, h2, h3 {
           <div class="node-icon">⚡</div>
         </div>
         <div class="bos-connector bos-conn-top"></div>
-        <div class="bos-tension-label bos-tension-top">TENSION:<br/>Driver<br/>Tension</div>
+        <div class="bos-text-box bos-text-top-right">Rapidly identifies high-value signals, prioritizes what matters most, and moves the system forward with decisive momentum.</div>
 
         <!-- Right: Secondary Stabilizer -->
         <div class="bos-node bos-secondary bos-right-node">
@@ -752,7 +741,7 @@ h1, h2, h3 {
           <div class="node-icon">⊞</div>
         </div>
         <div class="bos-connector bos-conn-right"></div>
-        <div class="bos-tension-label bos-tension-right">TENSION:<br/>Stabilizer<br/>Tension</div>
+        <div class="bos-text-box bos-text-right">Adds structure, discipline, and reliability. Extends the operating range by protecting quality and long-term consistency.</div>
 
         <!-- Left: Opposing Pattern -->
         <div class="bos-node bos-opposing bos-left-node">
@@ -761,6 +750,7 @@ h1, h2, h3 {
           <div class="node-icon">⊗</div>
         </div>
         <div class="bos-connector bos-conn-left"></div>
+        <div class="bos-text-box bos-text-left">Relational nuance and intuitive sensing may receive less attention under pressure, especially when speed and clarity dominate.</div>
 
         <!-- Bottom: Opposing Pattern 2 -->
         <div class="bos-node bos-opposing bos-bottom-node">
@@ -769,36 +759,10 @@ h1, h2, h3 {
           <div class="node-icon">↻</div>
         </div>
         <div class="bos-connector bos-conn-bottom"></div>
-        <div class="bos-tension-label bos-tension-bottom">TENSION:<br/>Opposition<br/>Tension</div>
+        <div class="bos-text-box bos-text-bottom-right">Adaptability and fluidity may narrow when the system over-prioritizes structure, certainty, or fast execution.</div>
       </div>
 
-      <!-- Left side description -->
-      <div class="bos-side-note bos-left-note">
-        <div class="note-heading">Relational Awareness &amp; Intuition</div>
-        <div class="note-body">Reads between the lines, senses dynamics, and adapts to human context.</div>
-        <div class="note-subheading">Lowest Capacity</div>
-        <div class="note-subbody">May under-leverage relational nuance or intuitive signals.</div>
-      </div>
 
-      <!-- Right side descriptions -->
-      <div class="bos-right-descriptions">
-        <div class="bos-side-note bos-right-note-top">
-          <div class="note-heading">Drives the System Forward</div>
-          <div class="note-body">Rapidly identifies high-value signals, prioritizes what matters most, and executes with decisive momentum.</div>
-        </div>
-        <div class="bos-side-note bos-right-note-mid">
-          <div class="note-heading">Brings Structure &amp; Discipline</div>
-          <div class="note-body">Applies analytical rigor, standards, and systems to ensure accuracy, consistency, and reliability.</div>
-          <div class="note-subheading">Extends Decision Horizon</div>
-          <div class="note-subbody">Slows to ensure quality and long-term integrity.</div>
-        </div>
-        <div class="bos-side-note bos-right-note-bottom">
-          <div class="note-heading">Adaptability &amp; Fluidity</div>
-          <div class="note-body">Adapts to change, improvises, and shifts quickly in dynamic conditions.</div>
-          <div class="note-subheading">Lowest Capacity</div>
-          <div class="note-subbody">Creates friction when continuous shifting is required.</div>
-        </div>
-      </div>
     </div>
 
     <!-- Bottom: System Tension Summary + Legend -->

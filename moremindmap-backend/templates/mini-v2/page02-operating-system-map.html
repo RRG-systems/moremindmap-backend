@@ -43,7 +43,7 @@
           <div class="node-icon">{{ primary_driver_icon }}</div>
         </div>
         <div class="bos-connector bos-conn-top"></div>
-        <div class="bos-tension-label bos-tension-top">TENSION:<br/>Driver<br/>Tension</div>
+        <div class="bos-text-box bos-text-top-right">{{ primary_driver_text_box }}</div>
 
         <!-- Right: Secondary Stabilizer -->
         <div class="bos-node bos-secondary bos-right-node">
@@ -52,7 +52,7 @@
           <div class="node-icon">{{ secondary_stabilizer_icon }}</div>
         </div>
         <div class="bos-connector bos-conn-right"></div>
-        <div class="bos-tension-label bos-tension-right">TENSION:<br/>Stabilizer<br/>Tension</div>
+        <div class="bos-text-box bos-text-right">{{ secondary_stabilizer_text_box }}</div>
 
         <!-- Left: Opposing Pattern -->
         <div class="bos-node bos-opposing bos-left-node">
@@ -61,6 +61,7 @@
           <div class="node-icon">{{ opposing_pattern_1_icon }}</div>
         </div>
         <div class="bos-connector bos-conn-left"></div>
+        <div class="bos-text-box bos-text-left">{{ opposing_pattern_1_text_box }}</div>
 
         <!-- Bottom: Opposing Pattern 2 -->
         <div class="bos-node bos-opposing bos-bottom-node">
@@ -69,36 +70,10 @@
           <div class="node-icon">{{ opposing_pattern_2_icon }}</div>
         </div>
         <div class="bos-connector bos-conn-bottom"></div>
-        <div class="bos-tension-label bos-tension-bottom">TENSION:<br/>Opposition<br/>Tension</div>
+        <div class="bos-text-box bos-text-bottom-right">{{ opposing_pattern_2_text_box }}</div>
       </div>
 
-      <!-- Left side description -->
-      <div class="bos-side-note bos-left-note">
-        <div class="note-heading">{{ opposing_pattern_1_heading }}</div>
-        <div class="note-body">{{ opposing_pattern_1_description }}</div>
-        <div class="note-subheading">Lowest Capacity</div>
-        <div class="note-subbody">{{ opposing_pattern_1_lowest_capacity }}</div>
-      </div>
 
-      <!-- Right side descriptions -->
-      <div class="bos-right-descriptions">
-        <div class="bos-side-note bos-right-note-top">
-          <div class="note-heading">{{ primary_driver_side_heading }}</div>
-          <div class="note-body">{{ primary_driver_description }}</div>
-        </div>
-        <div class="bos-side-note bos-right-note-mid">
-          <div class="note-heading">{{ secondary_stabilizer_side_heading }}</div>
-          <div class="note-body">{{ secondary_stabilizer_description }}</div>
-          <div class="note-subheading">{{ secondary_stabilizer_subheading }}</div>
-          <div class="note-subbody">{{ secondary_stabilizer_subbody }}</div>
-        </div>
-        <div class="bos-side-note bos-right-note-bottom">
-          <div class="note-heading">{{ opposing_pattern_2_heading }}</div>
-          <div class="note-body">{{ opposing_pattern_2_description }}</div>
-          <div class="note-subheading">Lowest Capacity</div>
-          <div class="note-subbody">{{ opposing_pattern_2_lowest_capacity }}</div>
-        </div>
-      </div>
     </div>
 
     <!-- Bottom: System Tension Summary + Legend -->
