@@ -1,3 +1,4 @@
+
 {# page01-cover.html #}
 <div class="mmm-page page01">
   <header class="page-header">
@@ -6,13 +7,30 @@
   </header>
 
   <main class="page-main cover-page">
-    <h1>{{title}}</h1>
-    <h2>{{subtitle}}</h2>
-    <p>{{description}}</p>
+    <div class="cover-identity">
+      <h1>M + RE MINDMAP</h1>
+      <div class="subtitle">Behavioral Operating Profile</div>
+    </div>
+
+    <div class="profile-signature-card">
+      <div class="card-heading">Profile Signature</div>
+      <div class="card-body">{{ profile_signature_narrative }}</div>
+    </div>
+
+    <div class="core-edge-narrative">
+      <h3>Core Edge</h3>
+      <p>{{ core_edge_narrative }}</p>
+    </div>
   </main>
 
   <footer class="page-footer">
-    {{footer}}
-    <span class="page-number-box">1</span>
+    <div class="footer-left">
+      <span class="m-icon">M+</span>
+      Assessment Date: {{ assessment_date }}
+    </div>
+    <div class="footer-right">
+      Confidence: {{ confidence_level }} | Profile Type: {{ profile_type }}
+      <span class="page-number-box">1</span>
+    </div>
   </footer>
 </div>

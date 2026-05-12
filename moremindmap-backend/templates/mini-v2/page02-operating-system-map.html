@@ -15,10 +15,25 @@
     </section>
 
     <section class="operating-system-map">
-      <div class="map-placeholder">
-        {{ operating_system_map_placeholder }}
+      <div class="map-container">
+        <!-- Placeholder for actual map rendering or SVG -->
+        <div class="map-node core-engine">CORE ENGINE<br/>{{ core_engine_details }}</div>
+        <div class="map-node driver">PRIMARY DRIVER<br/>{{ primary_driver_details }}</div>
+        <div class="map-node stabilizer">SECONDARY STABILIZER<br/>{{ secondary_stabilizer_details }}</div>
+        <div class="map-node opposing">OPPOSING PATTERN<br/>{{ opposing_pattern_details }}</div>
+
+        <div class="map-tension-line driver-to-core"></div>
+        <div class="map-tension-label driver">Driver</div>
+        <div class="map-tension-line stabilizer-to-core"></div>
+        <div class="map-tension-label stabilizer">Stabilizer</div>
+        <div class="map-tension-line opposing-to-core"></div>
+        <div class="map-tension-label opposing">Opposing</div>
       </div>
-      <!-- Placeholder for actual map rendering logic -->
+
+      <div class="system-tension-warning">
+        <h3>System Tension Warning</h3>
+        <p>{{ system_tension_warning }}</p>
+      </div>
     </section>
   </main>
 
