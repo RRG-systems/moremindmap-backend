@@ -27,20 +27,6 @@
       </div>
 
       <!-- Left opposing pattern + description -->
-      <div class="bos-left-opposing">
-        <div class="bos-node bos-opposing">
-          <div class="node-label">OPPOSING PATTERN</div>
-          <div class="node-name">{{ opposing_pattern_1_name }}</div>
-          <div class="node-icon">{{ opposing_pattern_1_icon }}</div>
-        </div>
-        <div class="bos-side-note bos-left-note">
-          <div class="note-heading">{{ opposing_pattern_1_heading }}</div>
-          <div class="note-body">{{ opposing_pattern_1_description }}</div>
-          <div class="note-subheading">Lowest Capacity</div>
-          <div class="note-subbody">{{ opposing_pattern_1_lowest_capacity }}</div>
-        </div>
-      </div>
-
       <!-- Center: Core Engine + Orbit -->
       <div class="bos-center-stage">
         <div class="bos-orbit-ring"></div>
@@ -68,7 +54,12 @@
         <div class="bos-connector bos-conn-right"></div>
         <div class="bos-tension-label bos-tension-right">TENSION:<br/>Stabilizer<br/>Tension</div>
 
-        <!-- Left: Opposing Pattern (connector only, node rendered above) -->
+        <!-- Left: Opposing Pattern -->
+        <div class="bos-node bos-opposing bos-left-node">
+          <div class="node-label-small">OPPOSING PATTERN</div>
+          <div class="node-name">{{ opposing_pattern_1_name }}</div>
+          <div class="node-icon">{{ opposing_pattern_1_icon }}</div>
+        </div>
         <div class="bos-connector bos-conn-left"></div>
 
         <!-- Bottom: Opposing Pattern 2 -->
@@ -79,6 +70,14 @@
         </div>
         <div class="bos-connector bos-conn-bottom"></div>
         <div class="bos-tension-label bos-tension-bottom">TENSION:<br/>Opposition<br/>Tension</div>
+      </div>
+
+      <!-- Left side description -->
+      <div class="bos-side-note bos-left-note">
+        <div class="note-heading">{{ opposing_pattern_1_heading }}</div>
+        <div class="note-body">{{ opposing_pattern_1_description }}</div>
+        <div class="note-subheading">Lowest Capacity</div>
+        <div class="note-subbody">{{ opposing_pattern_1_lowest_capacity }}</div>
       </div>
 
       <!-- Right side descriptions -->

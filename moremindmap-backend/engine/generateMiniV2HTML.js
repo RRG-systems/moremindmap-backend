@@ -464,17 +464,10 @@ h1, h2, h3 {
   left: 50%; 
   transform: translate(-50%, 50%);
 }
-
-.bos-left-opposing {
-  position: absolute;
-  left: 0;
-  top: 50%;
+.bos-left-node { 
+  top: 50%; 
+  left: 0; 
   transform: translate(-50%, -50%);
-}
-
-.bos-left-opposing .bos-node {
-  position: relative;
-  left: 0;
 }
 
 .node-label, .node-label-small {

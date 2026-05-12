@@ -410,17 +410,10 @@ h1, h2, h3 {
   left: 50%; 
   transform: translate(-50%, 50%);
 }
-
-.bos-left-opposing {
-  position: absolute;
-  left: 0;
-  top: 50%;
+.bos-left-node { 
+  top: 50%; 
+  left: 0; 
   transform: translate(-50%, -50%);
-}
-
-.bos-left-opposing .bos-node {
-  position: relative;
-  left: 0;
 }
 
 .node-label, .node-label-small {
@@ -734,20 +727,6 @@ h1, h2, h3 {
       </div>
 
       <!-- Left opposing pattern + description -->
-      <div class="bos-left-opposing">
-        <div class="bos-node bos-opposing">
-          <div class="node-label">OPPOSING PATTERN</div>
-          <div class="node-name">Signal</div>
-          <div class="node-icon">⊗</div>
-        </div>
-        <div class="bos-side-note bos-left-note">
-          <div class="note-heading">Relational Awareness &amp; Intuition</div>
-          <div class="note-body">Reads between the lines, senses dynamics, and adapts to human context.</div>
-          <div class="note-subheading">Lowest Capacity</div>
-          <div class="note-subbody">May under-leverage relational nuance or intuitive signals.</div>
-        </div>
-      </div>
-
       <!-- Center: Core Engine + Orbit -->
       <div class="bos-center-stage">
         <div class="bos-orbit-ring"></div>
@@ -775,7 +754,12 @@ h1, h2, h3 {
         <div class="bos-connector bos-conn-right"></div>
         <div class="bos-tension-label bos-tension-right">TENSION:<br/>Stabilizer<br/>Tension</div>
 
-        <!-- Left: Opposing Pattern (connector only, node rendered above) -->
+        <!-- Left: Opposing Pattern -->
+        <div class="bos-node bos-opposing bos-left-node">
+          <div class="node-label-small">OPPOSING PATTERN</div>
+          <div class="node-name">Signal</div>
+          <div class="node-icon">⊗</div>
+        </div>
         <div class="bos-connector bos-conn-left"></div>
 
         <!-- Bottom: Opposing Pattern 2 -->
@@ -786,6 +770,14 @@ h1, h2, h3 {
         </div>
         <div class="bos-connector bos-conn-bottom"></div>
         <div class="bos-tension-label bos-tension-bottom">TENSION:<br/>Opposition<br/>Tension</div>
+      </div>
+
+      <!-- Left side description -->
+      <div class="bos-side-note bos-left-note">
+        <div class="note-heading">Relational Awareness &amp; Intuition</div>
+        <div class="note-body">Reads between the lines, senses dynamics, and adapts to human context.</div>
+        <div class="note-subheading">Lowest Capacity</div>
+        <div class="note-subbody">May under-leverage relational nuance or intuitive signals.</div>
       </div>
 
       <!-- Right side descriptions -->
