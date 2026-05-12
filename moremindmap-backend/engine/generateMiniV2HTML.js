@@ -324,7 +324,7 @@ h1, h2, h3 {
 
 .bos-tension-warning-box {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 0;
   width: 240px;
   padding: 16px;
@@ -551,36 +551,68 @@ h1, h2, h3 {
 
 .bos-text-box {
   position: absolute;
-  max-width: 200px;
+  max-width: 190px;
   font-size: 11px;
   line-height: 1.4;
   color: #555;
   padding: 12px 14px;
-  background: #fafafa;
-  border: 1px solid #e0e0e0;
+  background: #fff;
+  border: 1px solid #d0d0d0;
   border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .bos-text-top-right {
-  top: -40px;
-  right: -240px;
+  top: 25px;
+  right: -220px;
 }
 
 .bos-text-right {
-  top: 50%;
-  right: -240px;
-  transform: translateY(-50%);
+  bottom: -110px;
+  right: -35px;
 }
 
 .bos-text-left {
-  top: 50%;
-  left: -240px;
-  transform: translateY(-50%);
+  top: -120px;
+  left: -15px;
 }
 
 .bos-text-bottom-right {
-  bottom: -20px;
-  right: -240px;
+  bottom: 35px;
+  left: -220px;
+}
+
+.bos-annotation-connector {
+  position: absolute;
+  background: #c0c0c0;
+}
+
+.bos-conn-annotation-top {
+  top: 45px;
+  right: -160px;
+  width: 38px;
+  height: 1px;
+}
+
+.bos-conn-annotation-right {
+  bottom: -55px;
+  right: 20px;
+  width: 1px;
+  height: 42px;
+}
+
+.bos-conn-annotation-left {
+  top: -75px;
+  left: 35px;
+  width: 1px;
+  height: 42px;
+}
+
+.bos-conn-annotation-bottom {
+  bottom: 55px;
+  left: -165px;
+  width: 38px;
+  height: 1px;
 }
 
 .bos-summary-section {
