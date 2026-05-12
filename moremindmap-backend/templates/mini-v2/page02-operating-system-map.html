@@ -16,18 +16,17 @@
 
     <section class="operating-system-map">
       <div class="map-container">
-        <!-- Placeholder for actual map rendering or SVG -->
-        <div class="map-node core-engine">CORE ENGINE<br/>{{ core_engine_details }}</div>
-        <div class="map-node driver">PRIMARY DRIVER<br/>{{ primary_driver_details }}</div>
-        <div class="map-node stabilizer">SECONDARY STABILIZER<br/>{{ secondary_stabilizer_details }}</div>
-        <div class="map-node opposing">OPPOSING PATTERN<br/>{{ opposing_pattern_details }}</div>
+        <div class="map-node core-engine">CORE ENGINE<br/><span style="font-size: 12px; font-weight: 400;">{{ core_engine_details }}</span></div>
+        <div class="map-node driver">PRIMARY DRIVER<br/><span style="font-size: 11px; font-weight: 400;">{{ primary_driver_details }}</span></div>
+        <div class="map-node stabilizer">SECONDARY STABILIZER<br/><span style="font-size: 11px; font-weight: 400;">{{ secondary_stabilizer_details }}</span></div>
+        <div class="map-node opposing">OPPOSING PATTERN<br/><span style="font-size: 11px; font-weight: 400;">{{ opposing_pattern_details }}</span></div>
 
         <div class="map-tension-line driver-to-core"></div>
-        <div class="map-tension-label driver">Driver</div>
+        <div class="map-tension-label driver">Tension: Driver</div>
         <div class="map-tension-line stabilizer-to-core"></div>
-        <div class="map-tension-label stabilizer">Stabilizer</div>
+        <div class="map-tension-label stabilizer">Tension: Stabilizer</div>
         <div class="map-tension-line opposing-to-core"></div>
-        <div class="map-tension-label opposing">Opposing</div>
+        <div class="map-tension-label opposing">Tension: Opposition</div>
       </div>
 
       <div class="system-tension-warning">
