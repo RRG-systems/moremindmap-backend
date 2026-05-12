@@ -370,9 +370,9 @@ h1, h2, h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
-  border: 2px dotted #c0c0c0;
+  width: 340px;
+  height: 340px;
+  border: 1px dotted rgba(192, 192, 192, 0.4);
   border-radius: 50%;
 }
 
@@ -381,8 +381,8 @@ h1, h2, h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border: 2px solid #d0d0d0;
   border-radius: 50%;
   background: #fafafa;
@@ -391,42 +391,43 @@ h1, h2, h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 24px;
 }
 
 .core-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #D4AF37;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .core-heading {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: #0b2a4a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .core-summary {
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 10px;
+  line-height: 1.5;
   color: #666;
 }
 
 .bos-node {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 16px;
+  padding: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
@@ -438,19 +439,19 @@ h1, h2, h3 {
 
 .bos-node.bos-secondary {
   background: #2c5aa0;
-  border: 2px solid #4a7bc0;
+  border: 2px solid #5580c0;
   color: white;
 }
 
 .bos-node.bos-opposing {
   background: #e8e8e8;
-  border: 2px solid #c0c0c0;
+  border: 2px solid #b8b8b8;
   color: #555;
 }
 
-.bos-top-node { top: -70px; left: 50%; transform: translateX(-50%); }
-.bos-right-node { top: 50%; right: -70px; transform: translateY(-50%); }
-.bos-bottom-node { bottom: -70px; left: 50%; transform: translateX(-50%); }
+.bos-top-node { top: -90px; left: 50%; transform: translateX(-50%); }
+.bos-right-node { top: 50%; right: -95px; transform: translateY(-50%); }
+.bos-bottom-node { bottom: -90px; left: 50%; transform: translateX(-50%); }
 
 .bos-left-opposing {
   position: absolute;
@@ -461,25 +462,28 @@ h1, h2, h3 {
 
 .bos-left-opposing .bos-node {
   position: relative;
-  left: -70px;
+  left: -95px;
 }
 
 .node-label, .node-label-small {
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  opacity: 0.9;
 }
 
 .node-name {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1.2;
 }
 
 .node-icon {
-  font-size: 28px;
+  font-size: 24px;
+  opacity: 0.85;
 }
 
 .bos-connector {
@@ -488,23 +492,23 @@ h1, h2, h3 {
   border-top: 2px dotted #999;
 }
 
-.bos-conn-top { top: 0; left: 50%; width: 2px; height: 90px; border-top: none; border-left: 2px dotted #999; transform: translateX(-50%); }
-.bos-conn-right { top: 50%; right: 0; width: 90px; height: 2px; transform: translateY(-50%); }
-.bos-conn-left { top: 50%; left: 0; width: 90px; height: 2px; transform: translateY(-50%); }
-.bos-conn-bottom { bottom: 0; left: 50%; width: 2px; height: 90px; border-top: none; border-left: 2px dotted #999; transform: translateX(-50%); }
+.bos-conn-top { top: 0; left: 50%; width: 2px; height: 110px; border-top: none; border-left: 1px dotted #aaa; transform: translateX(-50%); }
+.bos-conn-right { top: 50%; right: 0; width: 115px; height: 1px; border-top: 1px dotted #aaa; transform: translateY(-50%); }
+.bos-conn-left { top: 50%; left: 0; width: 115px; height: 1px; border-top: 1px dotted #aaa; transform: translateY(-50%); }
+.bos-conn-bottom { bottom: 0; left: 50%; width: 2px; height: 110px; border-top: none; border-left: 1px dotted #aaa; transform: translateX(-50%); }
 
 .bos-tension-label {
   position: absolute;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
-  color: #666;
+  color: #888;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
-.bos-tension-top { top: 30px; left: 50%; transform: translateX(-50%); }
-.bos-tension-right { top: 50%; right: 20px; transform: translateY(-50%); }
-.bos-tension-bottom { bottom: 30px; left: 50%; transform: translateX(-50%); }
+.bos-tension-top { top: 40px; left: 50%; transform: translateX(-50%); }
+.bos-tension-right { top: 50%; right: 30px; transform: translateY(-50%); }
+.bos-tension-bottom { bottom: 40px; left: 50%; transform: translateX(-50%); }
 
 .bos-side-note {
   font-size: 12px;
@@ -515,15 +519,15 @@ h1, h2, h3 {
 .bos-left-note {
   position: absolute;
   left: 0;
-  top: 200px;
-  width: 200px;
+  top: 220px;
+  width: 220px;
 }
 
 .bos-right-descriptions {
   position: absolute;
   right: 0;
-  top: 20px;
-  width: 240px;
+  top: 40px;
+  width: 260px;
 }
 
 .bos-right-note-top { margin-bottom: 32px; }
@@ -533,26 +537,27 @@ h1, h2, h3 {
   font-size: 13px;
   font-weight: 700;
   color: #0b2a4a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .note-body {
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #555;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .note-subheading {
   font-size: 10px;
   font-weight: 700;
   color: #666;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  margin-top: 4px;
 }
 
 .note-subbody {
   font-size: 10px;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #666;
 }
 
