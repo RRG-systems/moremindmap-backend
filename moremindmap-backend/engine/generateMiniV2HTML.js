@@ -29,6 +29,10 @@ function escapeHtml(value = '') {
  .replaceAll("'", '&#039;');
 }
 
+function stripTemplateComments(html) {
+ return html.replace(/\{#[\s\S]*?#\}/g, '');
+}
+
 function replacePlaceholders(template, data) {
  return template.replace(/\{\{([^}]+)\}\}/g, (_, rawKey) => {
  const key = rawKey.trim();
@@ -45,7 +49,7 @@ export async function generateMiniV2HTML(data = {}) {
  for (const file of PAGE_FILES) {
  const filePath = path.join(TEMPLATE_DIR, file);
  const template = await fs.readFile(filePath, 'utf8');
- pages.push(replacePlaceholders(template, data));
+ pages.push(stripTemplateComments(replacePlaceholders(template, data)));
  }
 
  const html = `<!doctype html>
@@ -374,6 +378,7 @@ ${pages.join('\n\n')}
  throw new Error(`Mini V2 HTML generation failed: expected 10 page templates, found ${pages.length}`);
  }
 
+ const leftovers = html.match(/\{\{[^}]+\}\}/g) || [];
  if (leftovers.length) {
  throw new Error(`Mini V2 HTML generation failed: ${leftovers.length} placeholders left`);
  }
