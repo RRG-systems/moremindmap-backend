@@ -1,6 +1,6 @@
 # CURRENT RECOVERY STATE
 
-Last verified: May 11, 2026 15:46 MST
+Last verified: May 12, 2026 12:31 MST
 
 ## Repository
 
@@ -17,7 +17,13 @@ Branch:
 `main`
 
 Current baseline commit:
-`ce80ac0` — complete mini v2 html generation baseline
+`44fcc98` — scale mini v2 anchor page visual composition
+
+Previous checkpoints:
+- `ce80ac0` — complete mini v2 html generation baseline (Baby1)
+- `7eb9b64` — add page 1 and page 2 placeholder data, regenerate artifact
+- `916aa2d` — strip jinja template comments from generated html
+- `44fcc98` — scale mini v2 anchor page visual composition (Baby2)
 
 ## Recovery Status
 
@@ -79,31 +85,50 @@ Governance:
 - `moremindmap-backend/MINI_V2_TEMPLATE_RECONSTRUCTION_PLAN.md`
 - `moremindmap-backend/VERCEL_DEPLOYMENT_STATUS.md`
 
-## Current Phase
+## Current Phase - Baby2 Checkpoint
 
-Recovery is complete.
+Infrastructure recovery complete.
+Baseline HTML generation stable.
+Anchor page scale & composition upgraded.
 
-Next phase:
-Visual template refinement against locked PDF reference.
+### Baby2 Known Strengths
+- HTML pipeline stable and regenerating correctly
+- Placeholder system: 0 unfilled placeholders
+- Page validation: explicit pages.length check (10 pages)
+- Template comment stripping: Jinja {# #} comments removed from output
+- Shared CSS system established with premium styling
+- Anchor pages (1, 2, 4) structurally upgraded with larger scale
+- Generated artifact fresh and current (timestamp May 12 12:31)
+- Page 1: premium cover identity, dark signature card, bordered core edge
+- Page 2: map nodes (core engine, driver, stabilizer, opposing), tension system
+- Page 4: gold vertical accent, navy divider, three-card row, development banner
+
+### Baby2 Known Weaknesses
+- Typography still web-like, not print-premium
+- Page composition/spacing still compressed compared to locked reference
+- Page 2 map positioning/layout needs major refinement (nodes overlap, tension lines crude)
+- Footer system functional but not matching locked reference style
+- Pages 3, 5-10 still skeletal/unrefined
+- No PDF rendering yet
+- No real scoring data wired
+- No production deployment
+
+### Next Phase
+Page-by-page visual refinement against locked PDF reference.
+Priority: Pages 1, 2, 4 closer to locked targets, then Pages 3, 5-10.
 
 ## Next Engineering Sequence
 
-1. Generate current HTML output.
-2. Save output artifact.
-3. Compare current HTML visually against locked PDF.
-4. Refine templates toward locked PDF structure:
- - typography
- - spacing
- - page hierarchy
- - cards/sections
- - footer consistency
- - Page 2 operating map
- - Page 10 DNA section
-5. Wire real scoring data into placeholders.
-6. Rebuild page injection layer.
-7. Add PDF rendering.
-8. Add AI interpreter layer.
-9. Restore Stripe/Formspree/email/download production flow.
+Baby2 → Baby3:
+1. Refine Page 2 map layout (fix node positioning, improve tension visualization)
+2. Refine Page 1 cover (closer to locked reference premium identity)
+3. Refine Page 4 pattern (closer to locked reference cards/spacing)
+4. Refine Pages 3, 5-10 sequentially against locked reference
+5. Wire real scoring data into placeholders
+6. Add PDF rendering (Puppeteer or equivalent)
+7. Add AI interpreter layer
+8. Restore Stripe/Formspree/email/download production flow
+9. Deploy to production
 
 ## Do Not Do
 

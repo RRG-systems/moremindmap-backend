@@ -4,23 +4,37 @@ Last updated: May 12, 2026
 
 ## Executive Summary
 
-The current generated HTML baseline is structurally functional but visually skeletal. It proves the generator, placeholder system, and 10-page output path work, but it does not yet resemble the locked Mini V2 PDF reference.
+The Mini V2 HTML generation pipeline has progressed from Baby1 (technical baseline) to Baby2 (scaled anchor pages).
 
-The locked PDF is the canonical visual and product target. It contains a premium 10-page behavioral operating profile with strong typography, modular report sections, detailed interpretive copy, structured cards, page-level hierarchy, a distinctive Page 2 Behavioral Operating System Map, and a Page 10 Full Profile / Operating DNA close.
+Baby1 proved the generator, placeholder system, and 10-page output work.
+Baby2 establishes shared CSS, scales anchor pages (1, 2, 4), and begins visual refinement.
 
-The current generated baseline should be treated only as a technical baseline, not as product design.
+The locked PDF remains the canonical visual and product target. It contains a premium 10-page behavioral operating profile with strong typography, modular report sections, detailed interpretive copy, structured cards, page-level hierarchy, a distinctive Page 2 Behavioral Operating System Map, and a Page 10 Full Profile / Operating DNA close.
+
+Current output is closer to premium report expectations but still below locked reference quality.
 
 ## Overall Gap Severity
 
-Severity: HIGH
+Severity: MEDIUM-HIGH (reduced from HIGH after Baby2)
 
-Reason:
-- Current HTML uses skeletal placeholder copy.
-- Current templates lack the locked PDF's visual hierarchy.
-- Page 2 map is only a placeholder.
-- Page 10 DNA section is only a placeholder.
-- Pages 3–9 lack dense report structure, multi-column layouts, cards, metric bands, and facilitator formatting.
-- Footer/header system is not yet matched to locked reference.
+Baby2 Observations:
+- Shared CSS system established with premium styling direction
+- Anchor pages (1, 2, 4) structurally upgraded and scaled
+- Typography improved but still web-like
+- Spacing/composition improved but still compressed
+- Page 2 map now has nodes/tension structure but positioning crude
+- Footer system functional but below locked reference quality
+
+Remaining Gaps:
+- Typography still not print-premium
+- Page composition/spacing still web-compressed
+- Page 2 map needs major layout refinement (node overlap, tension lines)
+- Pages 3, 5-10 remain skeletal
+- Footer/header styling below locked reference
+
+**Strongest Current Page:** Page 4 (Operating Pattern) — structured, cards present, gold/navy system visible
+
+**Weakest Current Page:** Page 2 (Map) — nodes overlap, tension lines crude, not proprietary-looking yet
 
 ## Page-by-Page Gap Table
 
