@@ -325,7 +325,7 @@ h1, h2, h3 {
 .bos-tension-warning-box {
   position: absolute;
   top: 10px;
-  left: 0;
+  left: -30px;
   width: 240px;
   padding: 16px;
   background: #fff8f0;

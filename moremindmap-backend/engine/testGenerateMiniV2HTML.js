@@ -73,7 +73,7 @@ async function runTest() {
     right_tension_label: "Stabilizer Tension",
     bottom_tension_label: "Opposition Tension",
     system_tension_warning: "Under high ambiguity, tendency to over-index on speed may compromise depth. Monitor for premature closure on incomplete data sets.",
-    system_tension_summary: "Your system is optimized for precision and structural integrity. Under ambiguity, monitor for speed bias that may limit depth and relational inputs.",
+    system_tension_summary: "This operating map reflects a system that drives forward through clarity and speed, supported by strong structural discipline that protects quality and extends operational range. The primary risk under pressure is over-indexing on velocity, which can reduce depth of intake and relational awareness. Two opposing patterns—relational signal sensitivity and adaptive flexibility—may compress when certainty or closure is prioritized. The development priority is not to slow the system down, but to widen intake, expand nuance, and retain flexibility while maintaining momentum.",
     legend_primary_driver_text: "Primary Driver",
     legend_secondary_stabilizer_text: "Secondary Stabilizer",
     legend_opposing_patterns_text: "Opposing Patterns",
