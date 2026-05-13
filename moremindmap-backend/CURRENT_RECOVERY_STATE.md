@@ -1,6 +1,32 @@
 # CURRENT RECOVERY STATE
 
-Last verified: May 12, 2026 20:41 MST
+Last verified: May 13, 2026 07:21 MST
+
+## May 13, 2026 Morning Travel Checkpoint — Mini V2 Beta Wired
+
+**Status:** ✅ LIVE BETA WIRING COMPLETE
+
+**Frontend Repo:** `RRG-systems/moremindmap`
+- Local path: `/Users/rrg/.openclaw/workspace/moremindmap-live`
+- Commit: `b15f634`
+- Deployed to: Vercel
+
+**Backend Endpoint Added:** `POST /api/moremindmap/mini-profile-v2`
+**Old Endpoint Preserved:** `POST /api/moremindmap/mini-profile`
+**FATHOMFREE Routing:** ✅ Routes to v2 endpoint
+**Written Questions:** Q2, Q24 (aligned with backend)
+
+**⚠️ NEXT BEFORE TESTERS:**
+1. Wait for Vercel deployment
+2. Test FATHOMFREE flow personally
+3. Verify Q2/Q24 render as textarea
+4. Verify 10-page HTML report
+5. Only then invite Darren/Heather/Pamela
+
+**Test URL:** https://moremindmap.vercel.app
+**Promo:** FATHOMFREE
+
+---
 
 ## Repository
 

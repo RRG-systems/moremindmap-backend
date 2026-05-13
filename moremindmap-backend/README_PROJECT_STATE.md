@@ -1,5 +1,27 @@
 # MORE MINDMAP — CURRENT STATE
 
+## May 13, 2026 Morning Travel Checkpoint — Mini V2 Beta Wired
+
+**Status:** ✅ LIVE BETA WIRING COMPLETE
+
+**What's Live:**
+- Frontend: `RRG-systems/moremindmap` (commit `b15f634`)
+- Endpoint: `POST /api/moremindmap/mini-profile-v2`
+- FATHOMFREE routing: Active
+- Written questions: Q2, Q24 (textarea inputs)
+- Output: 10-page HTML report
+
+**Before Tester Invitation:**
+1. Verify Vercel deployment complete
+2. Test FATHOMFREE flow end-to-end
+3. Confirm HTML report renders
+4. Then invite Darren/Heather/Pamela
+
+**Test URL:** https://moremindmap.vercel.app  
+**Promo:** FATHOMFREE
+
+---
+
 ## CURRENT OBJECTIVE
 Wire 24-question assessment → GPT-5.5 AI content generation → 10-page personalized behavioral profile → PDF delivery.
 

@@ -43,6 +43,97 @@ git status --short
 git log --oneline -5
 ls -lh moremindmap-backend/README_PROJECT_STATE.md
 
+## May 13, 2026 Morning Travel Checkpoint — Mini V2 Beta Wired / Written Response Verification Pending
+
+**Current HEAD:** Backend: `9963088` | Frontend: `b15f634`
+
+**Status:** Mini V2 beta wiring COMPLETE. Live deployment triggered. Written response alignment complete (Q2, Q24).
+
+### ✅ COMPLETED: Mini V2 Beta Wiring
+
+**Frontend Repository:**
+- Repo: `RRG-systems/moremindmap`
+- Local path: `/Users/rrg/.openclaw/workspace/moremindmap-live`
+- Commit: `b15f634`
+- Deployment: Vercel (auto-triggered)
+
+**Backend Endpoint:**
+- New: `POST /api/moremindmap/mini-profile-v2` (Mini V2 pipeline)
+- Preserved: `POST /api/moremindmap/mini-profile` (old generator)
+- Location: `moremindmap-live/server.js` (deployed to `moremindmap-backend.vercel.app`)
+
+**FATHOMFREE Routing:**
+- ✅ FATHOMFREE promo code routes to v2 endpoint
+- ✅ Non-FATHOMFREE users route to old endpoint
+- ✅ Dual-path preserved for safety
+
+**Frontend Changes:**
+- `src/Profile.jsx`: Added v2 routing logic + HTML rendering
+- `src/lib/assessments/moremindmap-questions.js`: Fixed Q2 as `written_response`
+
+**Backend Changes:**
+- `server.js`: Added v2 endpoint calling full Mini V2 pipeline
+- Copied pipeline files from `moremindmap-backend` to `moremindmap-live`:
+  - `engine/buildProfileInput.js`
+  - `engine/generateReportContent.js`
+  - `engine/validateReportContent.js`
+  - `engine/injectReportContent.js`
+  - `engine/generateMiniV2HTML.js`
+  - `prompts/moremindmapMiniV2Prompt.js`
+  - `templates/mini-v2/*.html` (10 pages)
+
+**Written Response Alignment:**
+- Backend expects: Q2, Q24 as written (actual implementation)
+- Frontend now provides: Q2, Q24 as `written_response` type
+- ⚠️ Documentation claimed 6 written (Q2, Q6, Q10, Q15, Q20, Q24) but backend only implements 2
+- Aligned to backend's actual code
+
+### ⚠️ CRITICAL: DO NOT INVITE TESTERS YET
+
+Before sending to Darren/Heather/Pamela:
+1. Wait for Vercel deployment to complete
+2. Test FATHOMFREE flow personally
+3. Verify Q2 and Q24 render as textarea inputs
+4. Verify submission works end-to-end
+5. Verify 10-page HTML report renders
+6. Check for placeholder errors or blank content
+
+### Controlled Beta Test URL
+
+```
+URL: https://moremindmap.vercel.app
+Promo: FATHOMFREE
+
+Flow:
+1. Mini Profile
+2. Name + Email
+3. Promo: FATHOMFREE
+4. Apply Promo
+5. Start Assessment
+6. Answer 24 questions (Q2 & Q24 = paragraph)
+7. Submit
+8. Expected: 10-page HTML behavioral report
+```
+
+### Known Risks
+
+1. **OpenAI API Key:** If missing in Vercel env, falls back to mock mode
+2. **Placeholder Issue:** Local generation reported "88 placeholders left" - untested in live
+3. **Written Response Count:** Only 2 written (not 6 as docs claim)
+4. **First Live Test:** May reveal runtime errors not caught locally
+5. **HTML Rendering:** `dangerouslySetInnerHTML` assumes safe HTML (should be safe from our pipeline)
+
+### Next Actions (On Resume)
+
+1. Monitor Vercel deployment status
+2. Test FATHOMFREE flow personally
+3. If working: Invite testers
+4. If broken: Debug and fix
+5. Collect tester feedback
+6. Iterate
+
+---
+
 ## May 12, 2026 Travel Checkpoint — Local Engine Complete / Live Beta Wiring Next
 
 **Current HEAD:** `5a66f7f`

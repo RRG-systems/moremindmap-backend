@@ -1,6 +1,26 @@
 # Mini V2 Visual Gap Report
 
-Last updated: May 12, 2026 22:37 MST
+Last updated: May 13, 2026 07:21 MST
+
+## May 13, 2026 Morning Travel Checkpoint — Mini V2 Beta Wired
+
+**Status:** ✅ LIVE BETA WIRING COMPLETE
+
+**Deployment:**
+- Frontend commit: `b15f634`
+- Backend docs: `9963088`
+- Vercel: Deployment triggered
+- FATHOMFREE: Routes to Mini V2 endpoint
+
+**Before Tester Launch:**
+1. Verify Vercel deployment
+2. Test FATHOMFREE flow
+3. Confirm written inputs (Q2, Q24)
+4. Confirm HTML report renders
+
+**No Visual Changes During Wiring:** ✅ Confirmed
+
+---
 
 ## Executive Summary
 
