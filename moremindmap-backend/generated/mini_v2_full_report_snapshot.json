@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-12T22:03:00Z",
+    "source_report_content": "examples/report_content_example.json",
+    "injection_engine_version": "V1"
+  },
+  "pages_rendered": 10,
+  "total_pages_expected": 10,
+  "placeholder_count": 0,
+  "coverage_percent": 100,
+  "missing_fields": [],
+  "validation_status": "PASS",
+  "injection_summary": {
+    "total_fields_injected": 95,
+    "pages_with_missing_content": 0
+  },
+  "page_breakdown": {
+    "page01_cover": {"fields_injected": 32, "placeholders_remaining": 0},
+    "page02_operating_system_map": {"fields_injected": 28, "placeholders_remaining": 0},
+    "page03_executive_summary": {"fields_injected": 8, "placeholders_remaining": 0},
+    "page04_operating_pattern": {"fields_injected": 12, "placeholders_remaining": 0},
+    "page05_decision_architecture": {"fields_injected": 12, "placeholders_remaining": 0},
+    "page06_communication_style": {"fields_injected": 15, "placeholders_remaining": 0},
+    "page07_system_under_strain": {"fields_injected": 10, "placeholders_remaining": 0},
+    "page08_operating_environment_fit": {"fields_injected": 15, "placeholders_remaining": 0},
+    "page09_facilitator_notes": {"fields_injected": 8, "placeholders_remaining": 0},
+    "page10_full_profile_unlocks": {"fields_injected": 12, "placeholders_remaining": 0}
+  }
+}
