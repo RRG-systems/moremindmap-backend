@@ -1,6 +1,6 @@
 # Mini V2 Visual Gap Report
 
-Last updated: May 12, 2026 20:45 MST
+Last updated: May 12, 2026 22:37 MST
 
 ## Executive Summary
 
@@ -12,9 +12,11 @@ The visual templates are now at B+ quality level—sufficient for production lau
 
 **NEW PRIORITY:** AI content injection quality using GPT-5.5 to generate deeply personalized, behaviorally intelligent profile interpretations.
 
-## May 12, 2026 Final V1 Lock — Shift to AI Content Injection Quality
+## May 12, 2026 Travel Checkpoint — Local Engine Complete / Live Beta Wiring Next
 
 **V1 Lock Decision:** All 10 pages are locked as current V1.
+
+**AI Engine Status:** Steps 1-6 COMPLETE. Local generation pipeline fully functional.
 
 **Page 1 Cover - LOCKED:**
 - 3-box structure implemented
@@ -46,37 +48,54 @@ Functional pages with basic structure. Adequate for launch. May be refined post-
 
 **Gap Severity:** CLOSED for V1
 
-The gap is no longer visual structure. The gap is AI content quality.
+**Visual Gap:** CLOSED. Pages 1-2 geometry locked. No further visual work unless explicitly reopened.
 
-## NEW PHASE: AI Content Quality
+**Current Gap:** Live website wiring. Local engine complete; live deployment status UNKNOWN.
 
-**Priority:** Wire 24-question assessment + 6 written paragraph answers → GPT-5.5 → elite personalized content.
+## COMPLETED: Steps 1-6 Local AI Content Pipeline
 
-**Quality Standard:**
-- Each profile unique
-- Diagnostically specific
-- Behaviorally intelligent
-- Proprietary tone
-- NOT generic templates
+**Step 1:** Visual V1 locked
+**Step 2:** AI content schema (95 fields mapped)
+**Step 3:** Profile input pipeline (buildProfileInput.js)
+**Step 4:** GPT report generation (generateReportContent.js + prompts)
+**Step 5:** Quality guardrails (validateReportContent.js)
+**Step 6:** Template injection (injectReportContent.js)
 
-**Implementation Path:**
-1. Build AI content generation engine
-2. Design GPT-5.5 prompts for each section
-3. Test with real assessment data
-4. Refine until A-level quality
-5. Production deployment
-6. Iterate
+**Output:** `generated/mini_v2_full_report.html` (10 pages, 0 placeholders, 100% coverage)
 
-**Visual Upgrades (Optional Post-Launch):**
-- Page 3 Executive Summary
-- Pages 5-10 typography/spacing refinement
-- Additional visual motifs
-- NOT blocking launch
+**Quality Validation:** PASS (92/100, genericity: 0.0, no banned phrases)
 
-## Do-Not-Do Rules
+## NEXT PHASE: Live Website Beta Wiring
+
+**Priority:** Wire live site to local engine for controlled beta testing.
+
+**First Task:** Live-Flow Audit
+1. What does FATHOMFREE currently unlock?
+2. Does frontend render new 24 questions?
+3. What endpoint receives submission?
+4. Does it call new pipeline?
+5. Where does output go?
+
+**Beta Goal:**
+```
+FATHOMFREE → 24 questions → submit → new pipeline → HTML/PDF → testers
+```
+
+**Testers:** Darren, Heather, Pam
+
+**Travel Confidence:** 75-85% controlled beta | 45-60% full production
+
+**Visual Upgrades (Post-Launch Only):**
+- Optional typography/spacing refinement
+- NOT during travel
+- NOT blocking beta
+
+## Do-Not-Do Rules (Travel Context)
 
 - Do not redesign V1 locked pages (Pages 1-2) unless explicitly reopened
+- Do not modify CSS/layout/geometry during travel
+- Do not touch questionMap.js (24-question set locked)
+- Do not assume live website is wired to new pipeline
+- Do not start Stripe/payment integration before beta testing
+- Do not polish local engine—focus on live wiring
 - Do not claim visual perfection—V1 is B+ and sufficient
-- Do not delay AI content wiring for visual polish
-- Do not weaken test validation
-- Do not modify 24-question set without approval

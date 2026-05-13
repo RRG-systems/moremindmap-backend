@@ -80,15 +80,25 @@ Priority shift: Visual templates are sufficient. Focus now on elite AI-generated
 
 ## Verified Working Baseline
 
-The Mini V2 HTML generation pipeline works.
+The Mini V2 local generation pipeline works end-to-end.
 
-Test:
-`node moremindmap-backend/engine/testGenerateMiniV2HTML.js`
+Test sequence:
+```bash
+cd /Users/rrg/.openclaw/workspace/moremindmap-backend
+node engine/buildProfileInput.js  # generates profile_input
+node engine/generateReportContent.js  # generates report_content (mock mode)
+node engine/validateReportContent.js  # validates quality (PASS)
+node engine/injectReportContent.js  # generates HTML
+```
+
+Output:
+- `generated/mini_v2_full_report.html` (10 pages, fully populated, no placeholders)
+- `generated/mini_v2_full_report_snapshot.json` (validation: PASS, coverage: 100%)
 
 Passing result:
 - 10 pages generated
 - 0 remaining placeholders
-- HTML output generated
+- 95 fields injected
 - ES module imports resolved
 - Template comments stripped
 - Explicit pages.length validation
@@ -113,7 +123,10 @@ Engine:
 - `moremindmap-backend/engine/dimensionMap.js`
 - `moremindmap-backend/engine/scoreAssessment.js`
 - `moremindmap-backend/engine/generateMiniV2HTML.js`
-- `moremindmap-backend/engine/testGenerateMiniV2HTML.js`
+- `moremindmap-backend/engine/buildProfileInput.js` ✅ NEW
+- `moremindmap-backend/engine/generateReportContent.js` ✅ NEW
+- `moremindmap-backend/engine/validateReportContent.js` ✅ NEW
+- `moremindmap-backend/engine/injectReportContent.js` ✅ NEW
 
 Templates (V1 Locked):
 - `moremindmap-backend/templates/mini-v2/page01-cover.html` ✅ LOCKED
@@ -128,10 +141,18 @@ Templates (V1 Locked):
 - `moremindmap-backend/templates/mini-v2/page10-full-profile-unlocks-dna.html`
 
 Governance:
-- `moremindmap-backend/SOURCE_OF_TRUTH.md`
+- `moremindmap-backend/SOURCE_OF_TRUTH.md` ✅ UPDATED (travel checkpoint)
 - `moremindmap-backend/README_PROJECT_STATE.md`
-- `moremindmap-backend/CURRENT_RECOVERY_STATE.md`
+- `moremindmap-backend/CURRENT_RECOVERY_STATE.md` ✅ UPDATED (travel checkpoint)
 - `moremindmap-backend/MINI_V2_VISUAL_GAP_REPORT.md`
+
+AI System Documentation:
+- `moremindmap-backend/AI_CONTENT_SCHEMA_V1.md` ✅ NEW
+- `moremindmap-backend/GPT_FIELD_PROMPT_LIBRARY_V1.md` ✅ NEW
+- `moremindmap-backend/INTERPRETATION_ENGINE_V1.md` ✅ NEW
+- `moremindmap-backend/PROFILE_INPUT_SCHEMA_V1.md` ✅ NEW
+- `moremindmap-backend/REPORT_CONTENT_SCHEMA_V1.md` ✅ NEW
+- `moremindmap-backend/REPORT_QUALITY_GUARDRAILS_V1.md` ✅ NEW
 
 ## Do Not Do
 

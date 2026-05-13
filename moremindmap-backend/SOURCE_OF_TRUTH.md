@@ -43,49 +43,139 @@ git status --short
 git log --oneline -5
 ls -lh moremindmap-backend/README_PROJECT_STATE.md
 
-## May 12, 2026 Final V1 Lock — Shift to AI Content Injection Quality
+## May 12, 2026 Travel Checkpoint — Local Engine Complete / Live Beta Wiring Next
 
-**Current HEAD:** `54f5454`
+**Current HEAD:** `5a66f7f`
 
-**Current Artifact:**
-- Path: `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
-- Size: 44K
-- Timestamp: May 12, 2026 20:41
-- Status: All 10 pages locked as V1
+**Status:** Local generation pipeline COMPLETE. Live website wiring NEXT.
 
-**V1 Visual Lock Decision:**
-All 10 pages are now locked as current V1. Visual buildout phase complete.
+### ✅ COMPLETED: Steps 1-6 Local Pipeline
 
-**Page Status:**
-- Page 1 Cover: ✅ LOCKED (3-box structure: Profile Signature + YOUR PROFILE DNA decoder + Core Edge)
-- Page 2 Behavioral Operating System Map: ✅ LOCKED (self-contained circles, 4 bullets each)
-- Pages 3-10: ✅ LOCKED as functional V1 pages
+**Step 1:** Visual V1 Locked
+- All 10 pages accepted as V1
+- Page 1: Profile Signature + YOUR PROFILE DNA decoder + Core Edge (LOCKED)
+- Page 2: Behavioral Operating System Map with radial circles (LOCKED)
+- No further visual redesign unless explicitly reopened
 
-**Visual Quality Assessment:** Solid B+ premium assessment report. Template quality is now sufficient for production.
+**Step 2:** AI Content Schema
+- AI_CONTENT_SCHEMA_V1.md created (12K, 404 lines)
+- 95 dynamic fields mapped across 10 pages
 
-**NEW PHASE: AI Content Injection Quality**
+**Step 3:** Canonical Profile Input Pipeline
+- PROFILE_INPUT_SCHEMA_V1.md created (16K, 301 lines)
+- engine/buildProfileInput.js created (19K, 452 lines)
+- examples/profile_input_example.json created
+- 24-question set verified (Q2, Q6, Q10, Q15, Q20, Q24 = written)
 
-The next priority is NOT visual polish. The next priority is wiring the 24-question assessment and 6 written paragraph answers into high-quality GPT-5.5-generated report content.
+**Step 4:** GPT-5.5 Report Generation Brain
+- REPORT_CONTENT_SCHEMA_V1.md created (13K, 358 lines)
+- engine/generateReportContent.js created (7.6K, 214 lines)
+- prompts/moremindmapMiniV2Prompt.js created (2.7K, 86 lines)
+- examples/report_content_example.json generated
+- Mock mode functional (OPENAI_MODEL || "gpt-5.5")
 
-**Content Quality Requirements:**
-- Each profile must feel unique to the individual
-- Diagnostically specific, not generic templating
-- Behaviorally intelligent interpretation
-- Proprietary, analytical tone
-- NOT recycled DISC/AVA copy
-- NOT motivational fluff
-- Must feel like reading the person's operating system
+**Step 5:** Quality Guardrails
+- REPORT_QUALITY_GUARDRAILS_V1.md created (5.8K, 271 lines)
+- engine/validateReportContent.js created (6.8K, 164 lines)
+- examples/report_quality_report.json generated
+- Quality score: 92/100, Genericity: 0.0
 
-**Implementation Path:**
-1. Wire scoring engine → GPT-5.5 prompt generation
-2. Generate all dynamic placeholders via AI
-3. Test with real assessment data
-4. Refine AI prompt quality until output is A-level
-5. Production deployment
-6. Iterative visual upgrades to Pages 3-10 post-launch (optional)
+**Step 6:** Template Injection Engine
+- engine/injectReportContent.js created (6.6K, 174 lines)
+- generated/mini_v2_full_report.html generated
+- generated/mini_v2_full_report_snapshot.json created
+- 10 pages rendered, 95 fields injected, 0 placeholders, 100% coverage
 
-**Next Session Actions:**
-1. Pull latest main
-2. Read all checkpoint documentation
-3. Begin AI content wiring architecture
-4. Focus on interpretation quality, not visual refinement
+### Current Pipeline Flow
+
+```
+Raw Assessment (24 Q + 6 written)
+  ↓ buildProfileInput.js
+profile_input.json (forensic intelligence)
+  ↓ generateReportContent.js + GPT-5.5
+report_content.json (95 AI fields)
+  ↓ validateReportContent.js
+quality report (anti-genericity)
+  ↓ injectReportContent.js
+generated/mini_v2_full_report.html
+```
+
+### ⚠️ IMPORTANT: Live Website NOT Assumed Wired
+
+**DO NOT ASSUME:**
+- FATHOMFREE currently triggers new 24-question flow
+- Submit endpoint calls new pipeline
+- Frontend renders 24 questions
+- Backend generates populated 10-page output
+
+**NEXT TASK: Live-Flow Audit**
+
+### Travel Beta Goal (Controlled Beta, NOT Full Production)
+
+**Goal during travel:**
+```
+FATHOMFREE code
+  ↓
+new 24-question Mini assessment
+  ↓
+submit
+  ↓
+backend pipeline (buildProfileInput → generateReportContent → inject)
+  ↓
+populated 10-page HTML or PDF
+  ↓
+Darren / Heather / Pam test and provide feedback
+```
+
+**Confidence Levels:**
+- Controlled beta: 75-85%
+- Full polished production while traveling: 45-60%
+
+**If PDF annoying:** HTML report link acceptable for initial tester feedback.
+
+### Next Steps (Mobile/Travel Context)
+
+1. **Live-Flow Audit** (FIRST PRIORITY)
+   - What does FATHOMFREE currently unlock?
+   - Which question file does live Mini use?
+   - Does frontend render new 24 questions?
+   - What endpoint receives Mini submission?
+   - Does that endpoint call new pipeline?
+   - Where does output go? (HTML? Email? Download? Lost?)
+   - Which repo/path is live frontend using?
+   - What hosting environment serves backend?
+
+2. **Wire Frontend to 24-Question Set**
+   - Confirm questionMap.js loads in frontend
+   - Confirm FATHOMFREE bypasses payment for Mini
+
+3. **Wire Submit Endpoint to New Pipeline**
+   - Connect submit → buildProfileInput → generateReportContent → inject
+
+4. **Generate HTML Report After Submit**
+   - Add Puppeteer PDF if feasible (optional for beta)
+
+5. **Add Download/Email Delivery**
+
+6. **Have Testers Run**
+   - Darren, Heather, Pam
+   - Inspect AI quality
+
+7. **ONLY THEN:** Move toward Stripe/public production
+
+### Files NOT To Touch During Travel
+
+- ❌ Page 1 or Page 2 layout/geometry
+- ❌ CSS redesign
+- ❌ questionMap.js (24-question set locked)
+- ❌ dimensionMap.js
+- ❌ Scoring engine
+- ❌ Visual template redesign
+
+### Travel Operating Plan
+
+**Context:** User traveling for son's college graduation in Colorado. Working remotely via Telegram.
+
+**Priority:** Controlled beta wiring for tester feedback. NOT full production polish.
+
+**Key Constraint:** Mobile/remote workflow. Minimize complex multi-file changes.
