@@ -177,65 +177,238 @@ h1, h2, h3 {
 /* Specific Page Enhancements */
 
 /* Page 1 Cover Enhancements */
-.page01-cover-page { /* Specific class for cover page main content */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  text-align: center;
-  padding: 0; /* Reset padding if needed for full bleed cover */
+.cover-page .page-main {
+  position: relative;
 }
 
-.cover-identity {
-  margin-bottom: 40px;
+.cover-title-section {
+  position: relative;
+  text-align: left;
+  margin-bottom: 50px;
+  padding-top: 30px;
 }
 
-.cover-identity h1 {
-  font-size: 64px;
-  margin-bottom: 12px;
-  color: #0b2a4a;
+.cover-background-arcs {
+  position: absolute;
+  top: 0;
+  right: -60px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, transparent 30%, rgba(220,220,220,0.15) 35%, transparent 40%, rgba(220,220,220,0.12) 45%, transparent 50%, rgba(220,220,220,0.08) 55%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cover-main-title {
+  font-size: 72px;
   font-weight: 800;
+  line-height: 1.1;
+  color: #2c2c2c;
+  margin-bottom: 20px;
   letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
 }
 
-.cover-identity .subtitle {
-  font-size: 28px;
-  font-weight: 500;
-  color: #D4AF37;
+.gold-underline {
+  width: 100px;
+  height: 4px;
+  background: #D4AF37;
   margin-bottom: 20px;
 }
 
-.profile-signature-card {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 42px 48px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  margin: 60px auto 50px auto;
-  max-width: 680px;
+.gold-underline-small {
+  width: 60px;
+  height: 3px;
+  background: #D4AF37;
+  margin-bottom: 18px;
 }
 
-.profile-signature-card .card-heading {
-  color: #D4AF37; /* Gold heading */
-}
-.profile-signature-card .card-body {
-  color: #eee; /* Lighter text for dark card */
-}
-
-.core-edge-narrative {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 32px;
+.cover-subtitle {
   font-size: 16px;
-  color: #333;
-  background: #f9f9f9;
+  line-height: 1.6;
+  color: #666;
+  max-width: 480px;
+  margin: 0;
+}
+
+.profile-signature-box {
+  background: #2c2c2c;
+  border-radius: 12px;
+  padding: 32px 38px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 20px;
+}
+
+.signature-accent-bar {
+  width: 5px;
+  background: #D4AF37;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.signature-content {
+  flex: 1;
+}
+
+.signature-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin-bottom: 12px;
+}
+
+.signature-code {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.signature-interpretation {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.profile-dna-box {
+  background: #fafafa;
   border: 1.5px solid #e0e0e0;
   border-radius: 10px;
+  padding: 32px 36px;
+  margin-bottom: 32px;
 }
 
-.core-edge-narrative h3 {
-  font-size: 22px;
-  margin-bottom: 16px;
+.dna-heading {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2c2c2c;
+  margin-bottom: 8px;
+}
+
+.dna-decoder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+  margin-top: 20px;
+}
+
+.dna-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.dna-code {
+  font-size: 13px;
+  font-weight: 700;
   color: #0b2a4a;
+  margin-bottom: 4px;
+}
+
+.dna-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.dna-explanation {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.core-edge-box {
+  background: #f5f5f5;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.core-edge-icon-container {
+  flex-shrink: 0;
+}
+
+.core-edge-icon {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #c0c0c0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #999;
+  background: #fff;
+}
+
+.core-edge-content {
+  flex: 1;
+}
+
+.core-edge-heading {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2c2c2c;
+  margin-bottom: 6px;
+}
+
+.core-edge-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #444;
+  margin: 0;
+}
+
+.cover-metadata-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.metadata-box {
+  background: #fafafa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.metadata-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.metadata-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.metadata-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c2c2c;
 }
 
 /* Page 2: Behavioral Operating System Map */
@@ -625,27 +798,124 @@ h1, h2, h3 {
 <body>
 
 
-<div class="mmm-page page01">
+<div class="mmm-page page01 cover-page">
   <header class="page-header">
     <div class="header-left">MORE MINDMAP</div>
     <div class="header-right">BEHAVIORAL OPERATING PROFILE</div>
   </header>
 
-  <main class="page-main cover-page">
-    <div class="cover-identity" style="margin-top: 80px;">
-      <h1>M + RE MINDMAP</h1>
-      <div class="subtitle">Behavioral Operating Profile</div>
-      <div class="gold-accent-bar" style="margin: 20px auto;"></div>
+  <main class="page-main">
+    <!-- Title Section with Background Arcs -->
+    <div class="cover-title-section">
+      <div class="cover-background-arcs"></div>
+      <h1 class="cover-main-title">Behavioral<br/>Operating<br/>Profile</h1>
+      <div class="gold-underline"></div>
+      <p class="cover-subtitle">A comprehensive assessment of how your behavioral system moves under uncertainty, makes decisions, communicates, and shows up in teams.</p>
     </div>
 
-    <div class="profile-signature-card">
-      <div class="card-heading" style="font-size: 20px; margin-bottom: 18px; color: #D4AF37;">Profile Signature</div>
-      <div class="card-body" style="font-size: 15px; line-height: 1.7;">Your behavioral signature reflects a strategic, systems-oriented operating mode with high signal clarity and decisive action orientation.</div>
+    <!-- Box 1: Your Profile Signature -->
+    <div class="profile-signature-box">
+      <div class="signature-accent-bar"></div>
+      <div class="signature-content">
+        <div class="signature-heading">YOUR PROFILE SIGNATURE</div>
+        <div class="signature-code">V8 • Fd4 • F4 • Vl3 • L3 • H2 • S1 • Fx1</div>
+        <div class="signature-interpretation">Your dominant pattern: Vector (8) with low Fidelity (4), Framework (4), Velocity (3), and critical gaps in Signal (1) and Flex (1).</div>
+      </div>
     </div>
 
-    <div class="core-edge-narrative">
-      <h3>Core Edge</h3>
-      <p>Your core edge lies in rapidly synthesizing complex information into actionable frameworks while maintaining operational velocity under constraint.</p>
+    <!-- Box 2: Your Profile DNA (NEW DECODER SECTION) -->
+    <div class="profile-dna-box">
+      <h3 class="dna-heading">YOUR PROFILE DNA</h3>
+      <div class="gold-underline-small"></div>
+      
+      <div class="dna-decoder-grid">
+        <div class="dna-item">
+          <div class="dna-code">V8</div>
+          <div class="dna-label">Vector (Command)</div>
+          <div class="dna-explanation">You naturally create direction under ambiguity and tend to assume operational leadership quickly. High Vector scores often prioritize momentum, decisiveness, and forward movement.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">Fd4</div>
+          <div class="dna-label">Fidelity (Precision)</div>
+          <div class="dna-explanation">Your system maintains moderate precision standards but may compress detail when velocity increases. Fidelity represents your attention to accuracy and thoroughness.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">F4</div>
+          <div class="dna-label">Framework (Structure)</div>
+          <div class="dna-explanation">You apply moderate structural discipline. Framework scores reflect how much you rely on systems, standards, and repeatable processes versus improvisation.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">Vl3</div>
+          <div class="dna-label">Velocity (Speed)</div>
+          <div class="dna-explanation">Your operating pace is moderate. You balance speed with other priorities. Lower Velocity can enable depth but may reduce competitive momentum.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">L3</div>
+          <div class="dna-label">Leverage (Influence)</div>
+          <div class="dna-explanation">You demonstrate moderate reliance on external influence and coalition-building. Leverage reflects your tendency to mobilize others versus execute independently.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">H2</div>
+          <div class="dna-label">Horizon (Long-Term)</div>
+          <div class="dna-explanation">Your time horizon skews toward near-term execution. Lower Horizon scores may compress long-term strategic thinking under pressure.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">S1</div>
+          <div class="dna-label">Signal (Relational Awareness)</div>
+          <div class="dna-explanation">You demonstrate lower relational signal sensitivity. Signal represents your attention to emotional dynamics, interpersonal nuance, and social context.</div>
+        </div>
+        
+        <div class="dna-item">
+          <div class="dna-code">Fx1</div>
+          <div class="dna-label">Flex (Adaptability)</div>
+          <div class="dna-explanation">Your system demonstrates lower flexibility and improvisation under dynamic conditions. Flex measures your comfort with ambiguity, change, and course correction.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 3: Your Core Edge -->
+    <div class="core-edge-box">
+      <div class="core-edge-icon-container">
+        <div class="core-edge-icon">⛰</div>
+      </div>
+      <div class="core-edge-content">
+        <h3 class="core-edge-heading">YOUR CORE EDGE</h3>
+        <div class="gold-underline-small"></div>
+        <p class="core-edge-text">Your fundamental competitive edge is the ability to create direction where others experience ambiguity, hesitation, or diffusion. You bring command energy into systems that need movement. You do not wait passively for conditions to become ideal. You identify the objective, define the operating frame, and drive forward momentum with clarity and accountability.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Metadata Boxes -->
+    <div class="cover-metadata-row">
+      <div class="metadata-box">
+        <div class="metadata-icon">📅</div>
+        <div class="metadata-content">
+          <div class="metadata-label">ASSESSMENT DATE</div>
+          <div class="metadata-value">May 12, 2026</div>
+        </div>
+      </div>
+      
+      <div class="metadata-box">
+        <div class="metadata-icon">🛡</div>
+        <div class="metadata-content">
+          <div class="metadata-label">CONFIDENCE LEVEL</div>
+          <div class="metadata-value">85%</div>
+        </div>
+      </div>
+      
+      <div class="metadata-box">
+        <div class="metadata-icon">⏱</div>
+        <div class="metadata-content">
+          <div class="metadata-label">PROFILE TYPE</div>
+          <div class="metadata-value">Behavioral Operating Profile</div>
+        </div>
+      </div>
     </div>
   </main>
 

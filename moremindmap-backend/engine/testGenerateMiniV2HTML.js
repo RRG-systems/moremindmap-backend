@@ -31,8 +31,43 @@ async function runTest() {
     profile_type: "Behavioral Operating Profile",
 
     // Page 1 Placeholders
-    profile_signature_narrative: "Your behavioral signature reflects a strategic, systems-oriented operating mode with high signal clarity and decisive action orientation.",
-    core_edge_narrative: "Your core edge lies in rapidly synthesizing complex information into actionable frameworks while maintaining operational velocity under constraint.",
+    profile_code_string: "V8 • Fd4 • F4 • Vl3 • L3 • H2 • S1 • Fx1",
+    profile_signature_interpretation: "Your dominant pattern: Vector (8) with low Fidelity (4), Framework (4), Velocity (3), and critical gaps in Signal (1) and Flex (1).",
+    
+    vector_code: "V8",
+    vector_label: "Vector (Command)",
+    vector_explanation: "You naturally create direction under ambiguity and tend to assume operational leadership quickly. High Vector scores often prioritize momentum, decisiveness, and forward movement.",
+    
+    fidelity_code: "Fd4",
+    fidelity_label: "Fidelity (Precision)",
+    fidelity_explanation: "Your system maintains moderate precision standards but may compress detail when velocity increases. Fidelity represents your attention to accuracy and thoroughness.",
+    
+    framework_code: "F4",
+    framework_label: "Framework (Structure)",
+    framework_explanation: "You apply moderate structural discipline. Framework scores reflect how much you rely on systems, standards, and repeatable processes versus improvisation.",
+    
+    velocity_code: "Vl3",
+    velocity_label: "Velocity (Speed)",
+    velocity_explanation: "Your operating pace is moderate. You balance speed with other priorities. Lower Velocity can enable depth but may reduce competitive momentum.",
+    
+    leverage_code: "L3",
+    leverage_label: "Leverage (Influence)",
+    leverage_explanation: "You demonstrate moderate reliance on external influence and coalition-building. Leverage reflects your tendency to mobilize others versus execute independently.",
+    
+    horizon_code: "H2",
+    horizon_label: "Horizon (Long-Term)",
+    horizon_explanation: "Your time horizon skews toward near-term execution. Lower Horizon scores may compress long-term strategic thinking under pressure.",
+    
+    signal_code: "S1",
+    signal_label: "Signal (Relational Awareness)",
+    signal_explanation: "You demonstrate lower relational signal sensitivity. Signal represents your attention to emotional dynamics, interpersonal nuance, and social context.",
+    
+    flex_code: "Fx1",
+    flex_label: "Flex (Adaptability)",
+    flex_explanation: "Your system demonstrates lower flexibility and improvisation under dynamic conditions. Flex measures your comfort with ambiguity, change, and course correction.",
+    
+    core_edge_icon: "⛰",
+    core_edge_narrative: "Your fundamental competitive edge is the ability to create direction where others experience ambiguity, hesitation, or diffusion. You bring command energy into systems that need movement. You do not wait passively for conditions to become ideal. You identify the objective, define the operating frame, and drive forward momentum with clarity and accountability.",
 
     // Page 2 Placeholders
     page2_title: "Behavioral Operating System Map",

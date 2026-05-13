@@ -231,65 +231,238 @@ h1, h2, h3 {
 /* Specific Page Enhancements */
 
 /* Page 1 Cover Enhancements */
-.page01-cover-page { /* Specific class for cover page main content */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  text-align: center;
-  padding: 0; /* Reset padding if needed for full bleed cover */
+.cover-page .page-main {
+  position: relative;
 }
 
-.cover-identity {
-  margin-bottom: 40px;
+.cover-title-section {
+  position: relative;
+  text-align: left;
+  margin-bottom: 50px;
+  padding-top: 30px;
 }
 
-.cover-identity h1 {
-  font-size: 64px;
-  margin-bottom: 12px;
-  color: #0b2a4a;
+.cover-background-arcs {
+  position: absolute;
+  top: 0;
+  right: -60px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, transparent 30%, rgba(220,220,220,0.15) 35%, transparent 40%, rgba(220,220,220,0.12) 45%, transparent 50%, rgba(220,220,220,0.08) 55%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cover-main-title {
+  font-size: 72px;
   font-weight: 800;
+  line-height: 1.1;
+  color: #2c2c2c;
+  margin-bottom: 20px;
   letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
 }
 
-.cover-identity .subtitle {
-  font-size: 28px;
-  font-weight: 500;
-  color: #D4AF37;
+.gold-underline {
+  width: 100px;
+  height: 4px;
+  background: #D4AF37;
   margin-bottom: 20px;
 }
 
-.profile-signature-card {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 42px 48px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  margin: 60px auto 50px auto;
-  max-width: 680px;
+.gold-underline-small {
+  width: 60px;
+  height: 3px;
+  background: #D4AF37;
+  margin-bottom: 18px;
 }
 
-.profile-signature-card .card-heading {
-  color: #D4AF37; /* Gold heading */
-}
-.profile-signature-card .card-body {
-  color: #eee; /* Lighter text for dark card */
-}
-
-.core-edge-narrative {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 32px;
+.cover-subtitle {
   font-size: 16px;
-  color: #333;
-  background: #f9f9f9;
+  line-height: 1.6;
+  color: #666;
+  max-width: 480px;
+  margin: 0;
+}
+
+.profile-signature-box {
+  background: #2c2c2c;
+  border-radius: 12px;
+  padding: 32px 38px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 20px;
+}
+
+.signature-accent-bar {
+  width: 5px;
+  background: #D4AF37;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.signature-content {
+  flex: 1;
+}
+
+.signature-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin-bottom: 12px;
+}
+
+.signature-code {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.signature-interpretation {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.profile-dna-box {
+  background: #fafafa;
   border: 1.5px solid #e0e0e0;
   border-radius: 10px;
+  padding: 32px 36px;
+  margin-bottom: 32px;
 }
 
-.core-edge-narrative h3 {
-  font-size: 22px;
-  margin-bottom: 16px;
+.dna-heading {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2c2c2c;
+  margin-bottom: 8px;
+}
+
+.dna-decoder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+  margin-top: 20px;
+}
+
+.dna-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.dna-code {
+  font-size: 13px;
+  font-weight: 700;
   color: #0b2a4a;
+  margin-bottom: 4px;
+}
+
+.dna-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.dna-explanation {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.core-edge-box {
+  background: #f5f5f5;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.core-edge-icon-container {
+  flex-shrink: 0;
+}
+
+.core-edge-icon {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #c0c0c0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #999;
+  background: #fff;
+}
+
+.core-edge-content {
+  flex: 1;
+}
+
+.core-edge-heading {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2c2c2c;
+  margin-bottom: 6px;
+}
+
+.core-edge-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #444;
+  margin: 0;
+}
+
+.cover-metadata-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.metadata-box {
+  background: #fafafa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.metadata-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.metadata-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.metadata-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c2c2c;
 }
 
 /* Page 2: Behavioral Operating System Map */
