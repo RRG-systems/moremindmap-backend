@@ -43,9 +43,9 @@ git status --short
 git log --oneline -5
 ls -lh moremindmap-backend/README_PROJECT_STATE.md
 
-## May 12, 2026 Evening Checkpoint — Page 2 Annotation Problem / Next Design Direction
+## May 12, 2026 7:30 PM Checkpoint — Page 2 Locked
 
-**Current HEAD before commit:** `274eced`
+**Current HEAD:** `60dcb78` (final page 2 micro adjustments per reference)
 
 **Current Artifact Path:**
 `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
@@ -65,18 +65,17 @@ ls -lh moremindmap-backend/README_PROJECT_STATE.md
 - Multiple positioning attempts failed
 - Connector lines create additional problems
 
-**Failed Annotation-Box Approach:**
-External annotation boxes positioned outside the four outer circles have not achieved acceptable readability and layout balance after multiple iterations.
+**Page 2 Solution Implemented:**
+Self-contained enlarged circles (150px diameter):
+- External annotation boxes removed
+- Four bullets inside each outer circle
+- Clean, authoritative, easier to maintain
+- System Tension Warning box (top-left) with subtle circle overlap
+- System Tension Summary (bottom) with full professional paragraph
+- Legend on right side
+- All circle geometry symmetric and locked
 
-**Proposed Next Experiment:**
-Replace external annotation boxes with self-contained enlarged outer circles:
-- Remove four external annotation text boxes
-- Slightly enlarge four outer circles (e.g., 110px → 130-140px diameter)
-- Keep center circle unchanged
-- Keep top warning overlap if visually useful
-- Place concise 1-2 sentence descriptors INSIDE each outer circle
-- Structure: role label + name/code + icon + descriptor
-- Makes each circle self-contained
+**Page 2 Status:** ✅ LOCKED as current approved version
 
 **Page 1 Lock:**
 Add YOUR PROFILE DNA decoder box on Page 1 Cover between the Profile Signature black bar and Core Edge section.

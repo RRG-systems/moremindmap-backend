@@ -73,30 +73,27 @@ Page-by-page visual refinement to match locked PDF reference quality.
 - Test must pass before commits (0 placeholders, 10 pages)
 - Do not weaken validation
 
-## May 12, 2026 Evening Checkpoint — Page 2 Annotation Problem / Next Design Direction
+## May 12, 2026 7:30 PM Checkpoint — Page 2 Locked
 
-**Current HEAD:** `274eced`
-**Artifact:** `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html` (37K, May 12 14:55)
+**Current HEAD:** `60dcb78`
+**Artifact:** `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html` (37K, May 12 19:32)
 
-**Page 2 Circle Geometry:** Approved and stable
-**Page 2 Annotation Boxes:** Failed approach after multiple iterations
+**Page 2 Status:** ✅ LOCKED as approved version
+- Self-contained 150px circles with 4 bullets each
+- Center circle: 220px, unchanged
+- System Tension Warning box: top-left position
+- System Tension Summary: full professional paragraph
+- External annotation boxes: Removed
+- Circle geometry: Symmetric and stable
 
-**Problem:** External annotation text boxes positioned outside the four outer circles repeatedly fail:
-- Drift off-page
-- Overlap circles
-- Become unreadable
-- Create layout imbalance
-
-**Proposed Solution:** Self-contained enlarged circles
-- Remove external annotation boxes
-- Enlarge four outer circles (110px → 130-140px)
-- Add descriptors inside circles
-- Keep center circle unchanged
-
-**Page 1 Enhancement:** Add YOUR PROFILE DNA decoder box between Profile Signature and Core Edge to explain 8-vector code string.
+**Next Design Target:** Page 1 Cover
+- Add YOUR PROFILE DNA decoder box
+- Position: Between Profile Signature black bar and Core Edge
+- Purpose: Explain 8-vector code string
+- Tone: Proprietary diagnostic behavioral-systems language
 
 **Next Session Priority:**
-1. Resolve Page 2 annotations (likely self-contained approach)
-2. Add Page 1 DNA decoder
-3. Wire AI content
-4. Production deployment
+1. Add Page 1 YOUR PROFILE DNA decoder box
+2. Wire AI content generation
+3. Production deployment
+4. Iteratively upgrade Pages 3-10

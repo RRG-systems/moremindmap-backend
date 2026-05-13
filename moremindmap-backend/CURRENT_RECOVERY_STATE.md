@@ -152,41 +152,34 @@ Likely public-facing naming options:
 
 Pricing is TBD. The 10-page output may justify positioning above the original mini-profile price point. Do not hard-code final pricing or public product name until approved.
 
-## May 12, 2026 Evening Checkpoint — Page 2 Annotation Problem / Next Design Direction
+## May 12, 2026 7:30 PM Checkpoint — Page 2 Locked
 
 **Session Context:** Evening checkpoint before family time. Preserving exact project state.
 
-**Current HEAD:** `274eced` (fix page 2 annotation readability)
+**Current HEAD:** `60dcb78` (final page 2 micro adjustments per reference)
 
-**Page 2 Status:**
-- Circle geometry: ✅ Approved and locked
-- Center circle: ✅ Good, unchanged
-- Four outer circles: ✅ Geometrically aligned at equal radial distance
-- System Tension Warning overlap with top circle: ✅ Approved, keep
-- External annotation boxes: ❌ Failed after multiple attempts
-
-**The Annotation Box Problem:**
-Multiple attempts to position external text boxes beside circles have failed:
-- Boxes drift off-page
-- Boxes overlap circles
-- Boxes become unreadable
-- Connector lines add complexity without clarity
-- Layout balance not achieved
+**Page 2 Status:** ✅ LOCKED
+- Circle geometry: Approved and locked (150px outer circles, 220px center)
+- Center circle: Good, unchanged
+- Four outer circles: Geometrically aligned, symmetric
+- System Tension Warning box: Positioned top-left with subtle circle overlap
+- Self-contained circles: 4 bullets inside each outer circle
+- Bottom summary: Full professional paragraph
+- External annotation boxes: Removed (failed approach abandoned)
 
 **Current Artifact:**
 - Path: `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
 - Size: 37K
-- Timestamp: May 12, 2026 14:55
+- Timestamp: May 12, 2026 19:32
 - Test status: Passing (0 placeholders, 10 pages)
 
-**Proposed Next Design Direction:**
-Abandon external annotation boxes. Instead:
-1. Remove four external text boxes
-2. Slightly enlarge four outer circles (110px → 130-140px)
-3. Keep center circle size unchanged
-4. Add concise 1-2 sentence descriptor text INSIDE each outer circle
-5. Circle structure: role label + name + icon + descriptor
-6. Makes circles self-contained and solves annotation placement problem
+**Page 2 Design Solution (Implemented):**
+- External annotation boxes removed
+- Four outer circles enlarged to 150px
+- Each circle contains: label + name + icon + 4 bullets
+- System Tension Warning box positioned top-left
+- System Tension Summary contains full paragraph
+- Self-contained, clean, authoritative
 
 **Page 1 Enhancement Lock:**
 Add YOUR PROFILE DNA decoder box to Page 1 Cover:
