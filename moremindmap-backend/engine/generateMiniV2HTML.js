@@ -419,15 +419,15 @@ h1, h2, h3 {
 
 .bos-node {
   position: absolute;
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 12px;
+  padding: 18px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
@@ -475,20 +475,32 @@ h1, h2, h3 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   opacity: 0.9;
 }
 
 .node-name {
   font-size: 11px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   line-height: 1.2;
 }
 
 .node-icon {
-  font-size: 24px;
+  font-size: 18px;
   opacity: 0.85;
+  margin-bottom: 5px;
+}
+
+.node-descriptor {
+  font-size: 7.5px;
+  line-height: 1.3;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.node-descriptor-line {
+  margin-bottom: 2px;
 }
 
 .bos-connector {
@@ -543,85 +555,7 @@ h1, h2, h3 {
 .bos-tension-right { top: 50%; right: 30px; transform: translateY(-50%); }
 .bos-tension-bottom { bottom: 40px; left: 50%; transform: translateX(-50%); }
 
-.bos-side-note {
-  font-size: 12px;
-  line-height: 1.5;
-  color: #444;
-}
 
-.bos-text-box {
-  position: absolute;
-  max-width: 185px;
-  font-size: 11px;
-  line-height: 1.4;
-  color: #555;
-  padding: 12px 14px;
-  background: #fff;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.bos-text-top-right {
-  top: 50%;
-  right: -210px;
-  transform: translateY(-50%);
-}
-
-.bos-text-right {
-  top: 50%;
-  right: -210px;
-  transform: translateY(-50%);
-}
-
-.bos-text-left {
-  top: 50%;
-  left: -210px;
-  transform: translateY(-50%);
-}
-
-.bos-text-bottom-right {
-  bottom: 50%;
-  left: -210px;
-  transform: translateY(50%);
-}
-
-.bos-annotation-connector {
-  position: absolute;
-  background: #c0c0c0;
-}
-
-.bos-conn-annotation-top {
-  top: 50%;
-  right: -150px;
-  width: 35px;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-.bos-conn-annotation-right {
-  top: 50%;
-  right: -150px;
-  width: 35px;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-.bos-conn-annotation-left {
-  top: 50%;
-  left: -150px;
-  width: 35px;
-  height: 1px;
-  transform: translateY(-50%);
-}
-
-.bos-conn-annotation-bottom {
-  bottom: 50%;
-  left: -150px;
-  width: 35px;
-  height: 1px;
-  transform: translateY(50%);
-}
 
 .bos-summary-section {
   margin-top: 20px;
@@ -658,9 +592,10 @@ h1, h2, h3 {
 }
 
 .summary-body {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 11.5px;
+  line-height: 1.65;
   color: #444;
+  max-width: 800px;
 }
 
 .bos-legend {

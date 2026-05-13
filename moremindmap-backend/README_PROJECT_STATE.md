@@ -72,3 +72,31 @@ Page-by-page visual refinement to match locked PDF reference quality.
 - Preserve locked PDF and design template references
 - Test must pass before commits (0 placeholders, 10 pages)
 - Do not weaken validation
+
+## May 12, 2026 Evening Checkpoint — Page 2 Annotation Problem / Next Design Direction
+
+**Current HEAD:** `274eced`
+**Artifact:** `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html` (37K, May 12 14:55)
+
+**Page 2 Circle Geometry:** Approved and stable
+**Page 2 Annotation Boxes:** Failed approach after multiple iterations
+
+**Problem:** External annotation text boxes positioned outside the four outer circles repeatedly fail:
+- Drift off-page
+- Overlap circles
+- Become unreadable
+- Create layout imbalance
+
+**Proposed Solution:** Self-contained enlarged circles
+- Remove external annotation boxes
+- Enlarge four outer circles (110px → 130-140px)
+- Add descriptors inside circles
+- Keep center circle unchanged
+
+**Page 1 Enhancement:** Add YOUR PROFILE DNA decoder box between Profile Signature and Core Edge to explain 8-vector code string.
+
+**Next Session Priority:**
+1. Resolve Page 2 annotations (likely self-contained approach)
+2. Add Page 1 DNA decoder
+3. Wire AI content
+4. Production deployment

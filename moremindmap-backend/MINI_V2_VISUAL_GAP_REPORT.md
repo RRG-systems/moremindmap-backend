@@ -36,6 +36,22 @@ Remaining Gaps:
 
 **Weakest Current Page:** Page 2 (Map) — nodes overlap, tension lines crude, not proprietary-looking yet
 
+## May 12, 2026 Evening Checkpoint — Page 2 Self-Contained Circle Solution
+
+**External Annotation Box Experiment:** Failed after multiple iterations. Boxes drifted off-page, overlapped circles, created layout chaos.
+
+**New Solution Implemented:** Self-contained enlarged circles (150px diameter)
+- All descriptors now live INSIDE their respective circles
+- External annotation boxes removed
+- Annotation connector lines removed
+- Circle geometry remains symmetric
+- Page 2 now cleaner and more authoritative
+
+**Next Actions:**
+1. Add Page 1 YOUR PROFILE DNA decoder box
+2. Wire AI content generation
+3. Production deployment
+
 ## Page-by-Page Gap Table
 
 | Page | Locked PDF Purpose | Current HTML State | Missing Visual Structure | Missing Content Blocks | Template File | Priority |

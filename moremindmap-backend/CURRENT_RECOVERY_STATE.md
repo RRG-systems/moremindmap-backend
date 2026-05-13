@@ -151,3 +151,63 @@ Likely public-facing naming options:
 - Strategic Operating Profile
 
 Pricing is TBD. The 10-page output may justify positioning above the original mini-profile price point. Do not hard-code final pricing or public product name until approved.
+
+## May 12, 2026 Evening Checkpoint — Page 2 Annotation Problem / Next Design Direction
+
+**Session Context:** Evening checkpoint before family time. Preserving exact project state.
+
+**Current HEAD:** `274eced` (fix page 2 annotation readability)
+
+**Page 2 Status:**
+- Circle geometry: ✅ Approved and locked
+- Center circle: ✅ Good, unchanged
+- Four outer circles: ✅ Geometrically aligned at equal radial distance
+- System Tension Warning overlap with top circle: ✅ Approved, keep
+- External annotation boxes: ❌ Failed after multiple attempts
+
+**The Annotation Box Problem:**
+Multiple attempts to position external text boxes beside circles have failed:
+- Boxes drift off-page
+- Boxes overlap circles
+- Boxes become unreadable
+- Connector lines add complexity without clarity
+- Layout balance not achieved
+
+**Current Artifact:**
+- Path: `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
+- Size: 37K
+- Timestamp: May 12, 2026 14:55
+- Test status: Passing (0 placeholders, 10 pages)
+
+**Proposed Next Design Direction:**
+Abandon external annotation boxes. Instead:
+1. Remove four external text boxes
+2. Slightly enlarge four outer circles (110px → 130-140px)
+3. Keep center circle size unchanged
+4. Add concise 1-2 sentence descriptor text INSIDE each outer circle
+5. Circle structure: role label + name + icon + descriptor
+6. Makes circles self-contained and solves annotation placement problem
+
+**Page 1 Enhancement Lock:**
+Add YOUR PROFILE DNA decoder box to Page 1 Cover:
+- Position: Between Profile Signature black bar and Core Edge section
+- Purpose: Explain the 8-vector profile code (V8 • Fd4 • F4 • Vl3 • L3 • H2 • S1 • Fx1)
+- Tone: Proprietary diagnostic behavioral-systems language
+- NOT motivational copy
+- Decoder interprets integrated operating architecture
+
+**Revised Launch Sequence:**
+1. Resolve Page 2 annotation issue (likely via self-contained circles)
+2. Add Page 1 YOUR PROFILE DNA decoder
+3. Wire AI content generation to templates
+4. Connect to production deployment pipeline
+5. Iteratively upgrade Pages 3-10
+
+**Critical Next Session Actions:**
+1. Pull latest main
+2. Read all checkpoint documentation files
+3. Verify artifact still opens and renders
+4. Make design decision: external boxes vs. self-contained circles
+5. Implement chosen direction
+6. Move to Page 1 DNA decoder
+7. Shift focus to AI wiring
