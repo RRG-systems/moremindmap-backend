@@ -1,6 +1,6 @@
 # CURRENT RECOVERY STATE
 
-Last verified: May 12, 2026 12:31 MST
+Last verified: May 12, 2026 20:41 MST
 
 ## Repository
 
@@ -17,23 +17,70 @@ Branch:
 `main`
 
 Current baseline commit:
-`44fcc98` — scale mini v2 anchor page visual composition
+`54f5454` — lock page 2 behavioral operating system map (with Page 1 YOUR PROFILE DNA decoder implemented)
 
 Previous checkpoints:
 - `ce80ac0` — complete mini v2 html generation baseline (Baby1)
 - `7eb9b64` — add page 1 and page 2 placeholder data, regenerate artifact
 - `916aa2d` — strip jinja template comments from generated html
 - `44fcc98` — scale mini v2 anchor page visual composition (Baby2)
+- `b879b75` — simplify page 2 into self contained behavioral map
+- `54f5454` — lock page 2 + implement page 1 DNA decoder
 
 ## Recovery Status
 
-Recovery infrastructure is complete.
+Infrastructure recovery complete.
+Visual buildout complete (V1 locked).
 
 GitHub is now the source of truth.
 
+## May 12, 2026 Final V1 Lock — Shift to AI Content Injection Quality
+
+**Current HEAD:** `54f5454`
+
+**V1 Visual Lock:** All 10 pages locked. Visual buildout phase complete.
+
+**Current Artifact:**
+- Path: `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
+- Size: 44K
+- Timestamp: May 12, 2026 20:41
+- Test status: Passing (0 placeholders, 10 pages)
+
+**V1 Page Status:**
+- Page 1: ✅ LOCKED (Profile Signature + YOUR PROFILE DNA decoder + Core Edge)
+- Page 2: ✅ LOCKED (Self-contained circles, 4 bullets each, symmetric geometry)
+- Pages 3-10: ✅ LOCKED as functional V1 pages
+- Visual quality: Solid B+ premium assessment report
+
+**Assessment Infrastructure:**
+- 24-question set: ✅ Committed (`engine/questionMap.js`)
+- Written response questions: 6 (Q2, Q6, Q10, Q15, Q20, Q24)
+- Multiple-choice questions: 18
+- Scoring engine: ✅ Ready (`engine/scoreAssessment.js`)
+
+**NEW PHASE: AI Content Quality**
+
+Priority shift: Visual templates are sufficient. Focus now on elite AI-generated content quality.
+
+**Content Quality Requirements:**
+- Each profile unique to individual
+- Diagnostically specific
+- Behaviorally intelligent
+- Proprietary analytical tone
+- NOT generic DISC/AVA templating
+- NOT motivational fluff
+
+**Next Engineering Sequence:**
+1. Wire scoring engine → GPT-5.5 prompt generation
+2. Generate all dynamic placeholders via AI
+3. Test with real assessment data
+4. Refine AI prompt quality to A-level
+5. Production deployment
+6. Optional: Iterative visual upgrades post-launch
+
 ## Verified Working Baseline
 
-The Mini V2 HTML generation pipeline now works.
+The Mini V2 HTML generation pipeline works.
 
 Test:
 `node moremindmap-backend/engine/testGenerateMiniV2HTML.js`
@@ -43,6 +90,8 @@ Passing result:
 - 0 remaining placeholders
 - HTML output generated
 - ES module imports resolved
+- Template comments stripped
+- Explicit pages.length validation
 
 ## Locked Reference Artifact
 
@@ -60,15 +109,15 @@ SHA256:
 ## Working Files
 
 Engine:
-- `moremindmap-backend/engine/questionMap.js`
+- `moremindmap-backend/engine/questionMap.js` ✅ 24 questions, 6 written
 - `moremindmap-backend/engine/dimensionMap.js`
 - `moremindmap-backend/engine/scoreAssessment.js`
 - `moremindmap-backend/engine/generateMiniV2HTML.js`
 - `moremindmap-backend/engine/testGenerateMiniV2HTML.js`
 
-Templates:
-- `moremindmap-backend/templates/mini-v2/page01-cover.html`
-- `moremindmap-backend/templates/mini-v2/page02-operating-system-map.html`
+Templates (V1 Locked):
+- `moremindmap-backend/templates/mini-v2/page01-cover.html` ✅ LOCKED
+- `moremindmap-backend/templates/mini-v2/page02-operating-system-map.html` ✅ LOCKED
 - `moremindmap-backend/templates/mini-v2/page03-executive-summary.html`
 - `moremindmap-backend/templates/mini-v2/page04-operating-pattern.html`
 - `moremindmap-backend/templates/mini-v2/page05-decision-architecture.html`
@@ -81,68 +130,20 @@ Templates:
 Governance:
 - `moremindmap-backend/SOURCE_OF_TRUTH.md`
 - `moremindmap-backend/README_PROJECT_STATE.md`
-- `moremindmap-backend/RECOVERY_TODO.md`
-- `moremindmap-backend/MINI_V2_TEMPLATE_RECONSTRUCTION_PLAN.md`
-- `moremindmap-backend/VERCEL_DEPLOYMENT_STATUS.md`
-
-## Current Phase - Baby2 Checkpoint
-
-Infrastructure recovery complete.
-Baseline HTML generation stable.
-Anchor page scale & composition upgraded.
-
-### Baby2 Known Strengths
-- HTML pipeline stable and regenerating correctly
-- Placeholder system: 0 unfilled placeholders
-- Page validation: explicit pages.length check (10 pages)
-- Template comment stripping: Jinja {# #} comments removed from output
-- Shared CSS system established with premium styling
-- Anchor pages (1, 2, 4) structurally upgraded with larger scale
-- Generated artifact fresh and current (timestamp May 12 12:31)
-- Page 1: premium cover identity, dark signature card, bordered core edge
-- Page 2: map nodes (core engine, driver, stabilizer, opposing), tension system
-- Page 4: gold vertical accent, navy divider, three-card row, development banner
-
-### Baby2 Known Weaknesses
-- Typography still web-like, not print-premium
-- Page composition/spacing still compressed compared to locked reference
-- Page 2 map positioning/layout needs major refinement (nodes overlap, tension lines crude)
-- Footer system functional but not matching locked reference style
-- Pages 3, 5-10 still skeletal/unrefined
-- No PDF rendering yet
-- No real scoring data wired
-- No production deployment
-
-### Next Phase
-Page-by-page visual refinement against locked PDF reference.
-Priority: Pages 1, 2, 4 closer to locked targets, then Pages 3, 5-10.
-
-## Next Engineering Sequence
-
-Baby2 → Baby3:
-1. Refine Page 2 map layout (fix node positioning, improve tension visualization)
-2. Refine Page 1 cover (closer to locked reference premium identity)
-3. Refine Page 4 pattern (closer to locked reference cards/spacing)
-4. Refine Pages 3, 5-10 sequentially against locked reference
-5. Wire real scoring data into placeholders
-6. Add PDF rendering (Puppeteer or equivalent)
-7. Add AI interpreter layer
-8. Restore Stripe/Formspree/email/download production flow
-9. Deploy to production
+- `moremindmap-backend/CURRENT_RECOVERY_STATE.md`
+- `moremindmap-backend/MINI_V2_VISUAL_GAP_REPORT.md`
 
 ## Do Not Do
 
-- Do not return to stale reports mentioning HEAD `1bd0b55`.
-- Do not claim locked artifact is missing.
-- Do not start PDF rendering before visual HTML refinement.
-- Do not clean contaminated files yet.
-- Do not modify production deployment until render pipeline is stable.
+- Do not redesign locked V1 pages unless explicitly reopened
+- Do not start PDF rendering before AI content wiring
+- Do not modify 24-question set without approval
+- Do not weaken test validation
+- Do not claim visual perfection—V1 is B+ and that's sufficient
 
 ## Product Naming / Pricing Note
 
 "Mini V2" is an internal engineering label only.
-
-Do not assume the public-facing product should be called "Mini."
 
 Likely public-facing naming options:
 - MORE MindMap Profile
@@ -150,57 +151,4 @@ Likely public-facing naming options:
 - Personal Operating Profile
 - Strategic Operating Profile
 
-Pricing is TBD. The 10-page output may justify positioning above the original mini-profile price point. Do not hard-code final pricing or public product name until approved.
-
-## May 12, 2026 7:30 PM Checkpoint — Page 2 Locked
-
-**Session Context:** Evening checkpoint before family time. Preserving exact project state.
-
-**Current HEAD:** `60dcb78` (final page 2 micro adjustments per reference)
-
-**Page 2 Status:** ✅ LOCKED
-- Circle geometry: Approved and locked (150px outer circles, 220px center)
-- Center circle: Good, unchanged
-- Four outer circles: Geometrically aligned, symmetric
-- System Tension Warning box: Positioned top-left with subtle circle overlap
-- Self-contained circles: 4 bullets inside each outer circle
-- Bottom summary: Full professional paragraph
-- External annotation boxes: Removed (failed approach abandoned)
-
-**Current Artifact:**
-- Path: `moremindmap-backend/releases/mini-v2-html-baseline/mini-v2-html-baseline.html`
-- Size: 37K
-- Timestamp: May 12, 2026 19:32
-- Test status: Passing (0 placeholders, 10 pages)
-
-**Page 2 Design Solution (Implemented):**
-- External annotation boxes removed
-- Four outer circles enlarged to 150px
-- Each circle contains: label + name + icon + 4 bullets
-- System Tension Warning box positioned top-left
-- System Tension Summary contains full paragraph
-- Self-contained, clean, authoritative
-
-**Page 1 Enhancement Lock:**
-Add YOUR PROFILE DNA decoder box to Page 1 Cover:
-- Position: Between Profile Signature black bar and Core Edge section
-- Purpose: Explain the 8-vector profile code (V8 • Fd4 • F4 • Vl3 • L3 • H2 • S1 • Fx1)
-- Tone: Proprietary diagnostic behavioral-systems language
-- NOT motivational copy
-- Decoder interprets integrated operating architecture
-
-**Revised Launch Sequence:**
-1. Resolve Page 2 annotation issue (likely via self-contained circles)
-2. Add Page 1 YOUR PROFILE DNA decoder
-3. Wire AI content generation to templates
-4. Connect to production deployment pipeline
-5. Iteratively upgrade Pages 3-10
-
-**Critical Next Session Actions:**
-1. Pull latest main
-2. Read all checkpoint documentation files
-3. Verify artifact still opens and renders
-4. Make design decision: external boxes vs. self-contained circles
-5. Implement chosen direction
-6. Move to Page 1 DNA decoder
-7. Shift focus to AI wiring
+Pricing is TBD.
