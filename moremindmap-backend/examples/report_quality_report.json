@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "quality_score": 92,
+  "genericity_score": 0.0,
+  "evidence_anchor_score": 0.8,
+  "contradiction_signal_score": 1.2,
+  "specificity_score": 1.5,
+  "repetition_score": 12,
+  "empty_field_ratio": 0.0,
+  "missing_pages": [],
+  "banned_phrases_found": [],
+  "placeholder_phrases_found": [],
+  "weak_phrases_found": [],
+  "page_scores": {
+    "page01_cover": 100,
+    "page02_operating_system_map": 100,
+    "page03_executive_summary": 100,
+    "page04_operating_pattern": 100,
+    "page05_decision_architecture": 100,
+    "page06_communication_style": 100,
+    "page07_system_under_strain": 100,
+    "page08_operating_environment_fit": 100,
+    "page09_facilitator_notes": 100,
+    "page10_full_profile_unlocks": 100
+  },
+  "summary": "High diagnostic quality. No banned phrases. Strong behavioral specificity. Ready for template injection.",
+  "checked_at": "2026-05-12T21:58:00Z",
+  "validator_version": "V1",
+  "total_pages_present": 10
+}

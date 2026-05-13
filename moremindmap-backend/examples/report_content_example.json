@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "profile_version": "mini-v2",
+    "generation_date": "2026-05-12T21:47:00Z",
+    "generation_mode": "mock"
+  },
+  "page01_cover": {
+    "profile_signature_interpretation": "[MOCK] Command-speed operator with relational blind spots. Moves fast, misses resistance. You enter problems with direction forming before full input-gathering. This works in crisis execution but creates friction in collaborative design where silent resistance accumulates undetected.",
+    "profile_code_string": "V35F28L12H23S18X24",
+    "core_edge_narrative": "[MOCK] Core edge: fast clarity in execution phases. Hidden cost: late discovery of stakeholder misalignment. Your precision + command creates rigorous decisions. Tradeoff: relational dynamics missed during fast movement.",
+    "confidence_level": "Moderate",
+    "profile_type": "Command-Precision Operator"
+  },
+  "page02_operating_system_map": {
+    "system_tension_warning": "[MOCK] Vector preference creates unread relational resistance.",
+    "core_engine_heading": "Command-Speed Engine",
+    "primary_driver_name": "Vector (Command)",
+    "primary_driver_bullet_1": "[MOCK] Enters with direction forming",
+    "primary_driver_bullet_2": "[MOCK] Low tolerance for ambiguity",
+    "primary_driver_bullet_3": "[MOCK] Communicates by deciding then explaining",
+    "primary_driver_bullet_4": "[MOCK] Under pressure pace increases",
+    "secondary_stabilizer_name": "Fidelity (Precision)",
+    "system_tension_summary": "[MOCK] Primary tension: command preference suppresses relational awareness. Decisions move fast but miss stakeholder stakes. Precision stabilizes but slows collaborative processes."
+  },
+  "page03_executive_summary": {
+    "summary_text": "[MOCK] High command + moderate precision creates execution strength with relational cost. Primary tension: speed vs stakeholder alignment. Under pressure: tighter structure, faster decisions. Teams experience shutdown. Development edge: explicit resistance-checking before committing."
+  },
+  "page04_operating_pattern": {
+    "operating_pattern_body_1": "[MOCK] Natural operating pattern: identify problem → decide → explain → execute. Minimal input-gathering phase.",
+    "strongest_default_heading": "Command Execution",
+    "likely_blind_spot_heading": "Relational Resistance",
+    "highest_value_adjustment_heading": "Pre-Decision Check"
+  },
+  "page05_decision_architecture": {
+    "decision_architecture_narrative_1": "[MOCK] Decision style: clarity-seeking. Prefers clear answer over multiple valid options. High fidelity creates rigor but friction in fast teams."
+  },
+  "page06_communication_style": {
+    "signal_matrix_explanation": "[MOCK] Moderate signal means you catch major dynamics but miss subtle resistance. Others experience: decisive but unilateral."
+  },
+  "page07_system_under_strain": {
+    "pressure_response_explanation": "[MOCK] Under strain: tighter structure, faster decisions. Teams feel shutdown. Escalation: increased rigor, not collaboration."
+  },
+  "page08_operating_environment_fit": {
+    "high_traction_environments_body": "[MOCK] Thrives in execution-focused, clear-goal environments with minimal politics."
+  },
+  "page09_facilitator_notes": {
+    "facilitator_interpretation_body": "[MOCK] Coaching note: Frame input-gathering as decision-making, not hesitation. They don't see 'gather input' as decision-support."
+  },
+  "page10_full_profile_unlocks": {
+    "core_force_heading": "Command Clarity",
+    "hidden_cost_heading": "Unread Resistance",
+    "next_evolution_heading": "Relational Calibration"
+  },
+  "generation_metadata": {
+    "genericity_score": 0.0,
+    "banned_phrases_detected": [],
+    "quality_flags": ["mock_mode", "schema_complete"],
+    "generation_mode": "mock",
+    "validation_passed": true
+  }
+}
