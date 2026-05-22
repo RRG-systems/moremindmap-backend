@@ -1,4 +1,94 @@
-# MEMORY.md — MOLTmarket System Evolution
+# MEMORY.md — Project Checkpoints
+
+---
+
+# Fri May 22, 2026 — MORE MindMap: POST-FIRST-SUCCESS CHECKPOINT (14:02 MST)
+
+## MAJOR MILESTONE: FIRST PRODUCTION CANONICAL DOSSIER
+
+**Profile:** MM-20260522-pmhpe7e8  
+**Status:** ✅ COMPLETE PRODUCTION PIPELINE  
+**Quality Score:** 83/100 (Commercial Ready)  
+
+### SUCCESS VERIFIED
+- ✅ Assessment submitted (dj berg the III, djbergiii@icloud.com)
+- ✅ Async job executed (18 seconds)
+- ✅ Canonical generation succeeded (no crashes, all 12 narratives)
+- ✅ Vault saved and persisted
+- ✅ Email index functional (retrieved by email)
+- ✅ Profile retrieval works (by ID or email)
+- ✅ Forensic inspection completed (detailed analysis)
+- ✅ Exported artifacts committed/pushed to Git
+
+### CRITICAL VICTORIES
+1. **Crash elimination:** Fixed 5 major crash vectors
+   - Undefined property crashes (leadershipArchitecture.primary_mode)
+   - Undefined array crashes (contradictions.length)
+   - String method crashes (toLowerCase on undefined)
+   - All defensive guards deployed
+2. **Vault persistence:** Profile persisted, no corruption
+3. **Email indexing:** Working end-to-end
+4. **Quality validation:** 83/100 score demonstrates viability
+
+### TRANSITION: RESCUE → QUALITY ASCENSION
+**Previous phase:** Debugging crashes (May 21-22 morning)  
+**Current phase:** Quality elevation (May 22 afternoon forward)  
+
+### KEY FILES MODIFIED
+- buildNarrativeProfile.js — Object normalization + .length guards
+- inferEvidenceMap.js — Array access hardening
+- canonicalProfileGenerator.js — Defensive spread operators
+- 11 total files hardened across canonical engine
+- 5 commits, 30+ defensive guards added
+
+### QUALITY SCORES
+| Dimension | Score | Status |
+|-----------|-------|--------|
+| Infrastructure Stability | 90 | ✅ Excellent |
+| Narrative Quality | 82 | ✅ Very Good |
+| Inference Quality | 67 | ✅ Good |
+| Operator Specificity | 79 | ✅ Very Good |
+| Executive Usefulness | 89 | ✅ Excellent |
+| "Feels Real" Factor | 90 | ✅ Excellent |
+| Commercial Readiness | 83 | ✅ VIABLE (70+ threshold) |
+
+### STRONGEST SECTIONS
+1. Strategic Ceiling — Infrastructure bottleneck identified operationally
+2. Hidden Risks — Predicts relational/burnout consequences
+3. Leadership Narrative — Command/awareness tradeoff explained
+
+### WEAKEST SECTIONS (Targets for improvement)
+1. Contradiction Analysis — Too thin (185 chars, needs 300+)
+2. Generic language leakage — 4 sections ("typically", "often")
+3. Operator specificity — Needs domain-specific examples
+4. Organizational consequences depth — Missing relational cost quantification
+
+### NEXT PHASE: QUALITY ASCENSION
+**Locked architectural decisions:**
+- Canonical dossier IS the source of truth
+- PDFs are downstream render layers
+- Vault is center of gravity
+- Email indexing is proven
+- Markdown export needed
+- Canonical-to-PDF renderer for later
+
+**Immediate priorities:**
+1. Eliminate generic language leakage (highest ROI)
+2. Deepen contradiction analysis (thin sections)
+3. Add operator-specific examples (specificity +5 points)
+4. Strengthen evidence weighting
+5. Implement markdown export
+6. Target 85+ "holy shit" threshold
+
+**Files not touched:**
+- renderer/templates (frozen)
+- frontend styling (frozen)
+- MOLTmarket (separate system)
+
+### GIT STATE
+- Commit: dfd1e5a (mission completion summary)
+- Status: CLEAN
+- All artifacts committed and pushed to origin/main
 
 ---
 
@@ -51,6 +141,8 @@
 - ⏳ Needs: Live testing validation + real money migration plan
 
 **Save point:** All code committed. Dashboard can restart fresh any time.
+
+---
 
 ---
 
