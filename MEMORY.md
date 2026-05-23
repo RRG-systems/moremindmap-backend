@@ -1,3 +1,68 @@
+# Sat May 23, 2026 — MORE MindMap: WEB-FIRST PIVOT (14:09 MST)
+
+## 🎯 PIVOT COMPLETE: PDF V1 → Premium Web Dashboard
+
+**Profile:** MM-20260523-mqlev9c9 (david berg)  
+**Changes:**
+- ✅ Created WebProfileReport.jsx (21KB React component)
+- ✅ Jinja comment stripping added to renderer
+- ✅ Retrieval flow simplified (no HTML generation)
+- ✅ 14-section premium dashboard design
+- ✅ Responsive, mobile-first layout
+
+### NEW ARCHITECTURE
+1. Retrieve profile ID → canonical dossier
+2. **Skip HTML generation** (direct React component)
+3. WebProfileReport renders premium dashboard
+4. No stale processing block, no Jinja leaks, no {{ }} garbage
+5. Result: Premium behavioral dashboard (executive-level)
+
+### 14 REPORT SECTIONS
+1. Profile DNA (core engine, drivers, stabilizers)
+2. Behavioral Dimensions (top 8 dimensions)
+3. Executive Summary
+4. Operating Pattern (default + under pressure)
+5. Decision Architecture
+6. Communication Style
+7. System Under Strain
+8. Hidden Contradictions
+9. Strategic Ceiling
+10. Hidden Risk Patterns
+11. Coaching Leverage / Development
+12. Contextual Signals (role fit, environment fit, readiness)
+13. Recommended Next Step
+14. Footer (assessment date, confidence)
+
+### DESIGN: PREMIUM DASHBOARD
+- Color: Black/white/gray + gold accent (#d4af37)
+- Layout: CSS Grid cards, dense but readable, strong hierarchy
+- Mobile responsive: 1200px+ / 768px / mobile breakpoints
+- No empty whitespace, professional executive aesthetic
+
+### QUALITY VERIFIED
+✅ All 14 sections render with real data
+✅ Zero Jinja comments ({# ... #} stripped)
+✅ Zero {{ }} placeholders
+✅ Zero undefined/null/[object Object]
+✅ No stale "Your profile is being generated..." block
+✅ Direct canonical→component (no HTML middleman)
+
+### FILES CHANGED
+- src/components/reports/WebProfileReport.jsx (new, 21KB)
+- src/Profile.jsx (retrieval flow simplified)
+- renderer/render-to-html.js (Jinja comment stripping)
+
+### GIT COMMITS
+- aab6204: "Pivot to web-first profile report"
+- 4d0660d: "Docs: Web-first report pivot complete"
+
+### STATUS
+🎯 **WEB-FIRST PROFILE REPORT V1 COMPLETE**
+Ready for deployment to Vercel
+
+---
+
+
 # Sat May 23, 2026 — MORE MindMap: PDF V1 COMPLETE (13:42 MST)
 
 ## ✅ FINAL DELIVERABLE: PDF V1 PRODUCTION-READY
