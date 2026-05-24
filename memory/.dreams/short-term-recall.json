@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-10T23:03:45.612Z",
+  "updatedAt": "2026-05-22T01:54:50.384Z",
   "entries": {
     "memory:memory/2026-04-15.md:193:220": {
       "key": "memory:memory/2026-04-15.md:193:220",
@@ -82,23 +82,25 @@
       "endLine": 402,
       "source": "memory",
       "snippet": "- **Backend commit `0befb9f`**: Added `scoringPayload: scoring` to the response JSON - **Frontend commit `8f1d15b`**: Changed hard requirement to optional chaining `result?.miniProfile` with fallback `result?.scoringPayload || {}` **Result:** Results page no longer renders blank black screen on submission ✅ ### Issue 2: ranked_dimensions Crash **Problem:** Frontend called `.map()` on `scoringPayload.ranked_dimensions`, but backend `scoreAssessment.js` returns field named `ranked` (not `ranked_dimensions`). When field doesn't exist, `.map()` crashes on undefined. **Error:** `TypeError: undefined is not an object (evaluating 'e.ranked_dimensions.map')` **File:** `src/components/reports/MiniPr",
-      "recallCount": 5,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3.604865760540045,
-      "maxScore": 0.8018479729212253,
+      "totalScore": 4.604865760540045,
+      "maxScore": 1,
       "firstRecalledAt": "2026-04-16T14:19:56.692Z",
-      "lastRecalledAt": "2026-05-05T16:27:38.164Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
       "queryHashes": [
         "11ddb96f185f",
         "a658ba353fee",
         "e0f401c868b1",
         "668d72afc59a",
-        "dbcc1c293023"
+        "dbcc1c293023",
+        "94e04d252b67"
       ],
       "recallDays": [
         "2026-04-16",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-21"
       ],
       "conceptTags": [
         "ranked-dimensions",
@@ -180,22 +182,24 @@
       "endLine": 268,
       "source": "memory",
       "snippet": "**Problem:** Frontend called `.map()` on `scoringPayload.ranked_dimensions`, but backend `scoreAssessment.js` returns field named `ranked` (not `ranked_dimensions`). When field doesn't exist, `.map()` crashes on undefined. **Error:** `TypeError: undefined is not an object (evaluating 'e.ranked_dimensions.map')` **File:** `src/components/reports/MiniProfileReport.jsx` — Line 76 **Fix:** - Changed: `{scoringPayload.ranked_dimensions.map(...)` - To: `{(scoringPayload?.ranked_dimensions || scoringPayload?.ranked || []).map(...)` - Fallback chain: ranked_dimensions → ranked → empty array (never crashes) **Commit:** `c232ceb` — Fix: use defensive chaining for ranked_dimensions **Result:** Profile",
-      "recallCount": 4,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2.5667598023181926,
-      "maxScore": 0.7910804578946392,
+      "totalScore": 3.5667598023181926,
+      "maxScore": 1,
       "firstRecalledAt": "2026-04-16T14:19:56.692Z",
-      "lastRecalledAt": "2026-05-05T15:58:43.690Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
       "queryHashes": [
         "11ddb96f185f",
         "51aa7474d547",
         "a658ba353fee",
-        "e0f401c868b1"
+        "e0f401c868b1",
+        "94e04d252b67"
       ],
       "recallDays": [
         "2026-04-16",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-21"
       ],
       "conceptTags": [
         "scoringpayload.ranked-dimensions",
@@ -1803,18 +1807,20 @@
       "endLine": 164,
       "source": "memory",
       "snippet": "### Output Files - `temp/v1-mini-profile-fixed.html` (41.22 KB, 15 pages) - `temp/doctrine-narrative-pipeline-output.json` (payload archive) ### Supporting Files - `temp/full-mini-report-readable.html` (previous version) - `temp/hybrid-profile-payload.json` (doctrine narratives) --- ## What's NOT Done (BLOCKED ON PURPOSE) ### Not Tonight - Email delivery (Resend wiring) - Form submission archival (Formspree) - Server.js integration - Production deployment - PDF generation (Puppeteer Rosetta issue, separate blocker) **Reason:** You wanted V1 assessment artifact first, approval second, then production wiring. That's what we delivered. --- ## What's Next (When You're Ready) ### Phase 2:",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8331783722964828,
-      "maxScore": 0.8331783722964828,
+      "totalScore": 1.8331783722964827,
+      "maxScore": 1,
       "firstRecalledAt": "2026-05-09T15:37:48.011Z",
-      "lastRecalledAt": "2026-05-09T15:37:48.011Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
       "queryHashes": [
-        "e00f9c98d6d4"
+        "e00f9c98d6d4",
+        "644ff635881d"
       ],
       "recallDays": [
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-21"
       ],
       "conceptTags": [
         "temp/v1-mini-profile-fixed.html",
@@ -2383,6 +2389,413 @@
         "injected",
         "visible",
         "critical"
+      ]
+    },
+    "memory:memory/2026-05-06.md:189:227": {
+      "key": "memory:memory/2026-05-06.md:189:227",
+      "path": "memory/2026-05-06.md",
+      "startLine": 189,
+      "endLine": 227,
+      "source": "memory",
+      "snippet": "❌ Formspree production — deferred to Phase 3 ❌ Visual polish — deferred to Phase 2 --- ## Status: PHASE 1 LOCKED ✅ **Page 6 Communication Style is now production-ready for architectural integration (Phase 3).** No structural changes permitted until Phase 2 visual polish review. **Updated:** 2026-05-06 11:00 MST **Next:** Await instructions for Phase 2 or remaining body pages (7–16) # 2026-05-06 — MORE MindMap Mini Profile System — Page 7 Structural Build IN PROGRESS ## Session Summary (11:22–11:30 MST) **Context:** D.J. provided two reference images + explicit build instructions for Page 7 \"System Under Strain\" (merges former Pages 7, 8, 9). **Status:** ✅ STRUCTURAL BUILD PHASE 1 C",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8050768936297256,
+      "maxScore": 0.8050768936297256,
+      "firstRecalledAt": "2026-05-20T13:27:50.802Z",
+      "lastRecalledAt": "2026-05-20T13:27:50.802Z",
+      "queryHashes": [
+        "41e4b7088217"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "production-ready",
+        "d.j",
+        "formspree",
+        "production",
+        "deferred",
+        "phase",
+        "visual",
+        "polish"
+      ]
+    },
+    "memory:memory/2026-05-05.md:498:545": {
+      "key": "memory:memory/2026-05-05.md:498:545",
+      "path": "memory/2026-05-05.md",
+      "startLine": 498,
+      "endLine": 545,
+      "source": "memory",
+      "snippet": "### 2. **Renderer Utility** ✅ **File:** `/Users/rrg/moremindmap-backend/utils/renderMiniV2Cover.js` (4.4 KB) **Functions:** - `renderMiniV2Cover(data)` — Main function: template load + placeholder replacement - `testRenderCover()` — Test with sample data, outputs to `/temp/test_cover_render.html` **Logic:** - Loads template from file - Validates 14 required fields present - Replaces all placeholders via `replaceAll()` - Verifies no unreplaced placeholders remain - Returns final HTML string **Sample Data Tested:** ``` ✅ cover_subheadline (multi-line) ✅ sig_code_1-8 (V8, Fd4, F4, Vl3, L3, H2, S1, Fx1) ✅ signature_explanation (multi-line) ✅ core_edge_narrative (multi-line) ✅ assessment_date",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.7873437217122479,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-20T13:27:50.802Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
+      "queryHashes": [
+        "41e4b7088217",
+        "644ff635881d"
+      ],
+      "recallDays": [
+        "2026-05-20",
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "4.4",
+        "temp/test-cover-render.html",
+        "cover-subheadline",
+        "multi-line",
+        "sig-code-1-8",
+        "signature-explanation",
+        "core-edge-narrative",
+        "assessment-date"
+      ]
+    },
+    "memory:memory/2026-05-06.md:222:253": {
+      "key": "memory:memory/2026-05-06.md:222:253",
+      "path": "memory/2026-05-06.md",
+      "startLine": 222,
+      "endLine": 253,
+      "source": "memory",
+      "snippet": "- Export: `generatePage7SystemUnderStrain(v2Output)` 2. **Template:** `/templates/mini-v2/page7_system_under_strain_v1.html` (19.9 KB) - ✅ Header (logo + title + subtitle + intro paragraph) - ✅ 3-column core system (Red/Gold/Purple) - Column 1 (Red): Under Pressure — 4 pressure responses + escalation chain + risk signals - Column 2 (Gold): Blind Spot Field — 5 blind spot items + radar chart SVG + impact legend - Column 3 (Purple): Friction Patterns — 5 friction items + friction loop SVG - ✅ Full-width recalibration panel - Statement section - 5 recalibration modules (hardcoded icons, placeholder text) - Next Level Impact star callout - ✅ Footer (",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7861773221686689,
+      "maxScore": 0.7861773221686689,
+      "firstRecalledAt": "2026-05-20T13:27:50.802Z",
+      "lastRecalledAt": "2026-05-20T13:27:50.802Z",
+      "queryHashes": [
+        "41e4b7088217"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "19.9",
+        "3-column",
+        "red/gold/purple",
+        "full-width",
+        "export",
+        "generatepage7systemunderstrain",
+        "v2output",
+        "template"
+      ]
+    },
+    "memory:memory/2026-05-04.md:1:35": {
+      "key": "memory:memory/2026-05-04.md:1:35",
+      "path": "memory/2026-05-04.md",
+      "startLine": 1,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "# Mon 2026-05-04 — MOREMINDMAP MINI PROFILE V2 BUILD — PHASES 1D–2A ## Session Context Building dual-stage cognitive pipeline for MoreMindMap Mini Profile V2 (premium dense behavioral assessment). Three critical phases completed in rapid succession: - **Phase 1D:** Prompt refinement → production word count (3,892 words) - **Phase 1E:** Print-ready pagination and Page 2 cleanup - **Phase 2A:** Behavioral system instrument refinement (9 structural fixes) --- ## PHASE 1D: RADICAL PROMPT SIMPLIFICATION ✅ COMPLETE ### Problem Stage B (gpt-5.5) output collapsed to 1,158 words (target: 3,900+) despite passing direct API tests. Root cause: **Complex constraint language was being interpreted as",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.75043823976345,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-20T13:27:50.802Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
+      "queryHashes": [
+        "41e4b7088217",
+        "644ff635881d"
+      ],
+      "recallDays": [
+        "2026-05-20",
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "gpt",
+        "dual-stage",
+        "print-ready",
+        "gpt-5.5",
+        "mon",
+        "moremindmap",
+        "mini",
+        "profile"
+      ]
+    },
+    "memory:memory/2026-05-06.md:1:50": {
+      "key": "memory:memory/2026-05-06.md:1:50",
+      "path": "memory/2026-05-06.md",
+      "startLine": 1,
+      "endLine": 50,
+      "source": "memory",
+      "snippet": "# 2026-05-06 — MORE MindMap Mini Profile System — Page 6 Phase Lock COMPLETE ## Final Session Summary **Project:** MORE MindMap Mini Behavioral Operating Profile PDF (ONLY PROJECT) **Phase:** Phase 1 — Template System Lock → **PHASE LOCK: PAGE 6 COMPLETE ✅** --- ## PAGE 6 PHASE LOCK STATUS: ✅ CERTIFIED LOCKED **File:** `file:///Users/rrg/moremindmap-backend/temp/reports/mini-v2-master-locked-2026-05-05T2026-05-06T17-39-04-027Z.html` ### Final Page 6 Architecture (LOCKED) **Left Column:** - Narrative card (3 paragraphs, ~170–230 words) - Concise transmission analysis - Fixed padding: 0.6rem - Border: 1.5px #e0e0e0, radius 5px **Right Column (Vertical Stack):** 1. Communication Signa",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "0.6rem",
+        "1.5px",
+        "mindmap",
+        "mini",
+        "profile",
+        "page",
+        "phase",
+        "lock"
+      ]
+    },
+    "memory:memory/2026-04-25-final-session.md:86:115": {
+      "key": "memory:memory/2026-04-25-final-session.md:86:115",
+      "path": "memory/2026-04-25-final-session.md",
+      "startLine": 86,
+      "endLine": 115,
+      "source": "memory",
+      "snippet": "1. **Arena execution latency** — Took too long to discover/fix the wiring issue 2. **Win rate as promotion signal** — Not sufficient; need PnL confirmation 3. **Autonomous calibration** — Without human judgment, over-calibrated (too many BRAIN changes) 4. **Baby signal quality** — Initial 90 babies were too aggressive, bled capital fast 5. **BRAIN throttling** — When instability hit 100%, throttling was too aggressive --- ## Key Insights (The Real Lessons) ### For Building Systems - **Transparency > automation.** You could watch every calibration decision in THINK. - **Real data from day one.** Arena started at $0, never reset. Users will trust this more than any reset. - **Governance is",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "2026-04-25-final-session.md",
+        "discover/fix",
+        "over-calibrated",
+        "final",
+        "session.md",
+        "arena",
+        "execution",
+        "latency"
+      ]
+    },
+    "memory:memory/2026-05-05.md:83:137": {
+      "key": "memory:memory/2026-05-05.md:83:137",
+      "path": "memory/2026-05-05.md",
+      "startLine": 83,
+      "endLine": 137,
+      "source": "memory",
+      "snippet": "✅ Visual layout unchanged ✅ Dynamic matching engine preserved **Reader perception target achieved:** \"This explains why certain systems have always felt easy or exhausting.\" --- ## Next Steps (User Decision) ### Option A: Deploy to Frontend - Add Mini V2 endpoint to frontend form - Job status polling + download UI - Est. 2-3 hours ### Option B: Environment Refinement - Add more professional environment variants - Refine DNA matching weights - Est. 1-2 hours ### Option C: Full V2 Production Release - QA final report quality - Set Mini V2 as default (or parallel option) - Documentation update - Est. 1 hour **Status:** Module production-ready. Awaiting user direction. --- ## Files",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "2-3",
+        "1-2",
+        "production-ready",
+        "visual",
+        "layout",
+        "unchanged",
+        "dynamic",
+        "matching"
+      ]
+    },
+    "memory:memory/2026-05-07.md:38:85": {
+      "key": "memory:memory/2026-05-07.md:38:85",
+      "path": "memory/2026-05-07.md",
+      "startLine": 38,
+      "endLine": 85,
+      "source": "memory",
+      "snippet": "**Card 2: HIDDEN COST** (Gold) - Icon: Exclamation in circle (gold) - Subtitle: \"What silently creates friction\" - Text (80+ words): \"Your urgency and high standards can narrow relational bandwidth under pressure...\" **Card 3: NEXT EVOLUTION** (Green) - Icon: Upward arrow (green) - Subtitle: \"What unlocks your next level\" - Text (80+ words): \"Your next level is broader leadership without losing command...\" ### Bottom Sections (Locked) - **WHY THIS MATTERS FOR YOU** section (moved up, better spacing) - Dark navy closing strip with lock icon - Footer with metadata + page number 10 --- ## VERIFICATION CHECKLIST ✅ Page 10 contains \"YOUR OPERATING DNA\" ✅ CORE FORCE card present with text",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "card",
+        "hidden",
+        "cost",
+        "gold",
+        "icon",
+        "exclamation",
+        "circle",
+        "subtitle"
+      ]
+    },
+    "memory:memory/2026-05-05-PAGE3-LOCKED.md:1:40": {
+      "key": "memory:memory/2026-05-05-PAGE3-LOCKED.md:1:40",
+      "path": "memory/2026-05-05-PAGE3-LOCKED.md",
+      "startLine": 1,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "# PAGE 3 LOCKED — MASTER TEMPLATE CONSTRUCTION ACTIVE **Date:** Tue May 5, 2026 — 13:51 MST **Status:** ✅ PAGE 3 INTEGRATED INTO MASTER REPORT (16 PAGES TOTAL) --- ## WHAT WAS BUILT ### Page 3: Executive Summary Template (LOCKED) **File:** `/templates/mini-v2/page3_executive_summary_v1.html` (7.7 KB) **Static Elements (Locked):** - Header: MORE MINDMAP | BEHAVIORAL OPERATING PROFILE - Title: \"Executive Summary\" (with gold left accent bar) - Subtitle: \"Top-down overview of your behavioral operating system\" - Navy divider line - Two premium insight cards (left/right) with navy circle icons - Beige development priority banner (gold left accent) - Footer strip: M+ logo + metadata + page n",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "2026-05-05-page3-locked.md",
+        "7.7",
+        "top-down",
+        "left/right",
+        "page3",
+        "locked.md",
+        "page",
+        "locked"
+      ]
+    },
+    "memory:memory/2026-04-26.md:152:188": {
+      "key": "memory:memory/2026-04-26.md:152:188",
+      "path": "memory/2026-04-26.md",
+      "startLine": 152,
+      "endLine": 188,
+      "source": "memory",
+      "snippet": "**Decision:** Move toward Option C (single source of truth) via Option A (immediate fix). ### Architecture 1. **baby_registry** (persistent JSONL) — Authoritative for identity/lifecycle - variant_id, parent_id, generation, dna, status, spawned_at, promoted_at 2. **unified_ledger** (persistent) — Authoritative for performance - trades with trader_id, PnL, win_rate, metrics 3. **evolution_engine.babies[]** (runtime cache) — Temporary only - May be cleared/rebuilt without losing state - NOT authoritative ### Implementation Path - ✅ baby_registry.py created (registry class with load/save) - ⏳ Wire registry into moltmarket_dashboard initialization - ⏳ Modify execute_baby_var",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-21T16:05:15.715Z",
+      "lastRecalledAt": "2026-05-21T16:05:15.715Z",
+      "queryHashes": [
+        "94e04d252b67"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "baby-registry",
+        "identity/lifecycle",
+        "variant-id",
+        "parent-id",
+        "spawned-at",
+        "promoted-at",
+        "unified-ledger",
+        "trader-id"
+      ]
+    },
+    "memory:memory/2026-05-07.md:79:124": {
+      "key": "memory:memory/2026-05-07.md:79:124",
+      "path": "memory/2026-05-07.md",
+      "startLine": 79,
+      "endLine": 124,
+      "source": "memory",
+      "snippet": "| 2 | System Map (SVG) | Locked ✅ | | 3 | Executive Summary | Locked Template ✅ | | 4 | Operating Pattern | Locked Template ✅ | | 5 | Decision Architecture | Locked Template ✅ | | 6 | Communication Style | Locked Template ✅ | | 7 | System Under Strain | Locked Template ✅ | | 8 | Operating Environment Fit | Locked Template ✅ | | 9 | Facilitator Notes | Locked Template ✅ | | 10 | What Full Profile Unlocks + DNA | **REDESIGNED WITH DNA CARDS** ✅ | --- ## NEXT PHASE: PHASE 3 — LIVE AI WIRING **Objective:** Make this locked 10-page architecture dynamically generate from the 24-question assessment. **Process:** 1. Audit 24-question assessment payload structure 2. Map assessment outputs to AI i",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-22T01:54:50.384Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
+      "queryHashes": [
+        "644ff635881d"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "10-page",
+        "24-question",
+        "map",
+        "svg",
+        "locked",
+        "executive",
+        "summary",
+        "template"
+      ]
+    },
+    "memory:memory/2026-04-30.md:158:197": {
+      "key": "memory:memory/2026-04-30.md:158:197",
+      "path": "memory/2026-04-30.md",
+      "startLine": 158,
+      "endLine": 197,
+      "source": "memory",
+      "snippet": "**Assessment:** Darren's actual profile (from moremindmap submission) - Vector: 35.9 → V8 (high command) - Signal: 0 → S1 (very low relational awareness) ← CRITICAL - Fidelity: 17.9 → Fd4 (low precision) - Velocity: 12.8 → Vl3 (low tempo) - Leverage: 10.3 → L3 (low influence) - Flex: 0 → Fx1 (very low adaptability) ← CRITICAL - Framework: 15.4 → F4 (low structure) - Horizon: 7.7 → H2 (very low perspective) **Profile Interpretation:** - **Strength:** Vector (V8) — moves decisively, owns outcomes - **Weakness/Cost:** Signal (S1) + Flex (Fx1) — doesn't read relational resistance, won't adapt - **System Tension:** Creates momentum but may overpower teams, hard to change direction, misses emotio",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-22T01:54:50.384Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
+      "queryHashes": [
+        "644ff635881d"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "35.9",
+        "17.9",
+        "12.8",
+        "10.3",
+        "15.4",
+        "7.7",
+        "weakness/cost",
+        "assessment"
+      ]
+    },
+    "memory:memory/2026-04-30.md:188:218": {
+      "key": "memory:memory/2026-04-30.md:188:218",
+      "path": "memory/2026-04-30.md",
+      "startLine": 188,
+      "endLine": 218,
+      "source": "memory",
+      "snippet": "✅ Worksheet prompts (reflection + development) --- ## Files to Check Tomorrow 1. **Status:** `/Users/rrg/.openclaw/workspace/V1_MINI_PROFILE_FINAL_COMPLETE.md` 2. **HTML artifact:** `/Users/rrg/moremindmap/temp/v1-mini-profile-fixed.html` (open in browser) 3. **This memory:** `/Users/rrg/.openclaw/workspace/memory/2026-04-30.md` 4. **Production code:** - `engine/mindMapDoctrineFilter.js` - `engine/doctrineNarrativeWriterV2.js` - `utils/htmlRendererV5-Fixed.js` --- ## TL;DR **Built:** Complete V1 Mini Profile assessment with doctrine-driven narratives, Operating System Map, 8-dimension signature codes, and zero clipping. **Status:** Production-ready HTML artifact. All requi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-22T01:54:50.384Z",
+      "lastRecalledAt": "2026-05-22T01:54:50.384Z",
+      "queryHashes": [
+        "644ff635881d"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "users/rrg",
+        "engine/mindmapdoctrinefilter.js",
+        "utils/htmlrendererv5-fixed.js",
+        "doctrine-driven",
+        "8-dimension",
+        "production-ready",
+        "worksheet",
+        "prompts"
       ]
     }
   }
