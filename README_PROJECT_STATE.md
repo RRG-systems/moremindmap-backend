@@ -246,3 +246,83 @@ For detailed technical info, see:
 - SOURCE_OF_TRUTH.md — Infrastructure verification
 - CURRENT_RECOVERY_STATE.md — Recovery timeline and decisions
 - MINI_V2_VISUAL_GAP_REPORT.md — (Now outdated—scoring is fixed)
+
+---
+
+# NARRATIVE ARCHITECTURE SNAPSHOT (2026-05-25)
+
+## Section Inventory (7 Live + 0 Omitted)
+
+**Currently Rendering:**
+- profileDNA (GPT)
+- executiveSummary (GPT)
+- communicationStyle (GPT)
+- hiddenContradictions (GPT)
+- systemUnderStrain (GPT)
+- strategicCeiling (GPT)
+- coachingLeverage (GPT)
+- recommendedNextStep (GPT)
+
+**Omitted from Render (exist in dossier):**
+- operatingPattern (fallback only)
+- decisionArchitecture (calculated, not narrated)
+- Full pressure mechanics (only pressure_manifestation surfaces)
+- Scaling readiness (role_fit_analysis exists but not narrated)
+- Risk profile (hidden_risk_patterns exist but not rendered)
+
+## Intelligence Embedded in Dossier (Not Surfaced)
+
+**Dossier fields that populate but don't render:**
+- stall_patterns (avoidance, frustrations, coping)
+- contradictions (array of {type, cost, resolution_attempted})
+- stress_patterns (how each dimension shifts under load)
+- communication_style (clarity, directness, listening)
+- leadership_readiness (delegation, team development)
+- role_fit_analysis (current fit, ceiling reason)
+- future_growth_constraints (internal, external, timeline)
+- coaching_leverage_points (array of specific interventions)
+- hidden_risk_patterns (unvoiced concerns)
+- execution_identity (speed, quality, risk, decision style)
+
+**Evidence chains mapped but not narrated:**
+- delegation_resistance (Q24→Q26→Q28)
+- relational_friction (Q7, Q26, Q28)
+- execution_vs_strategy_gap (Q23→Q24→Q25)
+- leadership_ceiling (business_reality × systems_accountability)
+- communication_authenticity (Q25 intent vs Q2 behavior)
+
+## Compression Impact
+
+Average section: **~135 words** (950 total ÷ 7)  
+Target range: **150-250 words per section**  
+Loss: **~20-30% from full capability**
+
+Most loss in:
+1. hiddenContradictions (multiple contradictions compress heavily)
+2. systemUnderStrain (pressure mechanics for all 8 dimensions not unpacked)
+3. strategicCeiling (multiple constraint types collapse to one)
+
+## Future Components Ready for Extraction
+
+**Tier 1 (from dossier, no new calc):**
+- All 8 dimensions under pressure (instead of just primary/secondary)
+- Constraint type (belief/skill/environment/time)
+- Scaling timeline to ceiling
+- How others experience you (first impression + misunderstandings)
+- Relational blind spots
+
+**Tier 2 (evidence reconstruction):**
+- Delegation resistance (3-question chain unpacked)
+- Relational friction (pattern across 3+ questions)
+- Execution-strategy gap (coherence analysis)
+- Leadership ceiling (capacity assessment)
+
+**Tier 3 (scenario-based):**
+- Five futures (best/probable/pressure/breakdown/transformation cases)
+- The One Move (single highest-leverage intervention)
+- Resistance pattern (what will pull back)
+- Cost of inaction
+
+---
+
+**Architecture Status:** Audit complete. No redesign. Infrastructure holds. Ready for expansion planning.

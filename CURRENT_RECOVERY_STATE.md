@@ -260,3 +260,56 @@ WebProfileReport renders 2-page report
 ---
 
 Locked 2026-05-23 22:50 MST.
+
+---
+
+# NARRATIVE FLOW ARCHITECTURE (Audit 2026-05-25)
+
+## Current Rendering Pipeline
+
+```
+FRONTEND (WebProfileReport)
+      ↓
+buildNarrativeV3()
+      ↓
+Cache Check ↔ interpretCanonical() [extract facts]
+      ↓
+LOOP 7 SECTIONS:
+  1. profileDNA
+  2. executiveSummary
+  3. communicationStyle
+  4. hiddenContradictions
+  5. systemUnderStrain
+  6. strategicCeiling
+  7. coachingLeverage
+  8. recommendedNextStep
+      ↓
+For each: getPromptBuilder() → sectionPrompts.js
+      ↓
+Call GPT55 (gpt-4o-2024-08-06) OR fallback localRendering
+      ↓
+suppressBannedPhrases() → compressionPass() → scanForBannedPhrases()
+      ↓
+Return narrative{section} with all 7 sections
+      ↓
+WebProfileReport renders:
+  - DashboardReportV1 (primary)
+  - OR StackedReportFallback (if V1 fails)
+```
+
+## Section Intelligence Sources
+
+| Section | Source Field(s) | GPT Extraction | Compression Risk |
+|---------|-----------------|-------|-----------------|
+| profileDNA | primary_driver + secondary_stabilizer | manifesto | Low |
+| executiveSummary | operating_manifestation + pressure_manifestation | narrative | Medium |
+| communicationStyle | signal + flex + vector (opposing) | style | Low |
+| hiddenContradictions | contradictions[] + dimension_tradeoff | evidence chain | **High** |
+| systemUnderStrain | stress_patterns + pressure_manifestation | response map | **High** |
+| strategicCeiling | future_growth_constraints + role_fit_analysis | ceiling analysis | **High** |
+| coachingLeverage | coaching_leverage_points[] | intervention points | Medium |
+| recommendedNextStep | highest_leverage_move + resistance + timeline | next action | Low |
+
+**High compression = losing nuance about multiple items (contradictions, ceiling types, leverage points)**
+
+---
