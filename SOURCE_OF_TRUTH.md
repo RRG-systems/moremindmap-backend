@@ -1571,3 +1571,214 @@ canonical_profile.behavioral_intelligence = behavioral_intelligence
 ---
 
 **Verification Complete. Backend insertion point identified. Backward compatibility verified. Ready for Phase 1 implementation.**
+
+---
+
+# PHASE 1 EXTRACTION IMPLEMENTATION (2026-05-25 11:50 MST)
+
+## Implementation Complete: extractIntelligence() v1.0.0-tier1
+
+**Status:** ✅ Pure read-only function implemented and tested  
+**Commit:** 8f8bc6b  
+**Files:**
+- api/engine/canonical/extractIntelligence.js (854 lines)
+- test-extraction-unit.js (unit test with mock data)
+- test-extraction-phase1.js (integration test for live profiles, requires Redis)
+
+---
+
+## Function Signature
+
+```javascript
+extractBehavioralIntelligence(canonical_profile) → behavioral_intelligence_v1
+```
+
+**Characteristics:**
+- Pure function (no mutations, no side effects)
+- Read-only (does not modify canonical_profile)
+- No GPT calls
+- No rendering
+- Uses existing dossier fields only
+- Downstream only (parallel structure, not integrated yet)
+
+---
+
+## Output Structure
+
+```javascript
+{
+  extraction_version: 'v1.0.0-tier1',
+  extraction_timestamp: ISO string,
+  profile_id: string,
+  extraction_time_ms: number,
+  
+  domains: {
+    operatingSystem: { ... },
+    worldExperience: { ... },
+    othersExperience: { ... },
+    pressureMechanics: { ... },
+    contradictions: { ... }
+  },
+  
+  confidence_tiers: {
+    operatingSystem: 'tier_1_high',
+    worldExperience: 'tier_2_medium_high',
+    othersExperience: 'tier_3_medium',
+    pressureMechanics: 'tier_2_medium_high',
+    contradictions: 'tier_3_medium'
+  }
+}
+```
+
+---
+
+## Domains Implemented (5 of 11)
+
+### Domain 1: Operating System (Tier 1)
+**Source Fields:** top_systems.primary_driver, top_systems.secondary_stabilizer, vector_scores, dimension_tradeoffs
+
+**Output:**
+- title, confidence, source_fields, summary
+- primary_driver (dimension, score, operating_manifestation, pressure_manifestation)
+- secondary_stabilizer (same structure)
+- opposing_patterns (2 patterns with dimension, score, operating_manifestation)
+- core_tradeoff (dimensions, tradeoff, cost, manifestation)
+- all_scores (all 8 vector_scores)
+- key_signals (3-item array)
+- causal_interpretation
+
+### Domain 2: World Experience (Tier 1-2)
+**Source Fields:** vector_scores, primary_driver.operating_manifestation
+
+**Output:**
+- title, confidence, source_fields, summary
+- perception_filter (signal score + interpretation)
+- information_processing (velocity vs fidelity + interpretation)
+- decision_formation (primary path, structure bias, interpretation)
+- time_horizon (horizon score + interpretation)
+- risk_calibration (flex + vector + interpretation)
+- key_signals
+- causal_interpretation
+
+### Domain 3: Others Experience (Tier 2-3)
+**Source Fields:** primary_driver, vector_scores (signal, vector, flex, fidelity, velocity)
+
+**Output:**
+- title, confidence, source_fields, summary
+- first_impression (primary signal + interpretation by dimension)
+- communication_pattern (clarity vs brevity + scores + interpretation)
+- listening_pattern (signal vs vector + interpretation)
+- trust_building_speed (composite score + interpretation)
+- key_signals
+- causal_interpretation
+
+### Domain 5: Pressure Mechanics (Tier 1-2 - Starter)
+**Source Fields:** primary_driver.pressure_manifestation, secondary_stabilizer.pressure_manifestation, stress_patterns
+
+**Output:**
+- title, confidence, source_fields, summary
+- primary_under_load (dimension, normal, pressure, interpretation)
+- secondary_override (dimension, normal, override pattern, interpretation)
+- stress_patterns_available (boolean)
+- key_signals
+- causal_interpretation
+- note: "Full pressure mechanics (all 8 dimensions, breaking points, recovery) in Phase 2."
+
+### Domain 6: Contradictions (Tier 2-3 - Starter)
+**Source Fields:** contradictions array, dimension_tradeoffs
+
+**Output:**
+- title, confidence, source_fields, summary
+- contradiction_count (number)
+- contradictions (first 3 unpacked: type, dimensions, cost, resolution_attempted, interpretation)
+- core_tradeoff (from dimension_tradeoffs[0])
+- key_signals
+- causal_interpretation
+- note: "Full contradiction unpacking (know vs apply gaps, evidence chains) in Phase 2."
+
+---
+
+## Test Results
+
+### Unit Test (Mock Data)
+**File:** test-extraction-unit.js  
+**Status:** ✅ PASSED
+
+**Verified:**
+- Pure function (canonical unchanged)
+- Extraction completes in <1ms
+- All 5 domains extract correctly
+- Confidence tiers correctly labeled
+- Output structure valid
+- Sample output:
+  - Operating System: Primary vector (7.2) + Secondary horizon (7.5)
+  - World Experience: Signal 6.8, Velocity 7.0 vs Fidelity 4.5
+  - Others Experience: vector first impression, brevity-oriented communication
+  - Pressure Mechanics: Primary intensifies under load
+  - Contradictions: 1 identified (knowledge_execution_gap)
+
+### Integration Test (Live Profiles)
+**File:** test-extraction-phase1.js  
+**Status:** ⏸️ PENDING (requires Redis connection)  
+**Profiles:** MM-20260523-mqlev9c9, MM-20260524-rf2xqct1
+
+**Can run when:**
+- Redis vault accessible
+- REDIS_URL environment variable set
+
+---
+
+## Phase 1 Complete Checklist
+
+- [x] Create extractIntelligence.js
+- [x] Implement extractBehavioralIntelligence() entry function
+- [x] Implement extractOperatingSystem() (Tier 1)
+- [x] Implement extractWorldExperience() (Tier 1-2)
+- [x] Implement extractOthersExperience() (Tier 2-3)
+- [x] Implement extractPressureMechanicsStarter() (Tier 1-2)
+- [x] Implement extractContradictionsStarter() (Tier 2-3)
+- [x] Pure function verification (no mutations)
+- [x] Unit test with mock data
+- [x] Build passes
+- [x] Commit and push
+
+---
+
+## NOT Yet Implemented (Phase 2+)
+
+**Domains 4, 7-11:**
+- Domain 4: Knowing Others (Tier 2-3) - requires delegation_resistance evidence chains
+- Domain 7: Relational / Team Consequences (Tier 3-4) - requires leadership_readiness
+- Domain 8: Scaling Constraint (Tier 3) - requires Q26 + Q28 analysis
+- Domain 9: Facilitator Notes (Tier 3-4) - requires execution_identity
+- Domain 10: Five Possible Futures (Tier 4-5) - requires trajectory simulation logic
+- Domain 11: The One Move (Tier 4-5) - requires coaching_leverage_points
+
+**Dossier Gap Population:**
+- future_growth_constraints
+- hidden_risk_patterns
+- execution_identity
+- role_fit_analysis
+- leadership_architecture
+
+**Integration:**
+- NOT wired to executeCanonicalGeneration yet
+- NOT stored in vault yet
+- NOT exposed via API yet
+- NOT used by renderer yet
+
+---
+
+## Next Phase: Integration
+
+**Week 2 Tasks:**
+1. Wire extractBehavioralIntelligence to executeCanonicalGeneration (line 73)
+2. Store behavioral_intelligence in canonical_profile
+3. Verify vault save includes new field
+4. Test on live assessment flow
+5. Verify retrieve-profile returns new field
+6. Verify renderer ignores new field
+
+---
+
+**Phase 1 Status:** Complete. Read-only extraction layer functional. Zero integration. Zero breaking changes.
