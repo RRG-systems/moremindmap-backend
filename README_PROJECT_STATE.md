@@ -326,3 +326,176 @@ Most loss in:
 ---
 
 **Architecture Status:** Audit complete. No redesign. Infrastructure holds. Ready for expansion planning.
+
+---
+
+# EXTRACTION LAYER BUILD CHECKLIST (2026-05-25)
+
+## Phase 1: Core Extraction Functions (Tier 1-2 Components)
+
+**File:** `api/engine/canonical/extractIntelligence.js`
+
+- [ ] extractOperatingSystem() - Components 1-5
+  - [ ] Primary driver extraction
+  - [ ] Secondary stabilizer extraction
+  - [ ] Opposing patterns extraction
+  - [ ] Core tradeoff extraction
+  - [ ] All vector scores mapping
+
+- [ ] extractWorldExperience() - Components 6-10
+  - [ ] Perception filter (signal score → what noticed first)
+  - [ ] Information processing speed (velocity + fidelity)
+  - [ ] Decision formation path (vector + framework)
+  - [ ] Time horizon bias (horizon score)
+  - [ ] Risk calibration (flex + vector)
+
+- [ ] extractPressureMechanics() - Components 21-25
+  - [ ] Primary system under load
+  - [ ] Secondary system override logic
+  - [ ] All 8 dimensions under pressure
+  - [ ] Breaking point identification
+  - [ ] Recovery trajectory estimation
+
+## Phase 2: Relational & Evidence Extraction (Tier 2-3 Components)
+
+- [ ] extractOthersExperience() - Components 11-15
+  - [ ] First impression signature (primary → external perception)
+  - [ ] Communication clarity vs brevity (fidelity + velocity)
+  - [ ] Listening pattern (signal + flex vs vector)
+  - [ ] Trust-building speed (signal × flex)
+  - [ ] Misunderstanding pattern (Q25 evidence)
+
+- [ ] extractKnowingOthers() - Components 16-20
+  - [ ] People-reading capacity (signal + attention)
+  - [ ] Relational blind spots (contradictions + Q7)
+  - [ ] Delegation readiness (Q26→Q28 evidence chain)
+  - [ ] Team development orientation
+  - [ ] Boundary style (framework + vector)
+
+- [ ] extractContradictions() - Component 26
+  - [ ] Unpack contradictions array
+  - [ ] Know vs Apply gap extraction
+  - [ ] Emotional cost identification
+  - [ ] Resolution attempts tracking
+  - [ ] Evidence chain (Q23→Q24→Q25)
+
+## Phase 3: Organizational & Strategic Extraction (Tier 3-4 Components)
+
+- [ ] extractTeamConsequences() - Components 27-29
+  - [ ] How operator affects teams (primary + relational patterns)
+  - [ ] Friction points with other types (opposing patterns)
+  - [ ] Optimal team composition inference
+
+- [ ] extractScalingConstraint() - Component 30
+  - [ ] Capacity ceiling identification (Q26 × Q28)
+  - [ ] Constraint type classification (belief/skill/environment/time)
+  - [ ] Timeline to ceiling estimation
+  - [ ] Required shift identification
+  - [ ] Expansion pathway definition
+
+- [ ] extractFacilitatorNotes() - Systemic Architecture
+  - [ ] Compatible environments (execution_identity → environment design)
+  - [ ] Communication structures (reduce friction)
+  - [ ] Accountability architectures (match operating style)
+  - [ ] Team compositions (balance weaknesses)
+  - [ ] Workflow matches (speed preference alignment)
+
+## Phase 4: Trajectory & Intervention Extraction (Tier 4-5 Components)
+
+- [ ] extractFiveFutures() - Scenario Simulation
+  - [ ] Best case scenario (optimized, no constraints)
+  - [ ] Probable case (current trajectory + current constraints)
+  - [ ] Pressure case (2x demand, systems under load)
+  - [ ] Breakdown case (primary system fails)
+  - [ ] Transformation case (different role/environment)
+
+- [ ] extractOneMove() - Intervention Logic
+  - [ ] Highest-leverage move identification
+  - [ ] Unlock mechanism inference
+  - [ ] Resistance pattern identification
+  - [ ] Timeline to impact (3mo/6mo/12mo)
+  - [ ] Success signal definition
+  - [ ] Cost of inaction inference
+
+## Phase 5: Helper Functions & Utilities
+
+- [ ] identifyCapacityCeiling(q26, q28, roleFit)
+- [ ] classifyConstraint(ceiling, growthConstraints)
+- [ ] estimateTimelineToCeiling(growthRate, ceiling)
+- [ ] identifyRequiredShift(constraintType, constraints)
+- [ ] inferUnlockMechanism(leveragePoint, constraint)
+- [ ] identifyResistancePattern(leverage, contradictions, stress)
+- [ ] defineSuccessMetric(leveragePoint, mechanism)
+- [ ] inferCostOfInaction(riskPatterns, constraint)
+- [ ] simulateBestCase(currentState)
+- [ ] simulateProbableCase(currentState, constraints)
+- [ ] simulatePressureCase(currentState, stressPatterns)
+- [ ] simulateBreakdownCase(currentState, stressPatterns)
+- [ ] simulateTransformationCase(currentState, roleFit)
+- [ ] inferTeamEffect(primary, secondary, delegationPattern)
+- [ ] inferFrictionPoints(opposing, relationalPattern)
+- [ ] inferOptimalTeam(primary, frictionPoints)
+- [ ] extractMisunderstandingEvidence(q25, commStyle)
+
+## Phase 6: Dossier Gap Population
+
+**Required before full extraction:**
+
+- [ ] Populate future_growth_constraints
+  - [ ] Extract from Q26 (business reality size, growth trajectory)
+  - [ ] Extract from Q28 (systems readiness, fragility points)
+  - [ ] Calculate internal vs external constraints
+  - [ ] Estimate timeline to hit constraints
+
+- [ ] Populate hidden_risk_patterns
+  - [ ] Identify from contradictions (unresolved tensions)
+  - [ ] Identify from pressure analysis (breaking points)
+  - [ ] Identify from evidence chains (unvoiced concerns)
+  - [ ] Calculate likelihood and impact
+
+- [ ] Populate execution_identity
+  - [ ] Extract from Q23 (what separates high performers)
+  - [ ] Extract from Q24 (stall patterns, frustrations)
+  - [ ] Extract decision style patterns
+  - [ ] Calculate speed/quality/risk preferences
+
+- [ ] Populate role_fit_analysis
+  - [ ] Calculate current role fit score
+  - [ ] Identify ceiling reasons
+  - [ ] Identify alternative roles with higher fit
+  - [ ] Map dimension requirements per role type
+
+- [ ] Populate leadership_architecture
+  - [ ] Extract from Q26 (leadership questions)
+  - [ ] Extract delegation patterns
+  - [ ] Extract team development orientation
+  - [ ] Extract accountability style
+
+## Phase 7: Integration & Testing
+
+- [ ] Add extractBehavioralIntelligence() call to executeCanonicalGeneration.js
+- [ ] Store extracted intelligence in canonical_profile.behavioral_intelligence
+- [ ] Test extraction on MM-20260524-rf2xqct1 (live profile)
+- [ ] Verify confidence tier labeling
+- [ ] Verify causal chain propagation
+- [ ] Test extraction on MM-20260523-mqlev9c9 (benchmark profile)
+- [ ] Compare extraction quality across profiles
+
+## Phase 8: API Exposure (Optional)
+
+- [ ] Create /api/moremindmap/extract-intelligence endpoint
+- [ ] Accept profile_id parameter
+- [ ] Return extracted intelligence JSON
+- [ ] Add to retrieve-profile response (optional field)
+
+## Phase 9: Documentation
+
+- [ ] Update SOURCE_OF_TRUTH.md with extraction status
+- [ ] Document extraction logic per domain
+- [ ] Document confidence tier mapping
+- [ ] Document causal propagation chains
+- [ ] Document dossier field requirements
+
+---
+
+**Status:** Architecture complete. Implementation ready. Zero rendering changes required.

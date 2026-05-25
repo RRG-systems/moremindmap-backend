@@ -313,3 +313,229 @@ WebProfileReport renders:
 **High compression = losing nuance about multiple items (contradictions, ceiling types, leverage points)**
 
 ---
+
+---
+
+# EXTRACTION LAYER IMPLEMENTATION GUIDE (2026-05-25)
+
+## New File Structure
+
+```
+moremindmap-live/
+├── api/
+│   └── engine/
+│       └── canonical/
+│           ├── executeCanonicalGeneration.js (existing)
+│           ├── inferEvidenceMap.js (existing)
+│           └── extractIntelligence.js (NEW)
+│               ├── extractOperatingSystem()
+│               ├── extractWorldExperience()
+│               ├── extractOthersExperience()
+│               ├── extractKnowingOthers()
+│               ├── extractPressureMechanics()
+│               ├── extractContradictions()
+│               ├── extractTeamConsequences()
+│               ├── extractScalingConstraint()
+│               ├── extractFacilitatorNotes()
+│               ├── extractFiveFutures()
+│               └── extractOneMove()
+└── src/
+    └── lib/
+        └── narrativeV3/
+            ├── buildNarrativeV3.js (existing)
+            └── intelligenceExtractor.js (NEW - frontend wrapper)
+```
+
+## Extraction Layer Entry Point
+
+```javascript
+// api/engine/canonical/extractIntelligence.js
+
+/**
+ * extractIntelligence.js
+ * 
+ * Behavioral Intelligence Extraction Layer
+ * Transforms canonical dossier → 30 intelligence components
+ * 
+ * Sits between: canonical_profile → rendered_narrative
+ */
+
+export function extractBehavioralIntelligence(canonical_profile) {
+  const intelligence = {
+    extraction_timestamp: new Date().toISOString(),
+    confidence_tiers: {},
+    domains: {}
+  };
+
+  // Domain 1: Known Operating System (Tier 1)
+  intelligence.domains.operatingSystem = extractOperatingSystem(canonical_profile);
+  intelligence.confidence_tiers.operatingSystem = 'tier_1_high';
+
+  // Domain 2: How You Experience The World (Tier 1-2)
+  intelligence.domains.worldExperience = extractWorldExperience(canonical_profile);
+  intelligence.confidence_tiers.worldExperience = 'tier_2_medium_high';
+
+  // Domain 3: How Others Experience You (Tier 2-3)
+  intelligence.domains.othersExperience = extractOthersExperience(canonical_profile);
+  intelligence.confidence_tiers.othersExperience = 'tier_3_medium';
+
+  // Domain 4: Knowing Others (Tier 2-3)
+  intelligence.domains.knowingOthers = extractKnowingOthers(canonical_profile);
+  intelligence.confidence_tiers.knowingOthers = 'tier_3_medium';
+
+  // Domain 5: Pressure Mechanics (Tier 1-2)
+  intelligence.domains.pressureMechanics = extractPressureMechanics(canonical_profile);
+  intelligence.confidence_tiers.pressureMechanics = 'tier_2_medium_high';
+
+  // Domain 6: Hidden Contradictions (Tier 2-3)
+  intelligence.domains.contradictions = extractContradictions(canonical_profile);
+  intelligence.confidence_tiers.contradictions = 'tier_3_medium';
+
+  // Domain 7: Relational / Team Consequences (Tier 3-4)
+  intelligence.domains.teamConsequences = extractTeamConsequences(canonical_profile);
+  intelligence.confidence_tiers.teamConsequences = 'tier_4_medium_low';
+
+  // Domain 8: Scaling Constraint (Tier 3)
+  intelligence.domains.scalingConstraint = extractScalingConstraint(canonical_profile);
+  intelligence.confidence_tiers.scalingConstraint = 'tier_3_medium';
+
+  // Domain 9: Facilitator Notes (Tier 3-4)
+  intelligence.domains.facilitatorNotes = extractFacilitatorNotes(canonical_profile);
+  intelligence.confidence_tiers.facilitatorNotes = 'tier_4_medium_low';
+
+  // Domain 10: Five Possible Futures (Tier 4-5)
+  intelligence.domains.fiveFutures = extractFiveFutures(canonical_profile);
+  intelligence.confidence_tiers.fiveFutures = 'tier_5_low';
+
+  // Domain 11: The One Move (Tier 4-5)
+  intelligence.domains.oneMove = extractOneMove(canonical_profile);
+  intelligence.confidence_tiers.oneMove = 'tier_5_low';
+
+  return intelligence;
+}
+```
+
+## Component Extraction Functions
+
+### extractOperatingSystem()
+```javascript
+function extractOperatingSystem(canonical) {
+  const { top_systems, vector_scores, dimension_tradeoffs } = canonical;
+  
+  return {
+    primaryDriver: {
+      dimension: top_systems.primary_driver.dimension,
+      score: top_systems.primary_driver.score,
+      operatingManifest: top_systems.primary_driver.operating_manifestation,
+      pressureManifest: top_systems.primary_driver.pressure_manifestation
+    },
+    secondaryStabilizer: {
+      dimension: top_systems.secondary_stabilizer.dimension,
+      score: top_systems.secondary_stabilizer.score,
+      operatingManifest: top_systems.secondary_stabilizer.operating_manifestation,
+      pressureManifest: top_systems.secondary_stabilizer.pressure_manifestation
+    },
+    opposingPatterns: [
+      extractOpposingPattern(top_systems.opposing_pattern_1),
+      extractOpposingPattern(top_systems.opposing_pattern_2)
+    ],
+    coreTradeoff: dimension_tradeoffs[0] || null,
+    allScores: vector_scores
+  };
+}
+```
+
+### extractPressureMechanics()
+```javascript
+function extractPressureMechanics(canonical) {
+  const { top_systems, stress_patterns, contradictions } = canonical;
+  
+  return {
+    primaryUnderLoad: {
+      dimension: top_systems.primary_driver.dimension,
+      normalState: top_systems.primary_driver.operating_manifestation,
+      pressureState: top_systems.primary_driver.pressure_manifestation,
+      intensifiesOrCollapses: determinePressureDirection(top_systems.primary_driver)
+    },
+    secondaryOverride: {
+      dimension: top_systems.secondary_stabilizer.dimension,
+      normalState: top_systems.secondary_stabilizer.operating_manifestation,
+      overrideCondition: determineOverrideCondition(top_systems.secondary_stabilizer),
+      overridePattern: top_systems.secondary_stabilizer.pressure_manifestation
+    },
+    allDimensionsUnderPressure: extractAllDimensionShifts(stress_patterns),
+    breakingPoint: identifyBreakingPoint(stress_patterns, contradictions),
+    recoveryTrajectory: estimateRecoverySpeed(stress_patterns)
+  };
+}
+```
+
+### extractScalingConstraint()
+```javascript
+function extractScalingConstraint(canonical) {
+  const q26 = canonical.business_operating_reality; // from analyzedResponses
+  const q28 = canonical.systems_accountability;
+  const roleF it = canonical.role_fit_analysis;
+  const growthConstraints = canonical.future_growth_constraints;
+  
+  const ceiling = identifyCapacityCeiling(q26, q28, roleFit);
+  const constraintType = classifyConstraint(ceiling, growthConstraints);
+  const timeline = estimateTimelineToCeiling(q26?.growth_rate, ceiling);
+  const requiredShift = identifyRequiredShift(constraintType, growthConstraints);
+  
+  return {
+    currentCeiling: ceiling,
+    constraintType, // 'belief' | 'skill' | 'environment' | 'time'
+    timelineToCeilingMonths: timeline,
+    evidenceChain: {
+      businessReality: q26?.summary || 'Not provided',
+      systemsReadiness: q28?.summary || 'Not provided',
+      roleFit: roleFit?.current_fit_score || null
+    },
+    requiredShift,
+    expansionPathway: defineExpansionPathway(constraintType, requiredShift)
+  };
+}
+```
+
+### extractOneMove()
+```javascript
+function extractOneMove(canonical) {
+  const leveragePoints = canonical.coaching_leverage_points || [];
+  const contradictions = canonical.contradictions || [];
+  const riskPatterns = canonical.hidden_risk_patterns || [];
+  const scalingConstraint = extractScalingConstraint(canonical);
+  
+  // Identify highest-confidence leverage point
+  const highestLeverage = leveragePoints
+    .sort((a, b) => (b.confidence || 0) - (a.confidence || 0))[0];
+  
+  if (!highestLeverage) {
+    return {
+      move: 'Insufficient evidence for high-confidence intervention',
+      confidence: 'tier_5_low',
+      mechanism: null,
+      resistance: null,
+      timeline: null,
+      successSignal: null,
+      costOfInaction: null
+    };
+  }
+  
+  return {
+    move: highestLeverage.leverage_point,
+    confidence: mapConfidenceTier(highestLeverage.confidence),
+    mechanism: inferUnlockMechanism(highestLeverage, scalingConstraint),
+    resistance: identifyResistancePattern(highestLeverage, contradictions),
+    timeline: {
+      threeMonths: defineThreeMonthMilestone(highestLeverage),
+      sixMonths: defineSixMonthMilestone(highestLeverage),
+      twelveMonths: defineTwelveMonthMilestone(highestLeverage)
+    },
+    successSignal: defineSuccessMetric(highestLeverage),
+    costOfInaction: inferCostOfInaction(riskPatterns, scalingConstraint)
+  };
+}
+```
+
+---

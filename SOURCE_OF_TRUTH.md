@@ -557,3 +557,570 @@ vector_scores: {
 ---
 
 **Audit completed. Zero redesign. Infrastructure intact. Ready for expansion planning.**
+
+---
+
+# BEHAVIORAL INTELLIGENCE EXTRACTION ARCHITECTURE (2026-05-25)
+
+## Semantic Extraction Layer (NEW)
+
+**Layer Position:**
+```
+Canonical Dossier
+    ↓
+[EXTRACTION LAYER] ← NEW
+    ↓
+Intelligence Components (30)
+    ↓
+Rendering Pipeline (existing)
+```
+
+**Purpose:** Transform raw dossier data into high-signal behavioral intelligence components with causal chaining, confidence tiers, and trajectory inference.
+
+---
+
+## Intelligence Domains (11)
+
+### Domain 1: Known Operating System
+**Confidence:** High (direct observation)  
+**Components:**
+1. Primary Driver (vector dimension, score, operating manifestation)
+2. Secondary Stabilizer (dimension, score, stabilization pattern)
+3. Opposing Pattern 1 (dimension, score, friction point)
+4. Opposing Pattern 2 (dimension, score, friction point)
+5. Core Tradeoff (dimensions involved, cost, manifestation)
+
+**Extraction Source:** top_systems, vector_scores, dimension_tradeoffs  
+**Causal Chain:** Direct measurement → no propagation
+
+### Domain 2: How You Experience The World
+**Confidence:** High (direct inference from scores)  
+**Components:**
+6. Perception Filter (signal score → what you notice first)
+7. Information Processing Speed (velocity + fidelity interaction)
+8. Decision Formation Path (vector + framework → how decisions form)
+9. Time Horizon Bias (horizon score → planning distance)
+10. Risk Calibration (flex + vector → risk tolerance profile)
+
+**Extraction Source:** vector_scores + operating_manifestation  
+**Causal Chain:** Dimension scores → perceptual bias → decision patterns
+
+### Domain 3: How Others Experience You
+**Confidence:** Medium (inferred from behavioral manifestation)  
+**Components:**
+11. First Impression Signature (primary driver → what others see first)
+12. Communication Clarity vs Brevity (fidelity + velocity tradeoff)
+13. Listening Pattern (signal + flex vs vector dominance)
+14. Trust-Building Speed (signal × flex score)
+15. Misunderstanding Pattern (Q25 evidence + dimension gaps)
+
+**Extraction Source:** Q25 (written), communication_style, primary operating pattern  
+**Causal Chain:** Operating system → external perception → relationship formation
+
+### Domain 4: Knowing Others / External Calibration
+**Confidence:** Medium (inferred from relational patterns)  
+**Components:**
+16. People-Reading Capacity (signal score + attention_direction)
+17. Relational Blind Spots (contradictions + Q7 challenge response)
+18. Delegation Readiness (Q26 + Q28 evidence chain)
+19. Team Development Orientation (leadership_readiness field)
+20. Boundary Style (framework + vector interaction)
+
+**Extraction Source:** inferEvidenceMap (delegation_resistance, relational_friction), leadership_readiness  
+**Causal Chain:** Internal system → relational behavior → team consequences
+
+### Domain 5: Pressure Mechanics
+**Confidence:** Medium-High (direct from stress_patterns + pressure_manifestation)  
+**Components:**
+21. Primary System Under Load (pressure_manifestation + threshold)
+22. Secondary System Override (when secondary takes over)
+23. Dimension-by-Dimension Shift (all 8 dimensions under pressure)
+24. Breaking Point (capability loss threshold)
+25. Recovery Trajectory (post-stress return speed)
+
+**Extraction Source:** stress_patterns, top_systems.pressure_manifestation, contradictions (pressure-triggered)  
+**Causal Chain:** Normal operation → pressure applied → system shifts → potential breakdown
+
+### Domain 6: Hidden Contradictions
+**Confidence:** Medium (evidence-based inference)  
+**Component:**
+26. Know-vs-Apply Gaps (contradictions array unpacked)
+    - What they know intellectually
+    - What they actually do behaviorally
+    - Emotional cost of contradiction
+    - Resolution attempts (if any)
+    - Evidence chain (Q23→Q24→Q25)
+
+**Extraction Source:** contradictions[], inferEvidenceMap (execution_vs_strategy_gap)  
+**Causal Chain:** Belief system → behavioral pattern → contradiction emerges → organizational cost
+
+### Domain 7: Relational / Team Consequences
+**Confidence:** Medium-Low (organizational inference)  
+**Components:**
+27. How This Operator Affects Teams (derived from primary + relational patterns)
+28. Friction Points With Other Types (opposing patterns + delegation evidence)
+29. Optimal Team Composition (what roles balance this operator)
+
+**Extraction Source:** leadership_architecture, delegation_resistance evidence, relational_friction patterns  
+**Causal Chain:** Individual system → team interaction → organizational friction → performance impact
+
+### Domain 8: Scaling Constraint
+**Confidence:** Medium (capacity assessment)  
+**Component:**
+30. Current Capacity Ceiling
+    - Constraint type: belief / skill / environment / time
+    - Timeline to ceiling (months at current trajectory)
+    - What needs to shift for expansion
+    - Evidence from Q26 (business reality) × Q28 (systems readiness)
+
+**Extraction Source:** future_growth_constraints, role_fit_analysis, Q26 + Q28 analysis  
+**Causal Chain:** Current capacity → growth rate → ceiling hit → constraint identifies
+
+### Domain 9: Facilitator Notes
+**Confidence:** Medium (systemic architecture inference)  
+**Purpose:** Build compatible systems AROUND the operator (not change the operator)  
+**Extraction:**
+- What environments suit this system
+- What communication structures reduce friction
+- What accountability architectures work
+- What team compositions balance weaknesses
+- What workflows match operating speed
+
+**Extraction Source:** coaching_leverage_points, hidden_risk_patterns, execution_identity  
+**Causal Chain:** Operating system → compatible environment design → performance optimization
+
+### Domain 10: Five Possible Futures
+**Confidence:** Low (trajectory simulation)  
+**Scenarios:**
+- **Best Case:** All systems optimized, no external constraints
+- **Probable Case:** Current trajectory continues, current constraints hold
+- **Pressure Case:** 2x current demand, systems under load
+- **Breakdown Case:** Primary system fails, forced adaptation
+- **Transformation Case:** Different role/environment, system reorientation
+
+**Extraction Source:** role_fit_analysis, stress_patterns, future_growth_constraints, scaling_constraint  
+**Causal Chain:** Current state → external change → system response → outcome range
+
+### Domain 11: The One Move
+**Confidence:** Medium (intervention inference)  
+**Component:**
+- **Highest-Leverage Intervention:** Single move with greatest unlock potential
+- **Why This Move Unlocks:** Causal mechanism (what constraint breaks)
+- **Resistance Pattern:** What will pull back (from contradictions + stress_patterns)
+- **Timeline to Impact:** 3mo / 6mo / 12mo milestones
+- **Success Signal:** How to know it's working (observable metric)
+- **Cost of Inaction:** What happens if status quo continues
+
+**Extraction Source:** coaching_leverage_points (highest confidence), hidden_risk_patterns, execution_identity  
+**Causal Chain:** Constraint identification → leverage point → intervention → unlocked capacity
+
+---
+
+## Extraction Rules (Dossier → Components)
+
+### Rule 1: Direct Mapping (High Confidence)
+- vector_scores → Components 1-5 (Operating System)
+- top_systems → Components 6-10 (Experience World)
+- stress_patterns → Components 21-25 (Pressure Mechanics)
+
+### Rule 2: Evidence Chain Reconstruction (Medium Confidence)
+- Q25 + communication_style → Component 15 (Misunderstanding Pattern)
+- Q26 + Q28 + delegation_resistance → Component 18 (Delegation Readiness)
+- Q24 + relational_friction → Component 17 (Relational Blind Spots)
+
+### Rule 3: Causal Inference (Medium-Low Confidence)
+- Operating system + leadership_readiness → Components 27-29 (Team Consequences)
+- Scaling_constraint + role_fit → Component 30 (Capacity Ceiling)
+
+### Rule 4: Trajectory Simulation (Low Confidence)
+- Current state + stress_patterns + future_growth_constraints → Domain 10 (Five Futures)
+
+### Rule 5: Intervention Logic (Medium Confidence)
+- coaching_leverage_points + contradictions + hidden_risk_patterns → Domain 11 (The One Move)
+
+---
+
+## Causal Propagation Logic
+
+### Propagation Chain 1: Internal → External
+```
+Dimension Scores (certainty: high)
+  ↓
+Operating Manifestation (certainty: high)
+  ↓
+Perceptual Filters (certainty: medium)
+  ↓
+External Behavior (certainty: medium)
+  ↓
+How Others Experience You (certainty: medium-low)
+  ↓
+Relational Consequences (certainty: low)
+```
+
+### Propagation Chain 2: Pressure Cascade
+```
+Normal Operating System (certainty: high)
+  ↓
+Pressure Applied (external event)
+  ↓
+Primary System Intensifies (certainty: medium-high)
+  ↓
+Secondary System Overrides (certainty: medium)
+  ↓
+Opposing Patterns Emerge (certainty: medium-low)
+  ↓
+Breaking Point Risk (certainty: low)
+```
+
+### Propagation Chain 3: Scaling Trajectory
+```
+Current Capacity (certainty: medium)
+  ↓
+Growth Rate (from Q26 business reality)
+  ↓
+Timeline to Ceiling (certainty: medium-low)
+  ↓
+Constraint Type Identifies (certainty: medium-low)
+  ↓
+Required Shift (certainty: low)
+```
+
+### Propagation Chain 4: Intervention Impact
+```
+Constraint Identified (certainty: medium)
+  ↓
+Leverage Point Mapped (certainty: medium)
+  ↓
+Intervention Designed (certainty: medium-low)
+  ↓
+Resistance Pattern Anticipated (certainty: low)
+  ↓
+Timeline to Unlock (certainty: low)
+```
+
+---
+
+## Confidence Tier Logic
+
+| Tier | Confidence | Source Type | Propagation Distance | Examples |
+|------|------------|-------------|---------------------|----------|
+| **Tier 0** | Measurement | Direct score | 0 hops | vector_scores, dimension ranks |
+| **Tier 1** | High | Direct observation | 1 hop | Operating manifestation, pressure manifestation |
+| **Tier 2** | Medium-High | Evidence chain (2-3 questions) | 2 hops | Delegation readiness, misunderstanding pattern |
+| **Tier 3** | Medium | Systemic inference | 3 hops | Team consequences, scaling constraint |
+| **Tier 4** | Medium-Low | Trajectory simulation (current → pressure) | 4 hops | Pressure case future, breakdown case |
+| **Tier 5** | Low | Intervention inference | 5 hops | The One Move, transformation case future |
+
+**Doctrine:**
+- Always label confidence tier
+- Never present Tier 4-5 as certainty
+- Use language gradients:
+  - Tier 0-1: "This person..."
+  - Tier 2: "Evidence suggests..."
+  - Tier 3: "This pattern typically..."
+  - Tier 4: "Under pressure, this system likely..."
+  - Tier 5: "If X changes, the trajectory could..."
+
+---
+
+## Section Generation Rules
+
+### Section 1: Known Operating System
+**Confidence:** Tier 1 (High)  
+**Tone:** Declarative, certain  
+**Structure:**
+- Primary driver statement (1-2 sentences)
+- Secondary stabilizer statement (1 sentence)
+- Core tradeoff statement (1 sentence)
+- Opposing patterns (1 sentence)
+
+**Extraction Logic:**
+```javascript
+primary = top_systems.primary_driver
+secondary = top_systems.secondary_stabilizer
+tradeoff = dimension_tradeoffs[0]
+opposing = [opposing_pattern_1, opposing_pattern_2]
+
+output = `${primary.operating_manifestation}. ${secondary.operating_manifestation}. Core friction: ${tradeoff.tradeoff}. Cost: ${tradeoff.cost}.`
+```
+
+### Section 2: How You Experience The World
+**Confidence:** Tier 1-2 (High to Medium-High)  
+**Tone:** Observational, grounded  
+**Structure:**
+- Perception filter (what you notice first)
+- Decision formation path
+- Time horizon bias
+- Risk calibration
+
+**Extraction Logic:**
+```javascript
+signal_score = vector_scores.signal
+vector_score = vector_scores.vector
+horizon_score = vector_scores.horizon
+flex_score = vector_scores.flex
+
+perception = signal_score > 6 
+  ? "High perceptual acuity—notices patterns, shifts, unspoken dynamics."
+  : "Focuses attention on action and results, less on interpersonal dynamics."
+
+decision_path = vector_score > 6
+  ? `Decisions form through ${primary.operating_manifestation}.`
+  : `Decisions form through deliberation and analysis.`
+```
+
+### Section 3: How Others Experience You
+**Confidence:** Tier 2-3 (Medium)  
+**Tone:** External perspective, relational  
+**Structure:**
+- First impression signature
+- Communication pattern (clarity vs brevity)
+- Listening pattern
+- Trust-building speed
+- Misunderstanding pattern (from Q25 evidence)
+
+**Extraction Logic:**
+```javascript
+q25_response = analyzedResponses.life_direction // Q25: misunderstandings
+first_impression = primary.dimension === 'vector' 
+  ? "Others experience commanding presence first."
+  : primary.dimension === 'signal'
+  ? "Others experience perceptive awareness first."
+  : ...
+
+misunderstanding_pattern = extractMisunderstandingEvidence(q25_response, communication_style)
+```
+
+### Section 4: Knowing Others
+**Confidence:** Tier 2-3 (Medium)  
+**Tone:** Relational systems, external calibration  
+**Structure:**
+- People-reading capacity (signal score)
+- Relational blind spots (contradictions + Q7)
+- Delegation readiness (evidence chain Q26→Q28)
+- Team development orientation
+- Boundary style
+
+**Extraction Logic:**
+```javascript
+delegation_evidence = inferEvidenceMap.delegation_resistance
+relational_friction = inferEvidenceMap.relational_friction
+
+delegation_readiness = delegation_evidence.confidence > 0.7
+  ? `Evidence suggests delegation resistance: ${delegation_evidence.direct_evidence.join('; ')}.`
+  : "Delegation patterns unclear from current evidence."
+```
+
+### Section 5: Pressure Mechanics
+**Confidence:** Tier 1-2 (High to Medium-High)  
+**Tone:** Systems under load, diagnostic  
+**Structure:**
+- Primary system under load (intensifies or collapses?)
+- Secondary system override (when does it take over?)
+- Dimension-by-dimension shift (all 8 dimensions)
+- Breaking point (threshold)
+- Recovery trajectory
+
+**Extraction Logic:**
+```javascript
+pressure_primary = top_systems.primary_driver.pressure_manifestation
+pressure_secondary = top_systems.secondary_stabilizer.pressure_manifestation
+stress_patterns_all = stress_patterns // {dimension: shift_pattern}
+
+output = `Under pressure: ${pressure_primary}. Secondary system: ${pressure_secondary}. Breaking point risk: ${identifyBreakingPoint(stress_patterns_all)}.`
+```
+
+### Section 6: Hidden Contradictions
+**Confidence:** Tier 2-3 (Medium)  
+**Tone:** Observational, non-judgmental, systemic  
+**Structure:**
+- What they know intellectually
+- What they actually do behaviorally
+- Emotional cost of contradiction
+- Resolution attempts (if any)
+- Evidence chain
+
+**Extraction Logic:**
+```javascript
+contradictions_array = contradictions // [{type, cost, resolution_attempted}]
+execution_gap = inferEvidenceMap.execution_vs_strategy_gap
+
+for (contradiction of contradictions_array) {
+  output += `Knows: ${contradiction.intellectual_position}. Does: ${contradiction.behavioral_pattern}. Cost: ${contradiction.cost}.`
+  if (contradiction.resolution_attempted) {
+    output += ` Resolution attempt: ${contradiction.resolution_attempted}.`
+  }
+}
+```
+
+### Section 7: Relational / Team Consequences
+**Confidence:** Tier 3-4 (Medium to Medium-Low)  
+**Tone:** Organizational inference, systemic  
+**Structure:**
+- How this operator affects teams
+- Friction points with other types
+- Optimal team composition
+
+**Extraction Logic:**
+```javascript
+primary_dimension = top_systems.primary_driver.dimension
+secondary_dimension = top_systems.secondary_stabilizer.dimension
+delegation_pattern = inferEvidenceMap.delegation_resistance
+relational_pattern = inferEvidenceMap.relational_friction
+
+team_effect = inferTeamEffect(primary_dimension, secondary_dimension, delegation_pattern)
+friction_points = inferFrictionPoints(opposing_patterns, relational_pattern)
+optimal_composition = inferOptimalTeam(primary_dimension, friction_points)
+```
+
+### Section 8: Scaling Constraint
+**Confidence:** Tier 3 (Medium)  
+**Tone:** Capacity assessment, strategic  
+**Structure:**
+- Current capacity ceiling
+- Constraint type (belief / skill / environment / time)
+- Timeline to ceiling (months at current trajectory)
+- What needs to shift for expansion
+- Evidence from Q26 × Q28
+
+**Extraction Logic:**
+```javascript
+q26_business = analyzedResponses.business_operating_reality
+q28_systems = analyzedResponses.systems_accountability
+role_fit = role_fit_analysis
+growth_constraints = future_growth_constraints
+
+ceiling = identifyCapacityCeiling(q26_business, q28_systems, role_fit)
+constraint_type = classifyConstraint(ceiling, growth_constraints)
+timeline = estimateTimelineToCeiling(q26_business.growth_rate, ceiling)
+required_shift = identifyRequiredShift(constraint_type, growth_constraints)
+```
+
+### Section 9: Facilitator Notes
+**Confidence:** Tier 3-4 (Medium to Medium-Low)  
+**Tone:** Systemic architecture, pragmatic  
+**Doctrine:** Build compatible systems AROUND the operator (not change the operator)  
+**Structure:**
+- What environments suit this system
+- What communication structures reduce friction
+- What accountability architectures work
+- What team compositions balance weaknesses
+- What workflows match operating speed
+
+**Extraction Logic:**
+```javascript
+execution_id = execution_identity // {speed_preference, quality_preference, risk_tolerance, decision_style}
+leverage_points = coaching_leverage_points
+risk_patterns = hidden_risk_patterns
+
+compatible_environment = inferCompatibleEnvironment(execution_id, primary_driver)
+communication_structures = inferCommunicationStructures(communication_style, misunderstanding_pattern)
+accountability_architecture = inferAccountabilityArchitecture(execution_id, systems_accountability)
+team_composition = inferTeamComposition(friction_points, delegation_readiness)
+workflow_match = inferWorkflowMatch(execution_id.speed_preference, primary_driver)
+```
+
+### Section 10: Five Possible Futures
+**Confidence:** Tier 4-5 (Medium-Low to Low)  
+**Tone:** Trajectory simulation, speculative but grounded  
+**Structure:**
+- Best case (all systems optimized)
+- Probable case (current trajectory)
+- Pressure case (2x demand)
+- Breakdown case (primary fails)
+- Transformation case (different role)
+
+**Extraction Logic:**
+```javascript
+current_state = {primary_driver, secondary_stabilizer, vector_scores, scaling_constraint}
+stress_patterns = stress_patterns
+growth_constraints = future_growth_constraints
+role_fit = role_fit_analysis
+
+best_case = simulateBestCase(current_state) // no constraints, optimized environment
+probable_case = simulateProbableCase(current_state, growth_constraints) // current trajectory + current constraints
+pressure_case = simulatePressureCase(current_state, stress_patterns) // 2x demand
+breakdown_case = simulateBreakdownCase(current_state, stress_patterns) // primary system fails
+transformation_case = simulateTransformationCase(current_state, role_fit) // different role/environment
+```
+
+### Section 11: The One Move
+**Confidence:** Tier 4-5 (Medium-Low to Low)  
+**Tone:** Intervention inference, strategic  
+**Structure:**
+- Highest-leverage intervention
+- Why this move unlocks (mechanism)
+- Resistance pattern (what will pull back)
+- Timeline to impact (3mo / 6mo / 12mo)
+- Success signal (observable metric)
+- Cost of inaction
+
+**Extraction Logic:**
+```javascript
+leverage_points = coaching_leverage_points // [{leverage_point, resistance, evidence, approach}]
+contradictions_array = contradictions
+risk_patterns = hidden_risk_patterns
+scaling_constraint = scaling_constraint
+
+// Identify highest-confidence leverage point
+highest_leverage = leverage_points.sort((a, b) => b.confidence - a.confidence)[0]
+
+mechanism = inferUnlockMechanism(highest_leverage, scaling_constraint)
+resistance = identifyResistancePattern(highest_leverage, contradictions_array, stress_patterns)
+timeline = estimateImpactTimeline(highest_leverage, mechanism)
+success_signal = defineSuccessMetric(highest_leverage, mechanism)
+cost_of_inaction = inferCostOfInaction(risk_patterns, scaling_constraint)
+```
+
+---
+
+## Dossier Gap Analysis
+
+**Currently Populated:**
+✓ vector_scores
+✓ top_systems (primary, secondary, opposing)
+✓ contradictions (array)
+✓ stress_patterns (partial)
+✓ inferEvidenceMap (delegation, relational, execution_gap)
+✓ coaching_leverage_points (partial)
+
+**Gaps Identified:**
+⚠ **future_growth_constraints** - Field exists but not fully populated
+⚠ **hidden_risk_patterns** - Field exists but not populated
+⚠ **execution_identity** - Field exists but not populated
+⚠ **role_fit_analysis** - Field exists but not fully populated
+⚠ **leadership_architecture** - Field exists but not populated
+
+**Required for Full Extraction:**
+1. Populate future_growth_constraints from Q26 + Q28 analysis
+2. Populate hidden_risk_patterns from contradictions + pressure analysis
+3. Populate execution_identity from Q23 + Q24 + decision patterns
+4. Populate role_fit_analysis from capacity ceiling + constraints
+5. Populate leadership_architecture from Q26 leadership questions
+
+---
+
+## Backward Compatibility
+
+**Preservation:**
+- Existing narrative_profile structure unchanged
+- WebProfileReport rendering logic untouched
+- buildNarrativeV3 pipeline unchanged
+- Canonical dossier schema unchanged
+
+**Integration:**
+- Extraction layer produces JSON structure parallel to narrative_profile
+- Can be consumed by existing renderer OR new renderer
+- Can be exposed via API endpoint for external consumption
+- Can be used to enhance existing GPT prompts with richer context
+
+**Migration Path:**
+1. Build extraction layer (this phase)
+2. Test extraction output quality
+3. Optionally: enhance existing GPT prompts with extracted components
+4. Optionally: build new renderer consuming extracted components
+5. Optionally: expose extraction API for external tools
+
+---
+
+**Extraction Architecture Complete. Zero rendering changes. Semantic layer ready for implementation.**
