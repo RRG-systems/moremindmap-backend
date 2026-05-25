@@ -499,3 +499,288 @@ Most loss in:
 ---
 
 **Status:** Architecture complete. Implementation ready. Zero rendering changes required.
+
+---
+
+# INSERTION POINT VERIFICATION & IMPLEMENTATION SEQUENCE (2026-05-25)
+
+## Recommended Insertion Point: BACKEND (executeCanonicalGeneration)
+
+**File:** `api/engine/canonical/executeCanonicalGeneration.js`  
+**Line:** ~73 (after buildMinimalCanonical, before vault save)
+
+### Current Code (Line 65-80):
+```javascript
+const canonical_profile = buildMinimalCanonical(job.profileInput || {}, job.job_id)
+canonical_profile.profile_id = profile_id
+canonical_profile.metadata.profile_id = profile_id
+
+canonical_diagnostics.generation_success = true
+canonical_diagnostics.generation_time_ms = Date.now() - startTime
+canonical_diagnostics.success = true
+canonical_diagnostics.profile_id = profile_id
+canonical_diagnostics.profile_signature = '5_8'
+
+// Save to vault
+const { saveCanonicalProfile } = await import('./vault/saveCanonicalProfile.js')
+await saveCanonicalProfile(profile_id, canonical_profile)
+```
+
+### Proposed Insertion:
+```javascript
+const canonical_profile = buildMinimalCanonical(job.profileInput || {}, job.job_id)
+canonical_profile.profile_id = profile_id
+canonical_profile.metadata.profile_id = profile_id
+
+// ⭐ NEW: Extract behavioral intelligence
+const { extractBehavioralIntelligence } = await import('./extractIntelligence.js')
+try {
+  const behavioral_intelligence = extractBehavioralIntelligence(canonical_profile)
+  canonical_profile.behavioral_intelligence = behavioral_intelligence
+  trace.push('behavioral_intelligence_extracted')
+} catch (extractError) {
+  console.warn('[CANONICAL] Intelligence extraction failed:', extractError)
+  trace.push('behavioral_intelligence_extraction_failed')
+  // Continue without extraction (non-blocking)
+}
+
+canonical_diagnostics.generation_success = true
+// ... rest unchanged
+```
+
+**Impact:**
+- +50-200ms to canonical generation (acceptable)
+- +5-10KB to vault storage per profile (acceptable)
+- Zero impact on rendering (new field ignored)
+- Non-blocking (continues on extraction error)
+
+---
+
+## Phase-by-Phase Implementation (6 Weeks)
+
+### Week 1: Core Extraction (Tier 1)
+**Goal:** Extract high-confidence components (no dossier gaps needed)
+
+- [ ] Day 1-2: Create extractIntelligence.js skeleton
+  - [ ] File: api/engine/canonical/extractIntelligence.js
+  - [ ] Entry function: extractBehavioralIntelligence()
+  - [ ] Return structure: { domains: {}, confidence_tiers: {}, extraction_timestamp }
+
+- [ ] Day 3: Implement extractOperatingSystem()
+  - [ ] Extract primary_driver, secondary_stabilizer, opposing_patterns
+  - [ ] Extract core_tradeoff from dimension_tradeoffs[0]
+  - [ ] Test on MM-20260524-rf2xqct1
+
+- [ ] Day 4: Implement extractWorldExperience()
+  - [ ] Perception filter (signal score)
+  - [ ] Decision formation (vector + framework)
+  - [ ] Time horizon (horizon score)
+  - [ ] Risk calibration (flex + vector)
+  - [ ] Test on both profiles
+
+- [ ] Day 5: Implement extractPressureMechanics()
+  - [ ] Primary under load (pressure_manifestation)
+  - [ ] Secondary override (when/how)
+  - [ ] Breaking point estimation
+  - [ ] Recovery trajectory
+  - [ ] Test on both profiles
+
+- [ ] Week 1 Milestone: Core extraction working, stored in vault
+
+### Week 2: Evidence Chain Extraction (Tier 2-3)
+**Goal:** Reconstruct evidence chains from dossier + questions
+
+- [ ] Day 1: Implement extractOthersExperience()
+  - [ ] First impression (primary → external perception)
+  - [ ] Communication clarity (fidelity + velocity)
+  - [ ] Listening pattern (signal vs vector)
+  - [ ] Trust-building speed (signal × flex)
+  - [ ] Test on both profiles
+
+- [ ] Day 2-3: Implement extractKnowingOthers()
+  - [ ] People-reading capacity (signal + attention_direction)
+  - [ ] Relational blind spots (contradictions + Q7)
+  - [ ] Delegation readiness (inferEvidenceMap.delegation_resistance)
+  - [ ] Team development orientation (leadership_readiness)
+  - [ ] Boundary style (framework + vector)
+  - [ ] Test on both profiles
+
+- [ ] Day 4: Implement extractContradictions()
+  - [ ] Unpack contradictions array
+  - [ ] Know vs Apply gap extraction
+  - [ ] Emotional cost identification
+  - [ ] Resolution attempts
+  - [ ] Evidence chain (Q23→Q24→Q25)
+  - [ ] Test on both profiles
+
+- [ ] Day 5: Integration test
+  - [ ] Verify extraction on new assessment
+  - [ ] Verify vault save includes all domains
+  - [ ] Verify retrieve-profile returns extraction
+  - [ ] Verify renderer ignores new field
+
+- [ ] Week 2 Milestone: Evidence chains extracting, quality verified
+
+### Week 3: Dossier Gap Population
+**Goal:** Populate missing dossier fields for Tier 3-4 extraction
+
+- [ ] Day 1-2: Populate future_growth_constraints
+  - [ ] Extract from Q26 (business_operating_reality)
+  - [ ] Extract from Q28 (systems_accountability)
+  - [ ] Calculate internal vs external constraints
+  - [ ] Estimate timeline to hit constraints
+  - [ ] Add to buildProfileInput or executeCanonicalGeneration
+  - [ ] Test on new assessment
+
+- [ ] Day 2-3: Populate hidden_risk_patterns
+  - [ ] Identify from contradictions (unresolved tensions)
+  - [ ] Identify from pressure analysis (breaking points)
+  - [ ] Identify from evidence chains (unvoiced concerns)
+  - [ ] Calculate likelihood and impact
+  - [ ] Add to buildProfileInput or inferEvidenceMap
+  - [ ] Test on new assessment
+
+- [ ] Day 4: Populate execution_identity
+  - [ ] Extract from Q23 (high performer separation)
+  - [ ] Extract from Q24 (stall patterns, frustrations)
+  - [ ] Extract decision style patterns
+  - [ ] Calculate speed/quality/risk preferences
+  - [ ] Add to buildProfileInput
+  - [ ] Test on new assessment
+
+- [ ] Day 5: Populate role_fit_analysis + leadership_architecture
+  - [ ] Calculate current role fit score
+  - [ ] Identify ceiling reasons
+  - [ ] Identify alternative roles with higher fit
+  - [ ] Map dimension requirements per role type
+  - [ ] Extract from Q26 (leadership questions)
+  - [ ] Add to buildProfileInput or executeCanonicalGeneration
+  - [ ] Test on new assessment
+
+- [ ] Week 3 Milestone: All dossier gaps populated, ready for Tier 3-4
+
+### Week 4: Organizational & Trajectory Extraction (Tier 3-5)
+**Goal:** Extract organizational consequences and trajectory simulation
+
+- [ ] Day 1: Implement extractTeamConsequences()
+  - [ ] How operator affects teams (primary + relational patterns)
+  - [ ] Friction points with other types (opposing patterns)
+  - [ ] Optimal team composition inference
+  - [ ] Test on multiple profiles
+
+- [ ] Day 2: Implement extractScalingConstraint()
+  - [ ] Capacity ceiling identification (Q26 × Q28)
+  - [ ] Constraint type classification (belief/skill/environment/time)
+  - [ ] Timeline to ceiling estimation
+  - [ ] Required shift identification
+  - [ ] Expansion pathway definition
+  - [ ] Test on multiple profiles
+
+- [ ] Day 3: Implement extractFacilitatorNotes()
+  - [ ] Compatible environments (execution_identity → environment design)
+  - [ ] Communication structures (reduce friction)
+  - [ ] Accountability architectures (match operating style)
+  - [ ] Team compositions (balance weaknesses)
+  - [ ] Workflow matches (speed preference alignment)
+  - [ ] Test on multiple profiles
+
+- [ ] Day 4: Implement extractFiveFutures()
+  - [ ] Best case scenario (optimized, no constraints)
+  - [ ] Probable case (current trajectory + constraints)
+  - [ ] Pressure case (2x demand, systems under load)
+  - [ ] Breakdown case (primary system fails)
+  - [ ] Transformation case (different role/environment)
+  - [ ] Test on multiple profiles
+
+- [ ] Day 5: Implement extractOneMove()
+  - [ ] Highest-leverage move identification
+  - [ ] Unlock mechanism inference
+  - [ ] Resistance pattern identification
+  - [ ] Timeline to impact (3mo/6mo/12mo)
+  - [ ] Success signal definition
+  - [ ] Cost of inaction inference
+  - [ ] Test on multiple profiles
+
+- [ ] Week 4 Milestone: Full extraction pipeline complete (11 domains, 30 components)
+
+### Week 5: Quality & Integration
+**Goal:** Validate extraction quality, expose via API
+
+- [ ] Day 1: Quality validation
+  - [ ] Confidence tier labeling correct
+  - [ ] Causal propagation logic working
+  - [ ] Evidence chains traceable
+  - [ ] No extraction failures on diverse profiles
+
+- [ ] Day 2: API endpoint
+  - [ ] Create /api/moremindmap/extract-intelligence?profile_id=...
+  - [ ] Returns behavioral_intelligence JSON
+  - [ ] Cache extraction results (Redis, 1 hour TTL)
+  - [ ] Test on multiple profiles
+
+- [ ] Day 3: Documentation
+  - [ ] Update SOURCE_OF_TRUTH.md (extraction status)
+  - [ ] Document extraction logic per domain
+  - [ ] Document confidence tier mapping
+  - [ ] Document causal propagation chains
+
+- [ ] Day 4: Regression testing
+  - [ ] Test on MM-20260524-rf2xqct1 (live production)
+  - [ ] Test on MM-20260523-mqlev9c9 (legacy benchmark)
+  - [ ] Verify backward compatibility (renderer unchanged)
+  - [ ] Verify profile retrieval unchanged
+
+- [ ] Day 5: Production deployment
+  - [ ] Deploy to Vercel
+  - [ ] Monitor extraction performance
+  - [ ] Monitor vault storage usage
+  - [ ] Monitor extraction errors
+
+- [ ] Week 5 Milestone: Production-ready extraction, API live
+
+### Week 6: Enhancement (Optional)
+**Goal:** Use extracted intelligence to improve existing narrative
+
+- [ ] Day 1-2: Enhance GPT prompts
+  - [ ] Pass extracted intelligence to buildExecutiveSummaryPrompt
+  - [ ] Pass to buildStrategicCeilingPrompt
+  - [ ] Pass to buildCoachingLeveragePrompt
+  - [ ] Test narrative quality improvement
+
+- [ ] Day 3-4: Frontend display (optional)
+  - [ ] Build component to display extracted intelligence
+  - [ ] Progressive disclosure UI (tabs/expandable)
+  - [ ] OR: Tooltip/hover details on existing sections
+
+- [ ] Day 5: Future planning
+  - [ ] Plan new renderer design (if needed)
+  - [ ] Plan section expansion strategy
+  - [ ] Plan multi-page architecture (if needed)
+
+- [ ] Week 6 Milestone: Extraction enhancing existing narrative, roadmap for future
+
+---
+
+## Rollback Plan
+
+If extraction causes issues:
+
+1. **Immediate Rollback:**
+   - Remove extractBehavioralIntelligence call from executeCanonicalGeneration
+   - Deploy
+   - Profiles generated after rollback: no behavioral_intelligence field
+   - Profiles generated before rollback: still have field (ignored by renderer)
+
+2. **Partial Rollback:**
+   - Wrap extraction in try-catch (already done)
+   - If extraction fails: log warning, continue without extraction
+   - Non-blocking failure mode
+
+3. **Data Rollback:**
+   - Existing profiles in vault: unchanged
+   - New profiles: no behavioral_intelligence field
+   - No data migration needed
+
+---
+
+**Implementation Sequence Complete. Insertion point verified. Rollback plan documented. Ready for Week 1 start.**

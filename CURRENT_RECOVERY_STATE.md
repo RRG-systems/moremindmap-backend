@@ -539,3 +539,235 @@ function extractOneMove(canonical) {
 ```
 
 ---
+
+---
+
+# RENDERER CONTRACT VERIFICATION (2026-05-25)
+
+## Current Renderer Expectations
+
+### DashboardReportV1 (Primary Renderer)
+
+**Component:** WebProfileReport → DashboardReportV1  
+**File:** src/components/reports/WebProfileReport.jsx (lines 22-79)
+
+**Required Props:**
+```javascript
+{
+  canonical: object,        // Full canonical_profile
+  profileId: string,        // 'mm-YYYYMMDD-XXXXXXXX'
+  narrative: object,        // ⭐ FROM buildNarrativeV3
+  profileNumber: string,    // '01'-'99'
+  profileCode: string,      // 6-char hash
+  personName: string,       // From canonical
+  company: string,          // From canonical
+  profileType: string,      // From canonical.inferred_patterns
+  ranked: array            // From canonical.ranked_dimensions
+}
+```
+
+**narrative object MUST contain:**
+```javascript
+{
+  profileDNA: {
+    body: string (required),
+    section: 'profileDNA',
+    key_warning?: string
+  },
+  executiveSummary: {
+    body: string (required),
+    section: 'executiveSummary',
+    key_warning?: string
+  },
+  communicationStyle: {
+    body: string (required),
+    section: 'communicationStyle'
+  },
+  hiddenContradictions: {
+    body: string (required),
+    section: 'hiddenContradictions',
+    key_warning?: string
+  },
+  strategicCeiling: {
+    body: string (required),
+    section: 'strategicCeiling'
+  },
+  coachingLeverage: {
+    body: string (required),
+    section: 'coachingLeverage'
+  },
+  recommendedNextStep: {
+    body: string (required),
+    section: 'recommendedNextStep'
+  },
+  
+  // Optional (used in pressure flow):
+  systemUnderStrain?: {
+    body: string,
+    section: 'systemUnderStrain'
+  },
+  
+  // Metadata (optional):
+  render_source: 'gpt55' | 'fallback_local',
+  generation_time_ms: number
+}
+```
+
+### StackedReportFallback (Fallback Renderer)
+
+**Component:** WebProfileReport → StackedReportFallback  
+**File:** src/components/reports/WebProfileReport.jsx (lines 428-end)
+
+**Same Contract as DashboardReportV1**
+
+**Fallback Triggers:**
+- DashboardReportV1 throws error during render
+- setDashboardFailed(true)
+- Graceful degradation to stacked layout
+
+---
+
+## Hardcoded Section References
+
+**Location:** DashboardReportV1 (lines 22-79)
+
+| Section | Line | Zone | Required? |
+|---------|------|------|-----------|
+| profileDNA | 93 | Hero (P1) | YES |
+| executiveSummary | 134 | Hero (P1) | YES |
+| communicationStyle | — | Triad (P1) | YES |
+| systemUnderStrain | 148 | Pressure (P1) | Optional |
+| hiddenContradictions | 162 | Diagnostics (P2) | YES |
+| strategicCeiling | 188 | Strategic Map (P2) | YES |
+| coachingLeverage | 194 | Action Pair (P2) | YES |
+| recommendedNextStep | 195 | Action Pair (P2) | YES |
+
+**Location:** StackedReportFallback (lines 428-end)
+
+| Section | Line | CSS Class | Required? |
+|---------|------|-----------|-----------|
+| profileDNA | 482 | featured operating-model-section | YES |
+| executiveSummary | 486 | featured briefing-section | YES |
+| communicationStyle | 522 | relational-section | YES |
+| operatingPattern | 536 | relational-section (fallback) | Fallback |
+| hiddenContradictions | 558 | diagnostic-section | YES |
+| systemUnderStrain | 573 | pressure-section | Optional |
+| strategicCeiling | 588 | strategic-section | YES |
+| coachingLeverage | 595 | leverage-section | YES |
+| recommendedNextStep | 605 | action-section | YES |
+
+**To Add New Sections:**
+- Must explicitly reference narrative.newSection in component
+- OR: Refactor to dynamic loop (future enhancement)
+
+---
+
+## Graceful Degradation Rules
+
+### Missing Section Behavior
+
+| Missing Section | Renderer Behavior |
+|----------------|-------------------|
+| profileDNA | ERROR (required) |
+| executiveSummary | ERROR (required) |
+| communicationStyle | Falls back to operatingPattern (if exists) |
+| hiddenContradictions | Omits Diagnostics pair (P2) |
+| systemUnderStrain | Omits Pressure Flow (P1) |
+| strategicCeiling | Omits Strategic Map (P2) |
+| coachingLeverage | Omits Action Pair (P2) |
+| recommendedNextStep | Omits Action Pair (P2) |
+
+### Unknown Section Behavior
+
+**Current:** Ignored (not rendered, not error)  
+**Example:** If narrative.newIntelligenceSection exists → silently ignored
+
+**Future-Safe:** Can add new sections to narrative without breaking renderer
+
+---
+
+## Expansion Strategy (Future-Safe)
+
+### Approach 1: Add Unknown Sections to narrative
+```javascript
+// In buildNarrativeV3.js, add:
+const sections = [
+  'profileDNA',
+  'executiveSummary',
+  'communicationStyle',
+  'hiddenContradictions',
+  'strategicCeiling',
+  'coachingLeverage',
+  'recommendedNextStep',
+  'pressureMechanicsExpanded',  // NEW
+  'scalingConstraint',          // NEW
+  'fiveFutures'                 // NEW
+]
+```
+
+**Impact:** None (renderer ignores unknown sections)  
+**When to render:** When renderer refactored to dynamic loop
+
+### Approach 2: Store in parallel structure
+```javascript
+// In canonical_profile:
+{
+  narrative_profile: { ... 7 existing sections ... },
+  behavioral_intelligence: { ... 30 extracted components ... }
+}
+```
+
+**Impact:** None (renderer doesn't touch behavioral_intelligence)  
+**When to use:** When building new renderer OR enhancing GPT prompts
+
+### Approach 3: Enhance existing sections with extracted data
+```javascript
+// In sectionPrompts.js:
+function buildExecutiveSummaryPrompt(interpreted, previousSections, extracted) {
+  // Use extracted.operatingSystem, extracted.pressureMechanics
+  // to enhance prompt quality
+}
+```
+
+**Impact:** Improved narrative quality without changing structure  
+**Backward compatible:** YES (same sections, better content)
+
+---
+
+## Verification Test Plan
+
+### Test 1: Baseline (No Changes)
+1. Retrieve MM-20260524-rf2xqct1
+2. Verify buildNarrativeV3 returns 7 sections
+3. Verify DashboardReportV1 renders
+4. Screenshot baseline
+
+### Test 2: Add behavioral_intelligence to canonical
+1. Modify executeCanonicalGeneration to add behavioral_intelligence field
+2. Retrieve new profile
+3. Verify buildNarrativeV3 still returns 7 sections
+4. Verify DashboardReportV1 still renders
+5. Verify behavioral_intelligence present in retrieve-profile response
+6. Verify renderer ignores new field
+
+### Test 3: Add unknown section to narrative
+1. Modify buildNarrativeV3 to add narrative.testSection
+2. Verify DashboardReportV1 still renders (ignores testSection)
+3. Verify no console errors
+4. Remove testSection
+
+### Test 4: Remove optional section
+1. Modify buildNarrativeV3 to skip systemUnderStrain
+2. Verify DashboardReportV1 still renders (omits Pressure Flow)
+3. Verify no errors
+4. Restore systemUnderStrain
+
+### Test 5: Enhance existing prompt with extracted data
+1. Extract behavioral_intelligence in buildNarrativeV3
+2. Pass to buildExecutiveSummaryPrompt
+3. Verify section body changes (quality improvement)
+4. Verify structure unchanged
+
+---
+
+**Verification Complete. Renderer contract mapped. Expansion strategy defined. Safe insertion confirmed.**
