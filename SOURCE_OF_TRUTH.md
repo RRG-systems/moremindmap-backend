@@ -1,7 +1,7 @@
 # SOURCE_OF_TRUTH.md — MORE MindMap Live State (CHECKPOINT)
 
-**Last Updated:** 2026-05-23 22:50 MST  
-**Status:** ✅ PRODUCTION LIVE & SCORING SANITY VERIFIED  
+**Last Updated:** 2026-05-25 10:43 MST  
+**Status:** ✅ PRODUCTION LIVE & QUESTIONS 25-28 UPDATED  
 **Pipeline:** Assessment → Profile Generation (real scores) → WebProfileReport ✅
 
 ---
@@ -80,6 +80,20 @@ Both assessment completion and manual retrieval now use **identical** rendering 
 | **Output** | 2-page behavioral report | 2-page behavioral report |
 
 **Architecture:** Unified V3 rendering path—no fork between new/old profiles.
+
+---
+
+## Questions 25-28 Updated (2026-05-25)
+
+**Simplified behavioral prompts now live:**
+- Q25: "When someone misunderstands your intentions, how do you usually respond?"
+- Q26: "When working on or inside your business, what role do you naturally take on, and where does tension usually appear?"
+- Q27: "What are you trying to build long-term, and what values drive the way you operate?"
+- Q28: "What currently keeps your life or work organized, and where do you think future strain or scaling problems could appear?"
+
+**Changed:** Verbose multi-section prompts replaced with concise single-prompt format  
+**IDs:** Unchanged (Q25-28)  
+**Backend:** Untouched (scoring, schema, rendering)
 
 ---
 

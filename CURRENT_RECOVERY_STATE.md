@@ -1,8 +1,23 @@
 # CURRENT_RECOVERY_STATE.md — Live Assessment Pipeline (FINAL CHECKPOINT)
 
-**Checkpoint:** 2026-05-23 22:50 MST  
-**Status:** ✅ PRODUCTION LIVE & SCORING VERIFIED  
+**Checkpoint:** 2026-05-25 10:43 MST  
+**Status:** ✅ PRODUCTION LIVE & QUESTIONS 25-28 UPDATED  
 **Rollback-Safe:** YES
+
+---
+
+## Questions 25-28 Update (2026-05-25 10:43 MST)
+
+**Commit:** d0aa5d3  
+**Change:** Replaced verbose multi-section questions with concise behavioral prompts  
+**Questions Updated:**
+- Q25: "When someone misunderstands your intentions, how do you usually respond?"
+- Q26: "When working on or inside your business, what role do you naturally take on, and where does tension usually appear?"
+- Q27: "What are you trying to build long-term, and what values drive the way you operate?"
+- Q28: "What currently keeps your life or work organized, and where do you think future strain or scaling problems could appear?"
+
+**Zero Impact:** No backend changes, no scoring changes, IDs preserved.  
+**Status:** Live and deployed.
 
 ---
 
