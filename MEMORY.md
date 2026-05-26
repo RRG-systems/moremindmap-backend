@@ -1,55 +1,111 @@
+# 2026-05-26 22:15 MST — UNIFIED INTERPRETER BRAIN PASS COMPLETE ✅
+
+## Mission Accomplished
+
+**Single unified interpretation layer synthesizes entire canonical dossier. All 7 report sections render FROM that shared interpretation instead of independently reinventing the profile.**
+
+### Problem Identified
+- 7 separate prompts were each independently interpreting dimensions
+- Resulted in archetype-driven sections that sounded similar
+- Billybob and David profiles both read with generic trait language
+- Written evidence (stuck, froze, avoidance) not being weighted properly across all sections
+
+### Solution: Unified Interpreter Brain Pass
+
+**New Architecture:**
+```
+canonical dossier + all Q1-Q28 answers + dimensions
+  ↓
+buildUnifiedInterpretation() reads ENTIRE dossier
+  ├─ Detects emotions (stuck, fearful, confident, etc)
+  ├─ Maps contradictions (self-model vs reality)
+  ├─ Detects pressure patterns (doubles down vs withdraws)
+  ├─ Treats written evidence as PRIMARY (overrides archetype)
+  └─ Produces ONE shared interpretation artifact
+  ↓
+7 Report Sections ALL use unified artifact
+  (not independent reinvention)
+  ↓
+Result: Billybob reads as stuck/paralyzed/uncertain
+        David reads as command/momentum/directive
+```
+
+### Files Changed
+
+**Created:**
+- src/lib/narrativeV3/unifiedInterpreter.js (22 KB)
+  - Reads canonical + intake_answers + dimensions
+  - Detects core_operating_read with written evidence override
+  - Extracts emotional_state (emotion, intensity, congruence)
+  - Maps pressure_pattern (what happens under load)
+  - Identifies action_or_avoidance_pattern
+  - Builds contradiction_map
+  - Infers team_experience
+  - Detects scaling_constraint
+  - Produces five_futures_seed + one_move_seed
+
+**Updated:**
+- buildNarrativeV3.js: Call unified once, pass to all 7 sections
+- sectionPrompts.js: All 7 builders now accept (unified, interpreted, previousSections)
+
+### Verification
+
+**Billybob Test:**
+- Input: "I'm stuck", "I froze", "avoidance", q17 "inside I feel different"
+- Unified produces: primary_emotion="stuck", emotionalIntensity="high", override="frozen not relational", emotionalCongruence=false
+- GPT narrative now says: "analysis-paralysis", "avoidance after lost listing", "internal turmoil creates uncertainty"
+- ✅ SPECIFIC to Billybob's actual words
+
+**David Test:**
+- Input: Fast/command/momentum answers
+- Unified produces: operatingMode="vector-dominant", primaryEmotion="confident", action_pattern="action-driven"
+- GPT narrative: "rapid decision-making", "speed as competitive advantage", "momentum-building"
+- ✅ COMPLETELY DIFFERENT from Billybob
+
+### No Collateral Damage
+✅ Scoring system (deterministic) unchanged
+✅ Canonical generation (25 modules) untouched
+✅ Vault storage/retrieval unchanged
+✅ Renderer layout/design untouched
+✅ Frontier fields preserved
+✅ Backward compatible
+
+### Deployment
+Live on Vercel (commit 89a02d0)
+
+---
+
 # 2026-05-26 21:30 MST — WRITTEN-ANSWER→GPT INTEGRATION COMPLETE ✅
 
 ## Mission Accomplished
 
-**Billybob's written responses now flow through to GPT for behavioral-specific narrative generation.**
+**Billybob's written responses now flow through to GPT for narrative generation.**
 
-### Problem Chain Discovered
+### Problem Chain Identified
+1. intake_answers stored in vault ✓
+2. intake_answers NOT passed through frontend pipeline ✗
+3. narrative-v3 endpoint receiving only dimensions, NOT written text ✗
+4. OpenAI HTTP 400 because prompts didn't say "JSON" ✗
 
-1. ✅ intake_answers stored in vault (all Q1-Q28)
-2. ❌ intake_answers NOT passed through frontend pipeline
-3. ❌ narrative-v3 endpoint received only dimensions, NOT written text
-4. ❌ HTTP 400 error: OpenAI schema not satisfied ("json" not in prompt)
-
-### Three-Commit Fix
+### Solution (3 commits)
 
 **Commit 1f46b6b:** Pass intake_answers to vault (backend)
-- executeCanonicalGeneration.js: Add intake_answers param to saveCanonicalProfile
-- canonicalProfileGenerator.js: Include intake_answers in canonical profile object
+- executeCanonicalGeneration.js: Include intake_answers in saveCanonicalProfile
+- canonicalProfileGenerator.js: Add intake_answers to canonical
 
-**Commit 537db0a:** Flow intake_answers through frontend pipeline
-- structuredInterpreter.js: Extract intake_answers from vault_record, add to interpreted
+**Commit 537db0a:** Flow intake_answers through frontend (GPT context)
+- structuredInterpreter.js: Extract intake_answers from vault_record
 - sectionPrompts.js: Include intake_answers in canonical passed to GPT
 
-**Commit 75a4bb6:** Fix OpenAI response_format schema (HTTP 400)
+**Commit 75a4bb6:** Fix OpenAI schema (HTTP 400)
 - sectionPrompts.js: Add "as JSON" to all 7 narrative prompts
-- Root cause: OpenAI requires "json" in message text when using response_format: {type: 'json_object'}
+- Root cause: OpenAI requires "json" in message text when using response_format
 
-### Results
-
-✅ narrative-v3 endpoint: 200 (not 400)  
-✅ render_source: "gpt55" (not fallback_local)  
-✅ GPT receives: dimensions + full Q1-Q28 intake_answers  
-✅ Narrative now reads: "paralysis", "froze", "avoidance" from actual text  
-✅ Endpoint tested & working  
-
-### Example
-When narrative-v3 called with Billybob's intake_answers including "I'm stuck", "I froze", "avoidance":
-- Response body: "Analysis paralysis... perfectionism may hinder action... delayed responses..."
-- Specifically mentions concepts from his written text
-- Not generic template
-
-### No Collateral Damage
-✅ Scoring system (deterministic) untouched  
-✅ Vault structure unchanged  
-✅ Canonical generation (25 inference modules) untouched  
-✅ Renderer/design untouched  
-✅ Backward compatible  
-
-### Architecture Clarity
-**GPT-5.5 is used ONLY for narrative interpretation (frontend), NOT canonical generation.**
-- Canonical: backend deterministic (25 inference modules)
-- Narrative: frontend GPT (interpret dimensions + answers)
+### Result
+✅ narrative-v3 endpoint returns 200 (not 400)
+✅ render_source: "gpt55" (not fallback)
+✅ GPT receives intake_answers with Billybob's written text
+✅ Narrative now reads: "paralysis", "froze", "avoidance" from actual answers
 
 ---
 
@@ -88,46 +144,3 @@ When narrative-v3 called with Billybob's intake_answers including "I'm stuck", "
 - vector: 0.50 (low)
 
 **Not neutral. Not fake. REAL DIFFERENTIATION.**
-
-### Key Scoring Parameters
-
-8 Dimensions (psychology-based):
-- **vector**: Command, decisive action, control (trait)
-- **signal**: Relational awareness, people-reading (trait)
-- **fidelity**: Precision, thoroughness, detail (trait)
-- **velocity**: Tempo, speed, momentum (trait)
-- **leverage**: Influence, positioning, persuasion (trait)
-- **flex**: Adaptability, responsiveness, pivoting (trait)
-- **framework**: Structure, systems, order, predictability (trait)
-- **horizon**: Perspective, long-term thinking, strategy (trait)
-
-Each question option maps to dimension impacts:
-- A answer might be: vector +1, velocity +1, framework -0.5
-- D answer might be: flex +1, signal +1, fidelity +1
-- Scoring aggregated: raw_score = mean of all contributing answers
-
-### No Collateral Damage
-✅ Renderer untouched
-✅ Vault retrieval working
-✅ Design unchanged
-✅ Q24 new prompt in place
-✅ Hard fail on emergency_inline preserved
-✅ Skeleton profiles never generated
-
----
-
-# Previous Session Summary
-
-## Commits This Session
-1. c566bb8: Guards in buildProfileInput (prevent crashes on undefined answers)
-2. 115cc4d: Question 24 text replacement
-3. 2e31ae2: buildMinimalCanonical → buildFullCanonical
-4. eabb6f3: Lenient fallback for partial dimension_scores
-5. a21b371: **Complete backend questionMap + buildProfileInput update** (THE REAL FIX)
-
-## Live Endpoint Status
-- URL: POST https://moremindmap.vercel.app/api/moremindmap/start
-- Generation: Real canonical profiles (not skeletons)
-- Scoring: All 28 questions mapped to backend
-- Differentiation: Proven in live tests
-- Ready for: D.J. exam submission
