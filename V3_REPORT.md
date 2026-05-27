@@ -182,11 +182,38 @@ Different profiles read materially different:
 
 ---
 
+## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
+
+**All future V3 improvements must follow this pattern:**
+
+1. **Identify enhancement** (e.g., make Five Futures profile-specific)
+2. **Trace architecture** (map current data flow through unified interpreter)
+3. **Surgical insertion** (attach to downstream, not ingress)
+4. **Test both paths** (FATHOMFREE + Profile ID)
+5. **Verify parity** (byte-equivalent output across ingress paths)
+6. **Deploy** (no regression, no split pathways)
+
+**Future enrichment engines:**
+1. Futures Engine (V2) - profile-specific futures
+2. One Move Engine (V2) - specific unblock mechanism
+3. Contradiction Engine (V2) - deeper analysis
+4. Scaling Constraint Engine (V2) - granular ceiling
+5. Team Dynamics Engine (V2) - sophisticated interpersonal
+6. Facilitator Intelligence Layer
+7. Organizational Role Mapping Layer
+8. Comparative Scoring Infrastructure
+
+All must live downstream. All must converge at canonical. All must preserve orchestration parity.
+
+---
+
 ## NEXT IMPROVEMENTS (PRIORITY ORDER)
 
 ### Phase 1: Engine Refinement
 1. **Futures Engine** — Make Five Futures profile-specific (not generic 5-card template)
+   - Apply doctrine (orchestration trace first, test both paths)
 2. **One Move Engine** — Make specific to each profile's actual bottleneck
+   - Apply same rigor as Futures
 
 ### Phase 2: Polish
 3. **Contradiction Engine** — Deeper analysis, more nuanced output
@@ -218,6 +245,8 @@ Different profiles read materially different:
 ✅ WebProfileReport displays sections correctly
 ✅ FATHOMFREE and Profile ID both trigger narrative-v3
 ✅ Futures and One Move seeds flowing (even if generic content)
+✅ Both ingress paths converge at vault fetch
+✅ Orchestration parity maintained
 ```
 
 ---
@@ -226,10 +255,10 @@ Different profiles read materially different:
 
 V3 narrative pipeline is **fully operational and stable**. Both FATHOMFREE and Profile ID pathways render identical, full narrative profiles with all 7 sections, futures, and one move.
 
-Foundation is solid for next phase: content quality improvements (Futures Engine, One Move Engine, etc).
+Foundation is solid for next phase: content quality improvements (Futures Engine, One Move Engine, etc) following the downstream enrichment doctrine.
 
 **Status:** ✅ READY FOR ENGINE REFINEMENT
 
 ---
 
-**For Next Session:** Upgrade Futures Engine to produce profile-specific futures (not generic template).
+**For Next Session:** Upgrade Futures Engine to produce profile-specific futures (not generic template), using doctrine-guided architecture trace and rigorous testing of both ingress pathways.

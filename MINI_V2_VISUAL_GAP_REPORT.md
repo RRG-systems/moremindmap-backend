@@ -164,12 +164,19 @@ These are content issues, not rendering issues:
 
 ---
 
-## CONCLUSION
+## DOCTRINE LOCKED: No More Ingress-Specific Rendering
 
-Mini-v2 visual gap is **RESOLVED**. Both FATHOMFREE and Profile ID pathways now render identically using full WebProfileReport with complete narrative sections and futures cards.
+**This issue is RESOLVED because of the DOWNSTREAM ENRICHMENT DOCTRINE.**
 
-Foundation is stable for next phase: Engine refinement (Futures, One Move, etc).
+Future enrichments will NEVER create divergence because:
+1. Ingress layers route to common vault fetch
+2. All rendering happens downstream of canonical
+3. Both pathways produce identical output by design
+4. Before ANY future work, trace both pathways to verify
+
+**Status:** ✅ CLOSED (commit 008ac85)  
+**Prevention:** Doctrine locks this issue permanently.
 
 ---
 
-**Status:** ✅ CLOSED (commit 008ac85)
+**For Future Development:** When adding new enrichment engines (Futures upgrade, One Move upgrade, etc.), remember: they must live downstream and attach to canonical, not ingress. Both ingress paths must remain identical. Always test BOTH pathways.

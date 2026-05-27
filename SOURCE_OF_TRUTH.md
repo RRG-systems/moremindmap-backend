@@ -94,7 +94,78 @@
 
 ---
 
-## ARCHITECTURE SNAPSHOT
+## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
+
+**Status:** CANONICAL. DO NOT DEVIATE.
+
+### Prime Directive
+
+The MOREMindMap system now has THREE ingress paths:
+
+1. Stripe-paid assessment
+2. Promo-code/FATHOMFREE assessment
+3. Profile-ID retrieval
+
+**These MUST NEVER become separate intelligence systems.**
+
+### Ingress Layer Responsibilities (ONLY)
+
+Ingress layers are **ONLY allowed to:**
+- authorize
+- validate
+- retrieve
+- normalize
+- route
+- fetch canonical artifacts
+
+Ingress layers are **NOT allowed to:**
+- score
+- enrich
+- interpret
+- generate futures
+- generate One Move
+- mutate narrative logic
+- render differently
+- inject profile-specific intelligence
+
+### ALL Intelligence Generation Lives Downstream
+
+**ALL intelligence generation must occur ONLY downstream of canonical dossier generation.**
+
+Canonical architecture is now locked as:
+
+```
+INGRESS LAYER (normalize, validate, route only)
+  ↓
+CANONICAL DOSSIER (stable, immutable from ingress)
+  ↓
+SHARED DOWNSTREAM ENRICHMENT PIPELINE
+  ├─ Unified Interpreter (ONE shared artifact)
+  ├─ Futures Engine
+  ├─ One Move Engine
+  ├─ Contradiction Engine
+  ├─ Pressure Mechanics Engine
+  ├─ Team Experience Engine
+  ├─ Scaling Constraint Engine
+  ├─ Facilitator Intelligence Layer
+  ├─ Organizational Role Mapping Layer
+  └─ Comparative Scoring Infrastructure
+  ↓
+LOCKED PROFILE OBJECT
+  ↓
+RENDERER (layout/design, consumption only)
+```
+
+### Orchestration Parity Rule
+
+**ALL future enrichments must:**
+- occur downstream
+- operate on canonical dossier
+- remain renderer-compatible
+- preserve orchestration parity
+- preserve byte-equivalent rendering across all ingress paths
+
+### Current Architecture (VALIDATED)
 
 ```
 FATHOMFREE Assessment Completion:
@@ -120,7 +191,7 @@ buildNarrativeV3():
 Render output: Full 5-card futures + 7 report sections + scaling + one move
 ```
 
-**Key Win:** FATHOMFREE and manual Profile ID lookup use IDENTICAL pathway. Output is byte-equivalent.
+**Key Win:** FATHOMFREE and manual Profile ID lookup use IDENTICAL pathway. Output is byte-equivalent. This is the template all future enrichments must follow.
 
 ---
 

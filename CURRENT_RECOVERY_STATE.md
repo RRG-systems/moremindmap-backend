@@ -165,10 +165,46 @@
 
 ---
 
+## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
+
+**Before ANY future enrichment work, Rocky must first perform:**
+
+1. Architecture trace (map current data flow)
+2. Dependency mapping (what reads what)
+3. Orchestration mapping (trace both ingress paths)
+4. Shared object verification (confirm both paths converge)
+5. Downstream insertion-point analysis (where does enrichment attach?)
+6. Backward compatibility check (does it affect existing output?)
+7. Renderer impact analysis (will rendering break?)
+
+**Only THEN may surgical insertion occur.**
+
+**After every enrichment:**
+- test minimum 2-3 profiles
+- test ALL ingress paths (FATHOMFREE + Profile ID)
+- confirm orchestration parity
+- confirm renderer parity
+- confirm no regression
+
+**DO NOT:**
+- refactor ingress
+- duplicate enrichment logic
+- split rendering pathways
+- introduce ingress-specific intelligence
+- mutate orchestration unless explicitly instructed
+
+---
+
 ## NEXT SESSION PRIORITY
 
 1. Upgrade Futures Engine (Five Futures: generic → specific per profile)
-2. Upgrade One Move Engine (generic advice → specific unblock mechanism)
-3. Continue cascade of engine refinements
+   - Orchestration trace first
+   - Surgical downstream insertion
+   - Test both ingress paths
 
-Session end: stable, ready for next work.
+2. Upgrade One Move Engine (generic advice → specific unblock mechanism)
+   - Same rigor as Futures
+
+3. Continue cascade of engine refinements (per phase 1 list)
+
+Session end: stable, doctrine preserved, ready for next work.

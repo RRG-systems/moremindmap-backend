@@ -96,11 +96,32 @@ RESULT: Same pathway, same output, byte-equivalent
 
 ---
 
+## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
+
+**Architectural Law:** All future enrichments MUST live downstream of canonical generation. Ingress layers exist ONLY to authorize, validate, retrieve, normalize, and route. They do NOT score, interpret, or generate intelligence.
+
+**Before ANY enrichment work:**
+1. Trace architecture (both ingress paths)
+2. Map dependencies (what data flows where)
+3. Verify orchestration parity (both paths converge)
+4. Analyze insertion point (downstream, not ingress)
+5. Check backward compatibility (no renderer breaks)
+
+**After every enrichment:**
+- Test 2-3 profiles minimum
+- Test BOTH ingress paths
+- Confirm byte-equivalent output
+- Confirm no regression
+
+---
+
 ## NEXT PRIORITY (In Order)
 
 ### Immediate (Next Session)
 1. **Upgrade Futures Engine** — make Five Futures specific to each profile
+   - Apply doctrine (orchestration trace first, test both paths)
 2. **Upgrade One Move Engine** — make it a specific mechanism, not generic advice
+   - Apply same rigor as Futures
 
 ### Soon After
 3. Contradiction Engine refinement
@@ -159,6 +180,8 @@ curl https://moremindmap.vercel.app/api/diagnostic/get-vault-profile?id=mm-20260
 
 **Constraint:** Do not touch renderer, vault, canonical, orchestration, or scoring until next explicit task.
 
+**Doctrine:** All enrichment work follows downstream pattern. Trace first. Test both paths. Confirm parity.
+
 ---
 
-**For D.J.:** You're good to proceed with Futures and One Move upgrades. Everything underneath is stable and consistent.
+**For D.J.:** You're good to proceed with Futures and One Move upgrades using the doctrine. Everything underneath is stable and consistent.

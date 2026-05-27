@@ -200,3 +200,137 @@ Live on Vercel (commit 89a02d0)
 - vector: 0.50 (low)
 
 **Not neutral. Not fake. REAL DIFFERENTIATION.**
+
+---
+
+# 2026-05-27 08:54 MST — DOWNSTREAM ENRICHMENT DOCTRINE LOCKED 🔒
+
+## Mission: Preserve Architectural Doctrine Before New Work
+
+**Status:** ✅ COMPLETE
+
+### Doctrine Locked (Five Memory Files Updated)
+
+**DOWNSTREAM ENRICHMENT DOCTRINE**
+
+The MOREMindMap system has THREE ingress paths:
+1. Stripe-paid assessment
+2. Promo-code/FATHOMFREE assessment
+3. Profile-ID retrieval
+
+These MUST NEVER become separate intelligence systems.
+
+### Ingress Layer Restrictions
+
+**Ingress layers allowed to:**
+- authorize
+- validate
+- retrieve
+- normalize
+- route
+- fetch canonical artifacts
+
+**Ingress layers NOT allowed to:**
+- score
+- enrich
+- interpret
+- generate futures
+- generate One Move
+- mutate narrative logic
+- render differently
+- inject profile-specific intelligence
+
+### Architecture (LOCKED)
+
+```
+INGRESS LAYER (normalize, validate, route only)
+  ↓
+CANONICAL DOSSIER (stable, immutable from ingress)
+  ↓
+SHARED DOWNSTREAM ENRICHMENT PIPELINE
+  ├─ Unified Interpreter (ONE shared artifact)
+  ├─ Futures Engine
+  ├─ One Move Engine
+  ├─ Contradiction Engine
+  ├─ Pressure Mechanics Engine
+  ├─ Team Experience Engine
+  ├─ Scaling Constraint Engine
+  ├─ Facilitator Intelligence Layer
+  ├─ Organizational Role Mapping Layer
+  └─ Comparative Scoring Infrastructure
+  ↓
+LOCKED PROFILE OBJECT
+  ↓
+RENDERER (layout/design, consumption only)
+```
+
+### Orchestration Parity Rule
+
+**ALL future enrichments must:**
+- occur downstream
+- operate on canonical dossier
+- remain renderer-compatible
+- preserve orchestration parity
+- preserve byte-equivalent rendering across all ingress paths
+
+### Before ANY Future Enrichment
+
+Rocky must perform (in order):
+1. Architecture trace (map current data flow)
+2. Dependency mapping (what reads what)
+3. Orchestration mapping (trace both ingress paths)
+4. Shared object verification (confirm both paths converge)
+5. Downstream insertion-point analysis (where does enrichment attach?)
+6. Backward compatibility check (does it affect existing output?)
+7. Renderer impact analysis (will rendering break?)
+
+Only THEN may surgical insertion occur.
+
+### After Every Enrichment (MANDATORY)
+
+- test minimum 2-3 profiles
+- test ALL ingress paths (FATHOMFREE + Profile ID)
+- confirm orchestration parity
+- confirm renderer parity
+- confirm no regression
+
+### Permanent Rules
+
+**DO NOT:**
+- refactor ingress
+- duplicate enrichment logic
+- split rendering pathways
+- introduce ingress-specific intelligence
+- mutate orchestration unless explicitly instructed
+
+### Completed Enrichment Phases
+
+1. ✅ Futures Engine V1 (generic 5-card futures)
+2. ✅ Unified Interpreter (evidence-dominance brain pass)
+3. ✅ Orchestration Parity (FATHOMFREE + Profile ID align)
+
+### Upcoming Enrichment Phases (Doctrine-Guided)
+
+1. One Move Engine (upgrade from generic)
+2. Contradiction Engine (upgrade from generic)
+3. Scaling Constraint Engine (upgrade from generic)
+4. Pressure Mechanics Engine
+5. Team Experience Engine
+6. Facilitator Intelligence Layer
+7. Organizational Role Mapping Layer
+8. Comparative Scoring Infrastructure
+
+**Each must follow doctrine: trace, test both paths, verify parity.**
+
+### Memory Files Updated
+
+- ✅ SOURCE_OF_TRUTH.md (doctrine in architecture snapshot)
+- ✅ CURRENT_RECOVERY_STATE.md (doctrine in next priority)
+- ✅ README_PROJECT_STATE.md (doctrine section)
+- ✅ MINI_V2_VISUAL_GAP_REPORT.md (doctrine prevention locked)
+- ✅ V3_REPORT.md (doctrine section)
+- ✅ MEMORY.md (this entry)
+
+### No Code Changes
+
+Memory preservation only. All architecture files untouched. Deployment status: ready to commit memory updates.
