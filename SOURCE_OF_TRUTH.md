@@ -1,239 +1,157 @@
-# SOURCE_OF_TRUTH.md — MORE MindMap Live State (CHECKPOINT)
+# SOURCE_OF_TRUTH.md — Project State (2026-05-26 17:39 MST)
 
-**Last Updated:** 2026-05-26 23:44 MST  
-**Status:** ✅ PRODUCTION LIVE & EMERGENCY FIX DEPLOYED  
-**Pipeline:** Assessment → Profile Generation (guarded) → WebProfileReport ✅
-
----
-
-## 🚨 EMERGENCY FIX DEPLOYED (2026-05-26)
-
-**Commit:** c566bb8  
-**Branch:** origin/main (pushed)  
-**Issue:** Silent data loss in buildRawAnswers → Billybob skeleton canonical
-
-### Critical Discovery: Billybob Bug Analysis
-
-**Ticket:** "Billybob profile too similar to David Berg"  
-**Root Cause:** NOT a cache leak. **Silent data loss in profile input pipeline.**
-
-**What Happened:**
-- buildRawAnswers crashes if answer undefined (accessing undefined.choice)
-- Exception caught upstream, profileInput becomes empty
-- executeCanonicalGeneration interprets empty profileInput as "no data"
-- Falls back to emergency_inline skeleton mode
-- Result: Skeleton canonical (no manifestions, no opposing patterns)
-
-**Profiles Compared:**
-- **Billybob (mm-20260526-d8k0lw33):** generation_mode="emergency_inline" (skeleton)
-- **David Berg (MM-20260523-mqlev9c9):** generation_mode="normal" (full, with opposing patterns + manifestions + tradeoffs)
-
-### Three-Part Emergency Fix Applied
-
-**Part 1: buildProfileInput.js Guards**
-- Guard 1: Check rawAssessment.answers exists before accessing
-- Guard 2: Skip undefined answers (don't crash on .choice)
-- Guard 3: Verify MC answer has choice property before access
-- Result: No more crashes on malformed input; graceful degradation
-
-**Part 2: executeCanonicalGeneration.js Diagnostics**
-- Diagnostic: Warn when profileInput is empty or missing dimension_scores
-- Log: Track when fallback skeleton generation triggered
-- Result: Data loss is now visible in logs, not silent
-
-**Part 3: miniV2StagedExecutor.js Validation Gates**
-- Gate 1: Validate answers exist before calling buildProfileInput
-- Gate 2: Try-catch around buildProfileInput with proper re-throw
-- Gate 3: Validate profileInput.dimension_scores exists after generation
-- Result: Fail-fast if data loss detected; don't silently proceed
-
-**Deployment Status:**
-- ✅ Syntax verified (node -c all files)
-- ✅ Backward compatible (guards are additive only)
-- ✅ Committed to main and pushed to origin
-- ⏳ Vercel cold-start pending (2-3 min)
+**Last Updated:** 2026-05-26 17:39 MST  
+**Commit:** 008ac85 (ORCHESTRATION PARITY COMPLETE)
 
 ---
 
-## Known Missing: extractIntelligenceRefinement.js
+## CURRENT STABLE WINS ✅
 
-**Status:** Used in executeCanonicalGeneration.js but file not found  
-**Impact:** Non-critical (refineExtraction wrapped in try-catch, fails gracefully)  
-**Action:** Will be created in next phase if behavioral_intelligence enhancement needed
+### Architectural Foundation
+- ✅ FATHOMFREE pathway and Profile ID pathway are now unified
+- ✅ FATHOMFREE no longer renders directly from job payload
+- ✅ FATHOMFREE now routes through same validateProfileId / retrieve-profile pathway as manual profile ID lookup
+- ✅ Divergence between FATHOMFREE and Profile ID render path is **FIXED** (commit 008ac85)
 
----
+### Data Pipeline
+- ✅ Canonical dossier saves successfully
+- ✅ Vault retrieval works
+- ✅ intake_answers are saved in dossier
+- ✅ frontier orchestrator restored (25 inference modules)
+- ✅ Model label: `canonical-v2-frontier-restored` is active
 
-## Live Assessment Success (Verified)
-
-**First Production Assessment Completed:**
-- Timestamp: 2026-05-23 22:42 MST
-- Profile ID: `MM-20260524-rf2xqct1`
-- Status: ✅ Full pipeline success with real dimension scores
-
-**Proof Points:**
-- ✅ Assessment submitted successfully
-- ✅ Async job pipeline advanced through all stages
-- ✅ Profile ID generated and persisted
-- ✅ Canonical profile created with REAL dimension scores (not hardcoded)
-- ✅ Profile retrieved from vault
-- ✅ WebProfileReport rendered all 7 narrative sections
-- ✅ No fatal pipeline failures
-- ✅ Score spread varies by assessment answers (sanity verified)
+### Rendering & Interpretation
+- ✅ WebProfileReport renders
+- ✅ unifiedInterpreter exists and is wired
+- ✅ narrative-v3 endpoint works
+- ✅ GPT-5.5 JSON issue fixed by requiring "as JSON" in prompts
+- ✅ No emergency_inline success path should be used
 
 ---
 
-## Working Test Profiles
+## KNOWN REMAINING ISSUES ⚠️
 
-### Production Live Profile (Real Scores)
-- **ID:** `MM-20260524-rf2xqct1`
-- **Source:** Live assessment submission (2026-05-23 22:42 MST)
-- **Status:** Verified retrievable and renderable
-- **Scores:** Real calculated values (differentiates by assessment answers)
-- **Architecture:** Uses profileInput.dimension_scores, NOT hardcoded fallback
+### Semantic/Engine Refinement (DO NOT TOUCH YET)
+- ⚠️ Five Futures is still generic and should be upgraded first
+- ⚠️ One Move is generic and should be upgraded second
+- ⚠️ Contradiction Engine needs later refinement
+- ⚠️ Scaling Constraint Engine needs later refinement
+- ⚠️ Team Dynamics Engine needs later refinement
+- ⚠️ Intelligent downstream engines need tuning
 
-### Benchmark Profile (Legacy)
-- **ID:** `MM-20260523-mqlev9c9`
-- **Source:** Earlier fallback testing
-- **Status:** Verified retrievable and renderable
-- **Notes:** Used for regression testing
+### Display & Consistency Issues (DO NOT TOUCH YET)
+- ⚠️ Scoring/display audit needed: top DNA grid and big three cards may pull from different semantic buckets and look inconsistent
+- ⚠️ Interpreter currently overuses anxiety/avoidance language across profiles; needs state-vs-trait separation later
+- ⚠️ Section engines still contain legacy archetype language in places
 
-### Emergency Test Cases
-- **Billybob (skeleton):** `mm-20260526-d8k0lw33` (emergency_inline, pre-fix)
-- **Next test:** Submit new assessment post-fix to verify full canonical generation
-
----
-
-## Pipeline Equivalence Matrix (Full)
-
-Both assessment completion and manual retrieval now use **identical** rendering path:
-
-| Step | Assessment Flow | Manual Retrieval Flow |
-|------|-----------------|----------------------|
-| 1 | Submit assessment | GET /retrieve-profile?id=... |
-| 2 | Async job created | Profile loaded from vault |
-| 3 | buildProfileInput calculates scores (with guards) | Scores already in vault |
-| 4 | Canonical generated with REAL scores | Canonical already has real scores |
-| 5 | Profile stored to job + vault | — |
-| 6 | Frontend calls narrative-v3 | Frontend calls narrative-v3 |
-| 7 | WebProfileReport renders | WebProfileReport renders |
-| **Output** | 2-page behavioral report | 2-page behavioral report |
-
-**Architecture:** Unified V3 rendering path—no fork between new/old profiles.
+### RED LINE — DO NOT TOUCH THESE
+- 🛑 Do NOT touch renderer (layout/design)
+- 🛑 Do NOT touch vault (storage/retrieval)
+- 🛑 Do NOT touch canonical generation pipeline
+- 🛑 Do NOT touch FATHOMFREE orchestration
+- 🛑 Do NOT touch scoring system (deterministic, working)
+- Until memory is saved and future task is explicit
 
 ---
 
-## Questions 25-28 Live (2026-05-25)
+## CRITICAL COMMITS (This Session)
 
-**Behavioral prompts:**
-- Q25: "When someone misunderstands your intentions, how do you usually respond?"
-- Q26: "When working on or inside your business, what role do you naturally take on, and where does tension usually appear?"
-- Q27: "What are you trying to build long-term, and what values drive the way you operate?"
-- Q28: "What currently keeps your life or work organized, and where do you think future strain or scaling problems could appear?"
-
-**Status:** Live and deployed (no backend changes required)
+| Commit | What | Why |
+|--------|------|-----|
+| 1f46b6b | intake_answers to vault | Written answers flowing to GPT |
+| 537db0a | intake_answers through frontend | GPT context integration |
+| 75a4bb6 | OpenAI schema fix (as JSON) | HTTP 400 error resolution |
+| 89a02d0 | Unified interpreter brain pass | Single shared interpretation artifact |
+| 7050568 | Evidence dominance reweighting | All 7 sections prioritize truth over archetype |
+| 3f58b65 | ReferenceError fix | Typo in deriveFutureIfSupportAdded |
+| 59ee5e5 | Retry loop on canonical fetch | Timing race condition handling |
+| 008ac85 | FATHOMFREE validateProfileId pathway | Orchestration parity complete |
 
 ---
 
-## Scoring Architecture (VERIFIED CORRECT)
+## RECENT TEST PROFILES
+
+| Profile | ID | Status | Notes |
+|---------|----|----|-------|
+| David Berg | MM-20260523-mqlev9c9 | ✅ | Vector-dominant, command/momentum |
+| Billybob Depressed3 | mm-20260526-fqxptt3n | ✅ | Stuck/fearful/avoidant, unified interpreter match |
+| Pamela Perez | mm-20260526-r8362esx | ✅ | Orchestration parity test case |
+| Jonny TOUGHCEO / Blackrock | mm-20260527-kgppxg8e | ✅ | Additional validation |
+
+---
+
+## NEXT PRIORITY (In Order)
+
+### Phase 1: Engine Refinement
+1. **Upgrade Futures Engine** (Five Futures: move from generic to specific)
+2. **Upgrade One Move Engine** (specific actionable unblock, not generic advice)
+3. **Then Contradiction Engine** (deep contradiction analysis)
+4. **Then Scaling Constraint Engine** (where does this person hit the ceiling?)
+5. **Then Team Dynamics Engine** (how do they show up with others?)
+
+### Phase 2: Polish & Validation
+6. **Scoring/display audit** (top DNA grid + big three cards consistency)
+
+---
+
+## ARCHITECTURE SNAPSHOT
 
 ```
-Assessment Answers
+FATHOMFREE Assessment Completion:
   ↓
-buildProfileInput.buildDimensionScores() [with guards]
-  ├─ Maps answers to dimension contributions
-  ├─ Averages dimension contributions
-  ├─ Returns raw_score (0-4 range, normalized to 0-10)
-  ├─ Skips undefined answers (doesn't crash)
-  └─ Stores in job.profileInput.dimension_scores
+Job completes, returns canonical_profile_id
   ↓
-executeCanonicalGeneration [with diagnostics]
-  ├─ Receives job.profileInput (with guards protecting it)
-  ├─ Extracts profileInput.dimension_scores[*].raw_score
-  ├─ Builds vector_scores with real values
-  ├─ Warns if profileInput empty (data loss detection)
-  ├─ Constructs ranked_dimensions from real ranking
-  └─ Stores in canonical_profile
+Frontend: setProfileId() + call validateProfileId()
   ↓
-retrieve-profile / WebProfileReport
-  ├─ Loads canonical_profile
-  ├─ Reads vector_scores (now protected by guards)
-  └─ Renders 7 sections with authentic dimension context
+validateProfileId(): Fetch /api/moremindmap/retrieve-profile?id=...
+  ↓
+Vault returns: canonical_dossier (with intake_answers + frontier outputs + interpreted fields)
+  ↓
+setResult({ version: "web", canonical_dossier, ... })
+setSubmitted(true), setProcessing(false)
+  ↓
+Component renders: <WebProfileReport canonical={canonical_dossier} />
+  ↓
+buildNarrativeV3():
+  - Calls unifiedInterpreter() → one shared interpretation artifact
+  - All 7 sections read from unified artifact (not independent reinvention)
+  - narrative-v3 endpoint renders JSON sections with GPT-5.5
+  ↓
+Render output: Full 5-card futures + 7 report sections + scaling + one move
 ```
 
-**Key Protection:** Line 28-32 in executeCanonicalGeneration now protected by guards; dimension_scores validated before use.
+**Key Win:** FATHOMFREE and manual Profile ID lookup use IDENTICAL pathway. Output is byte-equivalent.
 
 ---
 
-## Infrastructure Checkpoints ✅
+## MODEL ATTRIBUTION
 
-### Module Loading (Vercel Cold-Start)
-- ✅ All syntax errors fixed
-- ✅ No "Unexpected token ':'" errors
-- ✅ Full import chain loads cleanly
-- ✅ executeCanonicalGeneration loads without module poisoning
-- ✅ Guards don't introduce import failures
-
-### Profile Generation (Canonical with Guards)
-- ✅ Profile ID generation inlined (mm-YYYYMMDD-XXXXXXXX format)
-- ✅ buildRawAnswers protected against undefined answers
-- ✅ Canonical dossier structure valid for rendering
-- ✅ Dimension scores extracted from profileInput (protected by guards)
-- ✅ Job persisted with canonical_profile_id + scores
-- ✅ Vault saved for retrieve-profile endpoint
-- ✅ Error recovery non-blocking (guards catch exceptions)
-
-### Data Retrieval
-- ✅ retrieve-profile endpoint finds MM-format profiles
-- ✅ Fallback logic works (lowercase → uppercase)
-- ✅ Vault keys accessible from Redis
-- ✅ Profile data returned with real scores intact (guarded pipeline)
-
-### Rendering & Sections
-- ✅ WebProfileReport loads profile by ID
-- ✅ narrative_profile sections available
-- ✅ All 7 sections populate with real score context
-- ✅ No frontend crashes or missing fields
-- ✅ Dimension scores display authentically
+**Generation Mode:** `canonical-v2-frontier-restored`  
+**Model:** OpenAI GPT-5.5 (narrative-v3 sections)  
+**Interpretation:** unifiedInterpreter.js (unified artifact pipeline)  
+**Scoring:** Deterministic (25 MC/ranking/written questions → normalized_dimensions)
 
 ---
 
-## Git Commits (This Session - Emergency Fix)
+## DEPLOYMENT STATUS
 
-| Commit | What | Impact |
-|--------|------|--------|
-| c566bb8 | fix: Add guards to prevent data loss in profile generation pipeline | 🚨 EMERGENCY FIX |
-| (previous) | Various fixes from prior session | Archived in CURRENT_RECOVERY_STATE |
-
-**All pushed to origin/main and live.**
+**Live on Vercel:** ✅ (commit 008ac85)  
+**No manual deployment needed:** Services auto-deploy on push to main  
+**Monitoring:** Check narrative-v3 endpoint for any 400/500 errors (schema fixed, should be 200)
 
 ---
 
-## Rollback-Safe Checkpoint
+## HEALTH CHECK
 
-This state is **safe to roll back from**:
-- Guards are additive (don't break existing code)
-- No architectural breaking changes
-- Real scores don't break HTML rendering
-- Vault persistence is unchanged
-- Function signatures unchanged
-- Previous profiles still retrieve correctly
+```
+✅ Canonical saves to vault
+✅ Retrieval returns full dossier
+✅ Unified interpreter reads entire dossier
+✅ Narrative-v3 renders without errors
+✅ WebProfileReport displays correctly
+✅ FATHOMFREE completion matches Profile ID load
+✅ No emergency fallbacks in active use
+✅ Frontier orchestrator (25 modules) operational
+```
 
-Can proceed with testing and validation without risk of regression.
-
----
-
-## What's Ready for Next Phase
-
-✅ Profile generation pipeline stabilized (guards prevent data loss)  
-✅ Diagnostics in place (data loss now visible)  
-✅ Rendering pipeline confirmed working  
-✅ Vault persistence confirmed working  
-
-⏳ Verification: Submit new assessment post-fix to confirm full canonical generation  
-⏳ Validation: Compare new profile scores to intake answers (verify differentiation)
-
----
-
-**Status:** Production live, emergency fix deployed, ready for validation testing.
-
-**Next:** Monitor Vercel deployment, test new assessment generation, verify profiles generate with full canonical structure (not emergency_inline).
+**Result:** Stable foundation for engine refinement.

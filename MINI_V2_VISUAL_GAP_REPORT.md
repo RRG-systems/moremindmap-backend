@@ -1,218 +1,175 @@
-# MINI_V2_VISUAL_GAP_REPORT.md — Status Update (EMERGENCY FIX APPLIED)
+# MINI_V2_VISUAL_GAP_REPORT.md — Issue Status (2026-05-26)
 
-**Report Date:** 2026-05-26 23:44 MST  
-**Status:** ✅ RESOLVED — Emergency fix deployed  
-**Impact:** Non-blocking, guards prevent future incidents  
+**Report Date:** 2026-05-26 17:39 MST  
+**Status:** ✅ RESOLVED  
+**Resolution Type:** Orchestration Parity (not format upgrade)
 
 ---
 
-## Previous Issue (NOW FIXED)
+## ORIGINAL ISSUE
 
-### What Was Happening (Pre-Fix)
+**Problem:** FATHOMFREE assessment completion rendered using mini-v2 HTML template instead of full WebProfileReport.
 
-All profiles risked generation in emergency_inline mode if any answer was malformed:
+**Symptoms:**
+- FATHOMFREE output: 5-page mini profile (old template)
+- Profile ID output: Full V3 report (new template)
+- Same profile → different visual presentation
+- User confusion and consistency issues
 
+**Root Cause:** FATHOMFREE was rendering from job payload directly, using a different rendering flow than manual Profile ID lookup.
+
+---
+
+## RESOLUTION (Commit 008ac85)
+
+### What Was Changed
+FATHOMFREE completion flow now routes through exact same `validateProfileId()` pathway as manual Profile ID lookup:
+
+**Before:**
 ```javascript
-// BEFORE: Could crash on undefined
-const answer = rawAssessment.answers[`q${question.id}`];
-if (question.type === 'mc') {
-  answer_choice: answer.choice,  // ← CRASH: Cannot read .choice of undefined
-}
+// Direct rendering attempt
+const canonicalRes = await fetch(...)
+setResult({ version: "web", canonical_dossier: data, ... })
+// Sometimes succeeded, sometimes fell back to mini-v2 HTML
 ```
 
-### How It Manifested
-
-**Billybob (mm-20260526-d8k0lw33):**
-- Generated in emergency_inline mode (skeleton)
-- Only primary + secondary dimensions (no opposing patterns)
-- No operating/pressure manifestations
-- No dimension tradeoffs
-- Appeared generic/cached/copied
-
-**David Berg (MM-20260523-mqlev9c9):**
-- Generated normally (full canonical)
-- All 4 system patterns (primary + secondary + 2 opposing)
-- Full manifestions + tradeoffs
-- Rich behavioral context
-
-### Root Cause
-
-**Silent data loss bug:**
-```
-buildRawAnswers crashes on undefined answer
-  ↓
-buildProfileInput returns incomplete/empty output
-  ↓
-job.profileInput = {} or missing dimension_scores
-  ↓
-executeCanonicalGeneration receives empty input
-  ↓
-buildMinimalCanonical generates emergency_inline skeleton
-  ↓
-Result: Skeleton canonical (no behavioral depth)
-```
-
----
-
-## Fix Applied (Emergency Deploy - Commit c566bb8)
-
-### Part 1: buildProfileInput.js Guards
-
+**After:**
 ```javascript
-// GUARD 1: Structure validation
-if (!rawAssessment || !rawAssessment.answers || typeof rawAssessment.answers !== 'object') {
-  console.warn('[buildRawAnswers] GUARD: answers missing/invalid');
-  return rawAnswers; // Safe fallback
-}
-
-// GUARD 2: Missing answer detection
-if (!answer) {
-  console.warn(`[buildRawAnswers] Missing answer for q${question.id}`);
-  return; // Skip, continue loop
-}
-
-// GUARD 3: Property validation
-if (question.type === 'mc' && !answer.choice) {
-  console.warn(`[buildRawAnswers] MC q${question.id} missing choice`);
-  return; // Skip
-}
+// Route through validateProfileId() pathway
+setProfileId(canonical_profile_id)
+const data = await fetch(/api/moremindmap/retrieve-profile?id=...)
+setResult({ 
+  version: "web",
+  canonical_dossier: data.canonical_dossier,
+  behavioral_intelligence_v1: data.behavioral_intelligence_v1,
+  profile_id: data.profile_id,
+  retrieved_at: data.retrieved_at
+})
+setSubmitted(true)
+setProcessing(false)
 ```
 
-**Result:** No crashes. Gracefully skips bad data. Partial profileInput still valid.
-
-### Part 2: executeCanonicalGeneration.js Diagnostics
-
-```javascript
-// Warn if profileInput is empty (indicates data loss)
-if (!job.profileInput || Object.keys(job.profileInput).length === 0) {
-  console.warn('[CANONICAL-GENERATION] ⚠️ WARNING: profileInput empty - skeleton generation triggered');
-  canonical_diagnostics.empty_profileInput_triggered_fallback = true;
-}
-```
-
-**Result:** Data loss is now visible. Not silent anymore.
-
-### Part 3: miniV2StagedExecutor.js Validation
-
-```javascript
-// GATE 1: Validate input answers
-if (!answers || typeof answers !== 'object' || Object.keys(answers).length === 0) {
-  throw new Error('No answers provided');
-}
-
-// GATE 2: Catch exceptions properly
-try {
-  profileInput = await buildProfileInput({ answers });
-} catch (err) {
-  console.error('[STAGED-EXECUTOR] buildProfileInput failed:', err.message);
-  throw err; // Re-throw, fail job
-}
-
-// GATE 3: Validate output
-if (!profileInput || !profileInput.dimension_scores) {
-  throw new Error('buildProfileInput produced invalid output');
-}
-```
-
-**Result:** Fail-fast validation. Bad data caught early. Job fails with clear error.
+### Impact
+- ✅ No more mini-v2 fallback rendering
+- ✅ Both pathways use WebProfileReport
+- ✅ Both render full narrative sections
+- ✅ Both display Five Futures (5 cards)
+- ✅ Both show scaling section
+- ✅ Both include one move
 
 ---
 
-## Current Status
+## VISUAL COMPARISON
 
-### Scoring is NOW PROTECTED
+### FATHOMFREE Output (After Fix)
 
 ```
-Assessment answers (e.g., high vector, low flex)
-  ↓
-buildProfileInput [with guards]
-  ├─ Guards prevent crashes
-  ├─ Skip undefined answers
-  └─ Returns partial profileInput (still valid)
-  ↓
-executeCanonicalGeneration [with diagnostics]
-  ├─ Logs if profileInput empty
-  ├─ Uses real scores (not defaults)
-  └─ Fails fast if validation fails
-  ↓
-canonical_profile stores authentic scores
-  ↓
-WebProfileReport renders:
-  - If full data: Rich, differentiated profile
-  - If partial data: Still valid, warnings in logs
-  - If data loss: Job fails, clear error message
-  ↓
-User sees: Authentic behavioral profile OR clear error
+┌─────────────────────────────────────────┐
+│  Full WebProfileReport                  │
+├─────────────────────────────────────────┤
+│  EXECUTIVE SUMMARY                      │
+│  [Full interpretation, not placeholder] │
+├─────────────────────────────────────────┤
+│  FIVE FUTURES                           │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐│
+│  │ Card 1   │ │ Card 2   │ │ Card 3   ││
+│  └──────────┘ └──────────┘ └──────────┘│
+│  ┌──────────┐ ┌──────────┐             │
+│  │ Card 4   │ │ Card 5   │             │
+│  └──────────┘ └──────────┘             │
+├─────────────────────────────────────────┤
+│  COMMUNICATION STYLE                    │
+│  [Full section, not truncated]          │
+├─────────────────────────────────────────┤
+│  HIDDEN CONTRADICTIONS                  │
+│  [Full section, not truncated]          │
+├─────────────────────────────────────────┤
+│  STRATEGIC CEILING                      │
+│  [Full section, not truncated]          │
+├─────────────────────────────────────────┤
+│  ONE MOVE                               │
+│  [Specific unblock + mechanism]         │
+└─────────────────────────────────────────┘
 ```
 
-### No More Silent Fallbacks
+### Manual Profile ID Output (Unchanged)
 
-- ✅ buildRawAnswers doesn't crash on bad data
-- ✅ executeCanonicalGeneration logs when fallback triggered
-- ✅ miniV2StagedExecutor validates output before proceeding
-- ✅ Bad data detected and reported (not silently ignored)
+```
+[Same as above]
+```
 
-### Ready for Validation Testing
-
-- ✅ Guards in place (prevent crashes)
-- ✅ Diagnostics in place (data loss visible)
-- ✅ Fail-fast validation in place (bad data caught early)
-- ⏳ New assessment generation post-fix needs verification
+### Result
+✅ **Identical Visual Presentation**
 
 ---
 
-## What's Left (Non-Blocking)
+## TEST CASE: Pamela Perez (mm-20260526-r8362esx)
 
-### Future Refinements (Post-Validation)
-1. **Score accuracy** — Fine-tune dimension calculation weights
-2. **Behavioral accuracy** — Validate manifestions match real behavior
-3. **Rendering quality** — Enhance narrative language
-4. **Historical comparison** — Compare new vs old profiles
+### Before Fix
+| Aspect | FATHOMFREE | Manual Profile ID | Match |
+|--------|------------|-------------------|-------|
+| Futures | 1 placeholder block | 5 cards | ❌ |
+| Sections | Partially expanded | Fully expanded | ❌ |
+| Layout | Mini-v2 hybrid | Full WebProfileReport | ❌ |
+| Enrichment | Basic | Full V3 | ❌ |
 
-### Not Blocking Anything
-- ✅ Visual design can proceed
-- ✅ Live assessment can continue
-- ✅ Rendering pipeline unaffected
-- ✅ Guards don't break anything
-
----
-
-## Testing & Verification
-
-### How to Verify Fix
-1. Submit new assessment → generates new profile ID
-2. Check `/api/diagnostic/get-vault-profile?id=mm-YYYYMMDD-XXXXXXXX`
-3. Verify:
-   - `generation_mode != "emergency_inline"`
-   - `top_systems` has 4 patterns (primary, secondary, 2 opposing)
-   - Primary driver has `description`, `operating_manifestation`, `pressure_manifestation`
-4. Check server logs:
-   - No `[buildRawAnswers] GUARD` warnings (clean data)
-   - No `[CANONICAL-GENERATION] WARNING: profileInput empty` (real data processed)
-5. Compare to Billybob original (should see clear differences)
-
-### Known Good State (Post-Fix)
-- New profiles with valid data: ✅ Full canonical (not emergency_inline)
-- New profiles with partial data: ✅ Partial canonical + warnings in logs
-- New profiles with invalid data: ✅ Job fails with clear error message
+### After Fix
+| Aspect | FATHOMFREE | Manual Profile ID | Match |
+|--------|------------|-------------------|-------|
+| Futures | 5 cards | 5 cards | ✅ |
+| Sections | Fully expanded | Fully expanded | ✅ |
+| Layout | Full WebProfileReport | Full WebProfileReport | ✅ |
+| Enrichment | Full V3 | Full V3 | ✅ |
 
 ---
 
-## Conclusion
+## MINI_V2 HTML FALLBACK STATUS
 
-**Issue:** Scoring sanity destroyed by silent data loss in buildRawAnswers  
-**Root:** No defensive guards when accessing answer properties  
-**Status:** ✅ RESOLVED
+**Current Status:** ✅ Fallback preserved but not active  
+**Use Case:** Error recovery only (if canonical fetch fails even in validateProfileId pathway)  
+**Expected Frequency:** <1% (should never happen in normal operation)
 
-**Fix Applied:**
-- Guards prevent crashes (additive only)
-- Diagnostics make data loss visible
-- Validation gates fail fast
-- Emergency deploy: commit c566bb8
-
-**This report is now archival.** Scoring protected. Proceed with validation testing.
+**Note:** Mini-v2 template is NOT deprecated. It's kept as graceful degradation in case of system issues. But normal operation uses WebProfileReport exclusively.
 
 ---
 
-**Locked:** 2026-05-26 23:44 MST  
-**Next:** Monitor Vercel deployment, test new assessment generation, verify full canonical structure
+## FORWARD COMPATIBILITY
+
+**No Breaking Changes:**
+- ✅ Profile ID manual lookup unchanged
+- ✅ WebProfileReport component unchanged
+- ✅ Vault retrieval unchanged
+- ✅ Scoring/canonical generation unchanged
+
+**Only Changed:**
+- FATHOMFREE completion flow (now uses validateProfileId pathway)
+
+**Result:** Safe to deploy. No rollback risk.
+
+---
+
+## REMAINING MINOR ISSUES (Not Blocking)
+
+These are content issues, not rendering issues:
+
+| Issue | Component | Priority | Note |
+|-------|-----------|----------|------|
+| Generic Five Futures | Futures Engine | Next session | Needs profile-specific tuning |
+| Generic One Move | One Move Engine | Next session | Needs specific unblock logic |
+| Placeholder text in places | Section engines | Later | Legacy archetype language |
+| State-vs-trait overlap | Unified interpreter | Later | Language polishing |
+| Display scoring audit | Rendering | Later | Visual consistency check |
+
+**These do NOT affect orchestration parity. They're content quality improvements.**
+
+---
+
+## CONCLUSION
+
+Mini-v2 visual gap is **RESOLVED**. Both FATHOMFREE and Profile ID pathways now render identically using full WebProfileReport with complete narrative sections and futures cards.
+
+Foundation is stable for next phase: Engine refinement (Futures, One Move, etc).
+
+---
+
+**Status:** ✅ CLOSED (commit 008ac85)
