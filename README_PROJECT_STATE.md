@@ -1,187 +1,140 @@
-# README_PROJECT_STATE.md — Quick Reference (2026-05-26)
+# README_PROJECT_STATE.md — Quick Reference (2026-05-28)
 
-**Latest Stable State:** 2026-05-26 17:39 MST  
-**Last Commit:** 008ac85 (ORCHESTRATION PARITY COMPLETE)
-
----
-
-## TL;DR: WHAT WORKS NOW ✅
-
-- FATHOMFREE assessment completion and manual Profile ID lookup now produce **identical output**
-- Both use same rendering pipeline (validateProfileId → vault retrieval → WebProfileReport)
-- Five Futures renders 5 cards (not placeholders)
-- All narrative sections fully expanded
-- Unified interpreter wired and active
-- Frontier orchestrator restored (25 inference modules)
-- GPT-5.5 integration fixed
-- intake_answers flowing through entire pipeline
+**Quick Ref:** GPT Cognition Bridge Implementation Complete, Deployment Pending
 
 ---
 
-## PROOF: Pamela Perez (mm-20260526-r8362esx)
+## WHAT'S DONE ✅
 
-**Before Fix:**
-- FATHOMFREE: 1 placeholder futures block + partial sections
-- Profile ID: 5 full futures cards + complete sections
-- Divergence: ❌
-
-**After Fix:**
-- FATHOMFREE: 5 full futures cards + complete sections
-- Profile ID: 5 full futures cards + complete sections
-- Divergence: ✅ FIXED
+- Phase 1: Rescoring Schema (canonical.rescoring_v1 structure)
+- Phase 2: Deterministic Engine (V2 with threshold gravity)
+- Phase 3: GPT Cognition Layer (behavioral rescoring)
+- Admin Endpoint: Backfill infrastructure
+- Three Critical Bugs: Found and fixed
+- Build: Passing (488ms)
+- Code: Committed and pushed
 
 ---
 
-## CURRENT STATE
+## WHAT'S NOT LIVE ❌
 
-### ✅ Operational
-- Canonical generation (25-module frontier orchestrator)
-- Vault storage and retrieval
-- Unified interpretation (single artifact → all 7 sections)
-- WebProfileReport rendering
-- Narrative-v3 endpoint (GPT-5.5 JSON rendering)
-- FATHOMFREE orchestration (now using validateProfileId pathway)
-- Profile ID manual lookup
-- Scoring system (deterministic, normalized_dimensions)
-
-### ⚠️ Known Issues (Not Blocking, Fix Later)
-- Five Futures content is generic (should be profile-specific)
-- One Move content is generic (should be specific unblock)
-- Contradiction Engine output could be more precise
-- Scaling Constraint Engine could be more granular
-- Team Dynamics Engine output could be more nuanced
-- Interpreter sometimes overuses anxiety/avoidance language (needs state-vs-trait)
-- Display scoring might pull from misaligned buckets (audit needed)
-
-### 🛑 DO NOT MODIFY
-- Renderer (layout/design)
-- Vault (storage/retrieval logic)
-- Canonical generation pipeline
-- FATHOMFREE orchestration (just fixed it)
-- Scoring system
-- Until memory saved + explicit task
+- Vercel has NOT redeployed
+- Admin endpoint NOT deployed
+- Renderer fixes NOT deployed
+- Production still shows fallback text
 
 ---
 
-## RECENT TEST PROFILES
+## KEY FACTS
 
-| Profile | ID | Entry Point | Status |
-|---------|----|----|--------|
-| David Berg | MM-20260523-mqlev9c9 | Manual Profile ID | ✅ Full render |
-| Billybob | mm-20260526-fqxptt3n | Manual Profile ID | ✅ Full render |
-| Pamela Perez | mm-20260526-r8362esx | FATHOMFREE + Profile ID (parity test) | ✅ Identical |
-| Jonny TOUGHCEO | mm-20260527-kgppxg8e | (validation) | ✅ Full render |
+| Fact | Status |
+|------|--------|
+| Source code has fixes | ✅ YES |
+| Build passes | ✅ YES |
+| Commits on GitHub | ✅ YES |
+| Production deployed | ❌ NO |
+| Admin endpoint works | ❌ NO (not deployed) |
+| David has rescoring_gpt | ❌ NO (never created) |
+| DNA Summary correct path | ❌ NO (not deployed) |
 
 ---
 
-## ARCHITECTURE (Current)
+## ARCHITECTURE (NOW IMPLEMENTED)
 
 ```
-FATHOMFREE Assessment Entry:
-  1. User submits assessment
-  2. Backend processes, generates canonical, saves to vault
-  3. Frontend polls until complete
-  4. Frontend calls validateProfileId(canonical_profile_id)
-  5. validateProfileId fetches from vault
-  6. WebProfileReport renders with full narrative-v3 enrichment
-
-Manual Profile ID Entry:
-  1. User enters profile ID in URL
-  2. Frontend calls validateProfileId(profile_id)
-  3. validateProfileId fetches from vault
-  4. WebProfileReport renders with full narrative-v3 enrichment
-
-RESULT: Same pathway, same output, byte-equivalent
+Input: canonical (baseline scores)
+  ↓
+V1 Engine: rescoreDimensions (deterministic topology)
+  ↓
+V2 Features: threshold gravity, suppression, flatness
+  ↓
+GPT Engine: gptBehavioralRescore (behavioral interpretation)
+  ↓
+Canonical: { rescoring_v1, rescoring_gpt } saved
+  ↓
+Narrative: buildNarrativeV3 uses cognitionContext
+  ↓
+Renderer: Fallback chain reads rescoring_gpt → v1 → baseline
+  ↓
+Output: Profile with behavioral topology line
 ```
 
 ---
 
-## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
+## NUMERIC RESCORING ROADMAP
 
-**Architectural Law:** All future enrichments MUST live downstream of canonical generation. Ingress layers exist ONLY to authorize, validate, retrieve, normalize, and route. They do NOT score, interpret, or generate intelligence.
-
-**Before ANY enrichment work:**
-1. Trace architecture (both ingress paths)
-2. Map dependencies (what data flows where)
-3. Verify orchestration parity (both paths converge)
-4. Analyze insertion point (downstream, not ingress)
-5. Check backward compatibility (no renderer breaks)
-
-**After every enrichment:**
-- Test 2-3 profiles minimum
-- Test BOTH ingress paths
-- Confirm byte-equivalent output
-- Confirm no regression
+| Layer | Purpose | Status | Deployed |
+|-------|---------|--------|----------|
+| 1 | Baseline (Q1-Q28) | ✅ WORKING | ✅ PROD |
+| 2 | Deterministic (V1) | ✅ BUILT | ⏳ PENDING |
+| 3 | GPT Cognition | ✅ BUILT | ⏳ PENDING |
+| 4 | Narrative Regeneration | ❌ NOT YET | Future |
+| 5 | Futures Enrichment | ❌ NOT YET | Future |
+| 6 | Org Role Mapping | ❌ NOT YET | Future |
 
 ---
 
-## NEXT PRIORITY (In Order)
+## DEPLOYMENT CHECKLIST
 
-### Immediate (Next Session)
-1. **Upgrade Futures Engine** — make Five Futures specific to each profile
-   - Apply doctrine (orchestration trace first, test both paths)
-2. **Upgrade One Move Engine** — make it a specific mechanism, not generic advice
-   - Apply same rigor as Futures
-
-### Soon After
-3. Contradiction Engine refinement
-4. Scaling Constraint Engine refinement
-5. Team Dynamics Engine refinement
-6. Scoring/display audit
-
-### Longer Term
-- Interpreter language polishing (state-vs-trait separation)
-- Performance optimization if needed
+- [ ] Vercel builds and deploys main branch
+- [ ] Admin endpoint works (test: POST /api/admin/rescore-profile)
+- [ ] rescoring_gpt created for David
+- [ ] DNA Summary shows "Concentrated..." not "Balanced..."
+- [ ] New profiles generate with rescoring_gpt automatically
+- [ ] Admin backfill works for old profiles
 
 ---
 
-## DEPLOYMENT STATUS
+## IF SOMETHING BREAKS
 
-**Current Environment:** Vercel (auto-deploy)  
-**Monitoring:** Watch narrative-v3 endpoint for errors (schema fixed, should be 200)  
-**Rollback:** Not needed (fix is stable)  
+**Check:** Did Vercel deploy?
+```
+curl https://moremindmap.com/assets/index-*.js | grep canonicalProfile
+# If not found: Vercel hasn't deployed yet
+```
 
----
+**Check:** Did admin endpoint work?
+```
+curl -X POST https://moremindmap.com/api/admin/rescore-profile \
+  -H "Authorization: Bearer $SECRET" \
+  -d '{"profile_id":"MM-20260523-mqlev9c9"}'
+# If FUNCTION_INVOCATION_FAILED: Vercel needs to deploy
+```
 
-## KEY FILES
-
-| File | Purpose | Status |
-|------|---------|--------|
-| src/Profile.jsx | Entry point, FATHOMFREE orchestration | ✅ Updated |
-| api/moremindmap/retrieve-profile.js | Vault fetch | ✅ Working |
-| src/lib/narrativeV3/unifiedInterpreter.js | Single interpretation artifact | ✅ Wired |
-| src/lib/narrativeV3/buildNarrativeV3.js | Narrative building | ✅ Using unified |
-| src/lib/narrativeV3/sectionPrompts.js | 7 section renderers | ✅ Evidence dominance active |
-| api/engine/canonical/executeCanonicalGeneration.js | Canonical generation | ✅ Frontier restored |
-| api/engine/vault/saveCanonicalProfile.js | Vault storage | ✅ Working |
-| src/components/reports/WebProfileReport.jsx | Main render component | ✅ Full features |
-
----
-
-## QUICK HEALTH CHECK
-
-```bash
-# Verify deployment
-curl https://moremindmap.vercel.app/api/diagnostic/get-vault-profile?id=mm-20260526-r8362esx
-
-# Should return full canonical_dossier with:
-# - intake_answers
-# - frontier outputs (25 modules)
-# - interpreted fields
+**Check:** Can retrieve see rescoring_gpt?
+```
+curl https://moremindmap.com/api/moremindmap/retrieve-profile?id=mm-20260523-mqlev9c9 \
+  | jq '.canonical_dossier.canonical_profile_json.rescoring_gpt'
+# If null: Admin endpoint never ran
 ```
 
 ---
 
-## WHAT TO REMEMBER
+## KEY COMMITS
 
-**This Session's Achievement:** Complete orchestration parity between FATHOMFREE assessment completion and manual Profile ID lookup. Both pathways now use identical rendering pipeline and produce byte-equivalent output.
+```
+e5b7637 - Admin endpoint generates rescoring_v1 (NOT DEPLOYED)
+670a795 - Fix rescoreDimensions import (NOT DEPLOYED)
+38362fd - DNA Summary reads correct path (NOT DEPLOYED)
+836fcde - All rescoring reads fixed (NOT DEPLOYED)
+95f7767 - Documentation (NOT DEPLOYED)
+798d315 - Deployment trace (NOT DEPLOYED)
+```
 
-**Stability:** High. Foundation is solid. Engine refinements can proceed safely.
-
-**Constraint:** Do not touch renderer, vault, canonical, orchestration, or scoring until next explicit task.
-
-**Doctrine:** All enrichment work follows downstream pattern. Trace first. Test both paths. Confirm parity.
+All on `main`, pushed to GitHub, awaiting Vercel rebuild.
 
 ---
 
-**For D.J.:** You're good to proceed with Futures and One Move upgrades using the doctrine. Everything underneath is stable and consistent.
+## FOR NEXT SESSION
+
+If starting fresh:
+1. Check if Vercel deployed (grep for canonicalProfile)
+2. If no: Trigger or wait for rebuild
+3. If yes: Test admin endpoint
+4. If admin works: Run rescore for David/Pamela/Jonny
+5. If rescore works: Verify DNA Summary text changed
+6. If all works: Move to Phase 4 (narrative enrichment)
+
+---
+
+**STATUS: Implementation Complete. Deployment Awaiting Vercel Rebuild.**

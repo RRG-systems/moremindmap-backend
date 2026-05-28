@@ -1,182 +1,146 @@
-# MINI_V2_VISUAL_GAP_REPORT.md — Issue Status (2026-05-26)
+# MINI_V2_VISUAL_GAP_REPORT.md — Status (2026-05-28)
 
-**Report Date:** 2026-05-26 17:39 MST  
-**Status:** ✅ RESOLVED  
-**Resolution Type:** Orchestration Parity (not format upgrade)
-
----
-
-## ORIGINAL ISSUE
-
-**Problem:** FATHOMFREE assessment completion rendered using mini-v2 HTML template instead of full WebProfileReport.
-
-**Symptoms:**
-- FATHOMFREE output: 5-page mini profile (old template)
-- Profile ID output: Full V3 report (new template)
-- Same profile → different visual presentation
-- User confusion and consistency issues
-
-**Root Cause:** FATHOMFREE was rendering from job payload directly, using a different rendering flow than manual Profile ID lookup.
+**Focus:** Scoring Interpretation Surfaces  
+**Status:** ✅ ENRICHED | ⏳ DEPLOYMENT PENDING  
 
 ---
 
-## RESOLUTION (Commit 008ac85)
+## SIX RENDERING SURFACES
 
-### What Was Changed
-FATHOMFREE completion flow now routes through exact same `validateProfileId()` pathway as manual Profile ID lookup:
+All now have rescoring context injection (pending deployment):
 
-**Before:**
-```javascript
-// Direct rendering attempt
-const canonicalRes = await fetch(...)
-setResult({ version: "web", canonical_dossier: data, ... })
-// Sometimes succeeded, sometimes fell back to mini-v2 HTML
+### 1. DNA Grid (8 Hexagons)
+- **Data:** ranked[0:8]
+- **Enrichment:** Topology micro-labels (PRIMARY DRIVER, STABILIZER, etc.)
+- **Status:** ✅ Enriched + deployed
+- **From:** rescoring_v1.render_ready
+
+### 2. Profile DNA Box (Hero)
+- **Data:** narrative.profileDNA.body
+- **Enrichment:** Topology line prepended (if render_ready conditions met)
+- **Status:** ✅ Prepend logic ready, awaiting deployment
+- **From:** rescoring_gpt or rescoring_v1 render_ready
+
+### 3. Command Clarity Card
+- **Data:** ranked[0]
+- **Enrichment:** "Directional certainty in decision-making"
+- **Status:** ✅ Deployed
+- **From:** deterministic logic
+
+### 4. Speed vs Fidelity Card
+- **Data:** ranked[0] vs ranked[6]
+- **Enrichment:** "Speed-accuracy tradeoff in execution"
+- **Status:** ✅ Deployed
+- **From:** deterministic logic
+
+### 5. Strategic Leverage Card
+- **Data:** ranked[0] × ranked[4]
+- **Enrichment:** "Pattern recognition and scaling potential"
+- **Status:** ✅ Deployed
+- **From:** deterministic logic
+
+### 6. DNA Summary Box
+- **Data:** ranked[0:6] + topology line
+- **Enrichment:** Topology line reflects rescoring_gpt.render_ready.profile_intensity
+- **Status:** ⏳ Awaiting deployment
+- **From:** rescoring_gpt (primary) or rescoring_v1 (fallback)
+
+---
+
+## TOPOLOGY LINE OUTCOMES
+
+### Old (Pre-Cognition)
+```
+"Balanced multi-system topology with flexible dynamics."
+```
+Always hardcoded fallback (no rescoring data)
+
+### New (With Cognition, After Deployment)
+
+For **David** (Vector dominant, Signal suppressed):
+```
+"Concentrated directional topology with suppressed verification systems."
+```
+From: `rescoring_gpt.render_ready.profile_intensity === 'extreme'`
+
+For **Pamela** (Balanced distributed):
+```
+"Blended distributed topology with adaptive processing."
+```
+From: `rescoring_gpt.dominance_profile.spread_type === 'flat'`
+
+For **Strong but not extreme**:
+```
+"Strong domain topology with moderate stabilization."
+```
+From: `rescoring_gpt.render_ready.profile_intensity === 'high'`
+
+---
+
+## CURRENT VISUAL STATE (PRE-DEPLOYMENT)
+
+| Surface | Data Available | Rendered | Enriched |
+|---------|---|---|---|
+| DNA Grid | ✅ | ✅ | ✅ |
+| Profile DNA | ✅ | ✅ | ⏳ (topology line) |
+| Command Clarity | ✅ | ✅ | ✅ |
+| Speed vs Fidelity | ✅ | ✅ | ✅ |
+| Strategic Leverage | ✅ | ✅ | ✅ |
+| DNA Summary | ✅ (base) | ✅ | ⏳ (topology from rescoring) |
+
+---
+
+## AFTER DEPLOYMENT
+
+| Surface | Data Available | Rendered | Enriched |
+|---------|---|---|---|
+| DNA Grid | ✅ | ✅ | ✅ |
+| Profile DNA | ✅ rescoring_gpt | ✅ | ✅ (topology + narrative) |
+| Command Clarity | ✅ | ✅ | ✅ |
+| Speed vs Fidelity | ✅ | ✅ | ✅ |
+| Strategic Leverage | ✅ | ✅ | ✅ |
+| DNA Summary | ✅ rescoring_gpt | ✅ | ✅ (dynamic topology) |
+
+---
+
+## CRITICAL PATH
+
+1. ⏳ Vercel deploys commits
+2. ✅ Admin endpoint creates rescoring_gpt
+3. ✅ retrieve-profile returns rescoring_gpt
+4. ✅ WebProfileReport extracts canonical_profile_json
+5. ✅ DNA Summary reads rescoring_gpt.render_ready
+6. ✅ Topology line reflects actual dominance
+
+---
+
+## RENDERING FALLBACK DOCTRINE
+
+```
+Renderer Chain (DNA Summary):
+  IF rescoring_gpt.render_ready.profile_intensity
+    THEN use topology: "Concentrated..." or "Strong..."
+    ELSE IF rescoring_v1.render_ready.profile_intensity
+      THEN use topology: "Concentrated..." or "Strong..."
+      ELSE IF spread_type === 'flat'
+        THEN use topology: "Blended..."
+        ELSE
+          RETURN "Balanced multi-system topology..." (final fallback)
 ```
 
-**After:**
-```javascript
-// Route through validateProfileId() pathway
-setProfileId(canonical_profile_id)
-const data = await fetch(/api/moremindmap/retrieve-profile?id=...)
-setResult({ 
-  version: "web",
-  canonical_dossier: data.canonical_dossier,
-  behavioral_intelligence_v1: data.behavioral_intelligence_v1,
-  profile_id: data.profile_id,
-  retrieved_at: data.retrieved_at
-})
-setSubmitted(true)
-setProcessing(false)
-```
-
-### Impact
-- ✅ No more mini-v2 fallback rendering
-- ✅ Both pathways use WebProfileReport
-- ✅ Both render full narrative sections
-- ✅ Both display Five Futures (5 cards)
-- ✅ Both show scaling section
-- ✅ Both include one move
+All levels intact, rescue-chain-safe.
 
 ---
 
-## VISUAL COMPARISON
+## VISUAL CONTINUITY PRESERVED ✅
 
-### FATHOMFREE Output (After Fix)
-
-```
-┌─────────────────────────────────────────┐
-│  Full WebProfileReport                  │
-├─────────────────────────────────────────┤
-│  EXECUTIVE SUMMARY                      │
-│  [Full interpretation, not placeholder] │
-├─────────────────────────────────────────┤
-│  FIVE FUTURES                           │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐│
-│  │ Card 1   │ │ Card 2   │ │ Card 3   ││
-│  └──────────┘ └──────────┘ └──────────┘│
-│  ┌──────────┐ ┌──────────┐             │
-│  │ Card 4   │ │ Card 5   │             │
-│  └──────────┘ └──────────┘             │
-├─────────────────────────────────────────┤
-│  COMMUNICATION STYLE                    │
-│  [Full section, not truncated]          │
-├─────────────────────────────────────────┤
-│  HIDDEN CONTRADICTIONS                  │
-│  [Full section, not truncated]          │
-├─────────────────────────────────────────┤
-│  STRATEGIC CEILING                      │
-│  [Full section, not truncated]          │
-├─────────────────────────────────────────┤
-│  ONE MOVE                               │
-│  [Specific unblock + mechanism]         │
-└─────────────────────────────────────────┘
-```
-
-### Manual Profile ID Output (Unchanged)
-
-```
-[Same as above]
-```
-
-### Result
-✅ **Identical Visual Presentation**
+- No layout changes
+- No design changes
+- No color changes
+- Only scoring interpretation enriched
+- Text becomes behavioral instead of template
+- Doctrine: Data-driven, not category-driven
 
 ---
 
-## TEST CASE: Pamela Perez (mm-20260526-r8362esx)
-
-### Before Fix
-| Aspect | FATHOMFREE | Manual Profile ID | Match |
-|--------|------------|-------------------|-------|
-| Futures | 1 placeholder block | 5 cards | ❌ |
-| Sections | Partially expanded | Fully expanded | ❌ |
-| Layout | Mini-v2 hybrid | Full WebProfileReport | ❌ |
-| Enrichment | Basic | Full V3 | ❌ |
-
-### After Fix
-| Aspect | FATHOMFREE | Manual Profile ID | Match |
-|--------|------------|-------------------|-------|
-| Futures | 5 cards | 5 cards | ✅ |
-| Sections | Fully expanded | Fully expanded | ✅ |
-| Layout | Full WebProfileReport | Full WebProfileReport | ✅ |
-| Enrichment | Full V3 | Full V3 | ✅ |
-
----
-
-## MINI_V2 HTML FALLBACK STATUS
-
-**Current Status:** ✅ Fallback preserved but not active  
-**Use Case:** Error recovery only (if canonical fetch fails even in validateProfileId pathway)  
-**Expected Frequency:** <1% (should never happen in normal operation)
-
-**Note:** Mini-v2 template is NOT deprecated. It's kept as graceful degradation in case of system issues. But normal operation uses WebProfileReport exclusively.
-
----
-
-## FORWARD COMPATIBILITY
-
-**No Breaking Changes:**
-- ✅ Profile ID manual lookup unchanged
-- ✅ WebProfileReport component unchanged
-- ✅ Vault retrieval unchanged
-- ✅ Scoring/canonical generation unchanged
-
-**Only Changed:**
-- FATHOMFREE completion flow (now uses validateProfileId pathway)
-
-**Result:** Safe to deploy. No rollback risk.
-
----
-
-## REMAINING MINOR ISSUES (Not Blocking)
-
-These are content issues, not rendering issues:
-
-| Issue | Component | Priority | Note |
-|-------|-----------|----------|------|
-| Generic Five Futures | Futures Engine | Next session | Needs profile-specific tuning |
-| Generic One Move | One Move Engine | Next session | Needs specific unblock logic |
-| Placeholder text in places | Section engines | Later | Legacy archetype language |
-| State-vs-trait overlap | Unified interpreter | Later | Language polishing |
-| Display scoring audit | Rendering | Later | Visual consistency check |
-
-**These do NOT affect orchestration parity. They're content quality improvements.**
-
----
-
-## DOCTRINE LOCKED: No More Ingress-Specific Rendering
-
-**This issue is RESOLVED because of the DOWNSTREAM ENRICHMENT DOCTRINE.**
-
-Future enrichments will NEVER create divergence because:
-1. Ingress layers route to common vault fetch
-2. All rendering happens downstream of canonical
-3. Both pathways produce identical output by design
-4. Before ANY future work, trace both pathways to verify
-
-**Status:** ✅ CLOSED (commit 008ac85)  
-**Prevention:** Doctrine locks this issue permanently.
-
----
-
-**For Future Development:** When adding new enrichment engines (Futures upgrade, One Move upgrade, etc.), remember: they must live downstream and attach to canonical, not ingress. Both ingress paths must remain identical. Always test BOTH pathways.
+**STATUS: All 6 surfaces enriched in code, 4 deployed, 2 awaiting Vercel rebuild.**

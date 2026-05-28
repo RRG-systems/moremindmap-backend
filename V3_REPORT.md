@@ -1,264 +1,178 @@
-# V3_REPORT.md — Narrative V3 Status (2026-05-26)
+# V3_REPORT.md — Narrative Engine Status (2026-05-28)
 
-**Last Updated:** 2026-05-26 17:39 MST  
-**Status:** ✅ FULLY OPERATIONAL
+**Status:** ✅ GPT COGNITION INTEGRATED | ⏳ DEPLOYMENT PENDING
 
 ---
 
-## V3 NARRATIVE PIPELINE STATUS
+## buildNarrativeV3 INTEGRATION
 
-### Current Architecture ✅
+### What Changed (Code)
 
-```
-Input:
-  - canonical_dossier (with intake_answers + frontier outputs)
-  - Unified interpretation artifact (unifiedInterpreter.js output)
+```javascript
+// NEW: Import cognition context helper
+import { getCognitionContext } from './getCognitionContext.js';
 
-Pipeline:
-  unifiedInterpreter()
-    └─ Reads entire dossier + all Q1-Q28 answers
-    └─ Produces ONE shared interpretation artifact
-    └─ Contains: emotional_state, action_pattern, contradiction_map, 
-                team_experience, scaling_constraint, five_futures_seed, one_move_seed
+// NEW: Extract behavioral layer
+const cognitionContext = getCognitionContext(canonical);
 
-  buildNarrativeV3()
-    └─ Calls unifiedInterpreter() once
-    └─ Passes unified artifact to all 7 section builders
-
-  7 Section Builders (sectionPrompts.js):
-    1. ExecutiveSummary
-    2. CommunicationStyle
-    3. HiddenContradictions
-    4. StrategicCeiling
-    5. ProfileDNA
-    6. CoachingLeverage
-    7. RecommendedNextStep
-
-  narrative-v3 endpoint:
-    └─ Calls buildNarrativeV3()
-    └─ Sends each section prompt to GPT-5.5
-    └─ Returns JSON with all 7 sections
-
-Output:
-  - Full narrative profile with all 7 sections expanded
-  - Five Futures (5 cards)
-  - One Move (specific unblock)
-  - Scaling considerations
-  - Full behavioral intelligence
+// NEW: Conditional pass for profileDNA section
+const prompt = section === 'profileDNA'
+  ? getPromptBuilder(section)(unified, interpreted, previousSections, cognitionContext)
+  : getPromptBuilder(section)(unified, interpreted, previousSections);
 ```
 
----
+### Sections Affected
 
-## V3 RENDERING INTEGRATION ✅
-
-### WebProfileReport Component
-- ✅ Fetches narrative-v3 sections on mount
-- ✅ Displays all 7 sections with proper formatting
-- ✅ Renders Five Futures as 5 cards
-- ✅ Shows One Move with mechanism
-- ✅ Full interactive expansion/collapse
-
-### FATHOMFREE Integration ✅
-- ✅ FATHOMFREE now routes through validateProfileId pathway
-- ✅ WebProfileReport renders with full narrative-v3 enrichment
-- ✅ Same output as manual Profile ID lookup
-
-### Profile ID Integration ✅
-- ✅ Manual profile ID lookup uses full V3 rendering
-- ✅ Calls narrative-v3 endpoint
-- ✅ Displays all sections and features
+| Section | Uses Cognition | Behavior |
+|---------|---|---|
+| profileDNA | ✅ YES | Reads rescoring_gpt topology |
+| executiveSummary | ❌ NO | Deterministic (unchanged) |
+| communicationStyle | ❌ NO | Deterministic (unchanged) |
+| hiddenContradictions | ❌ NO | Deterministic (unchanged) |
+| strategicCeiling | ❌ NO | Deterministic (unchanged) |
+| coachingLeverage | ❌ NO | Deterministic (unchanged) |
+| recommendedNextStep | ❌ NO | Deterministic (unchanged) |
+| pressureMechanics | ❌ NO | Deterministic (unchanged) |
 
 ---
 
-## UNIFIED INTERPRETER INTEGRATION ✅
+## COGNITION CONTEXT FLOW
 
-### unifiedInterpreter.js (22 KB)
-- ✅ Reads entire canonical dossier
-- ✅ Processes all Q1-Q28 intake_answers
-- ✅ Analyzes frontier orchestrator outputs (25 modules)
-- ✅ Produces single shared interpretation artifact
-- ✅ Written evidence overrides archetype when conflicts detected
+### getCognitionContext Helper
 
-### Evidence Dominance Doctrine ✅
-All 7 section prompts now:
-- ✅ PRIORITIZE unified evidence over archetype templates
-- ✅ Use contradiction_map directly (not inferred)
-- ✅ Use emotional_state for tone (not forced positivity)
-- ✅ Use action_pattern for behavioral reading (not assumed trajectory)
-- ✅ Respect scaling_constraint (not ignore limits)
+```
+Fallback Chain:
+  canonical.rescoring_gpt (if exists)
+    ↓
+  canonical.rescoring_v1 (if exists)
+    ↓
+  canonical.ranked_dimensions (baseline, always exists)
 
-### Result ✅
-Different profiles read materially different:
-- ✅ David Berg: command/momentum/acceleration
-- ✅ Billybob: stuck/fearful/analysis-paralysis
-- ✅ Pamela: [full interpretation, not archetype variation]
-- ✅ Jonny: [full interpretation, not archetype variation]
-
----
-
-## ENDPOINT STATUS ✅
-
-### `/api/moremindmap/narrative-v3`
-
-**Method:** POST  
-**Input:**
-```json
+Returns:
 {
-  "canonical_profile_id": "mm-20260526-r8362esx"
+  source: 'gpt' | 'v1' | 'baseline',
+  ranked_dimensions: [...],
+  dominance_profile: {...},
+  render_ready: {...},
+  confidence: 0-1
 }
 ```
 
-**Output:**
-```json
-{
-  "success": true,
-  "narrative_profile": {
-    "executive_summary": "...",
-    "communication_style": "...",
-    "hidden_contradictions": "...",
-    "strategic_ceiling": "...",
-    "profile_dna": "...",
-    "coaching_leverage": "...",
-    "recommended_next_step": "..."
-  },
-  "render_source": "gpt55"
+### buildProfileDNAPrompt Usage
+
+```javascript
+// RECEIVES: cognitionContext parameter
+
+canonical: {
+  cognitionSource: cognitionContext?.source,  // 'gpt', 'v1', or 'structured'
+  primaryDimension: cognitionContext?.ranked_dimensions[0]?.dimension,
+  primaryScore: cognitionContext?.ranked_dimensions[0]?.score,
+  secondaryDimension: cognitionContext?.ranked_dimensions[1]?.dimension,
+  secondaryScore: cognitionContext?.ranked_dimensions[1]?.score,
+  dominance_profile: cognitionContext?.dominance_profile,
+  render_ready: cognitionContext?.render_ready
 }
-```
 
-**Status:** ✅ Working (fixed JSON schema issue)  
-**Error Rate:** 0% (schema now requires "as JSON" in prompts)  
-**Response Time:** ~3-5 seconds
-
----
-
-## GPT-5.5 INTEGRATION ✅
-
-### Schema Fix (Commit 75a4bb6)
-- ✅ All section prompts explicitly require: `respond in JSON format`
-- ✅ Prompts use: `"Output: valid JSON with fields: ..."`
-- ✅ No more HTTP 400 errors
-- ✅ Consistent JSON responses
-
-### Model Attribution
-- ✅ render_source: "gpt55" (OpenAI GPT-5.5)
-- ✅ Model label: "canonical-v2-frontier-restored"
-- ✅ No fallbacks to lower models
-
----
-
-## RECENT TEST VALIDATION ✅
-
-### Pamela Perez (mm-20260526-r8362esx)
-- ✅ Orchestration parity test
-- ✅ FATHOMFREE and Profile ID render identical narrative-v3 output
-- ✅ All 7 sections present and expanded
-- ✅ Five Futures: 5 full cards
-- ✅ One Move: specific mechanism
-- ✅ No placeholder blocks
-
-### David Berg (MM-20260523-mqlev9c9)
-- ✅ Benchmark profile
-- ✅ Full V3 narrative
-- ✅ Behavioral specificity confirmed
-
-### Billybob (mm-20260526-fqxptt3n)
-- ✅ Unified interpreter match
-- ✅ Evidence dominance active
-- ✅ Reads as stuck/fearful (not archetype variation)
-
----
-
-## KNOWN CONTENT ISSUES (NOT BLOCKING) ⚠️
-
-| Issue | Component | Status | Priority |
-|-------|-----------|--------|----------|
-| Generic Five Futures | Futures Engine | Known | Next session |
-| Generic One Move | One Move Engine | Known | Next session |
-| Placeholder language | Section engines | Partial | Later |
-| State-vs-trait overlap | Interpreter | Known | Later |
-| Display consistency | Scoring audit | Known | Later |
-
-**Note:** These are CONTENT quality issues, not rendering/orchestration issues. V3 pipeline is working correctly. The issue is the seeds/inputs from upstream engines are generic.
-
----
-
-## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
-
-**All future V3 improvements must follow this pattern:**
-
-1. **Identify enhancement** (e.g., make Five Futures profile-specific)
-2. **Trace architecture** (map current data flow through unified interpreter)
-3. **Surgical insertion** (attach to downstream, not ingress)
-4. **Test both paths** (FATHOMFREE + Profile ID)
-5. **Verify parity** (byte-equivalent output across ingress paths)
-6. **Deploy** (no regression, no split pathways)
-
-**Future enrichment engines:**
-1. Futures Engine (V2) - profile-specific futures
-2. One Move Engine (V2) - specific unblock mechanism
-3. Contradiction Engine (V2) - deeper analysis
-4. Scaling Constraint Engine (V2) - granular ceiling
-5. Team Dynamics Engine (V2) - sophisticated interpersonal
-6. Facilitator Intelligence Layer
-7. Organizational Role Mapping Layer
-8. Comparative Scoring Infrastructure
-
-All must live downstream. All must converge at canonical. All must preserve orchestration parity.
-
----
-
-## NEXT IMPROVEMENTS (PRIORITY ORDER)
-
-### Phase 1: Engine Refinement
-1. **Futures Engine** — Make Five Futures profile-specific (not generic 5-card template)
-   - Apply doctrine (orchestration trace first, test both paths)
-2. **One Move Engine** — Make specific to each profile's actual bottleneck
-   - Apply same rigor as Futures
-
-### Phase 2: Polish
-3. **Contradiction Engine** — Deeper analysis, more nuanced output
-4. **Scaling Constraint Engine** — More granular ceiling analysis
-5. **Team Dynamics Engine** — More sophisticated interpersonal reads
-
-### Phase 3: Consistency
-6. **Scoring/display audit** — Ensure DNA grid and big three align semantically
-
----
-
-## DEPLOYMENT STATUS
-
-**Current Version:** Live on Vercel (commit 008ac85)  
-**Monitoring:** narrative-v3 endpoint response codes (should be 200)  
-**Performance:** ~3-5 seconds per profile (acceptable)  
-**Stability:** High (schema fixed, no 400 errors)
-
----
-
-## HEALTH CHECK
-
-```
-✅ unifiedInterpreter wired to buildNarrativeV3
-✅ All 7 section prompts use unified artifact
-✅ Evidence dominance active (profiles materially different)
-✅ GPT-5.5 integration stable
-✅ JSON schema correct (no 400 errors)
-✅ WebProfileReport displays sections correctly
-✅ FATHOMFREE and Profile ID both trigger narrative-v3
-✅ Futures and One Move seeds flowing (even if generic content)
-✅ Both ingress paths converge at vault fetch
-✅ Orchestration parity maintained
+// GPT SEES: Full behavioral topology, not generic template
 ```
 
 ---
 
-## CONCLUSION
+## PROFILE DNA GENERATION (NOW GPT-AWARE)
 
-V3 narrative pipeline is **fully operational and stable**. Both FATHOMFREE and Profile ID pathways render identical, full narrative profiles with all 7 sections, futures, and one move.
+### Before (Deterministic Template)
+```
+Prompt: "Write Profile DNA for person with Vector=0.88, Signal=0.45"
+GPT Response: Generic template about balanced topology
+Result: "Enters with direction already forming; reads momentum before..."
+```
 
-Foundation is solid for next phase: content quality improvements (Futures Engine, One Move Engine, etc) following the downstream enrichment doctrine.
-
-**Status:** ✅ READY FOR ENGINE REFINEMENT
+### After (Cognition-Aware)
+```
+Prompt: "Write Profile DNA for EXTREME VECTOR operator.
+  Primary: Vector (0.94, extreme)
+  Secondary: Signal (0.45, suppressed by vector)
+  Dominance: Vector suppresses verification depth
+  Focus: Observable mechanics of command-driven decision"
+GPT Response: Grounded in actual behavioral pattern
+Result: "Directional certainty suppresses verification systems..."
+```
 
 ---
 
-**For Next Session:** Upgrade Futures Engine to produce profile-specific futures (not generic template), using doctrine-guided architecture trace and rigorous testing of both ingress pathways.
+## FALLBACK CHAIN (SAFETY)
+
+If anything missing:
+```
+  cognitionContext.source = 'gpt'
+    ↓ GPT layer reads (PRIMARY)
+  cognitionContext.source = 'v1'
+    ↓ Deterministic layer reads (SECONDARY)
+  cognitionContext.source = 'baseline'
+    ↓ Ranked dimensions only (FALLBACK)
+  
+All paths produce valid ProfileDNA
+```
+
+---
+
+## CACHING IMPLICATIONS
+
+**Cache Key Still Uses Profile ID** (no change):
+- buildNarrativeV3 caches narrative_profile by profileId
+- rescoring_gpt doesn't break caching
+- Cache bypass works with `?nocache=true` or `?v3-refresh=true`
+
+**When rescoring_gpt Updates:**
+- Old narratives cached with rescoring_v1 context
+- New narratives cached with rescoring_gpt context
+- After admin rescore + cache clear: New narrative generated with GPT context
+
+---
+
+## DEPLOYMENT READINESS
+
+| Component | Status |
+|-----------|--------|
+| getCognitionContext | ✅ Built |
+| buildProfileDNAPrompt | ✅ Updated |
+| buildNarrativeV3 | ✅ Updated |
+| Conditional passing | ✅ Implemented |
+| Error handling | ✅ Safe fallback |
+| Build | ✅ Passing |
+
+---
+
+## NEXT NARRATIVE PHASES (NOT THIS SESSION)
+
+### Phase 4: Narrative Regeneration
+- Rebuild Profile DNA with rescored context
+- UpdateExecutiveSummary with rescored topology
+- Regenerate Contradictions from rescored patterns
+
+### Phase 5: Futures Enrichment
+- Generate futures from rescored dominance
+- Extreme profiles → more asymmetrical futures
+- Blended profiles → more balanced futures
+
+### Phase 6-8: Advanced Enrichment
+- One Move engine upgrade
+- Contradiction engine upgrade
+- Pressure Mechanics engine upgrade
+- Scaling Constraint engine upgrade
+
+---
+
+## DOCTRINE CHECK
+
+✅ Baseline never touched (Q1-Q28 immutable)  
+✅ V1 always available (deterministic fallback)  
+✅ GPT optional (graceful degradation if null)  
+✅ Only profileDNA uses cognition (not other sections)  
+✅ No breaking changes (all additive)  
+✅ Fallback chain safe (3 levels)  
+✅ Reversible (env flag controls)  
+
+---
+
+**STATUS: V3 narrative engine now cognition-aware for profileDNA section, other sections unchanged. Build passing, deployment pending.**

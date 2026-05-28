@@ -1,210 +1,164 @@
-# CURRENT_RECOVERY_STATE.md — Session Summary (2026-05-26)
+# CURRENT_RECOVERY_STATE.md — Session State (2026-05-28 23:24 MST)
 
-**Status:** ✅ COMPLETE  
-**Date:** 2026-05-26 (Session start: ~11:00 AM, end: 17:39 MST)
-
----
-
-## MISSION ACCOMPLISHED
-
-**Objective:** Fix orchestration divergence between FATHOMFREE assessment completion and manual Profile ID lookup.
-
-**What Was Broken:**
-- FATHOMFREE rendered partial/hybrid output (placeholder futures, truncated sections)
-- Profile ID rendered full WebProfileReport
-- Same profile → different outputs depending on entry point
-- User Pamela Perez (mm-20260526-r8362esx) provided proof of divergence
-
-**What Was Fixed:**
-- FATHOMFREE now routes through exact same validateProfileId() pathway
-- Both pathways fetch from vault identically
-- Both set result with identical structure
-- Both invoke WebProfileReport with identical props
-- Output is now byte-equivalent
+**Last Updated:** 2026-05-28 23:24 MST  
+**Session Type:** GPT Cognition Bridge Completion + Deployment Trace  
+**Status:** ✅ BUILD COMPLETE | ⏳ DEPLOYMENT AWAITING  
 
 ---
 
-## SESSION WORK LOG
+## IMMEDIATE RECOVERY CONTEXT
 
-### Phase 1: Diagnosis (11:00–14:30)
-1. Reviewed frontier restoration (previous session)
-2. Verified unified interpreter is wired correctly
-3. Identified written-answer pipeline is flowing
-4. Confirmed evidence dominance is active
+### What Just Happened
 
-### Phase 2: Orchestration Trace (14:30–16:15)
-1. Traced Profile ID pathway (manual lookup):
-   - Calls validateProfileId()
-   - Fetches /api/moremindmap/retrieve-profile?id=...
-   - Sets result with version="web"
-   - Renders WebProfileReport
+1. **Phase 3 (Cognition Bridge) BUILT & COMMITTED**
+   - gptBehavioralRescore engine (450 lines)
+   - getcognitionContext helper
+   - buildNarrativeV3 integration
+   - Renderer fallback chains
+   - Admin endpoint backfill
 
-2. Traced FATHOMFREE pathway (assessment completion):
-   - Polled job status until complete
-   - Tried to fetch canonical from vault
-   - On any fetch failure: fallback to mini-v2 HTML
-   - Rendered partial/hybrid output
+2. **THREE CRITICAL BUGS FOUND & FIXED**
+   - Import error: gptBehavioralRescore default vs named
+   - Admin endpoint: Missing rescoring_v1 generation for old profiles
+   - Renderer: Reading from wrong canonical path
 
-### Phase 3: First Fix Attempt (16:15–16:45)
-- Added retry loop to canonical fetch (3 attempts, 500ms delay)
-- **Result:** Still not full parity (Pamela still showed divergence)
-- **Reason:** Even with retries, FATHOMFREE was using different rendering flow
-
-### Phase 4: Root Cause Analysis (16:45–17:15)
-- Realized: FATHOMFREE should NOT attempt to render from job payload
-- FATHOMFREE should route through exact same validateProfileId() pathway
-- This ensures identical fetch URL, identical result structure, identical state setters
-
-### Phase 5: Final Fix (17:15–17:39)
-- Replaced FATHOMFREE direct rendering with validateProfileId() pathway call
-- Both pathways now use:
-  - Same fetch URL: `/api/moremindmap/retrieve-profile?id=...`
-  - Same result structure: {version: "web", canonical_dossier, behavioral_intelligence_v1, ...}
-  - Same state setters: setSubmitted(true), setProcessing(false)
-  - Same component: WebProfileReport
-
-**Result:** Complete orchestration parity.
+3. **DEPLOYMENT TRACE EXECUTED**
+   - Verified source code is correct
+   - Verified production bundle is NOT updated
+   - Proven root cause: Vercel hasn't redeployed
 
 ---
 
-## COMMITS THIS SESSION
+## BUILD STATUS
+
+✅ **npm run build: PASSING (488ms)**
+- All modules transformed
+- Zero errors, zero warnings
+- Output: 488.55 KB (gzip: 129.27 KB)
+
+---
+
+## CODE STATE
+
+### What's in Source Code ✅
+
+**Admin Endpoint (api/admin/rescore-profile.js):**
+- Import: `import { rescoreDimensions } from '../engine/rescoring/rescoreDimensions.js';`
+- Step 7b: Check if rescoring_v1 missing, generate if needed
+- Handles old profiles correctly
+
+**Renderer (src/components/reports/WebProfileReport.jsx):**
+- Line 101: `const canonicalProfile = canonical?.canonical_profile_json || canonical;`
+- Line 122: Same extraction
+- Line 180: Same extraction
+- All rescoring reads use canonicalProfile path
+
+**Narrative (src/lib/narrativeV3/buildNarrativeV3.js):**
+- Import: getCognitionContext
+- Extract: cognitionContext = getCognitionContext(canonical)
+- Conditional pass: profileDNA gets cognitionContext, others don't
+
+### What's NOT in Production ❌
+
+- Vercel bundle does NOT contain `canonicalProfile`
+- Admin endpoint still returns FUNCTION_INVOCATION_FAILED
+- Production still shows "Balanced multi-system topology..." fallback
+
+---
+
+## RESCUE CHAIN (IF DEPLOYMENT FAILS)
+
+1. Check Vercel logs for build errors
+2. If build error: Fix and commit new fix
+3. If no build error: Force Vercel rebuild (UI or API)
+4. If still fails: Check if .env vars are set in Vercel
+   - GPT_RESCORING_ENABLED
+   - ADMIN_GPT_RESCORE_SECRET
+   - OPENAI_API_KEY
+   - REDIS_URL
+
+---
+
+## NEXT RUNTIME SEQUENCE (AFTER DEPLOYMENT)
 
 ```
-1f46b6b  intake_answers to vault (backend)
-537db0a  intake_answers through frontend (GPT context)
-75a4bb6  OpenAI schema fix (HTTP 400 resolution)
-89a02d0  Unified interpreter brain pass
-7050568  Evidence dominance reweighting (all 7 sections)
-3f58b65  ReferenceError fix
-59ee5e5  Retry loop canonical fetch (first attempt)
-008ac85  FATHOMFREE validateProfileId pathway (final fix)
+1. POST /api/admin/rescore-profile?id=MM-20260523-mqlev9c9
+   ├─ Auth check ✅ (ADMIN_GPT_RESCORE_SECRET)
+   ├─ Retrieve David from Redis ✅
+   ├─ Check rescoring_v1 ❌ (missing)
+   ├─ Generate rescoring_v1 ✅ (NEW: rescoreDimensions call)
+   ├─ Call gptBehavioralRescore ✅ (now v1 exists)
+   ├─ Validate output ✅
+   ├─ Save canonical.rescoring_gpt ✅
+   └─ Return success ✅
+
+2. GET /api/moremindmap/retrieve-profile?id=mm-20260523-mqlev9c9&nocache=true
+   ├─ Fetch from Redis ✅
+   ├─ Return canonical_dossier ✅
+   └─ canonical_dossier.canonical_profile_json.rescoring_gpt exists ✅
+
+3. Profile.jsx renders
+   └─ <WebProfileReport canonical={result.canonical_dossier} />
+
+4. WebProfileReport DNA Summary renders
+   ├─ Extract: canonicalProfile = canonical.canonical_profile_json ✅ (NEW)
+   ├─ Read: canonicalProfile.rescoring_gpt.render_ready ✅ (CORRECT PATH)
+   ├─ Check: profile_intensity === 'extreme' ✅
+   └─ Return: "Concentrated directional topology..." ✅ (NOT FALLBACK)
 ```
 
 ---
 
-## KEY DECISIONS
+## DOCTRINE CHECKPOINT
 
-1. **Diagnostic Approach:** Side-by-side trace of both pathways to find exact divergence point
-2. **No Redesign:** Only changed FATHOMFREE completion flow, left everything else intact
-3. **Same Pathway Principle:** Instead of patching fields or adding more retries, route FATHOMFREE through exact same validateProfileId() that manual Profile ID uses
-4. **Graceful Fallback:** Preserved error fallback in case something breaks, but both pathways now try the same flow first
-
----
-
-## VALIDATION
-
-**Test Case:** Pamela Perez (mm-20260526-r8362esx)
-
-**FATHOMFREE Render (after fix):**
-- ✅ Full WebProfileReport
-- ✅ Five Futures: 5 cards (Scaled Success, Optimized Specialty, Increasing Friction, Infrastructure Crisis, Successful Transition)
-- ✅ All sections fully expanded
-- ✅ Full narrative-v3 enrichment
-
-**Profile ID Render (manual load):**
-- ✅ Full WebProfileReport
-- ✅ Five Futures: 5 cards (identical)
-- ✅ All sections fully expanded (identical)
-- ✅ Full narrative-v3 enrichment (identical)
-
-**Status:** ✅ Byte-equivalent output confirmed
+✅ Baseline never touched  
+✅ All intelligence downstream  
+✅ V1 always available (deterministic fallback)  
+✅ GPT optional (can be null, gracefully degrades)  
+✅ Fallback chains 3-level  
+✅ No orchestration changes  
+✅ No rendering layout changes  
+✅ Admin endpoint non-destructive  
 
 ---
 
-## FILES MODIFIED
+## COMMITS TO DEPLOY
 
-**src/Profile.jsx:**
-- Replaced FATHOMFREE canonical fetch block (retry loop) with validateProfileId() pathway routing
-- ~50 line change, surgical scope
-- Preserves error fallback
+1. e5b7637 - Admin V1 generation
+2. 670a795 - rescoreDimensions import fix
+3. 38362fd - DNA Summary path fix
+4. 836fcde - All rescoring reads fixed
+5. 95f7767 - Documentation
+6. 798d315 - Deployment trace
 
----
-
-## DEPLOYMENT
-
-**Live on Vercel:** commit 008ac85  
-**No rollback needed:** Previous state was broken, this is the fix  
-**Monitoring:** Check logs for any edge cases in FATHOMFREE completion flow
+All are on `main` branch, pushed to GitHub.
 
 ---
 
-## WHAT'S STABLE NOW
+## IF DEBUGGING NEEDED
 
-✅ Canonical dossier saves  
-✅ Vault retrieval works  
-✅ Unified interpreter wired  
-✅ Narrative-v3 renders  
-✅ WebProfileReport displays  
-✅ FATHOMFREE = Profile ID pathways (orchestration parity)  
-✅ Frontier orchestrator (25 modules) operational  
-✅ intake_answers flowing through pipeline  
+**Check production logs:**
+```
+Admin endpoint error? Search: [ADMIN RESCORE] in Vercel logs
+GPT error? Search: [GPT-RESCORE] in logs
+Renderer issue? Search: [COGNITION CONTEXT] in browser console
+```
 
----
+**Test locally (if Vercel fails):**
+```bash
+npm run build  # Rebuild locally
+# Should now have canonicalProfile in dist
+grep canonicalProfile dist/assets/index-*.js
+```
 
-## WHAT STILL NEEDS WORK
-
-⚠️ Five Futures is generic (upgrade priority #1)  
-⚠️ One Move is generic (upgrade priority #2)  
-⚠️ Contradiction Engine refinement (later)  
-⚠️ Scaling Constraint Engine refinement (later)  
-⚠️ Team Dynamics Engine refinement (later)  
-⚠️ Scoring/display audit (later)  
-⚠️ Interpreter state-vs-trait language (later)  
-
----
-
-## RED LINE
-
-🛑 **DO NOT MODIFY:**
-- Renderer
-- Vault
-- Canonical generation
-- FATHOMFREE orchestration (just fixed it)
-- Scoring system
-- Until memory is saved and next task is explicit
+**Force test old build:**
+```bash
+# If need to test with old code:
+git checkout 38362fd^  # Go back before fixes
+npm run build
+# Compare old bundle to understand the break
+```
 
 ---
 
-## DOWNSTREAM ENRICHMENT DOCTRINE (LOCKED) 🔒
-
-**Before ANY future enrichment work, Rocky must first perform:**
-
-1. Architecture trace (map current data flow)
-2. Dependency mapping (what reads what)
-3. Orchestration mapping (trace both ingress paths)
-4. Shared object verification (confirm both paths converge)
-5. Downstream insertion-point analysis (where does enrichment attach?)
-6. Backward compatibility check (does it affect existing output?)
-7. Renderer impact analysis (will rendering break?)
-
-**Only THEN may surgical insertion occur.**
-
-**After every enrichment:**
-- test minimum 2-3 profiles
-- test ALL ingress paths (FATHOMFREE + Profile ID)
-- confirm orchestration parity
-- confirm renderer parity
-- confirm no regression
-
-**DO NOT:**
-- refactor ingress
-- duplicate enrichment logic
-- split rendering pathways
-- introduce ingress-specific intelligence
-- mutate orchestration unless explicitly instructed
-
----
-
-## NEXT SESSION PRIORITY
-
-1. Upgrade Futures Engine (Five Futures: generic → specific per profile)
-   - Orchestration trace first
-   - Surgical downstream insertion
-   - Test both ingress paths
-
-2. Upgrade One Move Engine (generic advice → specific unblock mechanism)
-   - Same rigor as Futures
-
-3. Continue cascade of engine refinements (per phase 1 list)
-
-Session end: stable, doctrine preserved, ready for next work.
+**STATE: Code ready, deployment pending, fallback chain verified, admin infrastructure built.**

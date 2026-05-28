@@ -1,3 +1,99 @@
+# 2026-05-27 21:15 MST — GPT-5.5 BEHAVIORAL RESCORING ENGINE COMPLETE ✅
+
+## SURGICAL FUEL INJECTION PHASE COMPLETE
+
+**Status:** Production ready, feature flag OFF by default
+
+### What Was Built
+
+1. **Core Engine:** `/api/engine/rescoring/gptBehavioralRescore.js` (450 lines)
+   - Reads full canonical dossier (baseline, deterministic topology, evidence)
+   - Builds behavioral prompt with full context
+   - Calls GPT-5.5 via existing infrastructure
+   - Validates response, normalizes scores, enriches audit trail
+
+2. **Integration Point:** `canonicalProfileGenerator.js` (12 lines)
+   - After deterministic rescoring, before Vault save
+   - Guarded by `GPT_RESCORING_ENABLED` env var
+   - Awaits GPT result (ensures rescoring_gpt populated)
+   - Falls back silently if GPT fails
+
+3. **Renderer Fallback:** `WebProfileReport.jsx` (5 lines changed)
+   - Extended chain: `rescoring_gpt → rescoring_v1 → baseline`
+
+### Key Commits
+
+- 2b3f415: GPT-5.5 behavioral rescoring engine complete
+- Build passes: npm run build (418ms)
+- Feature flag configured (.env.production = false)
+
+---
+
+# 2026-05-27 14:45 MST — RESCORING PHASE 2 COMPLETE ✅
+
+## THRESHOLD + DOMINANCE REFINEMENT LIVE
+
+**Status:** Production live on Vercel
+
+### What Changed
+
+Upgraded from V1 (basic dominance amplification) to V2 (threshold-aware, psychologically believable dominance topology).
+
+**Phase 2 Features:**
+1. **Threshold Gravity** - Near-threshold systems gain 1.4-1.7x influence weight
+2. **Compensatory Suppression** - Strong systems behaviorally suppress weak ones
+3. **Flatness Preservation** - Blended operators (Pamela) stay balanced
+4. **Tension Amplification** - Conflicting dimension pairs reshape topology
+5. **Extremity Differentiation** - Same order, different spreads = different people
+6. **Render-Ready Intelligence** - Pre-calculated override values for 6 surfaces
+
+### Example Results
+
+**David (Extreme Vector)**
+- Vector: 0.88 → 0.92 (+0.04 threshold amplification)
+- Signal: 0.60 → 0.48 (-0.12 behavioral suppression)
+- Feel: "Pure command operator, precision suppressed"
+
+**Pamela (Balanced Profile)**
+- Signal: 0.55 → 0.54 (minimal, flatness preserved)
+- Fidelity: 0.50 → 0.50 (no change)
+- Feel: "Blended adaptive operator" (unchanged, as intended)
+
+**Jonny (Concentrated Vector+Velocity)**
+- Vector: 0.80 → 0.85 (+0.05 threshold + tension)
+- Velocity: 0.75 → 0.70 (tension competition)
+- Fidelity: -0.20 → -0.28 (suppression by high velocity)
+- Feel: "Operator focused on speed, precision actively suppressed"
+
+### Doctrine Maintained
+
+✅ Baseline scoring sacred (buildProfileInput.js untouched)
+✅ Ingress flows unchanged (FATHOMFREE, Profile ID, Stripe)
+✅ Orchestration parity preserved
+✅ Renderer layout unchanged
+✅ All downstream intelligence only
+✅ Audit trail intact (baseline_ranked_dimensions)
+✅ Zero breaking changes
+
+### What's Next
+
+**Phase 3:** Narrative Regeneration
+- Rebuild Profile DNA with rescored dominance context
+- UpdateExecutiveSummary, Contradictions with new hierarchy
+
+**Phase 4:** Futures Enrichment
+- Generate futures from rescored dominance patterns
+- Extreme profiles → more extreme futures
+- Blended profiles → more blended futures
+
+### Key Commits
+
+- d27e708: Engine V2 with all Phase 2 features
+- 56dcf8e: Engine V2 documentation
+- 0bdb540: Complete phases summary
+
+---
+
 # 2026-05-26 17:39 MST — ORCHESTRATION PARITY COMPLETE ✅
 
 ## Mission Accomplished
@@ -334,3 +430,88 @@ Only THEN may surgical insertion occur.
 ### No Code Changes
 
 Memory preservation only. All architecture files untouched. Deployment status: ready to commit memory updates.
+
+---
+
+# 2026-05-28 SESSION — GPT COGNITION BRIDGE COMPLETION + DEPLOYMENT TRACE
+
+## FINAL STATUS: ✅ CODE COMPLETE | ⏳ DEPLOYMENT PENDING
+
+**Session:** Trace runtime, fix integration bugs, verify production state
+
+**Key Finding:** Code is correct, Vercel hasn't deployed yet
+
+---
+
+## WHAT WAS COMPLETED
+
+### Phase 3: GPT Cognition Layer ✅
+- gptBehavioralRescore engine (450 lines)
+- getCognitionContext helper
+- buildNarrativeV3 integration
+- WebProfileReport fallback chains
+- Admin endpoint backfill
+
+### Critical Bugs Fixed ✅
+1. Import error: gptBehavioralRescore (default vs named)
+2. Admin endpoint: Missing rescoring_v1 generation for old profiles
+3. Renderer: Reading from wrong canonical path (nested under canonical_profile_json)
+
+### Build & Commits ✅
+- npm run build: PASSING (488ms)
+- 6 commits pushed to GitHub
+- All on main branch
+- Code verified correct via inspection
+
+### Runtime Trace ✅
+- Verified source has fixes
+- Verified production bundle NOT updated
+- Proven root cause: Vercel deployment gap
+- Proven fallback mechanism working
+
+---
+
+## WHAT'S NOT DEPLOYED YET ⏳
+
+Commits pending Vercel rebuild:
+- e5b7637: Admin generates rescoring_v1
+- 670a795: Fix rescoreDimensions import
+- 38362fd: DNA Summary reads correct path
+- 836fcde: All rescoring reads fixed
+- 95f7767: Documentation
+- 798d315: Deployment trace
+
+---
+
+## NUMERIC RESCORING ROADMAP
+
+Layer 1: ✅ Baseline (Q1-Q28, ranked_dimensions)
+Layer 2: ✅ Deterministic V1 (threshold gravity, suppression)
+Layer 3: ✅ GPT Cognition (behavioral interpretation)
+Layer 4: ⏳ Narrative Regeneration (Phase 4)
+Layer 5: ⏳ Futures Enrichment (Phase 4)
+Layer 6: ⏳ Org Role Mapping (Future)
+
+---
+
+## DOCTRINE MAINTAINED
+
+✅ Baseline immutable
+✅ Intelligence downstream
+✅ Orchestration unchanged
+✅ Fallback chains (3-level)
+✅ No breaking changes
+✅ Reversible (env flags)
+
+---
+
+## FOR NEXT SESSION
+
+1. Check: Did Vercel deploy? (grep for `canonicalProfile`)
+2. If no: Trigger rebuild or wait
+3. If yes: Admin rescore David
+4. If works: Verify DNA Summary changed
+5. If success: Move to Phase 4 (narrative enrichment)
+
+---
+
